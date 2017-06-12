@@ -45,9 +45,11 @@ To add {{site.data.keyword.DRA_short}} to a toolchain:
 
 2. Click **{{site.data.keyword.DRA_short}}**.
 
-3. Click **Create Integration**.
+3. To add all of the {{site.data.keyword.DRA_short}} capabilities to your toolchain, select **Advanced** and make sure that the **Enable Developer Insights** check box is selected. To add Deployment Risk only, select **Default**. 
 
-{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page. Your repo and issue-tracking system are scanned automatically for data. 
+4. Click **Create Integration**.
+
+{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page.
 
 ## Using DevOps Insights
 {: #using}
@@ -56,8 +58,18 @@ If your toolchain includes GitHub, GitLab, or JIRA, {{site.data.keyword.DRA_shor
 
 1. From your toolchain's Overview page, click **{{site.data.keyword.DRA_short}}**.
 
-2. Click **Team Dynamics** or **Developer Insights** and then choose a data category. 
+2. Click **Team Dynamics** or **Developer Insights** and then choose a data category.
 
 3. Explore your project's data by viewing the dashboards in the data category. If you want to know more about a graph or what you might do with its information, click **Information** or **Guidance**.
 
 After you explore Team Dynamics and Developer Insights, [configure Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) to help you enforce code quality. Deployment Risk is compatible with both the {{site.data.keyword.contdelivery_short}} pipeline and Jenkins.   
+
+By default, {{site.data.keyword.DRA_short}} does not include Developer Insights or Team Dynamics. To add these capabilities to your toolchain after you configure it:
+
+1. Go to the toolchain's Overview page.
+2. On the {{site.data.keyword.DRA_short}} card, click the **Actions** menu.
+3. Click **Configure**.
+4. For the type, select **Advanced** and select the check box.
+5. Click **Save Integration**.
+
+After you save the configuration, Developer Insights and Team Dynamics automatically scan your repo and issue tracking systems.
