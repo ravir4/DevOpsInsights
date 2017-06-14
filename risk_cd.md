@@ -14,7 +14,7 @@ lastupdated: "2017-04-07"
 
 # Integrating with Continuous Delivery pipeline
 
-After you add {{site.data.keyword.DRA_short}} to a toolchain and define the policies that it monitors, integrate it with {{site.data.keyword.deliverypipeline}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
+After you add {{site.data.keyword.DRA_short}} to a toolchain and define the policies that it monitors, integrate it with Delivery Pipeline in {{site.data.keyword.contdelivery_full}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
 
 ## Preparing pipeline stages
 {: #integrate_pipeline}
