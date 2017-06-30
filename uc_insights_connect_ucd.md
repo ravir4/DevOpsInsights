@@ -125,17 +125,15 @@ By default, your reports include logical environments that match IBM UrbanCode D
 
 You can manually map physical environments to logical environments, or you can use patterns to associate physical environments with logical environments dynamically.
 
-To map physical environments to logical environments using a pattern, follow these steps:
+To map physical environments to logical environments, follow these steps:
 
 1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights > Map Environments**.
-1. Click an existing logical environment or click **Add Logical Environment**.
-1. In the settings for the logical environment, under **Patterns**, click **Add Pattern**.
-1. Specify a pattern for environment names. You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
+1. On the Environment Mapping page, click an existing logical environment or create a logical environment by clicking **Add Logical Environment**.
+1. With a logical environment selected, you can specify patterns to map environments to the logical environment. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All environments with names that match the pattern, including environments that you create later, are added to the logical environment. You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
+1. To map environments to logical environments manually, click **Add Manually** and select the environments to add or remove.
 1. Verify that the logical environment contains the environments that you want.
 
-To map environments to logical environments manually, click **Add Manually** and select the environments to add or remove.
-
-![Setting up the integration in DevOps Connect](images/uc_insights_mapping_manually.gif)
+![Setting up the logical environment mapping](images/uc_insights_mapping_manually.gif)
 
 Now that you have mapped environments to logical environments, you can aggregate report information by those logical environments.
 
@@ -148,9 +146,9 @@ To set up lines of business (LOBs), follow these steps:
 
 1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights**, click the settings button, and then click **Map Lines of Business**.  
 ![The **Map Lines of Business** item in the Delivery Insights settings](images/uc_insights_settings_lob.gif)
-1. On the Lines of Business Mapping page, click an existing LOB, or create a new LOB by clicking **Create**.
-1. With an LOB selected, you can specify patterns to map applications to the LOB. Click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications  that you create later, are added to the LOB.
-1. You can also may applications to the LOP manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
+1. On the Lines of Business Mapping page, click an existing LOB, or create an LOB by clicking **Create**.
+1. With an LOB selected, you can specify patterns to map applications to the LOB. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications  that you create later, are added to the LOB.  You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
+1. You can also map applications to the LOP manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
 
 After your set up LOBs, you can filter charts to show only the applications in certain LOBs. Other charts show metrics based on LOBs.
 
