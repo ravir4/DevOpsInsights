@@ -20,8 +20,7 @@ IBM Cloud DevOps Insights
 
   {: .navgroup id="howto"}
     risk_cd.md
-    jenkins_pipeline.md
-    risk_jenkins.md
+    [Integrating with Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)
     uc_insights_connect_ucd.md
     risk_policies.md
     results.md
