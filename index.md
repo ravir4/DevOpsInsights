@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-06-12"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -60,4 +60,4 @@ If your toolchain includes GitHub, GitLab, or JIRA, {{site.data.keyword.DRA_shor
 
 3. Explore your project's data by viewing the dashboards in the data category. If you want to know more about a graph or what you might do with its information, click **Information** or **Guidance**.
 
-After you explore Team Dynamics and Developer Insights, [configure Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) to help you enforce code quality. Deployment Risk is compatible with both Delivery Pipeline for {{site.data.keyword.contdelivery_short}} and Jenkins.
+After you explore Team Dynamics and Developer Insights, configure [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) to help you enforce code quality. Deployment Risk is compatible with both Delivery Pipeline for {{site.data.keyword.contdelivery_short}} and Jenkins.
