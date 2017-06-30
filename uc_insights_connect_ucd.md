@@ -144,8 +144,7 @@ Lines of business are groups of applications that serve a common business purpos
 
 To set up lines of business (LOBs), follow these steps:
 
-1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights**, click the settings button, and then click **Map Lines of Business**.  
-![The **Map Lines of Business** item in the Delivery Insights settings](images/uc_insights_settings_lob.gif)
+1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights**, click the settings button, and then click **Map Lines of Business**.
 1. On the Lines of Business Mapping page, click an existing LOB, or create an LOB by clicking **Create**.
 1. With an LOB selected, you can specify patterns to map applications to the LOB. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications  that you create later, are added to the LOB.  You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
 1. You can also map applications to the LOP manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
