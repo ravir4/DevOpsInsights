@@ -130,6 +130,21 @@ To map environments to logical environments manually, click **Add Manually** and
 
 Now that you have mapped environments to logical environments, you can aggregate report information by those logical environments.
 
+## Mapping applications to lines of business
+{: #lines}
+
+Lines of business are groups of applications that serve a common business purpose. You can map your applications to lines of business to make it easier to filter the applications in charts. You can also create charts that are based on lines of business.
+
+To set up lines of business (LOBs), follow these steps:
+
+1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights**, click the settings button, and then click **Map Lines of Business**.  
+![The **Map Lines of Business** item in the Delivery Insights settings](images/uc_insights_settings_lob.gif)
+1. On the Lines of Business Mapping page, click an existing LOB, or type the name of a new LOB and then click **Create**.
+1. With an LOB selected, you can specify patterns to map applications to the LOB. Click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications  that you create later, are added to the LOB.
+1. You can also may applications to the LOP manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
+
+After your set up LOBs, you can filter charts to show only the applications in certain LOBs. Other charts show metrics based on LOBs.
+
 ## Creating reports
 
 To create a report, open {{site.data.keyword.DRA_short}}, click **Delivery Insights > Reports**, and then click **Add Report**. 
