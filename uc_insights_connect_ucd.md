@@ -55,6 +55,10 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
   1. Set up a system to run DevOps Connect, as described in the [Prerequisites](uc_insights_connect_ucd.html#prereqs).
   1. Download DevOps Connect, which is provided in a runnable JAR file.
 
+  1. If you use a proxy to connect to the internet, set the following system variables:
+    * If the proxy uses HTTPS, set the `https.proxyHost` variable to the host name of the proxy server, and set the`https.proxyPort` variable to the HTTPS port of the proxy server.
+    * If the proxy uses HTTP, set the `http.proxyHost` variable to the host name of the proxy server, and set the`http.proxyPort` variable to the HTTP port of the proxy server.
+
   1. Copy the command from the **Setup Instructions** page. This command starts DevOps Connect with a token that allows it to connect to your organization on {{site.data.keyword.Bluemix}}.
   1. DevOps Connect runs on port 8443 by default, which is the same port that the IBM UrbanCode Deploy server runs on by default. Therefore, if the IBM UrbanCode Deploy server or any other service is running on port 844s, change the port for DevOps Connect by adding the parameter `-Dserver.port` to the command. For example, to set DevOps Connect to use port 8888, the beginning of the command looks like this:  
 ```java -Dserver.port=8888 -jar devops-connect-2.0.92clear0618.jar -Dserver.port=8888```  
