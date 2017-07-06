@@ -35,25 +35,27 @@ Also, your IBM UrbanCode Deploy server must be at version 6.2 or later.
 {: #configure_service}
 
 If you do not have a toolchain or {{site.data.keyword.DRA_short}}, you must set up {{site.data.keyword.DRA_short}} first:
-1. From the {{site.data.keyword.Bluemix}} catalog, click **{{site.data.keyword.DRA_short}}**, select a pricing plan, and click **Create**.
-1. Click the **Manage** tab and then above **Gain insights into UrbanCode deployments**, click **Start Here**. In the background, Delivery Insights creates a toolchain for your organization. Toolchains are collections of tool integrations, and in this case, IBM UrbanCode Deploy and {{site.data.keyword.DRA_short}} are part of your toolchain. For more information about toolchains, see [Working with toolchains](../ContinuousDelivery/toolchains_working.html).
+1. From the {{site.data.keyword.Bluemix}} catalog, click **{{site.data.keyword.DRA_short}}**.
+1. Choose an organization and space, select a pricing plan, and click **Create**.
+1. Click the **Manage** tab and then above **Gain insights into UrbanCode deployments**, click **Start Here**, and then click **Create**. Delivery Insights creates a toolchain for your organization. Toolchains are collections of tool integrations, and in this case, IBM UrbanCode Deploy and {{site.data.keyword.DRA_short}} are part of your toolchain. For more information about toolchains, see [Working with toolchains](../ContinuousDelivery/toolchains_working.html).
 
 If you already have a toolchain, follow these steps to add Delivery Insights:
 1. If you do not already have the {{site.data.keyword.DRA_short}} tool, add it to your toolchain.
 1. On your toolchain, click the {{site.data.keyword.DRA_short}} tool.
-1. Go to the **Settings > Delivery Insights Setup** page.
+1. At the left of the page, click **Delivery Insights**.
+1. Click the settings button and then click **Setup**.
 
-Now you can follow the instructions on the **Delivery Insights Setup** page to install DevOps Connect and connect it to {{site.data.keyword.DRA_short}}, as described in the next section.
+Now you can follow the instructions on the **Setup Instructions** page to install DevOps Connect and connect it to {{site.data.keyword.DRA_short}}, as described in the next section.
 
 ## Installing DevOps Connect and connecting it to {{site.data.keyword.DRA_short}}
 {: #install_connect}
 
-1. On the **Delivery Insights Setup** page, follow the steps to set up DevOps Connect and connect your IBM UrbanCode Deploy servers. These steps include:
+1. On the **Setup Instructions** page, follow the steps to set up DevOps Connect and connect your IBM UrbanCode Deploy servers. These steps include:
 {: #set_up_connect}
   1. Set up a system to run DevOps Connect, as described in the [Prerequisites](uc_insights_connect_ucd.html#prereqs).
   1. Download DevOps Connect, which is provided in a runnable JAR file.
 
-  1. Copy the command from the **Delivery Insights Setup** page. This command starts DevOps Connect with a token that allows it to connect to your organization on {{site.data.keyword.Bluemix}}.
+  1. Copy the command from the **Setup Instructions** page. This command starts DevOps Connect with a token that allows it to connect to your organization on {{site.data.keyword.Bluemix}}.
   1. DevOps Connect runs on port 8443 by default, which is the same port that the IBM UrbanCode Deploy server runs on by default. Therefore, if the IBM UrbanCode Deploy server or any other service is running on port 844s, change the port for DevOps Connect by adding the parameter `-Dserver.port` to the command. For example, to set DevOps Connect to use port 8888, the beginning of the command looks like this:  
 ```java -Dserver.port=8888 -jar devops-connect-2.0.92clear0618.jar -Dserver.port=8888```  
   The full command contains information about your Bluemix account, which configures DevOps Connect automatically, as in the following example:  
@@ -127,7 +129,7 @@ You can manually map physical environments to logical environments, or you can u
 
 To map physical environments to logical environments, follow these steps:
 
-1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights > Map Environments**.
+1. Open Delivery Insights, click the settings button, and click **Map Environments**.
 1. On the Environment Mapping page, click an existing logical environment or create a logical environment by clicking **Add Logical Environment**.
 1. With a logical environment selected, you can specify patterns to map environments to the logical environment. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All environments with names that match the pattern, including environments that you create later, are added to the logical environment. You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
 1. To map environments to logical environments manually, click **Add Manually** and select the environments to add or remove.
@@ -153,7 +155,7 @@ After your set up LOBs, you can filter charts to show only the applications in c
 
 ## Creating reports
 
-To create a report, open {{site.data.keyword.DRA_short}}, click **Delivery Insights > Reports**, and then click **Add Report**. 
+To create a report, open {{site.data.keyword.DRA_short}}, click **Delivery Insights**, and then click **Add Report**. If you don't see **Add Report**, your IBM UrbanCode Deploy servers are not connected. Click the settings button and then click **Setup** to connect your servers.
 
 From within the report, you can add cards to the **Metrics** section, filter the activity under **Recent application activity**, and add charts to the **Report Details** section. Each chart in the **Report Details** section is individually filterable and customizable. To see the raw data behind a chart, at the top right of the chart, click the chart Settings button and then click **Report Data**.
 
@@ -166,7 +168,7 @@ By default, only you can see your Delivery Insights reports. You can share the r
 
 ## Creating audit reports
 
-Audit reports show a complete list of all activity that meets the filters that you set, as a PDF. To create an audit report, click **Delivery Insights > Create Audit Report**. Then, specify the information for the report, including a name. Also, set the context for the report, such as for an application, a logical environment, or an environment on an IBM UrbanCode Deploy server (a physical environment). From there, select the data to show in the report and click **Create**. 
+Audit reports show a complete list of all activity that meets the filters that you set, as a PDF. To create an audit report, click **Delivery Insights**, click the settings button, and then click **Create Audit Report**. Then, specify the information for the report, including a name. Also, set the context for the report, such as for an application, a logical environment, or an environment on an IBM UrbanCode Deploy server (a physical environment). From there, select the data to show in the report and click **Create**. 
 
 ## Troubleshooting
 {: #troubleshooting}
