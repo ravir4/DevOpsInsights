@@ -3,7 +3,7 @@
 copyright:
   years: 2017
 
-lastupdated: "2017-06-30"
+lastupdated: "2017-07-07"
 
 ---
 
@@ -72,16 +72,16 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
 ## Connecting IBM UrbanCode Deploy servers to DevOps Connect
 {: #connect_ucd_to_connect}
 
-1. Install the patch into your IBM UrbanCode Deploy server. All versions of IBM UrbanCode Deploy require a patch to communicate with DevOps Connect. 
+1. If your IBM UrbanCode Deploy server is earlier than version 6.2.5, install a patch on the server. Versions 6.2.5 and later do not require a patch.
   1. Download the correct patch for your version of IBM UrbanCode Deploy from the following page. For example, the patch file for IBM UrbanCode Deploy 6.2.4.x is named  [ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar).  
   
     [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
 
-  1. Stop the server. See [Starting and stopping the server](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.install.doc/topics/run_server.html).
+  1. Stop the server. See [Starting and stopping the server](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.install.doc/topics/run_server.html).
 
   1. Put the patch files in the <code><em>application_data</em>/patches</code> folder, where <code><em>application_data</em></code> is the server application data folder. The default application data folder is `/opt/ibm-ucd/server/appdata` on Linux and `C:\Program Files\ibm-ucd\server\appdata` on Windows. On high-availability systems, the application data folder is always on a shared network drive that each server can access.
 
-  1. Optional: While the server is stopped, to increase performance of the data import from this server, run the following SQL commands on the database:  
+  1. Optional: While the server is stopped, to increase performance of the data import from this server, run the following SQL commands on the database. These commands are not needed on version 6.2.5 and later.  
   ```create index rt_cpr_submitted_time on MyUCDDatabase.rt_app_process_request(submitted_time);```  
   ```create index rt_cpr_submitted_time on MyUCDDatabase.rt_comp_process_request(component_id, submitted_time);```  
   Use the name of your database for `MyUCDDatabase`.
@@ -100,7 +100,7 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
 1. Create an integration between DevOps Connect and the IBM UrbanCode Deploy server:  
 
   **Important:** The first time that the integration runs, DevOps Connect retrieves data for the previous 90 days. If you have a large amount of deployment data, this process can take a long time. To retrieve data for less than 90 days, see [Troubleshooting](uc_insights_connect_ucd.html#troubleshooting).
-  1. In IBM UrbanCode Deploy, create an authentication token. See [Tokens](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.admin.doc/topics/security_token.html).
+  1. In IBM UrbanCode Deploy, create an authentication token. See [Tokens](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.admin.doc/topics/security_token.html).
   1. In DevOps Connect, click **Integrations**, and then click **Add New**.
   1. Specify a name and description for the integration. The default location of DevOps Connect is `https://hostname:8443/`, where `hostname` is the host name of the system that hosts DevOps Connect.
   1. From the **Integration Type** list, select **IBM UrbanCode Deploy for Cloud Reporting**.
