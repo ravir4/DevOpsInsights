@@ -72,7 +72,7 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
 ## Connecting IBM UrbanCode Deploy servers to DevOps Connect
 {: #connect_ucd_to_connect}
 
-1. Install the patch into your IBM UrbanCode Deploy server. All versions of IBM UrbanCode Deploy require a patch to communicate with DevOps Connect. 
+1. If your IBM UrbanCode Deploy server is earlier than version 6.2.5, install a patch on the server. Versions 6.2.5 and later do not require a patch.
   1. Download the correct patch for your version of IBM UrbanCode Deploy from the following page. For example, the patch file for IBM UrbanCode Deploy 6.2.4.x is named  [ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar).  
   
     [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
@@ -81,7 +81,7 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
 
   1. Put the patch files in the <code><em>application_data</em>/patches</code> folder, where <code><em>application_data</em></code> is the server application data folder. The default application data folder is `/opt/ibm-ucd/server/appdata` on Linux and `C:\Program Files\ibm-ucd\server\appdata` on Windows. On high-availability systems, the application data folder is always on a shared network drive that each server can access.
 
-  1. Optional: While the server is stopped, to increase performance of the data import from this server, run the following SQL commands on the database:  
+  1. Optional: While the server is stopped, to increase performance of the data import from this server, run the following SQL commands on the database. These commands are not needed on version 6.2.5 and later.  
   ```create index rt_cpr_submitted_time on MyUCDDatabase.rt_app_process_request(submitted_time);```  
   ```create index rt_cpr_submitted_time on MyUCDDatabase.rt_comp_process_request(component_id, submitted_time);```  
   Use the name of your database for `MyUCDDatabase`.
