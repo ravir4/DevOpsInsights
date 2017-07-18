@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-07-12"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -35,7 +35,7 @@ To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many too
 ## Adding DevOps Insights to a toolchain
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} is part of {{site.data.keyword.contdelivery_short}}. You can add {{site.data.keyword.DRA_short}} to any toolchain by selecting it from the tool integration catalog.
+{{site.data.keyword.DRA_short}} is available through integration with {{site.data.keyword.contdelivery_full}} toolchains. You can add {{site.data.keyword.DRA_short}} to any toolchain by selecting it from the tool integration catalog.
 
 {{site.data.keyword.DRA_short}} is also part of many toolchain templates. If you create a toolchain from a template that includes {{site.data.keyword.DRA_short}}, make sure that {{site.data.keyword.DRA_short}} is set to **Advanced**. Then, create the toolchain and skip to [Using Insights](/docs/services/DevOpsInsights/index.html#using).
 
@@ -60,4 +60,4 @@ If your toolchain includes GitHub, GitLab, or JIRA, {{site.data.keyword.DRA_shor
 
 3. Explore your project's data by viewing the dashboards in the data category. If you want to know more about a graph or what you might do with its information, click **Information** or **Guidance**.
 
-After you explore Team Dynamics and Developer Insights, [configure Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) to help you enforce code quality. Deployment Risk is compatible with both the {{site.data.keyword.contdelivery_short}} pipeline and Jenkins.
+After you explore Team Dynamics and Developer Insights, configure [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) to help you enforce code quality. Deployment Risk is compatible with both Delivery Pipeline for {{site.data.keyword.contdelivery_short}} and Jenkins.
