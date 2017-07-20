@@ -3,7 +3,7 @@
 copyright:
   years: 2017
 
-lastupdated: "2017-07-07"
+lastupdated: "2017-07-20"
 
 ---
 
@@ -34,16 +34,20 @@ Also, your IBM UrbanCode Deploy server must be at version 6.2 or later.
 ## Configuring the {{site.data.keyword.DRA_short}} service
 {: #configure_service}
 
-If you do not have a toolchain or {{site.data.keyword.DRA_short}}, you must set up {{site.data.keyword.DRA_short}} first:
-1. From the {{site.data.keyword.Bluemix}} catalog, click **{{site.data.keyword.DRA_short}}**.
-1. Choose an organization and space, select a pricing plan, and click **Create**.
-1. Click the **Manage** tab and then above **Gain insights into UrbanCode deployments**, click **Start Here**, and then click **Create**. Delivery Insights creates a toolchain for your organization. Toolchains are collections of tool integrations, and in this case, IBM UrbanCode Deploy and {{site.data.keyword.DRA_short}} are part of your toolchain. For more information about toolchains, see [Working with toolchains](../ContinuousDelivery/toolchains_working.html).
-
-If you already have a toolchain, follow these steps to add Delivery Insights:
-1. If you do not already have the {{site.data.keyword.DRA_short}} tool, add it to your toolchain.
-1. On your toolchain, click the {{site.data.keyword.DRA_short}} tool.
-1. At the left of the page, click **Delivery Insights**.
+If you do not have the {{site.data.keyword.DRA_short}} service, add it:
+1. Log in to {{site.data.keyword.Bluemix}} and click **Services > Dashboard**.
+1. Click **Create service**.
+1. Click the {{site.data.keyword.DRA_short}} service.
+1. Select a pricing plan and then click **Create**.
+1. Click **Manage** and then, under "Gain insights into UrbanCode deployments", click **Start here**.
+1. In the toolchain template window, click **Create**.  
+Delivery Insights creates a toolchain for your organization. Toolchains are collections of tool integrations, and in this case, IBM UrbanCode Deploy and {{site.data.keyword.DRA_short}} are part of your toolchain. For more information about toolchains, see [Working with toolchains](../ContinuousDelivery/toolchains_working.html).
+1. In the toolchain, click the IBM UrbanCode Deploy tool.
 1. Click the settings button and then click **Setup**.
+
+In the future, you can get to {{site.data.keyword.DRA_short}} by clicking **Services > Dashboard** and clicking your instance of the {{site.data.keyword.DRA_short}} service.
+
+If you already have a toolchain, you can add the IBM UrbanCode Deploy and {{site.data.keyword.DRA_short}} tools to it and access Delivery Insights through those tools. Then, click the IBM UrbanCode Deploy tool, click the settings button and then click **Setup**.
 
 Now you can follow the instructions on the **Setup Instructions** page to install DevOps Connect and connect it to {{site.data.keyword.DRA_short}}, as described in the next section.
 
