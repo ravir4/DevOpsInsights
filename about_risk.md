@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ If you are using {{site.data.keyword.deliverypipeline}}, follow these steps:
 If you are using Jenkins, follow these steps:
 
 1. [Create policies and rules](risk_policies.html) for {{site.data.keyword.DRA_short}} to manage.
-2. [Install and configure the Jenkins plugin](risk_jenkins.html).
-3. [Create test jobs and gates as described in the plugin instructions](risk_jenkins.html). The tests upload results to {{site.data.keyword.DRA_short}} for analysis and the gates use those results to make promotion decisions.
+2. [Install and configure the Jenkins plugin](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Create test jobs and gates as described in the plugin instructions](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). The tests upload results to {{site.data.keyword.DRA_short}} for analysis and the gates use those results to make promotion decisions.
 4. Run the project and [view the results](results.html). 
 
 No matter how you build and deploy your code, the results are the same: the builds that meet standards will move past the Deployment Risk gates, and builds that don't meet standards are stopped. 
