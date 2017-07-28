@@ -25,7 +25,7 @@ The properties include:
 
 `LOGICAL_APP_NAME`, which defines the app's name on the dashboard.
 `BUILD_PREFIX`, which defines text that is prepended to the stage's builds. This text is also shown on the dashboard.
-`LOGICAL_ENV_NAME`, which defines the environment in which the application is running. The value of this should be either `STAGING` or `PRODUCTION`. 
+`LOGICAL_ENV_NAME`, which defines the environment in which the application is running. 
 
 For the final build job in your pipeline, set an application name and a build prefix. An example script would include these commands:
 
@@ -34,23 +34,23 @@ export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
 
-For the final deployment job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
+For the final deployment job in your pipeline, set an application name, build prefix, and environment name. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
-export LOGICAL_ENV_NAME="PRODUCTION"
+export LOGICAL_ENV_NAME="Production"
 ```
 
-For the final test job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
+For the final test job in your pipeline, set an application name, build prefix, and environment name. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
-export LOGICAL_ENV_NAME="PRODUCTION"
+export LOGICAL_ENV_NAME="Production"
 ```
 
-You can also set properties like this for your staging deployments and tests. To do this, copy the instructions above, but set the value of `LOGICAL_ENV_NAME` to `"STAGING"`.
+You should make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values. 
 
 ## Adding test jobs
 {: #configure_pipeline_jobs}
