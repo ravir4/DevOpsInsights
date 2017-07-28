@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-28"
 
 ---
 
@@ -19,16 +19,38 @@ After you add {{site.data.keyword.DRA_short}} to a toolchain and define the poli
 ## Preparing pipeline stages
 {: #integrate_pipeline}
 
-For Deployment Risk to analyze your project, you must define staging and production stages in your pipeline. You define stages by using text environment properties, which you can find in each stage's configuration menu ![Pipeline stage configuration icon](images/pipeline-stage-configuration-icon.png) under **Environment Properties**.
+For Deployment Risk to analyze your project, you must define certain properties for build, deployment, and test jobs in your pipeline. You can do this by using `export` commands in your jobs' scripts. You can also set these properties in the pipeline stages' Environment Propreties menu. 
 
-1. On the staging stage, set the `LOGICAL_ENV_NAME` property to `STAGING`. 
+The properties include:
 
-2. On the production stage, set the `LOGICAL_ENV_NAME` property to `PRODUCTION`. 
+`LOGICAL_APP_NAME`, which defines the app's name on the dashboard.
+`BUILD_PREFIX`, which defines text that is prepended to the stage's builds. This text is also shown on the dashboard.
+`LOGICAL_ENV_NAME`, which defines the environment in which the application is running. The value of this should be either `STAGING` or `PRODUCTION`. 
 
-You can also add the following properties to stages that build or deploy your app:
+For the final build job in your pipeline, set an application name and a build prefix. An example script would include these commands:
 
-* `LOGICAL_APP_NAME`, which defines the app's name on the dashboard.
-* `BUILD_PREFIX`, which defines text that is prepended to the stage's builds. This text is also shown on the dashboard. 
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+```
+
+For the final deployment job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+export LOGICAL_ENV_NAME="PRODUCTION"
+```
+
+For the final test job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+export LOGICAL_ENV_NAME="PRODUCTION"
+```
+
+You can also set properties like this for your staging deployments and tests. To do this, copy the instructions above, but set the value of `LOGICAL_ENV_NAME` to `"STAGING"`.
 
 ## Adding test jobs
 {: #configure_pipeline_jobs}
