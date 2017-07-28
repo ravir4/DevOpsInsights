@@ -27,22 +27,14 @@ The properties include:
 `BUILD_PREFIX`, which defines text that is prepended to the stage's builds. This text is also shown on the dashboard.
 `LOGICAL_ENV_NAME`, which defines the environment in which the application is running. The value of this should be either `STAGING` or `PRODUCTION`. 
 
-For the final build job in your pipeline, set an application name and a build prefix. An example script would include these commands:
+For the build job in your pipeline, set an application name and a build prefix. You can set these environment variables either in stage properties or in your shell script.  An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
 
-For the final deployment job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
-
-```
-export LOGICAL_APP_NAME="SampleApp"
-export BUILD_PREFIX="master"
-export LOGICAL_ENV_NAME="PRODUCTION"
-```
-
-For the final test job in your pipeline, set an application name, build prefix, and environment name. The environment name must be `PRODUCTION`. An example script would include these commands:
+For the deployment job in your pipeline, set an application name, build prefix, and environment name.  You can set these environment variables either in stage properties or in your shell script. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
@@ -50,7 +42,14 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="PRODUCTION"
 ```
 
-You can also set properties like this for your staging deployments and tests. To do this, copy the instructions above, but set the value of `LOGICAL_ENV_NAME` to `"STAGING"`.
+For the final test job in your pipeline, set an application name, build prefix, and environment name. You can set these environment variables either in stage properties or in your shell script. An example script would include these commands:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+export LOGICAL_ENV_NAME="PRODUCTION"
+```
+
 
 ## Adding test jobs
 {: #configure_pipeline_jobs}
