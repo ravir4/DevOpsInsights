@@ -16,26 +16,41 @@ lastupdated: "2017-07-28"
 
 After you add {{site.data.keyword.DRA_short}} to a toolchain and define the policies that it monitors, integrate it with Delivery Pipeline in {{site.data.keyword.contdelivery_full}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
 
-## Preparing pipeline stages
+## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-For Deployment Risk to analyze your project, you must define certain properties for build, deployment, and test jobs in your pipeline. You can do this by using `export` commands in your jobs' scripts. You can also set these properties in the pipeline stages' Environment Propreties menu. 
+For Deployment Risk to analyze your project, you must define certain properties for build, deployment, and test jobs in your pipeline. You can define these properties by using the `export` command in your jobs' scripts. You can also set them in the pipeline stages' Environment Properties menu.
 
-The properties include:
+Required properties:
 
-`LOGICAL_APP_NAME`, which defines the app's name on the dashboard.
-`BUILD_PREFIX`, which defines text that is prepended to the stage's builds. This text is also shown on the dashboard.
-`LOGICAL_ENV_NAME`, which defines the environment in which the application is running. 
+| Property | Purpose |
+----------------------
+|`LOGICAL_APP_NAME` | The app's name on the dashboard. |
+|`BUILD_PREFIX`| Text that is prepended to the stage's builds. This text also appears on the dashboard.|
+|`LOGICAL_ENV_NAME`| The environment in which the application runs.|
 
-For the build job in your pipeline, set an application name and a build prefix. You can set these environment variables either in stage properties or in your shell script.  An example script would include these commands:
+### Configuring build jobs
+
+For build jobs in your pipeline, set an application name and a build prefix. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
+
+### Configuring deploy jobs
 
 For the last deployment job in the stage, set an application name, build prefix, and environment name. An example script would include these commands:
 
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+export LOGICAL_ENV_NAME="Production"
+```
+
+### Configuring test jobs
+
+For all test jobs in the pipeline that use the Advanced Tester job type, set an application name, build prefix, and environment name. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
@@ -43,16 +58,7 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-For all test jobs in pipeline that use Advanced Tester job type, set an application name, build prefix, and environment name. An example script would include these commands:
-
-
-```
-export LOGICAL_APP_NAME="SampleApp"
-export BUILD_PREFIX="master"
-export LOGICAL_ENV_NAME="Production"
-```
-
-You should make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values. 
+You should make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
 
 
 ## Adding test jobs
