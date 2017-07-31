@@ -12,26 +12,30 @@ lastupdated: "2017-07-28"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Integrating with Continuous Delivery pipeline
+# Integrating Deployment Risk Analysis with Continuous Delivery pipeline
 
-After you add {{site.data.keyword.DRA_short}} to a toolchain and define the policies that it monitors, integrate it with Delivery Pipeline in {{site.data.keyword.contdelivery_full}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
+The first step is to add {{site.data.keyword.DRA_short}} to a toolchain.  The second step is to define the policies that will be used for Deployment Risk analysis. 
+
+Then, you need to instrument your Delievery Pipeline in {{site.data.keyword.contdelivery_full}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-For Deployment Risk to analyze your project, you must define certain properties for build, deployment, and test jobs in your pipeline. You can define these properties by using the `export` command in your jobs' scripts. You can also set them in the pipeline stages' Environment Properties menu.
+You will need to instrument your pipeline jobs that build, test and deploy your code.
 
-Required properties:
+The following environment variables are used for this instrumentation. You can define these environment variables by using the `export` command in your jobs' scripts. You can also set them in the pipeline stages' Environment Properties menu.
+
+Required environment variables:
 
 | Property  | Purpose |
 |-----------|--------|
-| `LOGICAL_APP_NAME`  | The app's name on the dashboard.  |
-| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard.  |
-| `LOGICAL_ENV_NAME`  | The environment in which the application runs.  |
+| `LOGICAL_APP_NAME`  | The app's name on the dashboard. This environment variable is required for jobs that build, test, deploy and invoke Gate policy evaluation |
+| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard.  This environment variable is required for jobs that build, test, deploy and invoke Gate policy evaluation |
+| `LOGICAL_ENV_NAME`  | The environment in which the application runs. This environment variable is required only for test and deploy jobs. |
 
 ### Configuring build jobs
 
-For build jobs in your pipeline, set an application name and a build prefix. An example script would include these commands:
+For build jobs in your pipeline, set environment variables for application name and a build prefix. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
@@ -50,7 +54,11 @@ export LOGICAL_ENV_NAME="Production"
 
 ### Configuring test jobs
 
-For all test jobs in the pipeline that use the Advanced Tester job type, set an application name, build prefix, and environment name. An example script would include these commands:
+For all jobs that use Advanced Tester job type, set an application name, build prefix.  
+
+If the Advanced Tester job is publishing Functional Verification Tests (FVT), also set the logical environment name on which these tests have been run. 
+
+An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
