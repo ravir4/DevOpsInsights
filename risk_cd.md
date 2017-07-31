@@ -16,12 +16,12 @@ lastupdated: "2017-07-31"
 
 You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
-Once you add {{site.data.keyword.DRA_short}} to your toolchain, define policies for it. Then, you can instrument your pipelines to send data to {{site.data.keyword.DRA_short}} and enforce those policies.
+After you add {{site.data.keyword.DRA_short}} to your toolchain, define policies for it. Then, you can instrument your pipelines to send data to {{site.data.keyword.DRA_short}} and enforce those policies.
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, and deploy code. 
+To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, and deploy code.
 
 The following variables are used for this instrumentation. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
 
@@ -30,7 +30,7 @@ Environment variables:
 | Property  | Purpose | Required in |
 |-----------|-------- |-------------|
 | `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
-| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
+| `BUILD_PREFIX`  | Text that is added as a prefix to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
 | `LOGICAL_ENV_NAME`  | The environment in which the application runs. | Test and deploy jobs. |
 
 ### Configuring build jobs
