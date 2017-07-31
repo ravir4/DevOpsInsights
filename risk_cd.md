@@ -12,7 +12,7 @@ lastupdated: "2017-07-31"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Integrating with Deployment Risk analytics with Continuous Delivery
+# Integrating Deployment Risk analytics with Continuous Delivery
 
 You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
