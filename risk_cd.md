@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-07-28"
+lastupdated: "2017-07-31"
 
 ---
 
@@ -12,30 +12,30 @@ lastupdated: "2017-07-28"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Integrating Deployment Risk Analysis with Continuous Delivery pipeline
+# Integrating with Deployment Risk analytics with Continuous Delivery
 
-The first step is to add {{site.data.keyword.DRA_short}} to a toolchain.  The second step is to define the policies that will be used for Deployment Risk analysis. 
+You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
-Then, you need to instrument your Delievery Pipeline in {{site.data.keyword.contdelivery_full}}. For more information about pipelines, see [the official documentation](/docs/services/ContinuousDelivery/pipeline_working.html).
+Once you add {{site.data.keyword.DRA_short}} to your toolchain, define policies for it. Then, you can instrument your pipelines to send data to {{site.data.keyword.DRA_short}} and enforce those policies.
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-You will need to instrument your pipeline jobs that build, test and deploy your code.
+To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, and deploy code. 
 
-The following environment variables are used for this instrumentation. You can define these environment variables by using the `export` command in your jobs' scripts. You can also set them in the pipeline stages' Environment Properties menu.
+The following variables are used for this instrumentation. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
 
-Required environment variables:
+Environment variables:
 
-| Property  | Purpose |
-|-----------|--------|
-| `LOGICAL_APP_NAME`  | The app's name on the dashboard. This environment variable is required for jobs that build, test, deploy and invoke Gate policy evaluation |
-| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard.  This environment variable is required for jobs that build, test, deploy and invoke Gate policy evaluation |
-| `LOGICAL_ENV_NAME`  | The environment in which the application runs. This environment variable is required only for test and deploy jobs. |
+| Property  | Purpose | Required in |
+|-----------|-------- |-------------|
+| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy and invoke {{site.data.keyword.DRA_short}} policies. |
+| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy and invoke {{site.data.keyword.DRA_short}} policies. |
+| `LOGICAL_ENV_NAME`  | The environment in which the application runs. | Test and deploy jobs. |
 
 ### Configuring build jobs
 
-For build jobs in your pipeline, set environment variables for application name and a build prefix. An example script would include these commands:
+For build jobs in your pipeline, set environment variables for an application name and build prefix. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
@@ -54,9 +54,9 @@ export LOGICAL_ENV_NAME="Production"
 
 ### Configuring test jobs
 
-For all jobs that use Advanced Tester job type, set an application name, build prefix.  
+For all jobs that use Advanced Tester job type, set an application name and build prefix.
 
-If the Advanced Tester job is publishing Functional Verification Tests (FVT), also set the logical environment name on which these tests have been run. 
+If the job publishes functional verification test (FVT) results, you must also set the logical environment name to wherever those tests run.
 
 An example script would include these commands:
 
@@ -66,7 +66,7 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-You should make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
+Make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
 
 
 ## Adding test jobs
