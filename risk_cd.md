@@ -23,11 +23,11 @@ For Deployment Risk to analyze your project, you must define certain properties 
 
 Required properties:
 
-| Property | Purpose |
-----------------------
-|`LOGICAL_APP_NAME` | The app's name on the dashboard. |
-|`BUILD_PREFIX`| Text that is prepended to the stage's builds. This text also appears on the dashboard.|
-|`LOGICAL_ENV_NAME`| The environment in which the application runs.|
+| Property  | Purpose |
+|-----------|--------|
+| `LOGICAL_APP_NAME`  | The app's name on the dashboard.  |
+| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard.  |
+| `LOGICAL_ENV_NAME`  | The environment in which the application runs.  |
 
 ### Configuring build jobs
 
