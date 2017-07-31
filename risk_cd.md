@@ -29,8 +29,8 @@ Environment variables:
 
 | Property  | Purpose | Required in |
 |-----------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy and invoke {{site.data.keyword.DRA_short}} policies. |
-| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy and invoke {{site.data.keyword.DRA_short}} policies. |
+| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
+| `BUILD_PREFIX`  | Text that is prepended to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
 | `LOGICAL_ENV_NAME`  | The environment in which the application runs. | Test and deploy jobs. |
 
 ### Configuring build jobs
