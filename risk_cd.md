@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-07-31"
+lastupdated: "2017-08-01"
 
 ---
 
@@ -16,18 +16,14 @@ lastupdated: "2017-07-31"
 
 You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
-After you add {{site.data.keyword.DRA_short}} to your toolchain, you can instrument your pipelines to publish build, deploy and test records to {{site.data.keyword.DRA_short}}.
+After you add {{site.data.keyword.DRA_short}} to your toolchain, you can instrument your pipelines to publish build, deployment, and test records to it.
 
-Once your pipeline starts publishing data to {{site.data.keyword.DRA_short}}, define risk policies. More information on defining risk policies is here (https://console.bluemix.net/docs/services/DevOpsInsights/risk_policies.html#policies_and_rules).  
-
-Once these risk policices have been defined, they can be enforced by use of Gate jobs in your pipeline.
-
-
+After your pipeline starts publishing data to {{site.data.keyword.DRA_short}}, define risk policies. You can enforce risk policies by adding gate jobs to your pipeline. For more information about defining risk policies, see [Creating policies and rules](./risk_policies.html#policies_and_rules).
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, deploy code or that enforce risk policies by using Gate job type.
+To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, or deploy code. You must also add environment variables to test jobs that enforce risk policies by using the DevOps Insights Gate tester type.
 
 The following variables are used for this instrumentation. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
 
@@ -48,9 +44,9 @@ export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
 
-When this build job completes, the Pipeline would publish a message to {{site.data.keyword.DRA_short}} that a build for an is completed.
+When this build job completes, the pipeline would publish a message to {{site.data.keyword.DRA_short}} that a SampleApp build is completed.
 
-### Configuring deploy jobs
+### Configuring deployment jobs
 
 For the last deployment job in the stage, set an application name, build prefix, and environment name. An example script would include these commands:
 
@@ -60,9 +56,9 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-When your deployment job ends, the Pipeline would publish a message to {{site.data.keyword.DRA_short}} that the specified app and build have been deployed to an environment.
+When your deployment job ends, the pipeline would publish a message to {{site.data.keyword.DRA_short}} that the specified build and app was deployed to an environment.
 
-### Configuring test jobs 
+### Configuring test jobs
 
 For all jobs that produce test results, set an application name and build prefix.
 
@@ -74,19 +70,22 @@ An example script would include these commands:
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 
-#LOGICAL_ENV_NAME only needed if publishing FVT results
+# The LOGICAL_ENV_NAME variable is only needed when publishing FVT results.
 export LOGICAL_ENV_NAME="Production"
 ```
 
 Make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
 
-
-## Publishing test data to DevOps Insights using Advanced Tester job type
+## Publishing test data to DevOps Insights
 {: #configure_pipeline_jobs}
 
-First, add Advanced Tester jobs to your pipeline to run tests and publish test results. 
+You can publish test data from all job types. {{site.data.keyword.DRA_short}} uses the published data to generate reports and enforce policies at gates.
 
-**Note:** If you want to update a test job to upload results to {{site.data.keyword.DRA_short}}, save its configurations in a convenient place before you proceed. Then, open its job configuration menu and skip to step 3. 
+Test jobs that use the Advanced Tester type are configured in one way, while other job types are configured another way. The central difference between the two types is that Advanced Tester jobs are configured using options in the pipeline's web interface, while other jobs require that you invoke a command-line interface (CLI) in their shell scripts.
+
+### Publishing test data from Advanced Tester jobs
+
+**Tip:** If you want to update a test job to upload results to {{site.data.keyword.DRA_short}}, save its configurations in a convenient place before you proceed. Then, open its job configuration menu and skip to step 3. 
 
 1. On the stage where you want to add the job that uploads results, click the **Stage Configuration** icon ![Pipeline stage configuration icon](images/pipeline-stage-configuration-icon.png). Click **Configure Stage**.
 2. Create a test job and type a name for it. 
@@ -127,23 +126,29 @@ Figure 1 shows a test job that is configured to run unit tests, upload the resul
 ![DevOps Insights upload job](images/insights_upload_job.png)
 *Figure 1. Upload results to DevOps Insights*
 
-## Publishing test data to DevOps Insights using other job types
-In Continuous Delivery pipeline, you can use any job type to run a test.  Once you run a test from any job type, you can upload test results to {{site.data.keyword.DRA_short}}
+## Publishing test data from other job types
+In Continuous Delivery pipelines, you can use any job type to run a test. After you run that test, you can upload its results to {{site.data.keyword.DRA_short}}. You upload the results by invoking a CLI in the job's shell script. 
 
-This is done by invoking a CLI from within your shell script.  An example is..
+You can upload these types of test results from the CLI:
 
-#Run tests to generate test results file
+* Unit tests
+* Code coverage
+* Functional verification tests
+* Static and Dynamic app scan results from IBM Application Security on Cloud. 
 
-#Publish results to DRA
+This is an example script that runs tests and then uploads the results to {{site.data.keyword.DRA_short}}: 
+
+```
+# Run tests and generate a test results file here.
+...
+
+# Then, publish results to DevOps Insights
 export PATH=/opt/IBM/node-v4.2/bin:$PATH
 npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
+```
 
-You can upload the following types of resuls with this approach:
-- Unit test results, code coverage results, functional verification test results
-- Static app scan results, Dynamic app scan results by using IBM Application Security on Cloud offering
-
-To find more details on the idra command, please refer to this link https://www.npmjs.com/package/grunt-idra3
+To learn more about the `idra` command, see [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3). 
 
 ## Defining gates
 {: #configure_pipeline_gates}
