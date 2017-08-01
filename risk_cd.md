@@ -16,31 +16,39 @@ lastupdated: "2017-07-31"
 
 You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
-After you add {{site.data.keyword.DRA_short}} to your toolchain, define policies for it. Then, you can instrument your pipelines to send data to {{site.data.keyword.DRA_short}} and enforce those policies.
+After you add {{site.data.keyword.DRA_short}} to your toolchain, you can instrument your pipelines to publish build, deploy and test records to {{site.data.keyword.DRA_short}}.
+
+Once your pipeline starts publishing data to {{site.data.keyword.DRA_short}}, define risk policies. More information on defining risk policies is here (https://console.bluemix.net/docs/services/DevOpsInsights/risk_policies.html#policies_and_rules).  
+
+Once these risk policices have been defined, they can be enforced by use of Gate jobs in your pipeline.
+
+
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
 
-To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, and deploy code.
+To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, deploy code or that enforce risk policies by using Gate job type.
 
 The following variables are used for this instrumentation. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
 
 Environment variables:
 
-| Property  | Purpose | Required in |
+| Environment Variable  | Purpose | Required in |
 |-----------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
-| `BUILD_PREFIX`  | Text that is added as a prefix to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and invoke {{site.data.keyword.DRA_short}} policies. |
+| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy, and enforce {{site.data.keyword.DRA_short}} risk policies. |
+| `BUILD_PREFIX`  | Text that is added as a prefix to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and enforce {{site.data.keyword.DRA_short}} risk policies. |
 | `LOGICAL_ENV_NAME`  | The environment in which the application runs. | Test and deploy jobs. |
 
 ### Configuring build jobs
 
-For build jobs in your pipeline, set environment variables for an application name and build prefix. An example script would include these commands:
+For the last build job in a stage, set environment variables for an application name and build prefix. An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
+
+When this build job completes, the Pipeline would publish a message to {{site.data.keyword.DRA_short}} that a build for an is completed.
 
 ### Configuring deploy jobs
 
@@ -52,29 +60,31 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-### Configuring test jobs
+When your deployment job ends, the Pipeline would publish a message to {{site.data.keyword.DRA_short}} that the specified app and build have been deployed to an environment.
 
-For all jobs that use Advanced Tester job type, set an application name and build prefix.
+### Configuring test jobs 
 
-If the job publishes functional verification test (FVT) results, you must also set the logical environment name to wherever those tests run.
+For all jobs that produce test results, set an application name and build prefix.
+
+If the job generates functional verification test (FVT) results, you must also set the logical environment name to wherever those tests run.
 
 An example script would include these commands:
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
+
+#LOGICAL_ENV_NAME only needed if publishing FVT results
 export LOGICAL_ENV_NAME="Production"
 ```
 
 Make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
 
 
-## Adding test jobs
+## Publishing test data to DevOps Insights using Advanced Tester job type
 {: #configure_pipeline_jobs}
 
-You integrate {{site.data.keyword.DRA_short}} into your pipeline by using two kinds of test jobs: ones that upload results to {{site.data.keyword.DRA_short}} for analysis, and gates that act on that analysis. 
-
-First, you add Advanced Tester jobs to your pipeline to run tests and upload the results. 
+First, add Advanced Tester jobs to your pipeline to run tests and publish test results. 
 
 **Note:** If you want to update a test job to upload results to {{site.data.keyword.DRA_short}}, save its configurations in a convenient place before you proceed. Then, open its job configuration menu and skip to step 3. 
 
@@ -116,6 +126,24 @@ Figure 1 shows a test job that is configured to run unit tests, upload the resul
 
 ![DevOps Insights upload job](images/insights_upload_job.png)
 *Figure 1. Upload results to DevOps Insights*
+
+## Publishing test data to DevOps Insights using other job types
+In Continuous Delivery pipeline, you can use any job type to run a test.  Once you run a test from any job type, you can upload test results to {{site.data.keyword.DRA_short}}
+
+This is done by invoking a CLI from within your shell script.  An example is..
+
+#Run tests to generate test results file
+
+#Publish results to DRA
+export PATH=/opt/IBM/node-v4.2/bin:$PATH
+npm install -g grunt-idra3
+idra --publishtestresult --filelocation=fvttest.json --type=fvt
+
+You can upload the following types of resuls with this approach:
+- Unit test results, code coverage results, functional verification test results
+- Static app scan results, Dynamic app scan results by using IBM Application Security on Cloud offering
+
+To find more details on the idra command, please refer to this link https://www.npmjs.com/package/grunt-idra3
 
 ## Defining gates
 {: #configure_pipeline_gates}
