@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-08-01"
+lastupdated: "2017-08-02"
 
 ---
 
@@ -14,19 +14,11 @@ lastupdated: "2017-08-01"
 
 # Integrating Deployment Risk analytics with Continuous Delivery
 
-In this page,
-- All references to pipeline are references to Continuous Delivery pipelines. For more information, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
+You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. Then, you can publish data from those jobs and add gates that enforce risk policies.
 
-- Deployment Risk Analysis refers to a capability in the IBM DevOps Insights offering.
+To see a high-level explanation of {{site.data.keyword.DRA_short}}' Deployment Risk analysis, see [About Deployment Risk](./about_risk.html).
 
-
-You can instrument pipeline jobs to leverage Deployment Risk analysis capabilitiey.  Here are the high level steps:
-
-- Add {{site.data.keyword.DRA_short}} to your toolchain.  TODO TODO: Can we add a screenshot of this or link to another documentation?
-
-- Instrument your pipelines to publish build, deployment, and test records to it.
-
-- Define risk policies.  Add Gate job to your pipeline to enforce the risk policy. For more information about defining risk policies, see [Creating policies and rules](./risk_policies.html#policies_and_rules).
+For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
 ## Preparing pipeline stages and jobs
 {: #integrate_pipeline}
@@ -87,15 +79,40 @@ Make sure that application names and environments match where appropriate. For e
 ## Publishing test data to DevOps Insights
 {: #configure_pipeline_jobs}
 
-You can publish test data from all job types. {{site.data.keyword.DRA_short}} uses the published data to generate reports and enforce risk policies.
+{{site.data.keyword.DRA_short}} uses the test results from your jobs to generate reports and enforce risk policies. You can publish test data from all job types.
 
-There are two options for publishing test results.  
+There are two options for publishing test results:
 
-- If you already have jobs that produce test results, you can simply invoke a command line to publish test results.
+* Invoke a simple command-line interface (CLI) in a job's script.
 
-- You may use Advanced Tester job type for running tests.  With Advanced Tester job type, you don't have to use a command line to publish tests.  You specify the location of test results files in a UI and the job will automatically upload the test results.  
+* Add a test job with the Advanced Tester type to your pipeline.
 
-## Publishing test data from any job type
+When you use the Advanced Tester method, you don't publish test results by using the CLI. Instead, you specify the location of the result files in the pipeline job, and the job uploads the results as they become available.
+
+Whichever publishing method you use, test results must be in one of the formats that {{site.data.keyword.DRA_short}} supports:
+
+<table><thead>
+<tr>
+<th>Test type</th>
+<th>Supported formats</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Functional verification test</td>
+<td>Mocha, xUnit</td>
+</tr>
+<tr>
+<td>Unit test</td>
+<td>Mocha, xUnit, Karma/Mocha</td>
+</tr>
+<tr>
+<td>Code coverage</td>
+<td>Istanbul, Blanket.js</td>
+</tr>
+</tbody></table>
+
+### Publishing test data from any job type
+
 In a pipeline, you can use any job type to run a test. After you run that test, you can upload its results to {{site.data.keyword.DRA_short}}. You upload the results by invoking a CLI in the job's shell script. 
 
 You can upload these types of test results from the CLI:
@@ -119,7 +136,9 @@ idra --publishtestresult --filelocation=fvttest.json --type=fvt
 
 To learn more about the `idra` command, see [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3). 
 
-### Publishing test data from Advanced Tester jobs 
+### Publishing test data from Advanced Tester jobs
+
+You can add test jobs with the Advanced Tester type to a pipeline. After they run, they automatically upload their results to {{site.data.keyword.DRA_short}}. 
 
 1. On the stage where you want to add the job that uploads results, click the **Stage Configuration** icon ![Pipeline stage configuration icon](images/pipeline-stage-configuration-icon.png). Click **Configure Stage**.
 2. Create a test job and type a name for it. 
@@ -132,28 +151,6 @@ To learn more about the `idra` command, see [the grunt-idra3 package's page on n
 
 6. If you want to upload results for a second test type in the same job, complete the fields that are prefixed with *Additional*.
 7. Click **Save** to return to the pipeline.
-
-The values for the **Type of Metric** and **Result File Location** fields must match the correct format:
-
-<table><thead>
-<tr>
-<th>Type of metric</th>
-<th>Supported formats</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Functional Verification Test</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Unit Test</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Code Coverage</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
 
 Figure 1 shows a test job that is configured to run unit tests, upload the results in Mocha format, and upload the code coverage results in Istanbul format.
 
