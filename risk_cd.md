@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-08-02"
+lastupdated: "2017-08-03"
 
 ---
 
@@ -89,7 +89,7 @@ There are two options for publishing test results:
 
 When you use the Advanced Tester method, you don't publish test results by using the CLI. Instead, you specify the location of the result files in the pipeline job, and the job uploads the results as they become available.
 
-Whichever publishing method you use, test results must be in one of the formats that {{site.data.keyword.DRA_short}} supports:
+For either publishing method, test results of the these types must be in one of the formats that {{site.data.keyword.DRA_short}} supports:
 
 <table><thead>
 <tr>
@@ -135,13 +135,18 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
-The 'idra' command, the command used to publish test results, supports the following 'type' values: 
-'unittest' - Used to publish unit test results
-'fvt' - Used to publish functional verification results
-'code' - Used to publish code coverage results
-'sonarqube' - Used to publish sonarqube results
-'staticsecurityscan' - Used to publish Static Security Scan results from IBM Application Security on Cloud
-'dynamicsecurityscan' - Used to publish Dynamic Security Scan results from IBM Application Security on Cloud
+In that example, the `idra` command run with the `--publishtestresult` flag specifies that the script will upload results. The `--filelocation` flag indicates the location of the test results file relative to the root directory of the job. The `--type` flag indicates the type of tests that run.
+
+The `idra` command, supports the following `type` values: 
+
+| Type | Description |
+|------|-------------|
+| unittest | Unit test results | 
+| fvt | Functional verification test results |
+| code | Code coverage results | 
+| sonarqube | SonarQube scan results | 
+| staticsecurityscan | Static security scan results from IBM Application Security on Cloud |
+| dynamicsecurityscan | Dynamic security scan results from IBM Application Security on Cloud |
 
 To learn more about the `idra` command, see [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3). 
 
