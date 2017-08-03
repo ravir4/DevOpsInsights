@@ -120,6 +120,7 @@ You can upload these types of test results from the CLI:
 * Unit tests
 * Code coverage
 * Functional verification tests
+* SonarQube results
 * Static and Dynamic app scan results from IBM Application Security on Cloud. 
 
 This is an example script that runs tests and then uploads the results to {{site.data.keyword.DRA_short}}: 
@@ -133,6 +134,14 @@ export PATH=/opt/IBM/node-v4.2/bin:$PATH
 npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
+
+The 'idra' command, the command used to publish test results, supports the following 'type' values: 
+'unittest' - Used to publish unit test results
+'fvt' - Used to publish functional verification results
+'code' - Used to publish code coverage results
+'sonarqube' - Used to publish sonarqube results
+'staticsecurityscan' - Used to publish Static Security Scan results from IBM Application Security on Cloud
+'dynamicsecurityscan' - Used to publish Dynamic Security Scan results from IBM Application Security on Cloud
 
 To learn more about the `idra` command, see [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3). 
 
