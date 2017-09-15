@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-08-02"
+lastupdated: "2017-09-18"
 
 ---
 
@@ -25,7 +25,22 @@ For more information about Continuous Delivery pipelines, see [the official docu
 
 To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, or deploy code. You must also add environment variables to test jobs that enforce risk policies by using the DevOps Insights Gate tester type.
 
-The following variables are used for this instrumentation. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
+* Build records
+* Deployment records
+* Test results
+
+Test results must provide data in one of these supported formats:
+
+| Test type                    | Supported formats                                               |
+|------------------------------|-----------------------------------------------------------------|
+| Functional verification test | Mocha, xUnit                                                    |
+| Unit test                    | Mocha, xUnit, Karma/Mocha                                       |
+| Code coverage                | Istanbul, Blanket.js, Cobertura, lcov                                           |
+| Static App Scan              | Static App Scans provided by IBM Application Security on Cloud  |
+| Dynamic App Scan             | Dynamic App Scans provided by IBM Application Security on Cloud |
+| SonarQube                    | Scan data provided by SonarQube scans                           |
+
+Environment variables that you define in the pipeline provide context for publishing these records. You can define them by using the `export` command in your jobs' scripts. You can also set them in each pipeline stages' Environment Properties menu.
 
 Environment variables:
 

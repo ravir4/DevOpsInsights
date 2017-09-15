@@ -108,7 +108,7 @@ You can require success no matter what by marking tests as critical. To create a
 
 * Functional Verification Test (Mocha, xUnit)
 * Unit Test (Mocha, xUnit, Karma/Mocha)
-* Code Coverage (Istanbul as JSON summary report format, Blanket.js)
+* Code Coverage (Cobertura, lcov, Istanbul as json-summary report format, Blanket.js)
 
 {{site.data.keyword.DRA_short}} also supports Selenium and Jasmine tests. These tests must be included within the officially supported tools, such as xUnit and Mocha. To learn more about using {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} and Selenium together, see [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 
