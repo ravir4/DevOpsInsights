@@ -15,6 +15,6 @@ lastupdated: "2017-02-24"
 # Jenkins와 {{site.data.keyword.DRA_short}} 통합
 {: #toolchain_configure_jenkins}
 
-이 페이지는 이동되었습니다. [새 위치](/docs/services/DevOpsInsights/insights_risk.html#integrate_jenkins)에서 이 정보를 볼 수 있습니다.
+이 페이지는 이동되었습니다. [새 위치](/docs/services/DevOpsInsights/about_risk.html)에서 이 정보를 볼 수 있습니다.
 {:shortdesc}
 

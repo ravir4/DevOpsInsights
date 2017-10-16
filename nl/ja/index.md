@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -26,14 +26,14 @@ lastupdated: "2017-04-07"
 エラーが発生しやすいファイルを識別したり、開発者プラクティスに対するプロジェクトの適合性を表示したりできます。
 
 
-   * Team Dynamics ではソーシャル・コーディング分析が使用され、これはチームのコラボレーション度を調べたり、改善点を検討したりするのに役立ちます。
+   * Team Dynamics ではソーシャル・コーディング分析が使用され、これはチームのコラボレーション度を調べたり、改善点を把握したりするのに役立ちます。
 
 
    * Deployment Risk は、継続的デリバリーの安全ネットのようなものです。
 デプロイメント・プロセス内の指定されたゲートで、単体テスト、機能テスト、アプリケーション・スキャン、コード・カバレッジ・ツールからの結果を分析し、リスクのある変更がリリースされないようにします。
 
 
-   * Delivery Insights は、IBM UrbanCode Deploy インストールに関するデプロイメントの統計やメトリックなどの情報を表示します。
+   * Delivery Insights は、IBM UrbanCode Deploy インストール済み環境に関するデプロイメントの統計やメトリックなどの情報を表示します。
 例えば、デプロイメントの期間、成功、失敗のグラフを、論理的に分類した環境別にすべてソートした状態で表示することができます。
 [「DevOps Insights と IBM UrbanCode Deploy の統合」](/docs/services/DevOpsInsights/uc_insights_overview.html)を参照してください。
 
@@ -49,8 +49,7 @@ lastupdated: "2017-04-07"
 ## DevOps Insights をツールチェーンに追加する
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} は {{site.data.keyword.contdelivery_short}} の一部です。
-ツール統合カタログから選択することにより、任意のツールチェーンに {{site.data.keyword.DRA_short}} を追加することができます。
+{{site.data.keyword.DRA_short}} は、{{site.data.keyword.contdelivery_full}} ツールチェーンとの統合によって使用できます。ツール統合カタログから選択することにより、任意のツールチェーンに {{site.data.keyword.DRA_short}} を追加することができます。
 
 
 {{site.data.keyword.DRA_short}} は、多くのツールチェーン・テンプレートの一部ともなっています。
@@ -68,7 +67,7 @@ lastupdated: "2017-04-07"
 3. **「統合の作成 (Create Integration)」**をクリックします。
 
 {{site.data.keyword.DRA_short}} は、ツールチェーンの概要ページから利用できるようになりました。
-データを検索するために、リポジトリーと問題追跡システムが自動的にスキャンされます。 
+ご使用のリポジトリーと問題追跡システムでデータを見つけるためのスキャンが自動的に実行されます。 
 
 ## DevOps Insights の使用
 {: #using}
@@ -80,12 +79,10 @@ lastupdated: "2017-04-07"
 1. ツールチェーンの概要ページから、**「{{site.data.keyword.DRA_short}}」**をクリックします。
 
 
-2. **「Team Dynamics」**または**「Developer Insights」**をクリックしてから、データのカテゴリーを選択します。 
+2. **「Team Dynamics」**または**「Developer Insights」**をクリックした後、データのカテゴリーを選択します。 
 
 3. そのデータ・カテゴリーの中のダッシュボードを表示することにより、プロジェクトのデータを調べます。
 グラフについて、またその情報の処理方法については、**「情報」**または**「ガイダンス」**をクリックしてください。
 
 
-Team Dynamics や Developer Insights について調べた後、[Deployment Risk の構成](/docs/services/DevOpsInsights/insights_risk.html)を行って、コード品質を維持強制することができます。
-Deployment Risk は、{{site.data.keyword.contdelivery_short}} パイプラインと Jenkins の両方と互換性があります。
-   
+Team Dynamics や Developer Insights について調べた後、[Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) を構成して、コード品質を強制的に確保することができます。Deployment Risk は、{{site.data.keyword.contdelivery_short}} 用 Delivery Pipeline と Jenkins の両方と互換性があります。

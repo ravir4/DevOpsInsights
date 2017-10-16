@@ -15,15 +15,15 @@ lastupdated: "2017-05-19"
 
 # Integración con Jenkins Pipeline
 
-Después de añadir {{site.data.keyword.DRA_full}} a una cadena de herramientas abierta y de definir las políticas que supervisa, puede integrarla con un proyecto Jenkins Pipeline. Los conductos se definen en la interfaz web de Jenkins o en un *Jenkinsfile* que se almacena en su repositorio de control de origen. Puede ver y administrar proyectos Jenkins Pipeline desde la interfaz web de Jenkins. 
+Después de añadir {{site.data.keyword.DRA_full}} a una cadena de herramientas abierta y de definir las políticas que supervisa, puede integrarla con un proyecto Jenkins Pipeline. Los conductos se definen en la interfaz web de Jenkins o en un _Jenkinsfile_ que se almacena en su repositorio de control de origen. Puede ver y administrar proyectos Jenkins Pipeline desde la interfaz web de Jenkins. 
 
-El plugin IBM Cloud DevOps para Jenkins integra proyectos Jenkins con cadenas de herramientas. Una *cadena de herramientas* es un conjunto de integraciones de herramientas que dan soporte a tareas de desarrollo, despliegue, y operaciones. El poder colectivo de una cadena de herramientas es mayor que la suma de sus integraciones de herramientas individuales. Las cadenas de herramientas abiertas son parte del servicio {{site.data.keyword.contdelivery_full}}. Para obtener más información sobre el servicio {{site.data.keyword.contdelivery_short}}, consulte [su documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+El plugin IBM Cloud DevOps para Jenkins integra proyectos Jenkins con cadenas de herramientas. Una _cadena de herramientas_ es un conjunto de integraciones de herramientas que dan soporte a tareas de desarrollo, despliegue, y operaciones. El poder colectivo de una cadena de herramientas es mayor que la suma de sus integraciones de herramientas individuales. Las cadenas de herramientas abiertas son parte del servicio {{site.data.keyword.contdelivery_full}}. Para obtener más información sobre el servicio {{site.data.keyword.contdelivery_short}}, consulte [su documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
 Después de instalar el plugin IBM Cloud DevOps, puede configurar su proyecto Jenkins para publicar resultados de pruebas en {{site.data.keyword.DRA_short}}, evaluar la calidad de la compilación automáticamente en las puertas y realizar un seguimiento del riesgo de su despliegue. También puede enviar notificaciones de trabajos a otras herramientas en su cadena de herramientas como, por ejemplo, Slack y PagerDuty. Para ayudarle en el seguimiento de despliegues, la cadena de herramientas puede añadir mensajes de despliegue a confirmaciones Git y los correspondientes problemas Git o JIRA relacionados. También puede ver los despliegues en la página Conexiones de la cadena de herramientas. 
 
 El plugin proporciona una interfaz de línea de mandatos y las acciones posteriores a la compilación para dar soporte a la integración. {{site.data.keyword.DRA_short}} agrega y analiza los resultados de pruebas de unidad, pruebas funcionales, herramientas de cobertura de código, exploraciones de código de seguridad estático y exploraciones de código de seguridad dinámico para determinar si el código cumple las políticas predefinidas en las puertas especificadas del proceso de despliegue. Si el código no cumple o supera una política, el despliegue se detiene para impedir que se liberen cambios arriesgados. Puede utilizar {{site.data.keyword.DRA_short}} como red de seguridad para su entorno de entrega continua, como método para implementar y mejorar con el tiempo los estándares de calidad y como una herramienta de visualización de datos para ayudarle a comprender el estado de salud de su proyecto.
 
-Si está familiarizado con Jenkins Pipeline, siga leyendo. De lo contrario, [consulte la documentación de Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/) antes de continuar. 
+Si está familiarizado con Jenkins Pipeline, siga leyendo. De lo contrario, [consulte la documentación de Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/) antes de continuar.
 
 ## Requisitos previos
 {: #jenkins_prerequisites}
@@ -60,7 +60,7 @@ Los conductos se definen en el menú de configuración de los proyectos Jenkins 
 
 ## Exposición de variables de entorno necesarias
 
-Abra la definición del conducto.  
+Abra la definición del conducto. 
 
 En la definición, añada las siguientes variables de entorno. Estas variables son necesarios para la integración del conducto con {{site.data.keyword.DRA_short}}.
 
@@ -72,7 +72,7 @@ En la definición, añada las siguientes variables de entorno. Estas variables s
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | Identificador de su cadena de herramientas. Abra la Visión general de la cadena de herramientas y consulte el URL para determinar el ID. El formato del URL de la cadena de herramientas es `https://console.ng.bluemix.net/devops/toolchains/[SU_ID_CADENA_HERRAMIENTAS]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Webhook que proporcionó al añadir Jenkins a su cadena de herramientas.   |
 
-Para obtener más información sobre el mandato `credentials`, consulte la [documentación de Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment).
+Para obtener más información sobre el mandato `credentials`, consulte la [documentación de Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment). 
 {: tip}
 
 Si está utilizando el formato de conducto de script, establezca sus credenciales con `withCredentials` y su entorno con `withEnv` en lugar de hacerlo con `credentials` y `environment` que se utilizan en el siguiente ejemplo. Para obtener más información sobre `withCredentials`, consulte la [documentación de Jenkins](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
@@ -144,7 +144,7 @@ Publique los registros de despliegue con el paso `publishDeployRecord`. Este pas
 | ----------------------------|---------------|
 | `environment`    | Entorno en el que se desplegó la app. Para que DevOps Insights funcione correctamente, debe identificar un entorno como `STAGING` y otro entorno como `PRODUCTION`. |
 | `result`      | Resultado de la etapa de compilación. El valor debe ser `SUCCESS` o `FAIL`.    |
-| `appUrl`      | *Opcional*: URL que se utiliza para acceder a su aplicación.    |
+| `appUrl`      | _Opcional_: URL que se utiliza para acceder a su aplicación.    |
 
 El siguiente ejemplo muestra estos parámetros en mandatos. El primer mandato publica los registros de despliegue para un entorno de transferencia. El segundo mandato publica el registro de despliegue para un entorno de producción.
 
@@ -162,9 +162,9 @@ Este paso requiere un parámetro. También puede aceptar un parámetro opcional.
 | Parámetro        | Definición    |
 | ----------------------------|---------------|
 | `policy`    | Nombre de la política que la puerta implementa. El nombre de la política se define en DevOps Insights. |
-| `forceDecision`      | *Opcional*: Indica si debe detenerse el conducto según la decisión que tome la puerta. Establezca este parámetro en `true` para detener la ejecución del conducto si la puerta falla. Establézcalo en `false` para permitir que el conducto continúe después de que se produzca una anomalía en la puerta. De forma predeterminada, el valor es `false`.     |
+| `forceDecision`      | _Opcional_: Indica si debe detenerse el conducto según la decisión que tome la puerta. Establezca este parámetro en `true` para detener la ejecución del conducto si la puerta falla. Establézcalo en `false` para permitir que el conducto continúe después de que se produzca una anomalía en la puerta. De forma predeterminada, el valor es `false`.     |
 
-El siguiente ejemplo muestra estos parámetros en un mandato. En este mandato, el conducto continúa ejecutándose independientemente de la decisión de la puerta.  
+El siguiente ejemplo muestra estos parámetros en un mandato. En este mandato, el conducto continúa ejecutándose independientemente de la decisión de la puerta. 
 
 ```
 evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
@@ -180,7 +180,7 @@ Este paso requiere dos parámetros y también puede utilizarse otro opcional.
 | ----------------------------|---------------|
 | `stageName`    | Nombre de la etapa de conducto actual. |
 | `status`    | Estado de la etapa de conducto actual. Con `SUCCESS`, `FAILURE` o `ABORTED` activará de forma automática el resaltado de color en Slack.  |
-| `webhookUrl`      | *Opcional*: URL de webhook que se muestra en su mosaico Jenkins de la cadena de herramientas. Si incluye este parámetro, su valor prevalece sobre la variable de entorno `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
+| `webhookUrl`      | _Opcional_: URL de webhook que se muestra en su mosaico Jenkins de la cadena de herramientas. Si incluye este parámetro, su valor prevalece sobre la variable de entorno `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
 
 Los siguientes ejemplos muestran cómo utilizar el paso `notifyOTC` tanto en definiciones de conductos de scripts como en definiciones de conductos declarativos.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Se você estiver usando o {{site.data.keyword.deliverypipeline}}, siga estas eta
 Se estiver usando o Jenkins, siga estas etapas:
 
 1. [Crie políticas e regras](risk_policies.html) para o {{site.data.keyword.DRA_short}} gerenciar.
-2. [Instale e configure o plug-in do Jenkins](risk_jenkins.html).
-3. [Crie tarefas de teste e portas conforme descrito nas instruções do plug-in](risk_jenkins.html). Os testes fazem upload dos resultados no {{site.data.keyword.DRA_short}} para análise e as portas usam esses resultados para tomar decisões de promoção.
+2. [Instale e configure o plug-in do Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Crie tarefas de teste e portas conforme descrito nas instruções do plug-in](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). Os testes fazem upload dos resultados no {{site.data.keyword.DRA_short}} para análise e as portas usam esses resultados para tomar decisões de promoção.
 4. Execute o projeto e [visualize os resultados](results.html). 
 
 Independentemente de como você construir e implementar seu código, os resultados serão os mesmos: as construções que atenderem às normas serão movidas depois das portas do Deployment Risk e as construções que não atenderem às normas serão paradas. 

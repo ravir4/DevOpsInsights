@@ -16,7 +16,7 @@ lastupdated: "2017-05-11"
 
 Après avoir ajouté {{site.data.keyword.DRA_full}} à une chaîne d'outils ouverte et défini les politiques qu'il surveille, vous pouvez l'intégrer à votre projet Jenkins à structure libre. Les projets Jenkins à structure libre sont configurés et administrés à partir de l'interface Web Jenkins. 
 
-Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une *chaîne d'outils* est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une _chaîne d'outils_ est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
 Après avoir installé le plug-in IBM Cloud DevOps, vous pouvez publier les résultats de test dans {{site.data.keyword.DRA_short}}, ajouter des jalons de qualité automatisés et effectuer le suivi des risques de déploiement. Vous pouvez également envoyer des notifications de travail à d'autres outils de la chaîne d'outils, tels que Slack et PagerDuty. Afin de faciliter le suivi des déploiements, la chaîne d'outils peut ajouter des messages de déploiement aux validations Git, ainsi qu'aux problèmes Git ou JIRA associés. Vous pouvez également afficher vos déploiements sur la page Connexions de votre chaîne d'outils. 
 
@@ -39,7 +39,7 @@ Avant de pouvoir intégrer {{site.data.keyword.DRA_short}} à un projet Jenkins,
 ## Installation du plug-in
 {: #jenkins_install}
 
-Installez d'abord le plug-in sur votre serveur Jenkins. Ouvrez l'interface du serveur, puis : 
+Installez d'abord le plug-in sur votre serveur Jenkins. Ouvrez l'interface du serveur, puis :
 
 1. Cliquez sur **Manage Jenkins**.
 2. Cliquez sur **Manage Plugins**. 
@@ -48,7 +48,7 @@ Installez d'abord le plug-in sur votre serveur Jenkins. Ouvrez l'interface du se
 5. Sélectionnez IBM Cloud DevOps.
 6. Cliquez sur **Download now and install after restart**. 
 
-Le plug-in est disponible après le redémarrage du serveur.   
+Le plug-in est disponible après le redémarrage du serveur.  
 
 ## Configuration des travaux Jenkins pour les tableaux de bord Deployment Risk
 {: #jenkins_configure}
@@ -79,11 +79,14 @@ Suivez la procédure ci-après pour utiliser les jalons et le tableau de bord de
 
    Les images suivantes représentent des exemples de configuration :
    
-   ![Téléchargement des informations de génération](images/Upload-Build-Info.png "Publication des informations de génération dans DRA") *Publication des informations de génération*
+   ![Téléchargement des informations de génération](images/Upload-Build-Info.png "Publication des informations de génération sur DRA")
+   _Publication des informations de génération_
    
-   ![Téléchargement des résultats de test](images/Upload-Test-Result.png "Publication des résultats de test dans DRA") *Publication des résultats de test*
+   ![Téléchargement des résultats de test](images/Upload-Test-Result.png "Publication des résultats de test sur DRA")
+   _Publication des résultats de test_
    
-   ![Téléchargement des informations de déploiement](images/Upload-Deployment-Info.png "Publication des informations de déploiement dans DRA") *Publication des informations de déploiement*
+   ![Téléchargement des informations de déploiement](images/Upload-Deployment-Info.png "Publication des informations de déploiement sur DRA")
+   _Publication des informations de déploiement_
 
 4. Si vous voulez utiliser des jalons de politique {{site.data.keyword.DRA_short}} pour contrôler un travail de déploiement en aval, ajoutez une action post-génération **IBM Cloud DevOps Gate**. Choisissez une politique et indiquez la portée des résultats de test. Pour autoriser les jalons de politique à empêcher les déploiements en aval, cochez la case **Fail the build based on the policy rules**. L'image suivante représente un exemple de configuration :
 

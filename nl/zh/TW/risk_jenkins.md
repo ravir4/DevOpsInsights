@@ -16,7 +16,7 @@ lastupdated: "2017-05-11"
 
 將 {{site.data.keyword.DRA_full}} 新增至開放式工具鏈並定義它所監視的原則之後，可將它與您的開放式 Jenkins 專案整合。開放式 Jenkins 專案可從 Jenkins Web 介面進行配置及管理。 
 
-適用於 Jenkins 的 IBM Cloud DevOps 外掛程式會將 Jenkins 專案與工具鏈整合。*工具鏈* 是一組支援開發、部署及操作作業的工具整合。工具鏈的群體力量大於其個別工具整合的總和。開放式工具鏈是 {{site.data.keyword.contdelivery_full}} 服務的一部分。若要進一步瞭解 {{site.data.keyword.contdelivery_short}} 服務，請參閱[其文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。
+適用於 Jenkins 的 IBM Cloud DevOps 外掛程式會將 Jenkins 專案與工具鏈整合。_工具鏈_ 是一組支援開發、部署及操作作業的工具整合。工具鏈的群體力量大於其個別工具整合的總和。開放式工具鏈是 {{site.data.keyword.contdelivery_full}} 服務的一部分。若要進一步瞭解 {{site.data.keyword.contdelivery_short}} 服務，請參閱[其文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。
 
 安裝 IBM Cloud DevOps 外掛程式之後，您可以將測試結果發佈至 {{site.data.keyword.DRA_short}}、新增自動化品質閘道，以及追蹤您的部署風險。您也可以將工作通知傳送給工具鏈中的其他工具，例如 Slack 和 PagerDuty。為了協助您追蹤部署，工具鏈可以將部署訊息新增至 Git 確定及其相關 Git 或 JIRA 問題。您也可以在工具鏈的「連線」頁面上檢視您的部署。 
 
@@ -80,13 +80,13 @@ lastupdated: "2017-05-11"
    下列影像顯示配置範例：
    
    ![上傳建置資訊](images/Upload-Build-Info.png "將建置資訊發佈至 DRA")
-   *發佈建置資訊*
+   _發佈建置資訊_
    
    ![上傳測試結果](images/Upload-Test-Result.png "將測試結果發佈至 DRA")
-   *發佈測試結果*
+   _發佈測試結果_
    
    ![上傳部署資訊](images/Upload-Deployment-Info.png "將部署資訊發佈至 DRA")
-   *發佈部署資訊*
+   _發佈部署資訊_
 
 4. 如果您要使用 {{site.data.keyword.DRA_short}} 原則閘道來控制下游部署工作，請新增後建置動作 **IBM Cloud DevOps 閘道**。選擇原則，並指定測試結果的範圍。為容許原則閘道防止下游部署，請選取**根據原則規則使建置失敗**勾選框。下列影像顯示配置範例：
 

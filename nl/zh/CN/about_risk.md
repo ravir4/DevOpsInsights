@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 如果使用的是 Jenkins，请执行以下步骤：
 
 1. [创建策略和规则](risk_policies.html)以供 {{site.data.keyword.DRA_short}} 管理。
-2. [安装并配置 Jenkins 插件](risk_jenkins.html)。
-3. [创建测试作业和检测点，如插件指示信息中所述](risk_jenkins.html)。测试会将结果上传到 {{site.data.keyword.DRA_short}} 进行分析，而检测点会使用这些结果来做出升级决策。
+2. [安装并配置 Jenkins 插件](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。
+3. [创建测试作业和检测点，如插件指示信息中所述](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。测试会将结果上传到 {{site.data.keyword.DRA_short}} 进行分析，而检测点会使用这些结果来做出升级决策。
 4. 运行项目并[查看结果](results.html)。 
 
 不管您如何构建和部署代码，结果都一样：符合标准的构建将通过 Deployment Risk 检测点，而不符合标准的构建则会停止。 

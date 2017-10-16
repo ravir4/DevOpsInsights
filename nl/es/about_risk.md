@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Si está utilizando {{site.data.keyword.deliverypipeline}}, siga estos pasos:
 Si utiliza Jenkins, siga estos pasos:
 
 1. [Cree políticas y reglas](risk_policies.html) para que {{site.data.keyword.DRA_short}} las gestione.
-2. [Instale y configure el plugin Jenkins](risk_jenkins.html).
-3. [Cree trabajos de pruebas y puertas tal como se describe en las instrucciones del plugin](risk_jenkins.html). Las pruebas suben resultados para que {{site.data.keyword.DRA_short}} los analice y las puertas utilizan dichos resultados para tomar decisiones de promoción.
+2. [Instale y configure el plugin Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Cree trabajos de pruebas y puertas tal como se describe en las instrucciones del plugin](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). Las pruebas suben resultados para que {{site.data.keyword.DRA_short}} los analice y las puertas utilizan dichos resultados para tomar decisiones de promoción.
 4. Ejecute el proyecto y [visualice los resultados](results.html). 
 
 Independientemente de cómo compila y despliega su código, los resultados serán los mismos: las compilaciones que satisfagan los estándares pasarán las puertas de Deployment Risk y las compilaciones que no lo hagan, serán detenidos. 

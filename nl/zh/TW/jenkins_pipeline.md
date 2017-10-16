@@ -15,9 +15,9 @@ lastupdated: "2017-05-19"
 
 # 與 Jenkins 管線整合
 
-將 {{site.data.keyword.DRA_full}} 新增至開放式工具鏈並定義它所監視的原則之後，可將它與「Jenkins 管線」專案整合。您可以在 Jenkins Web 介面中，或是儲存在來源控制儲存庫內的 *Jenkinsfile* 中定義管線。您可以從 Jenkins Web 介面來檢視及管理「Jenkins 管線」專案。 
+將 {{site.data.keyword.DRA_full}} 新增至開放式工具鏈並定義它所監視的原則之後，可將它與「Jenkins 管線」專案整合。您可以在 Jenkins Web 介面中，或是儲存在來源控制儲存庫內的 _Jenkinsfile_ 中定義管線。您可以從 Jenkins Web 介面來檢視及管理「Jenkins 管線」專案。 
 
-適用於 Jenkins 的 IBM Cloud DevOps 外掛程式會將 Jenkins 專案與工具鏈整合。*工具鏈* 是一組支援開發、部署及操作作業的工具整合。工具鏈的群體力量大於其個別工具整合的總和。開放式工具鏈是 {{site.data.keyword.contdelivery_full}} 服務的一部分。若要進一步瞭解 {{site.data.keyword.contdelivery_short}} 服務，請參閱[其文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。 
+適用於 Jenkins 的 IBM Cloud DevOps 外掛程式會將 Jenkins 專案與工具鏈整合。_工具鏈_ 是一組支援開發、部署及操作作業的工具整合。工具鏈的群體力量大於其個別工具整合的總和。開放式工具鏈是 {{site.data.keyword.contdelivery_full}} 服務的一部分。若要進一步瞭解 {{site.data.keyword.contdelivery_short}} 服務，請參閱[其文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。 
 
 安裝 IBM Cloud DevOps 外掛程式之後，您可以配置 Jenkins 專案，以將測試結果發佈至 {{site.data.keyword.DRA_short}}、自動在閘道評估建置品質，以及追蹤佈署風險。您也可以將工作通知傳送給工具鏈中的其他工具，例如 Slack 和 PagerDuty。為了協助您追蹤部署，工具鏈可以將部署訊息新增至 Git 確定及其相關 Git 或 JIRA 問題。您也可以在工具鏈的「連線」頁面上檢視您的部署。 
 
@@ -64,13 +64,13 @@ lastupdated: "2017-05-19"
 
 在定義中，新增下列環境變數。這些是管線與 {{site.data.keyword.DRA_short}} 整合的必要變數。
 
-| 環境變數        | 定義    |
+| 環境變數| 定義|
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | 您使用 `credentials` 指令在 Jenkins 中定義的 Bluemix 認證。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此指令來設定變數會自動多設定兩個環境變數：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，代表使用者名稱和密碼。  |
-| `IBM_CLOUD_DEVOPS_ORG`      | 工具鏈所屬的 Bluemix 組織。     |
-| `IBM_CLOUD_DEVOPS_APP_NAME` | 工具鏈部署之應用程式的名稱。   |
-| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具鏈的 ID。請開啟工具鏈的「概觀」，查看 URL 來判斷 ID。工具鏈 URL 的格式為 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。   |
-| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 當您將 Jenkins 新增至工具鏈時，提供給您的 Webhook。   |
+| `IBM_CLOUD_DEVOPS_CREDS`    | 您使用 `credentials` 指令在 Jenkins 中定義的 Bluemix 認證。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此指令來設定變數會自動多設定兩個環境變數：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，代表使用者名稱和密碼。|
+| `IBM_CLOUD_DEVOPS_ORG`      | 工具鏈所屬的 Bluemix 組織。|
+| `IBM_CLOUD_DEVOPS_APP_NAME` | 工具鏈部署之應用程式的名稱。|
+| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具鏈的 ID。請開啟工具鏈的「概觀」，查看 URL 來判斷 ID。工具鏈 URL 的格式為 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。|
+| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 當您將 Jenkins 新增至工具鏈時，提供給您的 Webhook。|
 
 如需 `credentials` 指令的相關資訊，請參閱 [Jenkins 管線文件](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment)。
 {: tip}
@@ -105,12 +105,12 @@ Cloud DevOps 外掛程式在 Jenkins 管線中新增四個步驟，以供您使�
 
 使用 `publishBuildRecord` 步驟來發佈建置記錄。此步驟需要四個參數。
 
-| 參數        | 定義    |
+| 參數| 定義|
 | ----------------------------|---------------|
-| `gitBranch`    | 建置使用之「Git 分支」的名稱。  |
-| `gitCommit`      | 建置使用的 Git 確定 ID。    |
-| `gitRepo` | Git 儲存庫的 URL。   |
-| `result` | 建置階段的結果。該值是 `SUCCESS` 或 `FAIL`。   |
+| `gitBranch`    | 建置使用之「Git 分支」的名稱。|
+| `gitCommit`      | 建置使用的 Git 確定 ID。|
+| `gitRepo` | Git 儲存庫的 URL。|
+| `result` | 建置階段的結果。該值是 `SUCCESS` 或 `FAIL`。|
 
 此範例顯示指令中的這些參數：
 
@@ -124,10 +124,10 @@ publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRe
 ### 發佈測試結果
 使用 `publishTestResult` 步驟來發佈建置記錄。此步驟需要兩個參數。
 
-| 參數        | 定義    |
+| 參數| 定義|
 | ----------------------------|---------------|
-| `type`    | 測試結果的類型。若為單元測試，此參數的值必須是 `unittest`；若為功能驗證測試，此參數的值必須是 `fvt`；若為程式碼涵蓋面測試，此參數的值必須是 `code`。  |
-| `fileLocation`      | 測試結果檔案的位置。    |
+| `type`    | 測試結果的類型。若為單元測試，此參數的值必須是 `unittest`；若為功能驗證測試，此參數的值必須是 `fvt`；若為程式碼涵蓋面測試，此參數的值必須是 `code`。|
+| `fileLocation`      | 測試結果檔案的位置。|
 
 下列範例顯示指令中的這些參數。第一個指令會發佈 Mocha 單元測試結果。第二個指令會發佈程式碼涵蓋面測試結果。 
 
@@ -140,11 +140,11 @@ publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-
 
 使用 `publishDeployRecord` 步驟來發佈部署記錄。此步驟需要兩個參數。它也可以接受一個選用性參數。 
 
-| 參數        | 定義    |
+| 參數| 定義|
 | ----------------------------|---------------|
-| `environment`    | 要部署應用程式的環境。為了讓 DevOps Insights 適當運作，您必須將一個環境識別為 `STAGING`，將另一個環境識別為 `PRODUCTION`。 |
-| `result`      | 建置階段的結果。該值應該是 `SUCCESS` 或 `FAIL`。    |
-| `appUrl`      | *選用項目*：用來存取應用程式的 URL。    |
+| `environment`    | 要部署應用程式的環境。為了讓 DevOps Insights 適當運作，您必須將一個環境識別為 `STAGING`，將另一個環境識別為 `PRODUCTION`。|
+| `result`      | 建置階段的結果。該值應該是 `SUCCESS` 或 `FAIL`。|
+| `appUrl`      | _選用項目_：用來存取應用程式的 URL。|
 
 下列範例顯示指令中的這些參數。第一個指令會發佈編譯打包環境的部署記錄。第二個指令會發佈正式作業環境的部署記錄。
 
@@ -159,10 +159,10 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 
 此步驟需要一個參數。它也可以接受一個選用性參數。 
 
-| 參數        | 定義    |
+| 參數| 定義|
 | ----------------------------|---------------|
-| `policy`    | 閘道實作之原則的名稱。原則名稱定義在 DevOps Insights 中。 |
-| `forceDecision`      | *選用*：管線是否要依閘道決策停止執行。如果將此參數設為 `true`，當閘道失敗時，管線會停止執行。如果設為 `false`，在閘道失敗之後，可容許管線繼續執行。預設值為 `false`。     |
+| `policy`    | 閘道實作之原則的名稱。原則名稱定義在 DevOps Insights 中。|
+| `forceDecision`      | _選用_：管線是否要依閘道決策停止執行。如果將此參數設為 `true`，當閘道失敗時，管線會停止執行。如果設為 `false`，在閘道失敗之後，可容許管線繼續執行。預設值為 `false`。|
 
 下列範例顯示指令中的這些參數。在此指令中，管線會繼續執行，不論閘道的決策為何。 
 
@@ -176,11 +176,11 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 此步驟需要兩個參數，並且也可以接受一個選用參數。 
 
-| 參數        | 定義    |
+| 參數| 定義|
 | ----------------------------|---------------|
-| `stageName`    | 現行管線階段的名稱。 |
-| `status`    | 現行管線階段的狀態。使用 `SUCCESS`、`FAILURE` 或 `ABORTED` 會在 Slack 中自動觸發色彩強調顯示。  |
-| `webhookUrl`      | *選用*：工具鏈的 Jenkins 磚上顯示的 Webhook URL。如果包括此參數，其值會置換 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 環境變數的值。   |
+| `stageName`    | 現行管線階段的名稱。|
+| `status`    | 現行管線階段的狀態。使用 `SUCCESS`、`FAILURE` 或 `ABORTED` 會在 Slack 中自動觸發色彩強調顯示。|
+| `webhookUrl`      | _選用_：工具鏈的 Jenkins 磚上顯示的 Webhook URL。如果包括此參數，其值會置換 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 環境變數的值。|
 
 下列範例說明在宣告式和 Script 化管線定義中如何使用 `notifyOTC` 步驟。
 

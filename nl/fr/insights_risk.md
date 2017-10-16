@@ -179,7 +179,7 @@ Tout d'abord, vous ajoutez des travaux Advanced Tester à votre pipeline pour ex
 
 **Remarque :** Si vous souhaitez mettre à jour un travail de test pour télécharger les résultats vers {{site.data.keyword.DRA_short}}, sauvegardez ses configurations dans un emplacement pratique avant de poursuivre. Ouvrez ensuite le menu de configuration du travail et passez à l'étape 3. 
 
-1. A l'étape à laquelle vous souhaitez ajouter le travail qui télécharge les résultats, cliquez sur l'icône **Configuration de l'étape** ![Icône de configuration de l'étape de pipeline](images/pipeline-stage-configuration-icon.png). Cliquez sur **Configurer l'étape**.
+1. A l'étape au cours de laquelle vous souhaitez ajouter le travail qui télécharge les résultats, cliquez sur l'icône **Configuration de l'étape** ![Icône de configuration de l'étape de pipeline](images/pipeline-stage-configuration-icon.png). Cliquez sur **Configurer l'étape**.
 2. Créez un travail de test et entrez un nom associé. 
 3. Pour le type de travail, sélectionnez **Advanced Tester**.
 4. Renseignez les zones **Commande de test** et **Répertoire de travail** comme vous le feriez pour un travail de test de pipeline normal. 
@@ -215,7 +215,8 @@ Les valeurs des zones contenant le **type d'indicateur** et l'**emplacement du f
 
 La figure 1 représente un travail de test configuré pour exécuter des tests d'unité, télécharger les résultats au format Mocha et télécharger les résultats de couverture de code au format Istanbul.
 
-![Travail de téléchargement DevOps Insights](images/insights_upload_job.png) *Figure 1. Téléchargement des résultats dans DevOps Insights*
+![Travail de téléchargement DevOps Insights](images/insights_upload_job.png)
+*Figure 1. Téléchargement des résultats dans DevOps Insights*
 
 ### Définition de jalons
 {: #configure_pipeline_gates}
@@ -226,7 +227,7 @@ Le tableau de bord Deployment Risk repose sur la présence d'un jalon après un 
 
 Les jalons sont généralement placés avant la promotion de la génération dans votre pipeline. Ces emplacements sont parfaits pour le contrôle de la qualité de la génération par rapport aux politiques dans le but de garantir la sécurité de la promotion entre deux environnements. Toutefois, vous pouvez placer des jalons dans le pipeline à tout emplacement auquel vous voulez vérifier un critère spécifique. Les jalons placés avant le déploiement vers un environnement de préproduction appliquent les politiques, mais n'apparaissent pas dans le tableau de bord Deployment Risk.
 
-1. Dans une étape, cliquez sur l'icône **Configuration de l'étape** ![Icône de configuration d'étape de pipeline](images/pipeline-stage-configuration-icon.png), puis sur **Configurer l'étape**.
+1. Au cours d'une étape, cliquez sur l'icône **Configuration de l'étape** ![Icône de configuration d'étape de pipeline](images/pipeline-stage-configuration-icon.png), puis sur **Configurer l'étape**.
 2. Cliquez sur **Ajouter un travail**. Pour le type de travail, sélectionnez **Tester**.
 3. Pour le type de testeur, sélectionnez **{{site.data.keyword.DRA_short}} Gate**.
 4. Indiquez le nom d'environnement. Assurez-vous que cette valeur correspond à celle définie dans vos [propriétés d'environnement](#toolchain_pipeline_props).
@@ -238,7 +239,8 @@ Les jalons sont généralement placés avant la promotion de la génération dan
 7. Cliquez sur **Sauvegarder** pour revenir au pipeline.
 8. Configurez des jalons pour toutes vos politiques {{site.data.keyword.DRA_short}} en répétant ces étapes.
 
-![Travail Mocha Deployment Risk](images/insights_gate_job.png) *Figure 2. Jalon DevOps Insights*
+![Travail Mocha Deployment Risk](images/insights_gate_job.png)
+*Figure 2. Jalon DevOps Insights*
 
 Une fois que vous avez configuré le pipeline, commencez à utiliser {{site.data.keyword.DRA_short}}. Pour obtenir les instructions correspondantes, voir [Affichage de tableaux de bord et de rapports](/docs/services/DevOpsInsights/pipeline_decision_reports.html#toolchain_reports).
 
@@ -247,7 +249,7 @@ Une fois que vous avez configuré le pipeline, commencez à utiliser {{site.data
 
 Après avoir ajouté {{site.data.keyword.DRA_full}} à une chaîne d'outils ouverte et défini les politiques qu'il surveille, vous pouvez l'intégrer à votre projet Jenkins. 
 
-Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une *chaîne d'outils* est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une _chaîne d'outils_ est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
 Après avoir installé le plug-in IBM Cloud DevOps, vous pouvez publier les résultats de test dans {{site.data.keyword.DRA_short}}, ajouter des jalons de qualité automatisés et effectuer le suivi des risques de déploiement. Vous pouvez également envoyer des notifications de travail à d'autres outils de la chaîne d'outils, tels que Slack et PagerDuty. Afin de faciliter le suivi des déploiements, la chaîne d'outils peut ajouter des messages de déploiement aux validations Git, ainsi qu'aux problèmes Git ou JIRA associés. Vous pouvez également afficher vos déploiements sur la page Connexions de votre chaîne d'outils. 
 
@@ -312,11 +314,14 @@ Suivez la procédure ci-après pour utiliser les jalons et le tableau de bord de
 
    Les images suivantes représentent des exemples de configuration :
    
-   ![Téléchargement des informations de génération](images/Upload-Build-Info.png "Publication des informations de génération dans DRA") *Publication des informations de génération*
+   ![Téléchargement des informations de génération](images/Upload-Build-Info.png "Publication des informations de génération sur DRA")
+   _Publication des informations de génération_
    
-   ![Téléchargement des résultats de test](images/Upload-Test-Result.png "Publication des résultats de test dans DRA") *Publication des résultats de test*
+   ![Téléchargement des résultats de test](images/Upload-Test-Result.png "Publication des résultats de test sur DRA")
+   _Publication des résultats de test_
    
-   ![Téléchargement des informations de déploiement](images/Upload-Deployment-Info.png "Publication des informations de déploiement dans DRA") *Publication des informations de déploiement*
+   ![Téléchargement des informations de déploiement](images/Upload-Deployment-Info.png "Publication des informations de déploiement sur DRA")
+   _Publication des informations de déploiement_
 
 4. Si vous voulez utiliser des jalons de politique {{site.data.keyword.DRA_short}} pour contrôler un travail de déploiement en aval, ajoutez une action post-génération **IBM Cloud DevOps Gate**. Choisissez une politique et indiquez la portée des résultats de test. Pour autoriser les jalons de politique à empêcher les déploiements en aval, cochez la case **Fail the build based on the policy rules**. L'image suivante représente un exemple de configuration :
 

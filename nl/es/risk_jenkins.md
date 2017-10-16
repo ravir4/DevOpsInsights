@@ -16,7 +16,7 @@ lastupdated: "2017-05-11"
 
 Después de añadir {{site.data.keyword.DRA_full}} a una cadena de herramientas abierta y de definir las políticas que supervisa, puede integrarla con un proyecto Jenkins de formato libre. Los proyectos Jenkins de formato libre se configuran y administran desde la interfaz web de Jenkins. 
 
-El plugin IBM Cloud DevOps para Jenkins integra proyectos Jenkins con cadenas de herramientas. Una *cadena de herramientas* es un conjunto de integraciones de herramientas que dan soporte a tareas de desarrollo, despliegue, y operaciones. El poder colectivo de una cadena de herramientas es mayor que la suma de sus integraciones de herramientas individuales. Las cadenas de herramientas abiertas son parte del servicio {{site.data.keyword.contdelivery_full}}. Para obtener más información sobre el servicio {{site.data.keyword.contdelivery_short}}, consulte [su documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+El plugin IBM Cloud DevOps para Jenkins integra proyectos Jenkins con cadenas de herramientas. Una _cadena de herramientas_ es un conjunto de integraciones de herramientas que dan soporte a tareas de desarrollo, despliegue, y operaciones. El poder colectivo de una cadena de herramientas es mayor que la suma de sus integraciones de herramientas individuales. Las cadenas de herramientas abiertas son parte del servicio {{site.data.keyword.contdelivery_full}}. Para obtener más información sobre el servicio {{site.data.keyword.contdelivery_short}}, consulte [su documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
 Después de instalar el plugin IBM Cloud DevOps, puede publicar los resultados de las pruebas en {{site.data.keyword.DRA_short}}, añadir puertas de calidad automatizadas y realizar un seguimiento del riesgo del despliegue. También puede enviar notificaciones de trabajos a otras herramientas en su cadena de herramientas como, por ejemplo, Slack y PagerDuty. Para ayudarle en el seguimiento de despliegues, la cadena de herramientas puede añadir mensajes de despliegue a confirmaciones Git y los correspondientes problemas Git o JIRA relacionados. También puede ver los despliegues en la página Conexiones de la cadena de herramientas. 
 
@@ -79,12 +79,14 @@ Siga estos pasos para utilizar los paneles de control y las puertas de Deploymen
 
    Estas imágenes muestran configuraciones de ejemplo:
    
-   ![Subir información de compilación](images/Upload-Build-Info.png "Publicar información de compilación para DRA") *Publicar información de compilación*
+   ![Subir información de despliegue](images/Upload-Build-Info.png "Publicar información de compilación para DRA")
+   _Publicar información de compilación_
    
-   ![Subir resultados de pruebas](images/Upload-Test-Result.png "Publicar resultados de pruebas para DRA") *Publicar resultados de pruebas*
+   ![Subir resultados de pruebas](images/Upload-Test-Result.png "Publicar resultados de pruebas para DRA")
+   _Publicar resultados de pruebas_
    
    ![Subir información de despliegue](images/Upload-Deployment-Info.png "Publicar información de despliegue para DRA")
-   *Publicar información de despliegue*
+   _Publicar información de despliegue_
 
 4. Si desea utilizar las puertas de políticas de {{site.data.keyword.DRA_short}} para controlar un trabajo de despliegue en la corriente, añada una acción posterior a la compilación, **Puerta IBM Cloud DevOps**. Elija una política y especifique el ámbito de los resultados de las pruebas. Para permitir que las puertas de políticas impidan el flujo de despliegues en la corriente, seleccione el recuadro de selección **Definir como errónea la compilación en base a las reglas de política**. La siguiente imagen muestra una configuración de ejemplo:
 

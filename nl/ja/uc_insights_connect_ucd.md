@@ -2,7 +2,8 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-05-15"
+
+lastupdated: "2017-07-21"
 
 ---
 
@@ -12,10 +13,10 @@ lastupdated: "2017-05-15"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# IBM UrbanCode Deploy サーバーのデータを表示する
+# IBM UrbanCode Deploy サーバーにあるデータの表示
 {: #connect_ucd}
 
-IBM UrbanCode Deploy サーバーのデータを Delivery Insights で表示するには、DevOps Connect のインスタンスをセットアップし、サーバーにパッチをインストールした後、そのサーバーを DevOps Connect に接続する必要があります。
+IBM UrbanCode Deploy サーバーにあるデータを Delivery Insights で表示するには、DevOps Connect のインスタンスをセットアップし、そのサーバー上にパッチをインストールした後、そのサーバーを DevOps Connect に接続する必要があります。
 {:shortdesc}
 
 ## 前提条件
@@ -30,55 +31,66 @@ DevOps Connect をホストするシステムでは、以下の前提条件が�
 - システムの `PATH` 変数に、その JRE の場所が含まれていなければなりません。
 - そのシステムは、DevOps Connect が IBM Bluemix への発信接続を作成することを許可していなければなりません。
 
-また、IBM UrbanCode Deploy サーバーはバージョン 6.2 以降でなければなりません。
+また、IBM UrbanCode Deploy サーバーは、バージョン 6.2 以降でなければなりません。
 
 ## {{site.data.keyword.DRA_short}} サービスの構成
 {: #configure_service}
 
-ツールチェーンも {{site.data.keyword.DRA_short}} もない場合は、まず {{site.data.keyword.DRA_short}} を設定する必要があります。
+{{site.data.keyword.DRA_short}} サービスがない場合は、それを追加します。
+1. {{site.data.keyword.Bluemix}} にログインして、**「サービス」>「ダッシュボード」**をクリックします。
+1. **「サービスの作成」**をクリックします。
+1. {{site.data.keyword.DRA_short}} サービスをクリックします。
+1. 価格プランを選択して、**「作成」**をクリックします。
+1. **「管理」**をクリックしてから、「UrbanCode デプロイメントを考察する (Gain insights into UrbanCode deployments)」の下の**「ここから開始します」**をクリックします。
+1. ツールチェーン・テンプレート・ウィンドウで、**「作成」**をクリックします。  
+組織に合わせたツールチェーンが Delivery Insights によって作成されます。ツールチェーンは統合ツールのコレクションであり、この例では、IBM UrbanCode Deploy と {{site.data.keyword.DRA_short}} はツールチェーンの一部です。ツールチェーンについて詳しくは、[ツールチェーンを使用した作業](../ContinuousDelivery/toolchains_working.html)を参照してください。
+1. ツールチェーンで、IBM UrbanCode Deploy ツールをクリックします。
+1. 設定ボタンをクリックしてから**「セットアップ」**をクリックします。
 
-1. {{site.data.keyword.Bluemix}} カタログから、**「{{site.data.keyword.DRA_short}}」**をクリックし、価格設定プランを選択して、**「作成」**をクリックします。
+今後 {{site.data.keyword.DRA_short}} にアクセスするには、**「サービス」>「ダッシュボード」**をクリックし、{{site.data.keyword.DRA_short}} サービスのインスタンスをクリックします。
 
-1. **「管理」**タブをクリックした後、**「UrbanCode デプロイメントを考察する (Gain insights into UrbanCode deployments)」**の下の**「ここから開始します」**をクリックします。
-Delivery Insights がバックグラウンドで組織のためのツールチェーンを作成します。
-ツールチェーンは複数のツール統合のコレクションであり、この例では、IBM UrbanCode Deploy と {{site.data.keyword.DRA_short}} はツールチェーンの一部です。
-ツールチェーンについて詳しくは、[ツールチェーンを使用した作業](../ContinuousDelivery/toolchains_working.html)を参照してください。
+既にツールチェーンがある場合は、IBM UrbanCode Deploy と {{site.data.keyword.DRA_short}} ツールをそこに追加し、それらのツールを介して Delivery Insights にアクセスできます。その後、IBM UrbanCode Deploy ツールをクリックし、設定ボタンをクリックしてから、**「セットアップ」**をクリックします。
 
-既にツールチェーンがある場合は、以下の手順を実行して Delivery Insights を追加します。
-
-1. まだ {{site.data.keyword.DRA_short}} ツールがない場合は、それをツールチェーンに追加します。
-
-1. ツールチェーンで、{{site.data.keyword.DRA_short}} ツールをクリックします。
-
-1. **「設定」>「Delivery Insights のセットアップ (Delivery Insights Setup)」**ページに移動します。
-
-これで、**「Delivery Insights のセットアップ (Delivery Insights Setup)」**ページの手順に従って DevOps Connect をインストールし、次のセクションで説明しているように {{site.data.keyword.DRA_short}} に接続することができます。
+これで次のセクションに進み、**「セットアップ手順」**ページの手順に従う準備ができました。次のセクションでは、DevOps Connect をインストールし、それを {{site.data.keyword.DRA_short}} に接続する方法を説明します。
 
 ## DevOps Connect のインストールと {{site.data.keyword.DRA_short}} への接続
 {: #install_connect}
 
-1. **「Delivery Insights のセットアップ (Delivery Insights Setup)」**ページで、DevOps Connect 設定の手順を実行し、IBM UrbanCode Deploy サーバーを接続します。
-これらの手順には、以下が含まれます。{: #set_up_connect}
+1. **「セットアップ手順」**ページで、DevOps Connect のセットアップ手順を実行し、IBM UrbanCode Deploy サーバーを接続します。これには以下の手順が含まれます。
+{: #set_up_connect}
   1. [前提条件](uc_insights_connect_ucd.html#prereqs)で説明しているように、DevOps Connect を実行するためにシステムをセットアップします。
   1. DevOps Connect をダウンロードします。これは、実行可能な JAR ファイルで提供されています。
-  1. **「Delivery Insights のセットアップ (Delivery Insights Setup)」**ページからスクリプトをコピーして実行します。このコマンドにより、{{site.data.keyword.Bluemix}} の組織への接続を許可するトークンを使用して DevOps Connect が開始されます。
-  1. 次のセクションで説明しているように、IBM UrbanCode Deploy サーバーを DevOps Connect に接続します。
+
+  1. インターネットへの接続にプロキシーを使用する場合は、システム変数 `_JAVA_OPTIONS` を以下の値に設定します。
+    * プロキシーで HTTPS を使用する場合、`_JAVA_OPTIONS` を `-Dhttps.proxyHost=HOSTNAME -Dhttps.proxyPort=PORT` に設定します。ここで、`HOSTNAME` はプロキシー・サーバーのホスト名、`PORT` はプロキシー・サーバーの HTTPS ポートです。
+    * プロキシーで HTTP を使用する場合、`_JAVA_OPTIONS` を `-Dhttp.proxyHost=HOSTNAME -Dhttp.proxyPort=PORT` に設定します。ここで、`HOSTNAME` はプロキシー・サーバーのホスト名、`PORT` はプロキシー・サーバーの HTTP ポートです。
+
+  1. **「セットアップ手順」**ページからコマンドをコピーします。このコマンドにより、{{site.data.keyword.Bluemix}} の組織への接続を許可するトークンを使用して DevOps Connect が開始されます。
+  1. DevOps Connect は、デフォルトではポート 8443 で実行されます。これは IBM UrbanCode Deploy サーバーがデフォルトで実行されるポートと同じです。そのため、IBM UrbanCode Deploy サーバーまたは他のいずれかのサービスがポート 844s で実行されている場合には、コマンドにパラメーター `-Dserver.port` を追加して DevOps Connect のポートを変更してください。例えば、DevOps Connect がポート 8888 を使用するように設定する場合、コマンドの先頭部分は次のようになります。  
+```bash
+java -Dserver.port=8888 -jar devops-connect-2.0.92clear0618.jar -Dserver.port=8888
+```  
+
+コマンド全体としては、以下の例のように、DevOps Connect を自動的に構成する Bluemix アカウントに関する情報が含まれます。
+
+```bash
+java -Dserver.port=8888 -jar devops-connect-2.0.920618.jar --sync.id=a2c12cb9-9a09-9832-479b01bf --sync.token=j0zs325U6qp080pzpcQ  --sync.registrar=jsmith@example.com
+```
+
+  1. コマンドを実行して DevOps Connect が開始するのを待ちます。
+
+  1. 次のセクションの説明に従って、IBM UrbanCode Deploy サーバーを DevOps Connect に接続します。
 
 ## IBM UrbanCode Deploy サーバーを DevOps Connect に接続する
 {: #connect_ucd_to_connect}
 
-1. IBM UrbanCode Deploy サーバーにパッチをインストールします。
-IBM UrbanCode Deploy のすべてのバージョンに、DevOps Connect と通信するためのパッチが必要です。
- 
-  1. 使用しているバージョンの IBM UrbanCode Deploy に該当する適切なパッチをダウンロードします。
-そのためには、以下のページを表示して適切なパッチをダウンロードします。[http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
-
-  1. ファイルを解凍します。
-それには、サーバーに追加する必要のある 1 つ以上のパッチ・ファイルが含まれています。
-
+1. IBM UrbanCode Deploy サーバーのバージョンが 6.2.5 より前のバージョンである場合、サーバーにパッチをインストールします。バージョンが 6.2.5 以降であればパッチは必要ありません。
+  1. 使用しているバージョンの IBM UrbanCode Deploy に該当する適切なパッチを以下のページからダウンロードします。例えば、IBM UrbanCode Deploy 6.2.4.x のパッチ・ファイルの名前は、[ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar) です。  
+  
+    [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
 
   1. サーバーを停止します。
-[サーバーの開始と停止](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.install.doc/topics/run_server.html)を参照してください。
+[サーバーの開始と停止](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.install.doc/topics/run_server.html)を参照してください。
 
 
   1. パッチ・ファイルを <code><em>application_data</em>/patches</code> フォルダーに入れます (<code><em>application_data</em></code> はサーバー・アプリケーション・データ・フォルダー)。
@@ -86,8 +98,7 @@ IBM UrbanCode Deploy のすべてのバージョンに、DevOps Connect と通�
 高可用性システムでは、アプリケーション・データ・フォルダーは常に各サーバーからアクセス可能な共有ネットワーク・ドライブ上にあります。
 
 
-  1. オプション: サーバーが停止している間、このサーバーからのデータ・インポートのパフォーマンスを上げるために、以下の SQL コマンドをデータベースに対して実行します。
-  
+  1. オプション: サーバーが停止している間、このサーバーからのデータ・インポートのパフォーマンスを上げるために、以下の SQL コマンドをデータベースに対して実行します。バージョン 6.2.5 以降では、これらのコマンドは必要ありません。  
   `create index rt_cpr_submitted_time on MyUCDDatabase.rt_app_process_request(submitted_time);`  
   `create index rt_cpr_submitted_time on MyUCDDatabase.rt_comp_process_request(component_id, submitted_time);`  
 `MyUCDDatabase` には、実際のデータベースの名前を使用します。
@@ -99,8 +110,7 @@ IBM UrbanCode Deploy のすべてのバージョンに、DevOps Connect と通�
  
 
     **注:** 待ち時間は、IBM UrbanCode Deploy サーバーの通常の起動時間よりも長いことがあります。
-サーバーが始動されなかった場合、または正常に動作しない場合は、パッチ・ファイルを削除してからサーバーを再始動してください。
-パッチ・ファイルは、サーバーに対して永続的な影響があるわけではありません。
+いつまでたってもサーバーが始動しない場合、または正しく動作しない場合は、パッチ・ファイルを削除してからサーバーを再始動してください。パッチ・ファイルは、サーバーに対して永続的な影響があるわけではありません。
 
 
 1. IBM UrbanCode Deploy の一部のバージョンでは、サーバーが DevOps Connect に接続するために付加的なパッチが必要です。
@@ -123,7 +133,7 @@ IBM UrbanCode Deploy のすべてのバージョンに、DevOps Connect と通�
 90 日間未満のデータを取り出すようにするには、[『トラブルシューティング』](uc_insights_connect_ucd.html#troubleshooting)を参照してください。
 
   1. IBM UrbanCode Deploy で、認証トークンを作成します。
-[トークン](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.admin.doc/topics/security_token.html)を参照してください。
+[トークン](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.admin.doc/topics/security_token.html)を参照してください。
 
   1. DevOps Connect で、**「統合」**をクリックしてから、**「新規追加」**をクリックします。
 
@@ -154,8 +164,7 @@ DevOps Connect の場所のデフォルトは `https://hostname:8443/` です (`
 
 ### 論理環境
 
-Delivery Insights では、IBM UrbanCode Deploy 環境 (*物理環境*とも呼ばれる) を、1 つ以上の論理環境に分類できます。
-そのようにして、環境を、自分や自分の属する組織にとって意味のあるグループにまとめることができます。
+Delivery Insights は、IBM UrbanCode Deploy 環境 (*物理環境* とも呼ばれる) を、1 つ以上の論理環境にグループ化します。そのようにして、環境を、自分や自分の属する組織にとって意味のあるグループにまとめることができます。
 例えば、複数のアプリケーションのための複数の実稼働環境がある場合、それらの環境すべてを単一の論理環境に分類し、それらのすべての環境のメトリックを単一の実稼働環境ダッシュボードにまとめて表示することができます。
 マッピングは検索文字列によって実行されるため、IBM UrbanCode Deploy サーバーにとって意味のある任意の方法で環境を分類することができます。
 
@@ -174,34 +183,41 @@ Delivery Insights では、IBM UrbanCode Deploy 環境 (*物理環境*とも呼�
 または、パターンを使用して、物理環境を論理環境に動的に関連付けることもできます。
 
 
-パターンを使用して物理環境を論理環境にマップするには、以下の手順を実行します。
+物理環境を論理環境にマップするには、以下の手順を実行します。
 
-
-1. {{site.data.keyword.DRA_short}} で、**「Delivery Insights」>「環境のマップ (Map Environments)」**をクリックします。
-
-1. 既存の論理環境をクリックするか、または**「論理環境の追加 (Add Logical Environment)」**をクリックします。
-
-1. 論理環境の設定の**「パターン」**の下の**「パターンの追加」**をクリックします。
-
-1. 環境名のパターンを指定します。
-ワイルドカードとしてアスタリスク (*) を使用できます。
+1. Delivery Insights を開き、設定ボタンをクリックし、**「環境のマップ (Map Environments)」**をクリックします。
+1. 「環境マッピング (Environment Mapping)」ページで、既存の論理環境をクリックするか、**「論理環境の追加 (Add Logical Environment)」**をクリックして論理環境を作成します。
+1. 論理環境を選択したら、環境を論理環境にマップするためのパターンを指定できます。**「組み込まれているパターン (Included Patterns)」**の下で**「パターンの追加 (Add Pattern)」**をクリックして、使用するパターンを指定します。パターンに一致する名前を持つすべての環境 (これから作成する環境を含む) が論理環境に追加されます。ワイルドカードとしてアスタリスク (*) を使用できます。
 例えば、パターン `env` は環境 `env1`、`env2`、`env` と一致します。
+
+1. 環境を論理環境に手動でマップするには、**「手動での追加」**をクリックし、追加または削除する環境を選択します。
 
 1. 意図した環境が論理環境に含まれていることを確認します。
 
 
-環境を論理環境に手動でマップするには、**「手動での追加」**をクリックし、追加または削除する環境を選択します。
+![論理環境マッピングのセットアップ](images/uc_insights_mapping_manually.gif)
 
+環境を論理環境にマップしたので、それらの論理環境ごとにレポート情報を集約することができます。
 
-![DevOps Connect での統合のセットアップ](images/uc_insights_mapping_manually.gif)
+## 基幹業務への適用業務のマッピング
+{: #lines}
 
-環境を論理環境にマップすると、それらの論理環境ごとにレポート情報を集約することができます。
+基幹業務とは、共通の事業目的を果たす適用業務のグループです。適用業務を基幹業務にマップすると、グラフの中で適用業務のフィルター操作が容易になります。また、基幹業務に基づくグラフを作成することもできます。
 
+基幹業務 (LOB: Line Of Business) をセットアップするには、以下の手順に従います。
+
+1. {{site.data.keyword.DRA_short}} で**「Delivery Insights」**をクリックし、設定ボタンをクリックしてから、**「基幹業務のマップ (Map Lines of Business)」**をクリックします。
+1. 「基幹業務のマッピング (Lines of Business Mapping)」ページで、既存の LOB をクリックするか、名前を入力して**「作成」**をクリックすることによって LOB を作成します。
+1. LOB を選択したら、適用業務を LOB にマップするためのパターンを指定できます。**「組み込まれているパターン (Included Patterns)」**の下で**「パターンの追加 (Add Pattern)」**をクリックして、使用するパターンを指定します。パターンに一致する名前を持つすべての適用業務 (これから作成する適用業務を含む) が LOB に追加されます。ワイルドカードとしてアスタリスク (*) を使用できます。
+例えば、パターン `env` は環境 `env1`、`env2`、`env` と一致します。
+
+1. 適用業務を LOP に手動でマップすることもできます。これを行うには、**「個別にマップされた適用業務 (Individually Mapped Applications)」**をクリックしてから**「適用業務の追加 (Add Applications)」**をクリックします。
+
+LOB をセットアップした後、グラフをフィルター操作して、特定の LOB に属する適用業務のみを表示することができます。他のグラフには、LOB に基づいてメトリックが表示されます。
 
 ## レポートの作成
 
-レポートを作成するには、{{site.data.keyword.DRA_short}} を開き、**「Delivery Insights」>「レポート (Reports)」**をクリックした後、**「レポートの追加」**をクリックします。
- 
+レポートを作成するには、{{site.data.keyword.DRA_short}} を開き、**「Delivery Insights」**をクリックした後、**「レポートの追加」**をクリックします。**「レポートの追加」**が表示されない場合、IBM UrbanCode Deploy サーバーが接続されていません。設定ボタンをクリックしてから**「セットアップ」**をクリックして、サーバーを接続してください。
 
 レポート内から、**「メトリック」**セクションにカードを追加したり、**「最近のアプリケーション・アクティビティー (Recent application activity)」**の下のアクティビティーをフィルター処理したり、**「レポートの詳細」**セクションにグラフを追加したりすることができます。
 **「レポートの詳細」**セクション内のグラフは、それぞれ個別にフィルター処理やカスタマイズが可能です。
@@ -224,8 +240,7 @@ Bluemix org 内のだれかとレポートを共有するには、そのレポ�
 ## 監査レポートの作成
 
 監査レポートには、設定するフィルターに一致するすべてのアクティビティーのリストが PDF として表示されます。
-監査レポートを作成するには、**「Delivery Insights」>「監査レポートの作成 (Create Audit Report)」**をクリックします。
-次に、名前など、レポートの情報を指定します。
+監査レポートを作成するには、**「Delivery Insights」**をクリックし、設定ボタンをクリックしてから、**「監査レポートの作成 (Create Audit Report)」**をクリックします。次に、名前など、レポートの情報を指定します。
 また、レポートのコンテキスト (アプリケーション、論理環境、IBM UrbanCode Deploy サーバー (物理環境) 上の環境など) も設定します。
 そこから、レポートに表示するデータを選択して、**「作成」**をクリックします。
  

@@ -17,7 +17,7 @@ lastupdated: "2017-05-11"
 将 {{site.data.keyword.DRA_full}} 添加到开放工具链并定义其监视的策略之后，可以将其与自由格式的 Jenkins 项目相集成。
 自由格式的 Jenkins 项目可在 Jenkins Web 界面中进行配置和管理。 
 
-IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。*工具链*是一组工具集成，用于支持开发、部署和操作任务。工具链的整体能力大于其各个单独工具集成的总和。开放工具链是 {{site.data.keyword.contdelivery_full}} 服务的组成部分。要了解有关 {{site.data.keyword.contdelivery_short}} 服务的更多信息，请参阅[其服务文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。
+IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。_工具链_是一组工具集成，用于支持开发、部署和操作任务。工具链的整体能力大于其各个单独工具集成的总和。开放工具链是 {{site.data.keyword.contdelivery_full}} 服务的组成部分。要了解有关 {{site.data.keyword.contdelivery_short}} 服务的更多信息，请参阅[其服务文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。
 
 安装 IBM Cloud DevOps 插件后，可以将测试结果发布到 {{site.data.keyword.DRA_short}}，添加自动质量检测点以及跟踪部署风险。您还可以将作业通知发送给工具链中的其他工具，例如 Slack 和 PagerDuty。为了帮助您跟踪部署，工具链可以将部署消息添加到 Git 落实及其相关的 Git 或 JIRA 问题。此外，还可以在工具链的“连接”页面上查看部署。 
 
@@ -82,13 +82,13 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
    以下各图显示了示例配置：
    
    ![上传构建信息](images/Upload-Build-Info.png "将构建信息发布到 DRA")
-   *发布构建信息*
+   _发布构建信息_
    
    ![上传测试结果](images/Upload-Test-Result.png "将测试结果发布到 DRA")
-   *发布测试结果*
+   _发布测试结果_
    
    ![上传部署信息](images/Upload-Deployment-Info.png "将部署信息发布到 DRA")
-   *发布部署信息*
+   _发布部署信息_
 
 4. 如果要使用 {{site.data.keyword.DRA_short}} 策略检测点来控制下游部署作业，请添加构建后操作 **IBM Cloud DevOps 检测点**。选择策略，并指定测试结果的作用域。要允许策略检测点阻止下游部署，请选中**基于策略规则阻止构建**复选框。下图显示了示例配置：
 

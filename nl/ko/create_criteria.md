@@ -108,7 +108,7 @@ lastupdated: "2017-02-24"
 
 * 기능 검증 테스트(Mocha, xUnit)
 * 단위 테스트(Mocha, xUnit, Karma/Mocha)
-* 코드 적용 범위(Istanbul을 JSON 요약 보고서 형식으로 사용한 Blanket.js)
+* 코드 적용 범위(Cobertura, lcov, JSON 요약 보고서 형식의 Istanbul, Blanket.js)
 
 {{site.data.keyword.DRA_short}}는 Selenium과 Jasmine 테스트도 지원합니다. 이러한 테스트는 공식 지원 도구(예: xUnit 및 Mocha)에 포함되어 있어야 합니다. {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}}, Selenium을 함께 사용하는 방법을 보려면 [Delivery Pipeline의 명령행에서 Selenium 테스트 실행](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/)의 내용을 참조하십시오. 
 

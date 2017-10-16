@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -30,8 +30,7 @@ Deployment Risk ダッシュボードから、デプロイメントとゲート�
 2. そのゲートを含むジョブから、そのゲートの名前をクリックします。
 
 
-3. ログ・ビューで「`ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)`」というメッセージを見つけ、リンクをクリックしてレポートを開きます。
-
+3. ログ・ビューで`「ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)」`というメッセージを見つけ、リンクをクリックしてレポートを開きます。
 
 ## Developer Insights と Team Dynamics のレポート
 

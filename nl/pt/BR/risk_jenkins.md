@@ -16,7 +16,7 @@ lastupdated: "2017-05-11"
 
 Depois de incluir o {{site.data.keyword.DRA_full}} em uma cadeia de ferramentas aberta e definir as políticas que ele monitora, será possível integrá-lo a seu projeto Jenkins de formato livre. Projetos Jenkins de formato livre são configurados e administrados por meio da interface da web do Jenkins. 
 
-O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma *cadeia de ferramentas* é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
+O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
 poder coletivo de uma cadeia de ferramentas é maior que a soma de suas integrações de ferramentas individuais. As cadeias de ferramentas abertas são parte do serviço {{site.data.keyword.contdelivery_full}}. Para saber mais sobre o serviço {{site.data.keyword.contdelivery_short}}, veja [sua documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
 Depois de instalar o plug-in IBM Cloud DevOps, será possível publicar os resultados de teste no {{site.data.keyword.DRA_short}}, incluir portas de qualidade automatizadas e controlar o risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
@@ -83,14 +83,14 @@ Siga estas etapas para usar as portas e o painel do Deployment Risk com seu proj
 
    Estas imagens mostram configurações de exemplo:
    
-   ![Fazer upload de informações de construção](images/Upload-Build-Info.png "Publicar informações de construção no DRA")
-   *Publicar informações de construção*
+   ![Fazer upload de informações de construção](images/Upload-Build-Info.png "Publicar informações de construção para DRA")
+   _Publicar informações de construção_
    
-   ![Fazer upload de resultado de teste](images/Upload-Test-Result.png "Publicar resultado de teste no DRA")
-   *Publicar resultado de teste*
+   ![Fazer upload de resultado de teste](images/Upload-Test-Result.png "Publicar resultado de teste para DRA")
+   _Publicar resultado de teste_
    
-   ![Fazer upload de informações de implementação](images/Upload-Deployment-Info.png "Publicar informações de implementação no DRA")
-   *Publicar informações de implementação*
+   ![Fazer upload de informações de implementação](images/Upload-Deployment-Info.png "Publicar informações de implementação para DRA")
+   _Publicar informações de implementação_
 
 4. Se desejar usar as portas de política do {{site.data.keyword.DRA_short}} para controlar uma tarefa de implementação de recebimento de dados, inclua uma ação pós-construção, **Porta do IBM Cloud DevOps**. Escolha uma política e especifique o escopo dos resultados de teste. Para permitir que as portas de política evitem implementações de recebimento de dados, marque a caixa de seleção **Falhar a construção com base nas regras de política**. A imagem a seguir mostra uma configuração de exemplo:
 

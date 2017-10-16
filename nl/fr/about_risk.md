@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Si vous utilisez {{site.data.keyword.deliverypipeline}}, suivez les étapes ci-a
 Si vous utilisez Jenkins, procédez comme suit :
 
 1. [Créez des politiques et des règles](risk_policies.html) qui seront gérées par {{site.data.keyword.DRA_short}}.
-2. [Installez et configurez le plug-in Jenkins](risk_jenkins.html).
-3. [Créez les travaux de test et les jalons comme décrit dans les instructions du plug-in](risk_jenkins.html). Les tests téléchargent les résultats vers {{site.data.keyword.DRA_short}} en vue de l'analyse et les jalons utilisent ces résultats pour prendre les décisions quant aux promotions.
+2. [Installez et configurez le plug-in Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Créez les travaux de test et les jalons comme décrit dans les instructions du plug-in](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). Les tests téléchargent les résultats vers {{site.data.keyword.DRA_short}} en vue de l'analyse et les jalons utilisent ces résultats pour prendre les décisions quant aux promotions.
 4. Exécutez le projet et [affichez les résultats](results.html). 
 
 Peu importe la manière dont vous générez et déployez votre code, les résultats sont identiques : les générations qui satisfont les normes passent les jalons Deployment Risk et les générations qui ne répondent pas aux normes sont arrêtées. 

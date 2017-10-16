@@ -38,7 +38,7 @@ Dopo aver configurato Delivery Insights e DevOps Connect, puoi visualizzare i da
 For questions or issues, see the [questions forum](https://developer.ibm.com/answers/?community=urbancode).
 --> 
 
-![Due grafici dai dati demo UrbanCode Insights](images/uc_insights_demo_data.gif)
+![Due grafici dai dati demo di UrbanCode Insights](images/uc_insights_demo_data.gif)
 
 Alcune delle informazioni che puoi visualizzare in Delivery Insights includono:
 
@@ -52,7 +52,7 @@ La topologia per Delivery Insights include una o più installazioni in loco di I
 
 Il seguente diagramma mostra un'installazione tipica di questi sistemi.
 
-![Panoramica sulla topologia di UrbanCode Insights, inclusi i sistemi in loco del cliente e i servizi cloud IBM](images/uc_insights_overview_topology_multi_ucd.png)
+![Topologia di panoramica per UrbanCode Insights, che include i sistemi installati in loco del cliente e i servizi IBM Cloud](images/uc_insights_overview_topology_multi_ucd.png)
 
 - Un'installazione di **IBM UrbanCode Deploy** fornisce le informazioni sulle distribuzioni con esito positivo e negativo per le metriche. IBM UrbanCode Deploy richiede una patch per comunicare con IBM Bluemix DevOps Connect.
 

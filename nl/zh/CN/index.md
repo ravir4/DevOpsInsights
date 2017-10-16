@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -27,7 +27,7 @@ lastupdated: "2017-04-07"
 
    * Deployment Risk 就像一张持续交付安全网。它分析单元测试、功能测试、应用程序扫描和代码覆盖工具在部署过程中指定检测点生成的结果，并阻止发布有风险的更改。
 
-   * Delivery Insights 显示部署统计信息、度量以及有关 IBM UrbanCode Deploy 安装的其他信息。例如，可以显示部署持续时间、成功次数和失败次数的图表，所有数据均按以逻辑方式分组的环境排序。请参阅[集成 DevOps Insights 与 IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html)。
+   * Delivery Insights 显示部署统计信息、度量值以及有关 IBM UrbanCode Deploy 安装的其他信息。例如，可以显示部署持续时间、成功次数和失败次数的图表，所有数据均按以逻辑方式分组的环境排序。请参阅[集成 DevOps Insights 与 IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html)。
 
 {{site.data.keyword.DRA_short}} 是 Bluemix 开放工具链目录中的一个集成。有关工具链的更多信息，请参阅[使用工具链](/docs/services/ContinuousDelivery/toolchains_working.html)。
 
@@ -36,7 +36,7 @@ lastupdated: "2017-04-07"
 ## 将 DevOps Insights 添加到工具链
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} 是 {{site.data.keyword.contdelivery_short}} 的一部分。通过从工具集成目录中选择 {{site.data.keyword.DRA_short}}，可以将其添加到任何工具链。
+通过与 {{site.data.keyword.contdelivery_full}} 工具链集成提供了 {{site.data.keyword.DRA_short}}。通过从工具集成目录中选择 {{site.data.keyword.DRA_short}}，可以将其添加到任何工具链。
 
 {{site.data.keyword.DRA_short}} 也是许多工具链模板的一部分。如果要通过包含 {{site.data.keyword.DRA_short}} 的模板创建工具链，请确保 {{site.data.keyword.DRA_short}} 设置为**高级**。然后，创建工具链，并跳至[使用 Insights](/docs/services/DevOpsInsights/index.html#using)。
 
@@ -61,4 +61,4 @@ lastupdated: "2017-04-07"
 
 3. 通过查看该数据类别中的仪表板，探索项目数据。如果要了解有关图或可使用图中信息执行哪些操作的更多信息，请单击**信息**或**指导**。
 
-探索 Team Dynamics 和 Developer Insights 后，请[配置 Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) 以帮助您强制实施代码质量。Deployment Risk 与 {{site.data.keyword.contdelivery_short}} Pipeline和 Jenkins 兼容。   
+探索 Team Dynamics 和 Developer Insights 后，请配置 [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) 以帮助您强制实施代码质量。Deployment Risk 与 Delivery Pipeline for {{site.data.keyword.contdelivery_short}} 和 Jenkins 兼容。

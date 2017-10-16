@@ -2,9 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-03-31"
-
----
+lastupdated: "2017-03-31"---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -14,7 +12,7 @@ lastupdated: "2017-03-31"
 # DevOps Insights と IBM UrbanCode Deploy の統合 - 概要
 {: #uc_insights_overview}
 
-{{site.data.keyword.DRA_short}} の一部である Delivery Insights は、IBM UrbanCode Deploy インストールに関するデプロイメントの統計やメトリックなどの情報を表示します。
+{{site.data.keyword.DRA_short}} の一部である Delivery Insights は、IBM UrbanCode Deploy インストール済み環境に関するデプロイメントの統計やメトリックなどの情報を表示します。
 例えば、デプロイメントの期間、成功、失敗のグラフを、論理的に分類した環境別にすべてソートした状態で表示することができます。
 {:shortdesc}
 
@@ -51,7 +49,7 @@ Delivery Insights と DevOps Connect をセットアップすると、IBM UrbanC
 For questions or issues, see the [questions forum](https://developer.ibm.com/answers/?community=urbancode).
 --> 
 
-![UrbanCode Insights デモ・データからの 2 つのグラフ](images/uc_insights_demo_data.gif)
+![UrbanCode Insights デモ・データに基づく 2 つのグラフ](images/uc_insights_demo_data.gif)
 
 Delivery Insights で表示できる情報の中には、以下のものが含まれます。
 
@@ -62,15 +60,15 @@ Delivery Insights で表示できる情報の中には、以下のものが含�
 
 ## システムの概要
 
-Delivery Insights のトポロジーには、IBM UrbanCode Deploy や DevOps Connect ユーティリティーの 1 つ以上のオンプレミス・インストールが含まれます。<!-- (and optionally IBM UrbanCode Release) -->
+Delivery Insights のトポロジーには、IBM UrbanCode Deploy や DevOps Connect ユーティリティーの 1 つ以上のオンプレミス・インストール済み環境が含まれます。<!-- (and optionally IBM UrbanCode Release) -->
 
 
 以下の図は、それらのシステムの標準的なインストールを示しています。
 
 
-![UrbanCode Insights のトポロジーの概要 (カスタマー・オンプレミス・システムと IBM Cloud Services を含む)](images/uc_insights_overview_topology_multi_ucd.png)
+![UrbanCode Insights のトポロジーの概要。これにはお客様のオンプレミス・システムと IBM クラウド・サービスが含まれます](images/uc_insights_overview_topology_multi_ucd.png)
 
-- **IBM UrbanCode Deploy** のインストール済み環境は、成功したデプロイメントと失敗したデプロイメントについての情報をメトリックとして提供します。
+- **IBM UrbanCode Deploy** のインストール済み環境は、成功したデプロイメントと失敗したデプロイメントについての情報をメトリック用に提供します。
 IBM UrbanCode Deploy には、IBM Bluemix DevOps Connect と通信するためのパッチが必要です。
 
 

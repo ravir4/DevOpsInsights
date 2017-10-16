@@ -108,7 +108,7 @@ Vous pouvez exiger la réussite inconditionnelle en marquant les tests comme cri
 
 * Test de vérification fonctionnelle (Mocha, xUnit)
 * Test d'unité (Mocha, xUnit, Karma/Mocha)
-* Couverture de code (Istanbul comme format de rapport récapitulatif JSON, Blanket.js)
+* Couverture de code (Cobertura, lcov, Istanbul comme format de rapport récapitulatif JSON, Blanket.js)
 
 {{site.data.keyword.DRA_short}} prend également en charge les tests Selenium et Jasmine. Ces tests doivent être inclus dans les outils officiellement pris en charge, tels que xUnit et Mocha. Pour en savoir plus sur l'utilisation conjointe de {{site.data.keyword.deliverypipeline}}, de {{site.data.keyword.DRA_short}} et de Selenium, voir [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 

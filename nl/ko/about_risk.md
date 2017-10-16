@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Deployment Risk는 {{site.data.keyword.contdelivery_full}}의 일부인 {{site.d
 Jenkins를 사용하는 경우 다음 단계를 따르십시오.
 
 1. 관리할 {{site.data.keyword.DRA_short}}의 [정책 및 규칙을 작성](risk_policies.html)하십시오.
-2. [Jenkins 플러그인을 설치 및 구성](risk_jenkins.html)하십시오.
-3. [플러그인 지시사항에 설명된 대로 테스트 작업과 게이트를 작성](risk_jenkins.html)하십시오. 분석을 위해 테스트를 통해 결과를 {{site.data.keyword.DRA_short}}에 업로드하고, 게이트에서 해당 결과를 사용하여 승격 의사결정을 내립니다.
+2. [Jenkins 플러그인을 설치 및 구성](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)하십시오.
+3. [플러그인 지시사항에 설명된 대로 테스트 작업과 게이트를 작성](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)하십시오. 분석을 위해 테스트를 통해 결과를 {{site.data.keyword.DRA_short}}에 업로드하고, 게이트에서 해당 결과를 사용하여 승격 의사결정을 내립니다.
 4. 프로젝트를 실행하고 [결과 보기](results.html)를 수행하십시오. 
 
 코드를 빌드하고 배치하는 방법과 상관없이 결과는 동일합니다. 표준에 맞는 빌드는 Deployment Risk 게이트를 통과하고 표준을 만족하지 않는 빌드는 중지됩니다. 

@@ -2,9 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-03-31"
-
----
+lastupdated: "2017-03-31"---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -226,10 +224,10 @@ Deployment Risk でプロジェクトを分析するには、パイプライン�
 
 {{site.data.keyword.DRA_short}} をパイプラインに統合するには、2 種類のテスト・ジョブ (結果を分析のために {{site.data.keyword.DRA_short}} にアップロードするものと、その分析に基づいて処理を実行するゲート) を使用します。  
 
-まず、テストを実行し、結果をアップロードするための詳細テスター・ジョブをパイプラインに追加します。
+まず、テストを実行して結果をアップロードするために、詳細テスター・ジョブをパイプラインに追加します。
  
 
-**注:** 結果を {{site.data.keyword.DRA_short}} にアップロードしてテスト・ジョブをアップデートする場合、先に進む前にその構成をどこか便利な場所に保存しておいてください。
+**注:** 結果を {{site.data.keyword.DRA_short}} にアップロードするためにテスト・ジョブをアップデートする場合、先に進む前にその構成をどこか便利な場所に保存しておいてください。
 その後、そのジョブ構成メニューを開いて、ステップ 3 に進みます。
  
 
@@ -287,7 +285,7 @@ Deployment Risk でプロジェクトを分析するには、パイプライン�
 
 {{site.data.keyword.DRA_short}} ゲートは、定義されたポリシーにテスト結果が準拠しているかどうかを検査します。
 ポリシーに準拠していない場合、デフォルトで {{site.data.keyword.DRA_short}} ゲートは失敗します。
-また、失敗の後もパイプラインを先へ進むことを許可するアドバイザリー・ロールで機能するゲートを構成することもできます。
+また、アドバイザリー・ロールで機能するようにゲートを構成して、失敗の後もパイプラインが先へ進むことを許可することができます。
 
 
 Deployment Risk ダッシュボードは、ステージング・デプロイメント・ジョブの後にゲートが存在することに依存しています。
@@ -323,7 +321,7 @@ Deployment Risk ダッシュボードは、ステージング・デプロイメ�
  
 
 Jenkins 用 IBM Cloud DevOps プラグインは、Jenkins プロジェクトをツールチェーンに統合します。
-*ツールチェーン*は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。
+_ツールチェーン_は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。
 ツールチェーンの集合体としての能力は、それに含まれる個々のツール統合の総和よりも優れています。
 オープン・ツールチェーンは、{{site.data.keyword.contdelivery_full}} サービスの一部です。
 {{site.data.keyword.contdelivery_short}} サービスについて詳しくは、[そのドキュメンテーション](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)を参照してください。
@@ -431,13 +429,13 @@ Jenkins で保存されていない場合は、**「追加」**をクリック�
 
    
    ![ビルド情報のアップロード](images/Upload-Build-Info.png "ビルド情報を DRA に公開")
-   *ビルド情報の公開*
+   _ビルド情報の公開_
    
    ![テスト結果のアップロード](images/Upload-Test-Result.png "テスト結果を DRA に公開")
-   *テスト結果の公開*
+   _テスト結果の公開_
    
    ![デプロイメント情報のアップロード](images/Upload-Deployment-Info.png "デプロイメント情報を DRA に公開")
-   *デプロイメント情報の公開*
+   _デプロイメント情報の公開_
 
 4. {{site.data.keyword.DRA_short}} ポリシー・ゲートを使用してダウンストリーム・デプロイメント・ジョブを制御する場合、ビルド後アクション**「IBM Cloud DevOps ゲート (IBM Cloud DevOps Gate)」**を追加します。
 ポリシーを選択し、テスト結果のスコープを指定します。
@@ -487,8 +485,7 @@ Deployment Risk ダッシュボードから、デプロイメントとゲート�
 2. そのゲートを含むジョブから、そのゲートの名前をクリックします。
 
 
-3. ログ・ビューで「`ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)`」というメッセージを見つけ、リンクをクリックしてレポートを開きます。
-
+3. ログ・ビューで`「ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)」`というメッセージを見つけ、リンクをクリックしてレポートを開きます。
 
 
 

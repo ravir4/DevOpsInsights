@@ -19,7 +19,7 @@ lastupdated: "2017-05-11"
  
 
 Jenkins 用 IBM Cloud DevOps プラグインは、Jenkins プロジェクトをツールチェーンに統合します。
-*ツールチェーン*は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。
+_ツールチェーン_は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。
 ツールチェーンの集合体としての能力は、それに含まれる個々のツール統合の総和よりも優れています。
 オープン・ツールチェーンは、{{site.data.keyword.contdelivery_full}} サービスの一部です。
 {{site.data.keyword.contdelivery_short}} サービスについて詳しくは、[そのドキュメンテーション](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)を参照してください。
@@ -57,16 +57,16 @@ Jenkins プロジェクトを実行しているサーバーに対するアクセ
 ## プラグインのインストール
 {: #jenkins_install}
 
-まず、Jenkins サーバーにプラグインをインストールします。サーバー・インターフェースを開き、次のようにします。
+まず、Jenkins サーバーにプラグインをインストールします。サーバー・インターフェースを開き、以下の作業を行います。
 
-1. **「Jenkins の管理」**をクリックします。
+1. **「Jenkins の管理 (Manage Jenkins)」**をクリックします。
 2. **「プラグインの管理」**をクリックします。 
-3. **「利用可能」**タブをクリックします。
-4. `「IBM Cloud DevOps」`でフィルタリングします。 
-5. 「IBM Cloud DevOps」を選択します。
-6. **「ダウンロードして再起動後にインストール」**をクリックします。 
+3. **「使用可能」**タブをクリックします。
+4. フィルター処理して `IBM Cloud DevOps` を見つけます。 
+5. IBM Cloud DevOps を選択します。
+6. **「今すぐダウンロードして再始動後にインストール (Download now and install after restart)」**をクリックします。 
 
-プラグインは、サーバーの再起動後に使用できます。  
+プラグインはサーバーの再始動後に使用可能になります。  
 
 ## Deployment Risk ダッシュボードのための Jenkins ジョブの構成
 {: #jenkins_configure}
@@ -118,13 +118,13 @@ Jenkins で保存されていない場合は、**「追加」**をクリック�
 
    
    ![ビルド情報のアップロード](images/Upload-Build-Info.png "ビルド情報を DRA に公開")
-   *ビルド情報の公開*
+   _ビルド情報の公開_
    
    ![テスト結果のアップロード](images/Upload-Test-Result.png "テスト結果を DRA に公開")
-   *テスト結果の公開*
+   _テスト結果の公開_
    
    ![デプロイメント情報のアップロード](images/Upload-Deployment-Info.png "デプロイメント情報を DRA に公開")
-   *デプロイメント情報の公開*
+   _デプロイメント情報の公開_
 
 4. {{site.data.keyword.DRA_short}} ポリシー・ゲートを使用してダウンストリーム・デプロイメント・ジョブを制御する場合、ビルド後アクション**「IBM Cloud DevOps ゲート (IBM Cloud DevOps Gate)」**を追加します。
 ポリシーを選択し、テスト結果のスコープを指定します。

@@ -15,9 +15,9 @@ lastupdated: "2017-05-19"
 
 # Intégration avec Jenkins Pipeline
 
-Après avoir ajouté {{site.data.keyword.DRA_full}} à une chaîne d'outils ouverte et défini les politiques qu'il surveille, vous pouvez l'intégrer à un projet Jenkins Pipeline. Vous définissez un pipeline dans l'interface Web Jenkins ou dans un fichier *Jenkinsfile* que vous stockez dans votre référentiel de contrôle des sources. Vous pouvez afficher et administrer des projets Jenkins Pipeline à partir de l'interface Web Jenkins. 
+Après avoir ajouté {{site.data.keyword.DRA_full}} à une chaîne d'outils ouverte et défini les politiques qu'il surveille, vous pouvez l'intégrer à un projet Jenkins Pipeline. Vous définissez un pipeline dans l'interface Web Jenkins ou dans un fichier _Jenkinsfile_ que vous stockez dans votre référentiel de contrôle des sources. Vous pouvez afficher et administrer des projets Jenkins Pipeline à partir de l'interface Web Jenkins. 
 
-Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une *chaîne d'outils* est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+Le plug-in IBM Cloud DevOps pour Jenkins intègre des projets Jenkins à des chaînes d'outils. Une _chaîne d'outils_ est un ensemble d'intégrations d'outils prenant en charge des tâches de développement, de déploiement et d'opérations. La puissance collective d'une chaîne d'outils est supérieure à la somme de ses intégrations d'outils individuelles. Les chaînes d'outils ouvertes font partie du service {{site.data.keyword.contdelivery_full}}. Pour en savoir plus sur le service {{site.data.keyword.contdelivery_short}}, voir [la documentation associée](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
 Après avoir installé le plug-in IBM Cloud DevOps, vous pouvez configurer votre projet Jenkins afin de publier les résultats de test sur {{site.data.keyword.DRA_short}}, évaluer automatiquement la qualité de la génération aux jalons et effectuer le suivi des risques de déploiement. Vous pouvez également envoyer des notifications de travail à d'autres outils de la chaîne d'outils, tels que Slack et PagerDuty. Afin de faciliter le suivi des déploiements, la chaîne d'outils peut ajouter des messages de déploiement aux validations Git, ainsi qu'aux problèmes Git ou JIRA associés. Vous pouvez également afficher vos déploiements sur la page Connexions de votre chaîne d'outils. 
 
@@ -42,7 +42,7 @@ Avant de pouvoir intégrer {{site.data.keyword.DRA_short}} à un projet Jenkins,
 ## Installation du plug-in
 {: #jenkins_install}
 
-Installez le plug-in sur votre serveur Jenkins en ouvrant l'interface du serveur et en procédant comme suit : 
+Installez le plug-in sur votre serveur Jenkins en ouvrant l'interface du serveur et en procédant comme suit :
 
 1. Cliquez sur **Manage Jenkins**.
 2. Cliquez sur **Manage Plugins**. 
@@ -51,7 +51,7 @@ Installez le plug-in sur votre serveur Jenkins en ouvrant l'interface du serveur
 5. Sélectionnez **IBM Cloud DevOps**.
 6. Cliquez sur **Download now and install after restart**. 
 
-Le plug-in est disponible après le redémarrage du serveur.   
+Le plug-in est disponible après le redémarrage du serveur.  
 
 ## Création d'un pipeline
 {: #jenkinsfile_create}
@@ -66,13 +66,13 @@ Dans la définition, ajoutez les variables d'environnement suivantes. Ces variab
 
 | Variable d'environnement        | Définition    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Données d'identification Bluemix que vous définissez dans Jenkins à l'aide de la commande `credentials`. Par exemple, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Cette commande définit automatiquement deux variables d'environnement supplémentaires : `IBM_CLOUD_DEVOPS_CREDS_USR` et `IBM_CLOUD_DEVOPS_CREDS_PSW` pour le nom d'utilisateur et le mot de passe.   |
+| `IBM_CLOUD_DEVOPS_CREDS`    | Données d'identification Bluemix que vous définissez dans Jenkins à l'aide de la commande `credentials`. Par exemple, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Cette commande définit automatiquement deux variables d'environnement supplémentaires : `IBM_CLOUD_DEVOPS_CREDS_USR` et `IBM_CLOUD_DEVOPS_CREDS_PSW` pour le nom d'utilisateur et le mot de passe.  |
 | `IBM_CLOUD_DEVOPS_ORG`      | Organisation Bluemix à laquelle votre chaîne d'outils appartient.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Nom de l'application déployée par votre chaîne d'outils.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | ID de votre chaîne d'outils. Ouvrez la présentation de la chaîne d'outils et examinez son URL pour connaître l'ID. L'URL de la chaîne d'outils est au format suivant : `https://console.ng.bluemix.net/devops/toolchains/[ID_VOTRE_CHAINE_OUTILS]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Webhook que vous avez fourni lorsque vous avez ajouté Jenkins à votre chaîne d'outils.   |
 
-Pour plus d'informations sur la commande `credentials`, voir la [documentation sur le pipeline Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment).
+Pour plus d'informations sur la commande `credentials`, voir la [documentation sur le pipeline Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment). 
 {: tip}
 
 Si vous utilisez le format de pipeline script, définissez vos données d'identification avec `withCredentials` et votre environnement avec `withEnv` à la place de `credentials` et `environment`, qui sont employés dans l'exemple ci-après. Pour plus d'informations sur `withCredentials`, voir la [documentation Jenkins](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
@@ -99,7 +99,7 @@ Le plug-in Cloud DevOps ajoute quatre étapes aux pipelines Jenkins. Vous pouvez
 * `publishDeployRecord`, qui publie des enregistrements de déploiement dans DevOps Insights
 * `evaluateGate`, qui applique des politiques DevOps Insights 
 
-Ajoutez ces étapes à votre définition de pipeline là où vous avez besoin de les exécuter. Par exemple, vous pouvez transférer des résultats de test après avoir exécuté un test, puis évaluer ces résultats à un jalon une fois qu'ils sont transférés.  
+Ajoutez ces étapes à votre définition de pipeline là où vous avez besoin de les exécuter. Par exemple, vous pouvez transférer des résultats de test après avoir exécuté un test, puis évaluer ces résultats à un jalon une fois qu'ils sont transférés. 
 
 ### Publication d'enregistrements de génération
 
@@ -112,7 +112,7 @@ Publiez des enregistrements de génération avec l'étape `publishBuildRecord`. 
 | `gitRepo` | URL du référentiel Git.   |
 | `result` | Résultat de l'étape de génération. Valeur : `SUCCESS` ou `FAIL`.   |
 
-Voici un exemple de commande employant ces paramètres : 
+Voici un exemple de commande employant ces paramètres :
 
 ```
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
@@ -138,15 +138,15 @@ publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-
 
 ### Publication d'enregistrements de déploiement
 
-Publiez des enregistrements de déploiement avec l'étape `publishDeployRecord`. Cette étape requiert deux paramètres. Elle peut également accepter un paramètre facultatif.  
+Publiez des enregistrements de déploiement avec l'étape `publishDeployRecord`. Cette étape requiert deux paramètres. Elle peut également accepter un paramètre facultatif. 
 
 | Paramètre        | Définition    |
 | ----------------------------|---------------|
 | `environment`    | Environnement dans lequel vous déployez votre application. Pour que DevOps Insights fonctionne correctement, vous devez identifier un environnement en tant que `STAGING` et un autre environnement en tant que `PRODUCTION`. |
 | `result`      | Résultat de l'étape de génération. Valeur admise : `SUCCESS` ou `FAIL`.    |
-| `appUrl`      | *Facultatif* : URL employée pour l'accès à votre application.    |
+| `appUrl`      | _Facultatif_ : URL employée pour l'accès à votre application.    |
 
-Voici quelques exemples de commande comportant ces paramètres. La première commande publie l'enregistrement de déploiement pour un environnement de constitution, la seconde publie l'enregistrement de déploiement pour un environnement de production. 
+Voici quelques exemples de commande comportant ces paramètres. La première commande publie l'enregistrement de déploiement pour un environnement de constitution, la seconde publie l'enregistrement de déploiement pour un environnement de production.
 
 ```
 publishDeployRecord environment: "STAGING", appUrl: "http://staging-Weather-App.mybluemix.net", result:"SUCCESS"
@@ -157,14 +157,14 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 
 Ajoutez des jalons à votre pipeline à l'aide de la commande `evaluateGate`. Les jalons appliquent les politiques DevOps Insights, qui définissent les exigences en matière de test pour la promotion de la génération. 
 
-Cette étape requiert un paramètre. Elle peut également accepter un paramètre facultatif.  
+Cette étape requiert un paramètre. Elle peut également accepter un paramètre facultatif. 
 
 | Paramètre        | Définition    |
 | ----------------------------|---------------|
 | `policy`    | Nom de la politique implémentée par le jalon. Le nom de la politique est défini dans DevOps Insights. |
-| `forceDecision`      | *Facultatif* : indique si le pipeline s'arrête ou non, en fonction de la décision du jalon. Définissez ce paramètre sur `true` pour arrêter l'exécution du pipeline en cas d'échec au jalon. Définissez-le sur `false` pour autoriser le pipeline à poursuivre après un échec au jalon. Par défaut, la valeur est définie sur `false`.     |
+| `forceDecision`      | _Facultatif_ : indique si le pipeline s'arrête ou non, en fonction de la décision du jalon. Définissez ce paramètre sur `true` pour arrêter l'exécution du pipeline en cas d'échec au jalon. Définissez-le sur `false` pour autoriser le pipeline à poursuivre après un échec au jalon. Par défaut, la valeur est définie sur `false`.     |
 
-Voici un exemple de commande employant ces paramètres. Dans cette commande, le pipeline continue à s'exécuter quelle que soit la décision du jalon.  
+Voici un exemple de commande employant ces paramètres. Dans cette commande, le pipeline continue à s'exécuter quelle que soit la décision du jalon. 
 
 ```
 evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
@@ -174,15 +174,15 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 Envoyez le statut du pipeline aux chaînes d'outils Bluemix à l'aide de la commande `notifyOTC`. Pour en savoir plus sur l'intégration de Jenkins avec des chaînes d'outils, voir la [documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Vous pouvez ignorer les étapes 6d à 6f, car elles s'appliquent uniquement aux projets Jenkins à structure libre.
 
-Cette étape requiert deux paramètres et peut également admettre un paramètre facultatif.  
+Cette étape requiert deux paramètres et peut également admettre un paramètre facultatif. 
 
 | Paramètre        | Définition    |
 | ----------------------------|---------------|
 | `stageName`    | Nom de l'étape en cours du pipeline. |
 | `status`    | Statut de l'étape du pipeline en cours. Si vous utilisez `SUCCESS`, `FAILURE` ou `ABORTED`, une mise en évidence en couleur est automatiquement déclenchée dans Slack.  |
-| `webhookUrl`      | *Facultatif* : URL du webhook qui s'affiche dans la mosaïque Jenkins de votre chaîne d'outils. Si vous incluez ce paramètre, sa valeur écrase celle de la variable d'environnement `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
+| `webhookUrl`      | _Facultatif_ : URL du webhook qui s'affiche dans la mosaïque Jenkins de votre chaîne d'outils. Si vous incluez ce paramètre, sa valeur écrase celle de la variable d'environnement `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
 
-Voici quelques exemples d'utilisation de l'étape `notifyOTC` dans des définitions de pipeline déclaratives et script . 
+Voici quelques exemples d'utilisation de l'étape `notifyOTC` dans des définitions de pipeline déclaratives et script .
 
 #### Pipeline déclaratif
 ```
@@ -216,7 +216,7 @@ stage('Deploy') {
 }
 ```
 
-Dans ces deux exemple, l'URL du webhook de la chaîne d'outils est remplacée uniquement en cas d'échec.  
+Dans ces deux exemple, l'URL du webhook de la chaîne d'outils est remplacée uniquement en cas d'échec. 
 
 ## Garantie de traçabilité dans les intégrations de chaîne d'outils
 

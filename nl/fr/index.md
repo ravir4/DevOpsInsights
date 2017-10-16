@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -36,7 +36,7 @@ Pour utiliser {{site.data.keyword.DRA_short}}, vous devez l'ajouter à une chaî
 ## Ajout de DevOps Insights à une chaîne d'outils
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} fait partie de {{site.data.keyword.contdelivery_short}}. Vous pouvez ajouter {{site.data.keyword.DRA_short}} à n'importe quelle chaîne d'outils en sélectionnant cette dernière dans le catalogue des intégrations d'outil.
+{{site.data.keyword.DRA_short}} est disponible via l'intégration aux chaînes d'outils {{site.data.keyword.contdelivery_full}}. Vous pouvez ajouter {{site.data.keyword.DRA_short}} à n'importe quelle chaîne d'outils en sélectionnant cette dernière dans le catalogue des intégrations d'outil.
 
 {{site.data.keyword.DRA_short}} est également inclus dans de nombreux modèles de chaîne d'outils. Si vous créez une chaîne d'outils à partir d'un modèle qui comprend {{site.data.keyword.DRA_short}}, veillez à ce que {{site.data.keyword.DRA_short}} soit défini sur **Avancé**. Créez ensuite la chaîne d'outils et passez à [Utilisation de DevOps Insights](/docs/services/DevOpsInsights/index.html#using).
 
@@ -57,8 +57,8 @@ Si votre chaîne d'outils inclut GitHub, GitLab ou JIRA, {{site.data.keyword.DRA
 
 1. Sur la page de présentation de votre chaîne d'outils, cliquez sur **{{site.data.keyword.DRA_short}}**.
 
-2. Cliquez sur **Team Dynamics** ou sur **Developer Insights**, puis choisissez une catégorie de données.  
+2. Cliquez sur **Team Dynamics** ou sur **Developer Insights**, puis choisissez une catégorie de données. 
 
 3. Explorez les données de votre projet en affichant les tableaux de bord dans la catégorie de données. Si vous voulez en savoir plus sur un graphique ou savoir ce que vous pouvez faire de ces informations, cliquez sur **Informations** ou sur **Conseils**.
 
-Après avoir exploré Team Dynamics et Developer Insights, [configurez Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) pour faciliter l'application de la qualité du code. Deployment Risk est compatible à la fois avec le pipeline {{site.data.keyword.contdelivery_short}} et Jenkins.   
+Après avoir exploré Team Dynamics et Developer Insights, configurez [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) pour faciliter l'application de la qualité du code. Deployment Risk est compatible à la fois avec Delivery Pipeline pour {{site.data.keyword.contdelivery_short}} et Jenkins.

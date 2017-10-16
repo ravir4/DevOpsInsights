@@ -15,9 +15,9 @@ lastupdated: "2017-05-19"
 
 # Integrando ao Jenkins Pipeline
 
-Depois de incluir o {{site.data.keyword.DRA_full}} em uma cadeia de ferramentas aberta e definir as políticas que ele monitora, será possível integrá-lo a um projeto Jenkins Pipeline. Defina um pipeline na interface da web do Jenkins ou em um *Jenkinsfile* que você armazena no repositório de controle de fonte. É possível visualizar e administrar projetos Jenkins Pipelines da interface da web de Jenkins. 
+Depois de incluir o {{site.data.keyword.DRA_full}} em uma cadeia de ferramentas aberta e definir as políticas que ele monitora, será possível integrá-lo a um projeto Jenkins Pipeline. Defina um pipeline na interface da web do Jenkins ou em um _Jenkinsfile_ que você armazena no repositório de controle de fonte. É possível visualizar e administrar projetos Jenkins Pipelines da interface da web de Jenkins. 
 
-O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma *cadeia de ferramentas* é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
+O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
 poder coletivo de uma cadeia de ferramentas é maior que a soma de suas integrações de ferramentas individuais. As cadeias de ferramentas abertas são parte do serviço {{site.data.keyword.contdelivery_full}}. Para saber mais sobre o serviço {{site.data.keyword.contdelivery_short}}, veja [sua documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
 Depois de instalar o plug-in IBM Cloud DevOps, é possível configurar seu projeto Jenkins para publicar os resultados de teste no {{site.data.keyword.DRA_short}}, avaliar automaticamente a qualidade de construção nas portas e controlar o risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
@@ -76,7 +76,7 @@ Na definição, inclua as variáveis de ambiente a seguir. Essas variáveis são
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | O ID de sua cadeia de ferramentas. Abra a Visão geral da cadeia de ferramentas e veja a URL para determinar o ID. O formato da URL da cadeia de ferramentas é `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | O webhook que foi fornecido a você quando incluiu Jenkins em sua cadeia de ferramentas.   |
 
-Para obter mais informações sobre o comando `credenciais`, consulte a [Documentação de pipeline do Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment).
+Para obter mais informações sobre o comando `credenciais`, consulte a [Documentação de pipeline do Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment). 
 {: tip}
 
 Se você estiver usando o formato de pipeline com script, configure suas credenciais com `withCredentials` e seu ambiente com
@@ -150,7 +150,7 @@ Publique registros de implementação com a etapa `publishDeployRecord`. Essa et
 | ----------------------------|---------------|
 | `environment`    | O ambiente no qual você implementa seu app. Para que o DevOps Insights funcione adequadamente, deve-se identificar um ambiente como `STAGING` e outro ambiente como `PRODUCTION`. |
 | `result`      | O resultado do estágio de construção. O valor deve ser `SUCCESS` ou `FAIL`.    |
-| `appUrl`      | *Opcional*: a URL usada para acessar seu aplicativo.    |
+| `appUrl`      | _Opcional_: a URL usada para acessar seu aplicativo.    |
 
 O exemplo a seguir mostra esses parâmetros em comandos. O primeiro comando publica o registro de implementação para um ambiente temporário. O segundo comando publica o registro de implementação para um ambiente de produção.
 
@@ -168,7 +168,7 @@ Essa etapa requer um parâmetro. Ela também pode aceitar um parâmetro opcional
 | Parâmetro        | Definição    |
 | ----------------------------|---------------|
 | `policy`    | O nome da política que a porta implementa. O nome da política é definido no DevOps Insights. |
-| `forceDecision`      | *Opcional*: se o pipeline parará ou não, dependendo da decisão da porta. Configure esse parâmetro como `true` para parar a execução do pipeline se a porta falhar. Configure-a como `false` para permitir que o pipeline continue após uma falha da porta. Por padrão, o valor é `false`.     |
+| `forceDecision`      | _Opcional_: se o pipeline parará ou não, dependendo da decisão da porta. Configure esse parâmetro como `true` para parar a execução do pipeline se a porta falhar. Configure-a como `false` para permitir que o pipeline continue após uma falha da porta. Por padrão, o valor é `false`.     |
 
 O exemplo a seguir mostra esses parâmetros em um comando. Nesse comando, o pipeline continua executando, independentemente da decisão da porta. 
 
@@ -186,7 +186,7 @@ Essa etapa requer dois parâmetros e também pode usar um opcional.
 | ----------------------------|---------------|
 | `stageName`    | O nome do estágio do pipeline atual. |
 | `status`    | O status do estágio do pipeline atual. Usar `SUCCESS`, `FAILURE` ou `ABORTED` acionará automaticamente o destaque de cores no Slack.  |
-| `webhookUrl`      | *Opcional*: a URL do webhook que é mostrada no quadro Jenkins de sua cadeia de ferramentas. Se você incluir esse parâmetro, seu valor substituirá aquele da variável de ambiente `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
+| `webhookUrl`      | _Opcional_: a URL do webhook que é mostrada no quadro Jenkins de sua cadeia de ferramentas. Se você incluir esse parâmetro, seu valor substituirá aquele da variável de ambiente `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
 
 Os exemplos a seguir ilustram como usar a etapa `notifyOTC` em definições de pipeline declarativas e com script.
 

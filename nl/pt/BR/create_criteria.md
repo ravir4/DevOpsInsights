@@ -108,7 +108,7 @@ O {{site.data.keyword.DRA_short}} suporta estes tipos de métricas e formatos:
 
 * Teste de verificação funcional (Mocha, xUnit)
 * Teste de unidade (Mocha, xUnit, Karma/Mocha)
-* Cobertura de código (Istanbul como formato do relatório de resumo de JSON, Blanket.js)
+* Cobertura de código (Cobertura, lcov, Istanbul como formato do relatório de resumo json, Blanket.js)
 
 O {{site.data.keyword.DRA_short}} também suporta testes do Selenium e Jasmine. Esses testes devem ser incluídos dentro das ferramentas oficialmente suportadas, como xUnit e Mocha. Para saber mais sobre como usar o {{site.data.keyword.deliverypipeline}}, o {{site.data.keyword.DRA_short}} e o Selenium juntos, veja [Executando testes do Selenium por meio da linha de comandos em um pipeline de entrega](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 

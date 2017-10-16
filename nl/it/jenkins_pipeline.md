@@ -15,13 +15,13 @@ lastupdated: "2017-05-19"
 
 # Integrazione con la pipeline Jenkins
 
-Dopo aver aggiunto {{site.data.keyword.DRA_full}} a una toolchain aperta e definito le politiche che monitora, puoi integrarlo con un progetto della pipeline Jenkins. Definisci una pipeline nell'interfaccia web Jenkins o in un *Jenkinsfile* che archivi nel tuo repository di controllo dell'origine. Puoi visualizzare e gestire i progetti della pipeline Jenkins dall'interfaccia web Jenkins. 
+Dopo aver aggiunto {{site.data.keyword.DRA_full}} a una toolchain aperta e definito le politiche che monitora, puoi integrarlo con un progetto della pipeline Jenkins. Definisci una pipeline nell'interfaccia web Jenkins o in un _Jenkinsfile_ che archivi nel tuo repository di controllo dell'origine. Puoi visualizzare e gestire i progetti della pipeline Jenkins dall'interfaccia web Jenkins. 
 
-Il plugin IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una *toolchain* è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+Il plugin IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
 Dopo aver installato il plugin IBM Cloud DevOps, puoi configurare il tuo progetto Jenkins per pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, la qualità di build viene valutata automaticamente ai gate e tracciato il tuo rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
 
-Il plugin fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di verifica di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
+Il plugin fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
 
 Se hai dimestichezza con la pipeline Jenkins, continua a leggere. Altrimenti, [consulta la documentazione della pipeline Jenkins](https://jenkins.io/doc/book/pipeline/) prima di continuare.
 
@@ -72,7 +72,7 @@ Nella definizione, aggiungi le seguenti variabili di ambiente. Queste variabili 
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | L'ID della tua toolchain. Apri la panoramica della toolchain e visualizza l'URL per determinare l'ID. Il formato dell'URL della toolchain è: `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Il webhook che ti è stato fornito quando hai aggiunto Jenkins alla tua toolchain.   |
 
-Per ulteriori informazioni sul comando `credentials`, consulta la [documentazione della pipeline Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment).
+Per ulteriori informazioni sul comando `credentials`, consulta la [documentazione della pipeline Jenkins](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment). 
 {: tip}
 
 Se stai utilizzando un formato della pipeline con script, imposta le tue credenziali con `withCredentials` e il tuo ambiente con `withEnv` invece di `credentials` e `environment`, che sono stati utilizzati nel seguente esempio. Per ulteriori informazioni su `withCredentials`, consulta [la documentazione di Jenkins](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
@@ -144,7 +144,7 @@ Pubblica i record di distribuzione con la fase `publishDeployRecord`. Questa fas
 | ----------------------------|---------------|
 | `environment`    | L'ambiente a cui distribuisci la tua applicazione. Per un corretto funzionamento di DevOps, devi definire un ambiente come `STAGING` e un altro come `PRODUCTION`. |
 | `result`      | Il risultato della fase di build. Il valore dovrebbe essere `SUCCESS` o `FAIL`.    |
-| `appUrl`      | *Facoltativo*: l'URL utilizzato per accedere alla tua applicazione.    |
+| `appUrl`      | _Facoltativo_: l'URL utilizzato per accedere alla tua applicazione.    |
 
 Il seguente esempio mostra questi parametri nei comandi. Il primo comando pubblica il record di distribuzione per un ambiente di preparazione. Il secondo comando pubblica il record di distribuzione per un ambiente di produzione.
 
@@ -162,7 +162,7 @@ Questa fase richiede un parametro. Accetta anche un parametro facoltativo.
 | Parametro        | Definizione    |
 | ----------------------------|---------------|
 | `policy`    | Il nome della politica che implementa il gate. Il nome della politica viene definito in DevOps Insights. |
-| `forceDecision`      | *Facoltativo*: se la pipeline viene arrestata o meno a seconda della decisione del gate. Imposta questo parametro su `true` per arrestare la pipeline dall'esecuzione se il gate ha esito negativo. Impostalo su `false` per consentire alla pipeline di continuare dopo un esito negativo del gate. Per impostazione predefinita, il valore è `false`.     |
+| `forceDecision`      | _Facoltativo_: se la pipeline viene arrestata o meno a seconda della decisione del gate. Imposta questo parametro su `true` per arrestare la pipeline dall'esecuzione se il gate ha esito negativo. Impostalo su `false` per consentire alla pipeline di continuare dopo un esito negativo del gate. Per impostazione predefinita, il valore è `false`.     |
 
 Il seguente esempio mostra questi parametri in un comando. In questo comando, la pipeline continua l'esecuzione indipendentemente dalla decisione del gate. 
 
@@ -180,7 +180,7 @@ Questa fase richiede due parametri e può anche utilizzarne uno facoltativo.
 | ----------------------------|---------------|
 | `stageName`    | Il nome della fase della pipeline corrente. |
 | `status`    | Lo stato della fase della pipeline corrente. Utilizzando `SUCCESS`, `FAILURE` o `ABORTED` sarà attivata automaticamente l'evidenziazione del colore in Slack.  |
-| `webhookUrl`      | *Facoltativo*: l'URL del webhook visualizzato nel tile Jenkins della tua toolchain. Se includi questo parametro, il suo valore sovrascrive quello della variabile di ambiente `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
+| `webhookUrl`      | _Facoltativo_: l'URL del webhook visualizzato nel tile Jenkins della tua toolchain. Se includi questo parametro, il suo valore sovrascrive quello della variabile di ambiente `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
 
 I seguenti esempi illustrano come utilizzare la fase `notifyOTC` sia nella definizione della pipeline dichiarativa che in quella con script.
 
@@ -243,7 +243,7 @@ Come descritto nella documentazione di integrazione di Jenkins, sul tuo server J
 
 ## Esempio di una pipeline dichiarativa
 
-Questo esempio mostra una piepline completa definita come un Jenkinsfile dichiarativo. 
+Questo esempio mostra una pipeline completa definita come un Jenkinsfile dichiarativo. 
 
 ```
 #!groovy

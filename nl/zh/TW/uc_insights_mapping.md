@@ -37,11 +37,11 @@ Delivery Insights 會將您的 IBM UrbanCode Deploy 環境分組成一個以上�
 1. 在 {{site.data.keyword.DRA_short}} 中，按一下 **Delivery Insights > 對映環境**。
 1. 按一下現有邏輯環境，或按一下**新增邏輯環境**。
 1. 在邏輯環境的設定中，按一下**型樣**下的**新增型樣**。
-1. 指定環境名稱的型樣。您可以使用星號 (*) 作為萬用字元。例如，型樣 `env*` 符合環境 `env1`、`env2` 及 `env`。
+1. 指定環境名稱的型樣。您可以使用星號 (\*) 作為萬用字元。例如，型樣 `env*` 符合環境 `env1`、`env2` 及 `env`。
 1. 確認邏輯環境包含您想要的環境。
 
 若要手動將環境對映至邏輯環境，請按一下**手動新增**，然後選取要新增或移除的環境。
 
-![在 DevOps Connect 中設定整合](images/uc_insights_mapping_manually.gif)
+![在 DevOps Connect 設定整合](images/uc_insights_mapping_manually.gif)
 
 現在您已經將環境對映至邏輯環境，您可以看到那些邏輯環境所聚集的報告資訊。

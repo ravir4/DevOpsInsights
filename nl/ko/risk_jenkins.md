@@ -16,7 +16,7 @@ lastupdated: "2017-05-11"
 
 개방형 도구 체인에 {{site.data.keyword.DRA_full}}를 추가하고 이를 모니터하는 정책을 정의한 후에 자유 양식 Jenkins 프로젝트와 통합할 수 있습니다. 자유 양식 Jenkins 프로젝트는 Jenkins 웹 인터페이스에서 구성하고 관리합니다. 
 
-Jenkins용 IBM Cloud DevOps 플러그인은 Jenkins 프로젝트를 도구 체인과 통합합니다. *도구 체인*은 개발, 배치 및 운영 태스크를 지원하는 도구 통합 세트입니다. 도구 체인의 전체 기능은 개별 도구 통합을 합한 것보다 강력합니다. 개방형 도구 체인은 {{site.data.keyword.contdelivery_full}} 서비스의 일부입니다. {{site.data.keyword.contdelivery_short}} 서비스에 대한 자세한 정보는 [해당 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)를 참조하십시오.
+Jenkins용 IBM Cloud DevOps 플러그인은 Jenkins 프로젝트를 도구 체인과 통합합니다. _도구 체인_은 개발, 배치 및 운영 태스크를 지원하는 도구 통합 세트입니다. 도구 체인의 전체 기능은 개별 도구 통합을 합한 것보다 강력합니다. 개방형 도구 체인은 {{site.data.keyword.contdelivery_full}} 서비스의 일부입니다. {{site.data.keyword.contdelivery_short}} 서비스에 대한 자세한 정보는 [해당 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)를 참조하십시오.
 
 IBM Cloud DevOps 플러그인을 설치한 후 {{site.data.keyword.DRA_short}}에 테스트 결과를 공개하고 자동화된 품질 게이트를 추가하며 Deployment Risk를 추적할 수 있습니다. 또한 도구 체인에서 Slack 및 PagerDuty와 같은 기타 도구에 작업 알림을 보낼 수 있습니다. 배치를 추적할 수 있도록 도구 체인은 Git 커미트와 관련 Git 또는 JIRA 문제에 배치 메시지를 추가할 수 있습니다. 도구 체인의 연결 페이지에서도 배치를 볼 수 있습니다. 
 
@@ -80,13 +80,13 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
    이러한 이미지는 예제 구성을 보여줍니다.
    
    ![빌드 정보 업로드](images/Upload-Build-Info.png "DRA에 빌드 정보 공개")
-   *빌드 정보 공개*
+   _빌드 정보 공개_
    
    ![테스트 결과 업로드](images/Upload-Test-Result.png "DRA에 테스트 결과 공개")
-   *테스트 결과 공개*
+   _테스트 결과 공개_
    
    ![배치 정보 업로드](images/Upload-Deployment-Info.png "DRA에 배치 정보 공개")
-   *배치 정보 공개*
+   _배치 정보 공개_
 
 4. {{site.data.keyword.DRA_short}} 정책 게이트를 사용하여 다운스트림 배치 작업을 제어하려면 사후 빌드 조치, **IBM Cloud DevOps Gate**를 추가하십시오. 정책을 선택하고 테스트 결과의 범위를 지정하십시오. 정책 게이트가 다운스트림 배치를 방지할 수 있도록 **정책 규칙을 기반으로 빌드 실패** 선택란을 선택하십시오. 다음 이미지는 예제 구성을 보여줍니다.
 

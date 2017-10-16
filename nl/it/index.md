@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -24,7 +24,7 @@ lastupdated: "2017-04-07"
 
    * Team Dynamics utilizza le analisi di codifica social per aiutarti a capire come il tuo team collabora e come può funzionare in modo migliore.
 
-   * Deployment Risk è come una rete di sicurezza di fornitura continua. Analizza i risultati dagli strumenti di verifica di unità, di test funzionali, di scansioni dell'applicazione e di copertura del codice nei gate specificati nel tuo processo di distribuzione e previene il rilascio di modifiche rischiose.
+   * Deployment Risk è come una rete di sicurezza di fornitura continua. Analizza i risultati dagli strumenti di test di unità, di test funzionali, di scansioni dell'applicazione e di copertura del codice nei gate specificati nel tuo processo di distribuzione e previene il rilascio di modifiche rischiose.
 
    * Delivery Insights mostra le metriche, le statistiche di distribuzione e altre informazioni sulla tua installazione di IBM UrbanCode Deploy. Ad esempio, può mostrare i grafici della durata della distribuzione, degli esiti positivi e negativi, tutti elencati per ambienti raggruppati logicamente. Consulta [Integrazione di DevOps Insights con IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html).
 
@@ -35,7 +35,7 @@ Per utilizzare {{site.data.keyword.DRA_short}}, devi aggiungerlo a una toolchain
 ## Aggiunta di DevOps Insights a una toolchain
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} fa parte di {{site.data.keyword.contdelivery_short}}. Puoi aggiungere {{site.data.keyword.DRA_short}} a qualsiasi toolchain selezionandolo dal catalogo di integrazione dello strumento.
+{{site.data.keyword.DRA_short}} è disponibile attraverso l'integrazione con le toolchain {{site.data.keyword.contdelivery_full}}. Puoi aggiungere {{site.data.keyword.DRA_short}} a qualsiasi toolchain selezionandolo dal catalogo di integrazione dello strumento.
 
 {{site.data.keyword.DRA_short}} fa anche parte di molti template toolchain. Se crei una toolchain da un template che include {{site.data.keyword.DRA_short}}, assicurati che {{site.data.keyword.DRA_short}} sia impostato su **Advanced**. Quindi, crea la toolchain e passa a [Utilizzo di Insights](/docs/services/DevOpsInsights/index.html#using).
 
@@ -60,4 +60,4 @@ Se la tua toolchain include GitHub, GitLab o JIRA, {{site.data.keyword.DRA_short
 
 3. Esplora i dati del tuo progetto visualizzando i dashboard nella categoria dei dati. Se desideri avere ulteriori informazioni su un grafico o su cosa puoi fare con queste informazioni, fai clic su **Information** o **Guidance**.
 
-Dopo aver esplorato Team Dynamics e Developer Insights, [configura Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) per aiutarti nell'applicazione della qualità del codice. Deployment Risk è compatibile sia con {{site.data.keyword.contdelivery_short}} pipeline che con Jenkins.   
+Dopo aver esplorato Team Dynamics e Developer Insights, configura [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) per aiutarti nell'applicazione della qualità del codice. Deployment Risk è compatibile con Delivery Pipeline per {{site.data.keyword.contdelivery_short}} e Jenkins.

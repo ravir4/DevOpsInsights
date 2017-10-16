@@ -54,7 +54,7 @@ lastupdated: "2017-04-07"
 
 2. 指定必须通过并声明成功的测试用例百分比。
 
-3. 定义重要的任何测试用例。
+3. 定义重要的任何测试用例。要确定测试用例名称，请参阅[测试结果格式和工具](#criteria_formats)。
 
 4. 要监视测试用例回归，请选中**监视测试用例回归**复选框。
 
@@ -68,7 +68,7 @@ lastupdated: "2017-04-07"
 
 2. 指定必须通过并声明成功的测试用例百分比。
 
-3. 定义重要的任何测试用例。
+3. 定义重要的任何测试用例。要确定测试用例名称，请参阅[测试结果格式和工具](#criteria_formats)。
 
 4. 要监视测试用例回归，请选中**监视测试用例回归**复选框。
 
@@ -107,3 +107,39 @@ lastupdated: "2017-04-07"
 2. 指定规则允许的高严重性、中等严重性和低严重性问题的最大数量。 
 
 3. 单击**保存**。
+
+## 测试结果格式和工具
+{: #criteria_formats}
+
+对于测试结果，{{site.data.keyword.DRA_short}} 支持以下类型的度量值和格式：
+
+* 功能验证测试（Mocha、xUnit）
+* 单元测试（Mocha、xUnit、Karma/Mocha）
+* 代码覆盖（Cobertura、lcov、作为 json 摘要报告格式的 Istanbul、Blanket.js）
+
+{{site.data.keyword.DRA_short}} 还支持 Selenium 和 Jasmine 测试。这些测试必须包含在官方支持的工具中，如 xUnit 和 Mocha。要了解有关同时使用 {{site.data.keyword.deliverypipeline}}、{{site.data.keyword.DRA_short}} 和 Selenium 的更多信息，请参阅[在 Delivery Pipeline 上从命令行运行 Selenium 测试](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/)。
+
+对于具有测试用例的项，您可以指定重要测试用例，即不管可接受的百分比而必须通过的测试。重要测试用例名称必须匹配测试用例的 `full title` 属性。    
+* 对于 Karma/Mocha 测试，`describe()` 和 `it()` 描述字符串通过空格链接在一起。
+* 对于 xUnit 测试，程序包名、类名和函数名通过空格链接在一起。在以下示例中对此进行了说明：
+  ```
+  <testsuites package="test">
+    <testsuite package="otc-api" name="PUT Service Instances - Test Setup" tests="2" failures="0" errors="0">
+      <testcase name="#1 Authorization passed for mock user: idsb3t1@us.ibm.com"/>
+      <testcase name="#2 Authorization passed for mock user: idsb3t4@us.ibm.com"/>
+    </testsuite>
+  </testsuite>
+  ```
+  该示例生成以下测试用例名称：
+  ```
+  test otc-api PUT Service Instances - Test Setup #1 Authorization passed for mock user: idsb3t1@us.ibm.com
+  test otc-api PUT Service Instances - Test Setup #2 Authorization passed for mock user: idsb3t1@us.ibm.com
+  ```
+
+您可以通过向管道添加 Sauce Labs 工具集成，将 Sauce Labs 与 {{site.data.keyword.DRA_short}} 一起使用。然后，将 `SAUCE_USERNAME` 和 `SAUCE_ACCESS_KEY` 环境变量作为凭证引入 Selenium 测试。
+
+您可以在运行之后，在日志中查看所有测试的完整标题。  
+
+**注：**
+* {{site.data.keyword.DRA_short}} 不支持在完整标题中包含连字符的重要测试。    
+* 如果您更改组织名称，那么您必须重新创建与之前名称相关联的策略。您将丢失对名称更改之前所生成的任何决策报告的访问权。

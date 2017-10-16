@@ -54,7 +54,7 @@ Vous pouvez exiger la réussite inconditionnelle en marquant les tests comme cri
 
 2. Indiquez le pourcentage de scénarios de test à réussir pour que la vérification aboutisse.
 
-3. Définissez les scénarios de test critiques.
+3. Définissez les scénarios de test critiques. Pour déterminer les noms des scénarios de test, voir [Outils et formats des résultats de test](#criteria_formats).
 
 4. Pour surveiller les régressions de scénario de test, cochez la case **Contrôle pour la régression de scénario de test**.
 
@@ -68,7 +68,7 @@ Vous pouvez exiger la réussite inconditionnelle en marquant les tests comme cri
 
 2. Indiquez le pourcentage de scénarios de test à réussir pour que la vérification aboutisse.
 
-3. Définissez les scénarios de test critiques.
+3. Définissez les scénarios de test critiques. Pour déterminer les noms des scénarios de test, voir [Outils et formats des résultats de test](#criteria_formats).
 
 4. Pour surveiller les régressions de scénario de test, cochez la case **Contrôle pour la régression de scénario de test**.
 
@@ -107,3 +107,39 @@ Vous pouvez intégrer {{site.data.keyword.DRA_short}} à {{site.data.keyword.app
 2. Indiquez le nombre maximal de problèmes de gravité élevée, moyenne et faible autorisés par la règle. 
 
 3. Cliquez sur **Sauvegarder**.
+
+## Outils et formats des résultats de test
+{: #criteria_formats}
+
+Pour les résultats de test, {{site.data.keyword.DRA_short}} prend en charge les types d'indicateur et de format suivants :
+
+* Test de vérification fonctionnelle (Mocha, xUnit)
+* Test d'unité (Mocha, xUnit, Karma/Mocha)
+* Couverture de code (Cobertura, lcov, Istanbul comme format de rapport récapitulatif JSON, Blanket.js)
+
+{{site.data.keyword.DRA_short}} prend également en charge les tests Selenium et Jasmine. Ces tests doivent être inclus dans les outils officiellement pris en charge, tels que xUnit et Mocha. Pour en savoir plus sur l'utilisation conjointe de {{site.data.keyword.deliverypipeline}}, de {{site.data.keyword.DRA_short}} et de Selenium, voir [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
+
+Pour les éléments qui disposent de scénarios de test, vous pouvez définir des scénarios de test critiques, c'est-à-dire des tests à réussir indépendamment du pourcentage acceptable. Les noms de test critique doivent correspondre à l'attribut `full title` du scénario de test.    
+* Pour les tests Karma/Mocha, les chaînes de description `describe()` et `it()` sont liées ensemble par des espaces.
+* Pour les tests xUnit, le nom de package, le nom de classe et le nom de fonction sont liés ensemble par des espaces. Ce cas de figure est illustré par l'exemple suivant :
+  ```
+  <testsuites package="test">
+    <testsuite package="otc-api" name="PUT Service Instances - Test Setup" tests="2" failures="0" errors="0">
+      <testcase name="#1 Authorization passed for mock user: idsb3t1@us.ibm.com"/>
+      <testcase name="#2 Authorization passed for mock user: idsb3t4@us.ibm.com"/>
+    </testsuite>
+  </testsuite>
+  ```
+  Cet exemple produit les noms de scénario de test suivants :
+  ```
+  test otc-api PUT Service Instances - Test Setup #1 Authorization passed for mock user: idsb3t1@us.ibm.com
+  test otc-api PUT Service Instances - Test Setup #2 Authorization passed for mock user: idsb3t1@us.ibm.com
+  ```
+
+Vous pouvez utiliser Sauce Labs avec {{site.data.keyword.DRA_short}} en ajoutant l'intégration d'outil Sauce Labs à votre pipeline. Ensuite, incorporez les variables d'environnement `SAUCE_USERNAME` et `SAUCE_ACCESS_KEY` aux tests Selenium en tant que données d'identification.
+
+Après une exécution, vous pouvez voir les titres complets de tous les tests dans les journaux.  
+
+**Remarques :**
+* {{site.data.keyword.DRA_short}} ne prend pas en charge les tests critiques dont le titre complet contient un trait d'union.    
+* Si vous modifiez le nom de votre organisation, vous devez recréer les politiques associées au nom précédent. Vous perdrez l'accès à tous les rapports de décision générés avant le changement de nom.

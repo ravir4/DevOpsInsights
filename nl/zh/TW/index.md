@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -35,7 +35,7 @@ lastupdated: "2017-04-07"
 ## 將 DevOps Insights 新增至工具鏈
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} 是 {{site.data.keyword.contdelivery_short}} 的一部分。您可以從工具整合型錄中選取 {{site.data.keyword.DRA_short}}，以將它新增至任何工具鏈。
+{{site.data.keyword.DRA_short}} 可以透過與 {{site.data.keyword.contdelivery_full}} 工具鍊的整合而取得。您可以從工具整合型錄中選取 {{site.data.keyword.DRA_short}}，以將它新增至任何工具鏈。
 
 {{site.data.keyword.DRA_short}} 也是許多工具鏈範本的一部分。如果您要從包括 {{site.data.keyword.DRA_short}} 的範本建立工具鏈，請確定 {{site.data.keyword.DRA_short}} 設為**進階**。然後，建立工具鏈，並跳至[使用 Insights](/docs/services/DevOpsInsights/index.html#using)。
 
@@ -60,4 +60,4 @@ lastupdated: "2017-04-07"
 
 3. 檢視該資料種類中的儀表板，以探索專案的資料。如果您要進一步瞭解某個圖形，或是瞭解可以使用其資訊做什麼，請按一下**資訊**或**指引**。
 
-探索 Team Dynamics 和 Developer Insights 之後，請[配置 Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html)，以協助您強制執行程式碼品質。Deployment Risk 與 {{site.data.keyword.contdelivery_short}} 管線和 Jenkins 都相容。   
+探索 Team Dynamics 和 Developer Insights 之後，請配置 [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html)，以協助您強制執行程式碼品質。Deployment Risk 與 {{site.data.keyword.contdelivery_short}} 和 Jenkins 都相容。

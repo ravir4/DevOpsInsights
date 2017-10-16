@@ -2,9 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-02-24"
-
----
+lastupdated: "2017-02-24"---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -127,7 +125,7 @@ lastupdated: "2017-02-24"
 
 * 機能検証テスト (Mocha、xUnit)
 * 単体テスト (Mocha、xUnit、Karma/Mocha)
-* コード・カバレッジ (Blanket.js、JSON 要約報告書の形式の Istanbul)
+* コード・カバレッジ (Cobertura、lcov、json-summary レポート形式の Istanbul、Blanket.js)
 
 {{site.data.keyword.DRA_short}} は Selenium テストと Jasmine テストもサポートしています。これらのテストは、xUnit や Mocha などの公式にサポートされているツールに組み込まなければなりません。
 {{site.data.keyword.deliverypipeline}}、{{site.data.keyword.DRA_short}}、Selenium を一緒に使用することについては、[Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/) を参照してください。
@@ -177,5 +175,4 @@ Sauce Labs ツール統合をパイプラインに追加すると、Sauce Labs �
    2. そのゲートを含むジョブから、そのゲートの名前をクリックします。
 
 
-   3. ログ・ビューで「`ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)`」というメッセージを見つけ、リンクをクリックしてレポートを開きます。
-
+   3. ログ・ビューで`「ここから {{site.data.keyword.DRA_short}} レポートを確認します (Check {{site.data.keyword.DRA_short}} report here)」`というメッセージを見つけ、リンクをクリックしてレポートを開きます。

@@ -54,7 +54,7 @@ Puede exigir una prueba satisfactoria sea como sea marcándola como crítica. Pa
 
 2. Especifique el porcentaje de casos de prueba que deben pasar correctamente para considerarse satisfactorio.
 
-3. Defina los casos de prueba que sean críticos.
+3. Defina los casos de prueba que sean críticos. Para determinar nombres de casos de prueba, consulte [Herramientas y formatos de resultados de pruebas](#criteria_formats).
 
 4. Para supervisar las regresiones de casos de prueba, marque el recuadro de selección **Supervisar la regresión de casos de prueba**.
 
@@ -68,7 +68,7 @@ Puede exigir una prueba satisfactoria sea como sea marcándola como crítica. Pa
 
 2. Especifique el porcentaje de casos de prueba que deben pasar correctamente para considerarse satisfactorio.
 
-3. Defina los casos de prueba que sean críticos.
+3. Defina los casos de prueba que sean críticos. Para determinar nombres de casos de prueba, consulte [Herramientas y formatos de resultados de pruebas](#criteria_formats).
 
 4. Para supervisar las regresiones de casos de prueba, marque el recuadro de selección **Supervisar la regresión de casos de prueba**.
 
@@ -107,3 +107,39 @@ Puede integrar {{site.data.keyword.DRA_short}} con {{site.data.keyword.appsecclo
 2. Especifique el número máximo de problemas de seguridad baja, media o elevada que esta regla permite. 
 
 3. Pulse **Guardar**.
+
+## Herramientas y formatos de resultados de pruebas
+{: #criteria_formats}
+
+Para los resultados de prueba, {{site.data.keyword.DRA_short}} da soporte a estos tipos de métricas y formatos:
+
+* Prueba de verificación funcional (Mocha, xUnit)
+* Prueba de unidad (Mocha, xUnit, Karma/Mocha)
+* Cobertura de código (Cobertura, lcov, Istanbul como formato de informe json-summary, Blanket.js)
+
+{{site.data.keyword.DRA_short}} también da soporte a las pruebas de Selenium y Jasmine. Estas pruebas deben estar incluidas dentro de las herramientas soportadas oficialmente como, por ejemplo, xUnit y Mocha. Para obtener más información sobre el uso de {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} y Selenium conjuntamente, consulte [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
+
+Para los elementos que tienen casos de prueba, puede especificar casos de prueba críticos, que son pruebas que deben pasar correctamente independientemente del porcentaje aceptable. Los nombres de los casos de prueba críticos deben coincidir con el atributo `full title` (título completo) del caso de prueba.    
+* Para pruebas de Karma/Mocha, las series de descripción `describe()` e `it()` están enlazadas entre ellas con espacios.
+* Para pruebas de xUnit, el nombre de paquete, nombre de clase y nombre de función están enlazados entre ellos con espacios. Esto se muestra en el ejemplo siguiente:
+  ```
+  <testsuites package="test">
+    <testsuite package="otc-api" name="PUT Service Instances - Test Setup" tests="2" failures="0" errors="0">
+      <testcase name="#1 Authorization passed for mock user: idsb3t1@us.ibm.com"/>
+      <testcase name="#2 Authorization passed for mock user: idsb3t4@us.ibm.com"/>
+    </testsuite>
+  </testsuite>
+  ```
+  Este ejemplo genera estos nombres de casos de prueba:
+  ```
+  test otc-api PUT Service Instances - Test Setup #1 Authorization passed for mock user: idsb3t1@us.ibm.com
+  test otc-api PUT Service Instances - Test Setup #2 Authorization passed for mock user: idsb3t1@us.ibm.com
+  ```
+
+Puede utilizar Sauce Labs con {{site.data.keyword.DRA_short}} añadiendo la integración de la herramienta Sauce Labs a su conducto. A continuación, incorpore las variables de entorno `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY` en las pruebas de Selenium como credenciales.
+
+Puede ver los títulos completos de todas las pruebas en los registros tras una ejecución.  
+
+**Notas:**
+* {{site.data.keyword.DRA_short}} no da soporte a las pruebas críticas que contienen un guión en el título completo.    
+* Si cambia el nombre de su organización, debe recrear las políticas que estaban asociadas al nombre anterior. Perderá el acceso a los informes de decisión que se generaron antes del cambio de nombre.

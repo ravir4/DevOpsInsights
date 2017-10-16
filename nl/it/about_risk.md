@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -19,7 +19,7 @@ lastupdated: "2017-04-07"
 
 Dopo aver aperto {{site.data.keyword.DRA_short}} dalla tua toolchain, fai clic su **Deployment Risk**. Da lì, puoi ottenere una panoramica delle applicazioni nei tuoi ambienti di produzione e di preparazione ed eseguire il drill down per comprendere la copertura del codice, le prestazioni del test e i report di sicurezza. I dashboard sono automaticamente popolati con le informazioni più recenti dai test {{site.data.keyword.DRA_short}} della tua pipeline.
 
-Puoi utilizzare Deployment Risk per applicare gli standard di qualità nella tua toolchain tramite politiche e gate. Le politiche comprendono le serie di regole; i gate applicano e politiche. Ad esempio, potresti creare una politica "Unit Testing and Test Coverage" che richiede che le le build rispettino gli standard di verifica dell'unità e di copertura del test. Successivamente aggiungi un gate che fa riferimento alla politica al tuo processo di fornitura continua. Le build che non soddisfano la politica vengono arrestate da questo gate. 
+Puoi utilizzare Deployment Risk per applicare gli standard di qualità nella tua toolchain tramite politiche e gate. Le politiche comprendono le serie di regole; i gate applicano le politiche. Ad esempio, potresti creare una politica "Unit Testing and Test Coverage" che richiede che le le build rispettino gli standard di verifica dell'unità e di copertura del test. Successivamente aggiungi un gate che fa riferimento alla politica al tuo processo di fornitura continua. Le build che non soddisfano la politica vengono arrestate da questo gate. 
 
 ## Informazioni sull'integrazione
 
@@ -36,8 +36,8 @@ Se si sta utilizzando {{site.data.keyword.deliverypipeline}}, procedi come segue
 Se stai utilizzando Jenkins, segui questa procedura:
 
 1. [Crea le politiche e le regole](risk_policies.html) per {{site.data.keyword.DRA_short}} da gestire.
-2. [Installa e configura il plugin Jenkins](risk_jenkins.html).
-3. [Crea i gate e i lavori di verifica come descritto nelle istruzioni del plugin](risk_jenkins.html). I test caricano i risultati in {{site.data.keyword.DRA_short}} per le analisi e i gate utilizzano questi risultati per effettuare decisioni di promozione.
+2. [Installa e configura il plugin Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Crea i gate e i lavori di verifica come descritto nelle istruzioni del plugin](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). I test caricano i risultati in {{site.data.keyword.DRA_short}} per le analisi e i gate utilizzano questi risultati per effettuare decisioni di promozione.
 4. Esegui il progetto e [visualizza i risultati](results.html). 
 
 Non importa come crei e distribuisci il tuo codice, i risultati sono gli stessi: le build che soddisfano gli standard saranno spostate oltre i gate Deployment Risk, mentre quelle che non li soddisfano saranno arrestate. 

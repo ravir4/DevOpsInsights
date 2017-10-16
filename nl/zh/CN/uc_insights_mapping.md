@@ -20,7 +20,7 @@ lastupdated: "2017-03-14"
 
 ## 逻辑环境
 
-Delivery Insights 将 IBM UrbanCode Deploy 环境分组成一个或多个逻辑环境。通过这种方式，可以根据您及您组织的需要，按组收集环境。例如，如果针对多个应用程序有多个生产环境，那么可以将所有这些环境分组到单个逻辑环境中，并将所有这些环境的度量合并到单个生产环境仪表板中。映射通过搜索字符串执行，所以您可以按适合 IBM UrbanCode Deploy 服务器需要的任意方式对环境分组。
+Delivery Insights 将 IBM UrbanCode Deploy 环境分组成一个或多个逻辑环境。通过这种方式，可以根据您及您组织的需要，按组收集环境。例如，如果针对多个应用程序有多个生产环境，那么可以将所有这些环境分组到单个逻辑环境中，并将所有这些环境的度量值合并到单个生产环境仪表板中。映射通过搜索字符串执行，所以您可以按适合 IBM UrbanCode Deploy 服务器需要的任意方式对环境分组。
 
 ## 缺省逻辑环境
 
@@ -42,6 +42,6 @@ Delivery Insights 将 IBM UrbanCode Deploy 环境分组成一个或多个逻辑�
 
 要手动将环境映射到逻辑环境，请单击**手动添加**，然后选择要添加或除去的环境。
 
-![在 DevOps Connect 中设置集成](images/uc_insights_mapping_manually.gif)
+![设置 DevOps Connect 中的集成](images/uc_insights_mapping_manually.gif)
 
 现在，您已将环境映射到逻辑环境，因此可以查看按这些逻辑环境聚集的报告信息。

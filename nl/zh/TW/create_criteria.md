@@ -108,7 +108,7 @@ lastupdated: "2017-02-24"
 
 * 功能驗證測試（Mocha、xUnit）
 * 單元測試（Mocha、xUnit、Karma/Mocha）
-* 程式碼涵蓋面（Istanbul 作為 JSON 摘要報告格式、Blanket.js）
+* 程式碼涵蓋面（Cobertura、lcov、Istanbul 作為 json 摘要報告格式、Blanket.js）
 
 {{site.data.keyword.DRA_short}} 也支援 Selenium 及 Jasmine 測試。這些測試必須內含在正式支援的工具中，例如 JUnit 和 Mocha。若要進一步瞭解如何一起使用 {{site.data.keyword.deliverypipeline}}、{{site.data.keyword.DRA_short}} 及 Selenium，請參閱 [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/)。
 

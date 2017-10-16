@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -35,7 +35,7 @@ Para usar o {{site.data.keyword.DRA_short}}, deve-se incluí-lo em uma cadeia de
 ## Incluindo o DevOps Insights em uma cadeia de ferramentas
 {: #catalog}
 
-O {{site.data.keyword.DRA_short}} faz parte do {{site.data.keyword.contdelivery_short}}. É possível incluir o {{site.data.keyword.DRA_short}} em qualquer cadeia de ferramentas, selecionando-o no catálogo de integração de ferramenta.
+O {{site.data.keyword.DRA_short}} está disponível por meio de integração com as cadeias de ferramentas do {{site.data.keyword.contdelivery_full}}. É possível incluir o {{site.data.keyword.DRA_short}} em qualquer cadeia de ferramentas, selecionando-o no catálogo de integração de ferramenta.
 
 O {{site.data.keyword.DRA_short}} também faz parte de vários modelos da cadeia de ferramentas. Se você criar uma cadeia de ferramentas por meio de um modelo que inclui o {{site.data.keyword.DRA_short}}, certifique-se de que o {{site.data.keyword.DRA_short}} esteja configurado como **Avançado**. Em seguida, crie a cadeia de ferramentas e vá para [Usando o Insights](/docs/services/DevOpsInsights/index.html#using).
 
@@ -61,4 +61,4 @@ Se a sua cadeia de ferramentas incluir GitHub, GitLab ou JIRA, o {{site.data.key
 
 3. Explore os dados de seu projeto visualizando os painéis na categoria de dados. Se desejar saber mais sobre um gráfico ou o que você poderia fazer com suas informações, clique em **Informações** ou **Orientação**.
 
-Depois de explorar o Team Dynamics e o Developer Insights, [configure o Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html) para ajudá-lo a utilizar a qualidade de código. O Deployment Risk é compatível com o pipeline do {{site.data.keyword.contdelivery_short}} e o Jenkins.   
+Depois de explorar o Team Dynamics e o Developer Insights, configure o [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) para ajudá-lo a impingir a qualidade de código. O Deployment Risk é compatível com o Delivery Pipeline para {{site.data.keyword.contdelivery_short}} e Jenkins.

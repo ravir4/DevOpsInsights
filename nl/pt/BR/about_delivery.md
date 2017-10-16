@@ -19,7 +19,7 @@ O Delivery Insights, uma parte do {{site.data.keyword.DRA_short}}, mostra estat�
 
 O Delivery Insights requer uma instalação do DevOps Connect. Para obter informações de configuração, consulte [Mostrando dados de servidores IBM UrbanCode Deploy](uc_insights_connect_ucd.html).
 
-![Dois gráficos dos dados demo do UrbanCode Insights](images/uc_insights_demo_data.gif)
+![Dois gráficos de dados de demo do UrbanCode Insights](images/uc_insights_demo_data.gif)
 
 Algumas das informações que podem ser vistas no Delivery Insights incluem:
 
@@ -34,7 +34,7 @@ A topologia para o Delivery Insights inclui uma ou mais instalações locais do 
 
 O diagrama a seguir mostra uma instalação típica desses sistemas.
 
-![Visão geral da topologia para o UrbanCode Insights, incluindo sistemas locais do cliente e o IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
+![Topologia de visão geral para o UrbanCode Insights, incluindo sistemas locais do cliente e o IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
 
 - Uma instalação do **IBM UrbanCode Deploy** fornece as informações sobre implementações bem-sucedidas e com falha das métricas. O IBM UrbanCode Deploy requer uma correção para se comunicar com o IBM Bluemix DevOps Connect.
 

@@ -54,7 +54,7 @@ lastupdated: "2017-04-07"
 
 2. 指定必須通過才能宣告成功的測試案例百分比。
 
-3. 定義任何重要的測試案例。
+3. 定義任何重要的測試案例。若要決定測試案例名稱，請參閱[測試結果格式及工具](#criteria_formats)。
 
 4. 若要監視測試案例回歸，請選取**監視測試案例回歸**勾選框。
 
@@ -68,7 +68,7 @@ lastupdated: "2017-04-07"
 
 2. 指定必須通過才能宣告成功的測試案例百分比。
 
-3. 定義任何重要的測試案例。
+3. 定義任何重要的測試案例。若要決定測試案例名稱，請參閱[測試結果格式及工具](#criteria_formats)。
 
 4. 若要監視測試案例回歸，請選取**監視測試案例回歸**勾選框。
 
@@ -107,3 +107,39 @@ lastupdated: "2017-04-07"
 2. 指定規則可容許的高嚴重性、中嚴重性和低嚴重性問題數上限。 
 
 3. 按一下**儲存**。
+
+## 測試結果格式和工具
+{: #criteria_formats}
+
+對於測試結果，{{site.data.keyword.DRA_short}} 支援下列類型的度量值及格式：
+
+* 功能驗證測試（Mocha、xUnit）
+* 單元測試（Mocha、xUnit、Karma/Mocha）
+* 程式碼涵蓋面（Cobertura、lcov、Istanbul 作為 json 摘要報告格式、Blanket.js）
+
+{{site.data.keyword.DRA_short}} 也支援 Selenium 及 Jasmine 測試。這些測試必須內含在正式支援的工具中，例如 JUnit 和 Mocha。若要進一步瞭解如何一起使用 {{site.data.keyword.deliverypipeline}}、{{site.data.keyword.DRA_short}} 及 Selenium，請參閱 [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/)。
+
+針對具有測試案例的項目，您可以指定重要測試案例，也就是不論可接受百分比為何都必須通過的測試。重要測試案例名稱必須符合測試案例的 `full title` 屬性。    
+* 若為 Karma/Mocha 測試，會使用空格將 `describe()` 與 `it()` 說明字串鏈結在一起。
+* 若為 xUnit 測試，會使用空格將套件名稱、類別名稱與函數名稱鏈結在一起。舉例說明如下：
+  ```
+  <testsuites package="test">
+    <testsuite package="otc-api" name="PUT Service Instances - Test Setup" tests="2" failures="0" errors="0">
+      <testcase name="#1 Authorization passed for mock user: idsb3t1@us.ibm.com"/>
+      <testcase name="#2 Authorization passed for mock user: idsb3t4@us.ibm.com"/>
+    </testsuite>
+  </testsuite>
+  ```
+  該範例會產生下列測試案例名稱：
+  ```
+  test otc-api PUT Service Instances - Test Setup #1 Authorization passed for mock user: idsb3t1@us.ibm.com
+  test otc-api PUT Service Instances - Test Setup #2 Authorization passed for mock user: idsb3t1@us.ibm.com
+  ```
+
+您可以將 Sauce Labs 工具整合新增至管線，以搭配使用 Sauce Labs 與 {{site.data.keyword.DRA_short}}。然後，將 `SAUCE_USERNAME` 及 `SAUCE_ACCESS_KEY` 環境變數併入 Selenium 測試中，以當作認證。
+
+執行之後，您可以在日誌中看到所有測試的完整標題。  
+
+**附註：**
+* {{site.data.keyword.DRA_short}} 不支援完整標題中包含連字號的重要測試。    
+* 如果您變更您的組織名稱，則必須重建與前一個名稱相關聯的原則。您將無法存取名稱變更之前產生的任何決策報告。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -36,8 +36,8 @@ Deployment Risk 會與 {{site.data.keyword.deliverypipeline}}（隸屬於 {{site
 如果是使用 Jenkins，請遵循下列步驟：
 
 1. [建立原則和規則](risk_policies.html)，以供 {{site.data.keyword.DRA_short}} 管理。
-2. [安裝並配置 Jenkins 外掛程式](risk_jenkins.html)。
-3. [依照外掛程式指示的說明來建立測試工作和閘道](risk_jenkins.html)。測試會將結果上傳至 {{site.data.keyword.DRA_short}} 以進行分析，而閘道會使用那些結果來制定升級決策。
+2. [安裝並配置 Jenkins 外掛程式](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。
+3. [依照外掛程式指示的說明來建立測試工作和閘道](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。測試會將結果上傳至 {{site.data.keyword.DRA_short}} 以進行分析，而閘道會使用那些結果來制定升級決策。
 4. 執行專案並[檢視結果](results.html)。 
 
 無論您如何建置及部署程式碼，結果皆相同：符合標準的建置將會通過 Deployment Risk 閘道，而不符合標準的建置就會被阻擋下來。 

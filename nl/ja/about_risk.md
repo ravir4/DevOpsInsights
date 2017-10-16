@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -48,8 +48,8 @@ Jenkins を使用している場合、以下の手順に従います。
 
 
 1. {{site.data.keyword.DRA_short}} が管理する[ポリシーとルールを作成する](risk_policies.html)。
-2. [Jenkins プラグインをインストールし、構成する](risk_jenkins.html)。
-3. [プラグインの指示に従ってテスト・ジョブとゲートを作成する](risk_jenkins.html)。
+2. [Jenkins プラグインをインストールし、構成する](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。
+3. [プラグインの指示に従ってテスト・ジョブとゲートを作成する](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)。
 テスト結果が {{site.data.keyword.DRA_short}} にアップロードされて分析され、ゲートがそれらの結果を使用してプロモーション決定を下す。
 
 4. プロジェクトを実行し、[結果を表示する](results.html)。 

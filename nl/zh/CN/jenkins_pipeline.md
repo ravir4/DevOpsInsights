@@ -15,9 +15,9 @@ lastupdated: "2017-05-19"
 
 # 与 Jenkins Pipeline 集成
 
-将 {{site.data.keyword.DRA_full}} 添加到开放工具链并定义其监视的策略之后，可以将其与 Jenkins Pipeline 项目相集成。您可在 Jenkins Web 界面中定义管道，也可在源代码控制存储库中存储的 *Jenkinsfile* 中定义管道。可以在 Jenkins Web 界面中查看和管理 Jenkins Pipeline 项目。 
+将 {{site.data.keyword.DRA_full}} 添加到开放工具链并定义其监视的策略之后，可以将其与 Jenkins Pipeline 项目相集成。您可在 Jenkins Web 界面中定义管道，也可在源代码控制存储库中存储的 _Jenkinsfile_ 中定义管道。可以在 Jenkins Web 界面中查看和管理 Jenkins Pipeline 项目。 
 
-IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。*工具链*是一组工具集成，用于支持开发、部署和操作任务。工具链的整体能力大于其各个单独工具集成的总和。开放工具链是 {{site.data.keyword.contdelivery_full}} 服务的组成部分。要了解有关 {{site.data.keyword.contdelivery_short}} 服务的更多信息，请参阅[其服务文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。 
+IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。_工具链_是一组工具集成，用于支持开发、部署和操作任务。工具链的整体能力大于其各个单独工具集成的总和。开放工具链是 {{site.data.keyword.contdelivery_full}} 服务的组成部分。要了解有关 {{site.data.keyword.contdelivery_short}} 服务的更多信息，请参阅[其服务文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)。 
 
 安装 IBM Cloud DevOps 插件后，可以配置 Jenkins 项目，以将测试结果发布到 {{site.data.keyword.DRA_short}}，自动在检测点对构建质量进行评估以及跟踪部署风险。您还可以将作业通知发送给工具链中的其他工具，例如 Slack 和 PagerDuty。为了帮助您跟踪部署，工具链可以将部署消息添加到 Git 落实及其相关的 Git 或 JIRA 问题。此外，还可以在工具链的“连接”页面上查看部署。 
 
@@ -64,13 +64,13 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 在定义中，添加以下环境变量。这些是管道与 {{site.data.keyword.DRA_short}} 集成所必需的变量。
 
-| 环境变量        | 定义    |
+| 环境变量| 定义|
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | 使用 `credentials` 命令在 Jenkins 中定义的 Bluemix 凭证。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此命令设置该变量将自动设置另外两个环境变量：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，分别表示用户名和密码。  |
-| `IBM_CLOUD_DEVOPS_ORG`      | 工具链所属的 Bluemix 组织。     |
-| `IBM_CLOUD_DEVOPS_APP_NAME` | 工具链部署的应用程序的名称。   |
-| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具链的标识。打开工具链“概述”，并查看相关 URL 以确定标识。工具链 URL 格式为 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。   |
-| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 将 Jenkins 添加到工具链时为您提供的 WebHook。   |
+| `IBM_CLOUD_DEVOPS_CREDS`    | 使用 `credentials` 命令在 Jenkins 中定义的 Bluemix 凭证。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此命令设置该变量将自动设置另外两个环境变量：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，分别表示用户名和密码。|
+| `IBM_CLOUD_DEVOPS_ORG`      | 工具链所属的 Bluemix 组织。|
+| `IBM_CLOUD_DEVOPS_APP_NAME` | 工具链部署的应用程序的名称。|
+| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具链的标识。打开工具链“概述”，并查看相关 URL 以确定标识。工具链 URL 格式为 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。|
+| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 将 Jenkins 添加到工具链时为您提供的 WebHook。|
 
 有关 `credentials` 命令的更多信息，请参阅 [Jenkins Pipeline 文档](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment)。
 {: tip}
@@ -105,12 +105,12 @@ Cloud DevOps 插件会向 Jenkins Pipeline 添加四个步骤供您使用。在�
 
 使用 `publishBuildRecord` 步骤发布构建记录。此步骤需要四个参数。
 
-| 参数        | 定义    |
+| 参数| 定义|
 | ----------------------------|---------------|
-| `gitBranch`    | 构建使用的 Git 分支的名称。  |
-| `gitCommit`      | 构建使用的 Git 落实标识。    |
-| `gitRepo` | Git 存储库的 URL。   |
-| `result` | 构建阶段的结果。值为 `SUCCESS` 或 `FAIL`。   |
+| `gitBranch`    | 构建使用的 Git 分支的名称。|
+| `gitCommit`      | 构建使用的 Git 落实标识。|
+| `gitRepo` | Git 存储库的 URL。|
+| `result` | 构建阶段的结果。值为 `SUCCESS` 或 `FAIL`。|
 
 此示例显示命令中的这些参数：
 
@@ -124,10 +124,10 @@ Jenkins Pipeline 不会将 Git 信息作为环境变量公开。可以使用 `sh
 ### 发布测试结果
 使用 `publishTestResult` 步骤发布测试结果。此步骤需要两个参数。
 
-| 参数        | 定义    |
+| 参数| 定义|
 | ----------------------------|---------------|
-| `type`    | 测试结果的类型。此参数的值必须为 `unittest`（对于单元测试）、`fvt`（对于功能验证测试）或 `code`（对于代码覆盖测试）。  |
-| `fileLocation`      | 测试结果文件的位置。    |
+| `type`    | 测试结果的类型。此参数的值必须为 `unittest`（对于单元测试）、`fvt`（对于功能验证测试）或 `code`（对于代码覆盖测试）。|
+| `fileLocation`      | 测试结果文件的位置。|
 
 以下示例显示命令中的这些参数。第一个命令发布 Mocha 单元测试结果。第二个命令发布代码覆盖测试结果。 
 
@@ -140,11 +140,11 @@ publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-
 
 使用 `publishDeployRecord` 步骤发布部署记录。此步骤需要两个参数。此外，它还可接受一个可选参数。 
 
-| 参数        | 定义    |
+| 参数| 定义|
 | ----------------------------|---------------|
-| `environment`    | 将应用程序部署到的环境。要使 DevOps Insights 正常运行，必须将一个环境识别为 `STAGING`，另一个环境识别为 `PRODUCTION`。 |
-| `result`      | 构建阶段的结果。值应该为 `SUCCESS` 或 `FAIL`。    |
-| `appUrl`      | *可选*：用于访问应用程序的 URL。    |
+| `environment`    | 将应用程序部署到的环境。要使 DevOps Insights 正常运行，必须将一个环境识别为 `STAGING`，另一个环境识别为 `PRODUCTION`。|
+| `result`      | 构建阶段的结果。值应该为 `SUCCESS` 或 `FAIL`。|
+| `appUrl`      | _可选_：用于访问应用程序的 URL。|
 
 以下示例显示命令中的这些参数。第一个命令发布编译打包环境的部署记录。第二个命令发布生产环境的部署记录。
 
@@ -159,10 +159,10 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 
 此步骤需要一个参数。此外，它还可接受一个可选参数。 
 
-| 参数        | 定义    |
+| 参数| 定义|
 | ----------------------------|---------------|
-| `policy`    | 检测点实施的策略的名称。策略的名称在 DevOps Insights 中进行定义。 |
-| `forceDecision`      | *可选*：管道是否停止取决于检测点的决策。将此参数设置为 `false` 可在检测点失败时停止运行管道。将此参数设置为 `true` 将允许管道在检测点失败后继续运行。缺省情况下，此值为 `false`。     |
+| `policy`    | 检测点实施的策略的名称。策略的名称在 DevOps Insights 中进行定义。|
+| `forceDecision`      | _可选_：管道是否停止取决于检测点的决策。将此参数设置为 `false` 可在检测点失败时停止运行管道。将此参数设置为 `true` 将允许管道在检测点失败后继续运行。缺省情况下，此值为 `false`。|
 
 以下示例显示命令中的这些参数。在此命令中，不管检测点的决策是什么，管道都将继续运行。 
 
@@ -176,11 +176,11 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 此步骤需要两个参数，还可以采用一个可选参数。 
 
-| 参数        | 定义    |
+| 参数| 定义|
 | ----------------------------|---------------|
-| `stageName`    | 当前管道阶段的名称。 |
-| `status`    | 当前管道阶段的状态。使用 `SUCCESS`、`FAILURE` 或 `ABORTED` 将在 Slack 中自动触发颜色突出显示。  |
-| `webhookUrl`      | *可选*：在工具链的 Jenkins 磁贴上显示的 WebHook URL。如果包含此参数，其值将覆盖 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 环境变量的值。   |
+| `stageName`    | 当前管道阶段的名称。|
+| `status`    | 当前管道阶段的状态。使用 `SUCCESS`、`FAILURE` 或 `ABORTED` 将在 Slack 中自动触发颜色突出显示。|
+| `webhookUrl`      | _可选_：在工具链的 Jenkins 磁贴上显示的 WebHook URL。如果包含此参数，其值将覆盖 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 环境变量的值。|
 
 以下示例显示如何在声明式和脚本式管道定义中使用 `notifyOTC` 步骤。
 

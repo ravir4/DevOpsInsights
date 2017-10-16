@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -35,7 +35,7 @@ lastupdated: "2017-04-07"
 ## 도구 체인에 DevOps Insights 추가
 {: #catalog}
 
-{{site.data.keyword.DRA_short}}는 {{site.data.keyword.contdelivery_short}}의 일부입니다. 도구 통합 카탈로그에서 선택하여 도구 체인에 {{site.data.keyword.DRA_short}}를 추가할 수 있습니다.
+{{site.data.keyword.DRA_short}}는 {{site.data.keyword.contdelivery_full}} 도구 체인과의 통합을 통해 사용 가능합니다. 도구 통합 카탈로그에서 선택하여 도구 체인에 {{site.data.keyword.DRA_short}}를 추가할 수 있습니다.
 
 {{site.data.keyword.DRA_short}}도 여러 도구 체인 템플리트의 일부입니다. {{site.data.keyword.DRA_short}}를 포함하는 템플리트에서 도구 체인을 작성하는 경우 {{site.data.keyword.DRA_short}}가 **고급**으로 설정되었는지 확인하십시오. 그런 다음 도구 체인을 작성하고 [Insights 사용](/docs/services/DevOpsInsights/index.html#using)으로 건너뛰십시오.
 
@@ -60,4 +60,4 @@ lastupdated: "2017-04-07"
 
 3. 데이터 카테고리에서 대시보드를 확인하여 프로젝트의 데이터를 탐색하십시오. 그래프에 대한 자세한 정보 또는 이 정보를 사용하여 수행할 수 있는 작업에 대해 알아보려면 **정보** 또는 **안내**를 클릭하십시오.
 
-Team Dynamics 및 Developer Insights를 탐색한 다음 코드 품질을 적용할 수 있도록 [Deployment Risk를 구성](/docs/services/DevOpsInsights/insights_risk.html)하십시오. Deployment Risk는 {{site.data.keyword.contdelivery_short}} 파이프라인 및 Jenkins 둘 다와 호환 가능합니다.   
+Team Dynamics 및 Developer Insights를 탐색한 다음 코드 품질을 적용할 수 있도록 [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html)를 구성하십시오. Deployment Risk는 {{site.data.keyword.contdelivery_short}}의 Delivery Pipeline 및 Jenkins 둘 다와 호환 가능합니다.

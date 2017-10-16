@@ -104,11 +104,11 @@ lastupdated: "2017-02-24"
 
 ## 测试结果格式和工具
 
-{{site.data.keyword.DRA_short}} 支持以下类型的度量和格式：
+{{site.data.keyword.DRA_short}} 支持以下类型的度量值和格式：
 
 * 功能验证测试（Mocha、xUnit）
 * 单元测试（Mocha、xUnit、Karma/Mocha）
-* 代码覆盖（作为 JSON 摘要报告格式的 Istanbul、Blanket.js）
+* 代码覆盖（Cobertura、lcov、作为 json 摘要报告格式的 Istanbul、Blanket.js）
 
 {{site.data.keyword.DRA_short}} 还支持 Selenium 和 Jasmine 测试。这些测试必须包含在官方支持的工具中，如 xUnit 和 Mocha。要了解有关同时使用 {{site.data.keyword.deliverypipeline}}、{{site.data.keyword.DRA_short}} 和 Selenium 的更多信息，请参阅[在 Delivery Pipeline 上从命令行运行 Selenium 测试](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/)。
 

@@ -15,6 +15,6 @@ lastupdated: "2017-03-14"
 # Integrando o {{site.data.keyword.DRA_short}} ao {{site.data.keyword.deliverypipeline}}
 {: #toolchain_configure_pipeline}
 
-Esta página foi movida. É possível visualizar essas informações em [seu novo local](/docs/services/DevOpsInsights/insights_risk.html#configuration).
+Esta página foi movida. É possível visualizar essas informações em [seu novo local](/docs/services/DevOpsInsights/about_risk.html).
 {:shortdesc}
 

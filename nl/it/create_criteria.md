@@ -102,13 +102,13 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 
 3. Fai clic su **Save**.
 
-## Verifica strumenti e formati del risultato
+## Formati e strumenti per i risultati di test
 
 {{site.data.keyword.DRA_short}} supporta questi tipi di metriche e formati:
 
 * Test di verifica funzionale (Mocha, xUnit)
-* Verifiche di unità (Mocha, xUnit, Karma/Mocha)
-* Copertura del codice (Istanbul come formato di riepilogo JSON, Blanket.js)
+* Test di unità (Mocha, xUnit, Karma/Mocha)
+* Copertura del codice (Cobertura, lcov, Istanbul come formato del report di riepilogo json, Blanket.js)
 
 {{site.data.keyword.DRA_short}} supporta inoltre i test Selenium e Jasmine. Questi test devono essere inclusi negli strumenti supportati ufficiali, come xUnit e Mocha. Per ulteriori informazioni sull'utilizzo contemporaneo di {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} e Selenium, consulta [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 

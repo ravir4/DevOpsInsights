@@ -34,7 +34,7 @@ Delivery Insights 的拓蹼包括 IBM UrbanCode Deploy <!-- (and optionally IBM 
 
 下圖顯示這些系統的一般安裝。
 
-![UrbanCode Insights（包括客戶內部部署系統及 IBM Cloud Services）的拓蹼概觀](images/uc_insights_overview_topology_multi_ucd.png)
+![UrbanCode Insights 的拓蹼概觀，包括客戶內部部署系統及 IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
 
 - **IBM UrbanCode Deploy** 的安裝會提供部署成功和失敗的相關資訊給度量值。IBM UrbanCode Deploy 需要修補程式，才能與 IBM Bluemix DevOps Connect 通訊。
 

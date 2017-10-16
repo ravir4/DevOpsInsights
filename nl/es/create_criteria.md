@@ -108,7 +108,7 @@ Puede exigir una prueba satisfactoria sea como sea marcándola como crítica. Pa
 
 * Prueba de verificación funcional (Mocha, xUnit)
 * Prueba de unidad (Mocha, xUnit, Karma/Mocha)
-* Cobertura de código (Istanbul como formato de informe de resumen de JSON, Blanket.js)
+* Cobertura de código (Cobertura, lcov, Istanbul como formato de informe json-summary, Blanket.js)
 
 {{site.data.keyword.DRA_short}} también da soporte a las pruebas de Selenium y Jasmine. Estas pruebas deben estar incluidas dentro de las herramientas soportadas oficialmente como, por ejemplo, xUnit y Mocha. Para obtener más información sobre el uso de {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} y Selenium conjuntamente, consulte [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 

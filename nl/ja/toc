@@ -12,7 +12,7 @@ IBM Cloud DevOps Insights
     about_delivery.md
 
   {: .topicgroup}
-    関連するリンク
+関連するリンク
         [ツールチェーンについて](../ContinuousDelivery/toolchains_about.html)
         [デリバリー・パイプラインの概説](../DeliveryPipeline/index.html)
         [IBM Cloud DevOps Insights on the IBM Cloud Garage Method](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
@@ -20,8 +20,7 @@ IBM Cloud DevOps Insights
 
   {: .navgroup id="howto"}
     risk_cd.md
-    jenkins_pipeline.md
-    risk_jenkins.md
+    [Jenkins との統合](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)
     uc_insights_connect_ucd.md
     risk_policies.md
     results.md

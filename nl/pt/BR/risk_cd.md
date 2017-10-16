@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-09-18"
 
 ---
 
@@ -12,34 +12,150 @@ lastupdated: "2017-04-07"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Integrando ao pipeline de entrega contínua
+# Integrando o Deployment Risk Analytics à entrega contínua
 
-Depois de incluir o {{site.data.keyword.DRA_short}} em uma cadeia de ferramentas e definir as políticas que ele monitora, integre-o a um {{site.data.keyword.deliverypipeline}}. Para obter mais informações sobre pipelines, veja [a documentação oficial](/docs/services/ContinuousDelivery/pipeline_working.html).
+É possível instrumentar pipelines para o {{site.data.keyword.contdelivery_full}} para usar recursos de análise do Deployment Risk do {{site.data.keyword.DRA_short}}. Em seguida, é possível publicar dados dessas tarefas e incluir portas que impingem políticas de riscos.
 
-## Preparando estágios de pipeline
+Para ver uma explicação de alto nível de análise do Deployment Risk do {{site.data.keyword.DRA_short}}, veja [Sobre o Deployment Risk](./about_risk.html).
+
+Para obter mais informações sobre pipelines de entrega contínua, veja [a documentação oficial](../ContinuousDelivery/pipeline_working.html).
+
+## Preparando estágios e tarefas de pipeline
 {: #integrate_pipeline}
 
-Para que o Deployment Risk analise seu projeto, deve-se definir estágios de preparação e de produção em seu pipeline. Você define os estágios usando propriedades do ambiente de texto, que podem ser localizadas no menu de configuração de cada estágio ![Ícone Configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png) em **Propriedades do ambiente**.
+Para começar, é necessário instrumentar seu pipeline para se comunicar com o {{site.data.keyword.DRA_short}}. Você faz isso definindo variáveis de ambiente específicas para todas as suas tarefas de pipeline que constroem, testam ou implementam código. Também deve-se incluir variáveis de ambiente em tarefas de teste que impingem políticas de riscos usando o tipo de testador da Porta do DevOps Insights.
 
-1. No estágio de preparação, configure a propriedade `LOGICAL_ENV_NAME` como `STAGING`. 
+* Registros de construção
+* Registros de implementação
+* Resultados de teste
 
-2. No estágio de produção, configure a propriedade `LOGICAL_ENV_NAME` como `PRODUCTION`. 
+Os resultados de teste devem fornecer dados em um destes formatos suportados:
 
-Também é possível incluir as propriedades a seguir em estágios que constroem ou implementam seu app:
+| Tipo de teste                | Formatos suportados                                               |
+|------------------------------|-----------------------------------------------------------------|
+| Teste de verificação funcional | Mocha, xUnit                                                    |
+| Teste de unidade             | Mocha, xUnit, Karma/Mocha                                       |
+| Cobertura de código          | Istanbul, Blanket.js, Cobertura, lcov                                           |
+| Varredura de app estático    | Varreduras de app estático fornecidas pelo IBM Application Security on Cloud  |
+| Varredura de app dinâmico    | Varreduras de app dinâmico fornecidas pelo IBM Application Security on Cloud |
+| SonarQube                    | Dados de varredura fornecidos pelas varreduras do SonarQube                      |
 
-* `LOGICAL_APP_NAME`, que define o nome do app no painel.
-* `BUILD_PREFIX`, que define o texto que é incluído nas construções do estágio. Esse texto também é mostrado no painel. 
+As variáveis de ambiente que você define no pipeline fornecem contexto para publicar esses registros. É possível defini-las usando o comando `export` nos scripts de suas tarefas. Também é possível configurá-las no menu Propriedades do ambiente de estágios de cada pipeline.
 
-## Incluindo tarefas de teste
+Variáveis de ambiente:
+
+| Variável de ambiente  | Propósito | Necessária em |
+|-----------|-------- |-------------|
+| `LOGICAL_APP_NAME`  | O nome do app no painel. | Todas as tarefas que constroem, testam, implementam e impingem políticas de riscos do {{site.data.keyword.DRA_short}}. |
+| `BUILD_PREFIX`  | O texto que é incluído como um prefixo nas construções do estágio. Esse texto também aparece no painel. | Todas as tarefas que constroem, testam, implementam e impingem políticas de riscos do {{site.data.keyword.DRA_short}}. |
+| `LOGICAL_ENV_NAME`  | O ambiente no qual o aplicativo é executado. | Tarefas de teste e implementação. |
+
+### Configurando tarefas de construção
+
+Para a última tarefa de construção em um estágio, configure variáveis de ambiente para um nome do aplicativo e prefixo de construção. Um script de exemplo incluiria estes comandos:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+```
+
+Quando essa tarefa de construção for concluída, o pipeline publicará uma mensagem no {{site.data.keyword.DRA_short}} que uma construção SampleApp está concluída.
+
+### Configurando tarefas de implementação
+
+Para a última tarefa de implementação no estágio, configure um nome do aplicativo, prefixo de construção e nome do ambiente. Um script de exemplo incluiria estes comandos:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+export LOGICAL_ENV_NAME="Production"
+```
+
+Quando essa tarefa de implementação for encerrada, o pipeline publicará uma mensagem no {{site.data.keyword.DRA_short}} que a construção e o app especificados foram implementados em um ambiente.
+
+### Configurando tarefas de teste
+
+Para todas as tarefas que produzem resultados de teste, configure um nome do aplicativo e prefixo de construção.
+
+Se a tarefa gera resultados de teste de verificação funcional (FVT), deve-se também configurar o nome do ambiente lógico onde quer que esses testes sejam executados.
+
+Um script de exemplo incluiria estes comandos:
+
+```
+export LOGICAL_APP_NAME="SampleApp"
+export BUILD_PREFIX="master"
+
+# The LOGICAL_ENV_NAME variable is only needed when publishing FVT results.
+export LOGICAL_ENV_NAME="Production"
+```
+
+Certifique-se de que os nomes de aplicativos e ambientes correspondam onde apropriado. Por exemplo, você deseja que uma tarefa de teste de produção que é executada com relação a uma implementação de produção tenha valores `LOGICAL_ENV_NAME` idênticos.
+
+## Publicando dados de teste no DevOps Insights
 {: #configure_pipeline_jobs}
 
-Você integra o {{site.data.keyword.DRA_short}} a seu pipeline usando dois tipos de tarefas de teste: aqueles que fazem upload dos resultados no {{site.data.keyword.DRA_short}} para análise e portas que agem nessa análise. 
+O {{site.data.keyword.DRA_short}} usa os resultados de teste de suas tarefas para gerar relatórios e impingir políticas de riscos. É possível publicar dados de teste de todos os tipos de tarefas.
 
-Primeiramente, você inclui tarefas do Testador avançado em seu pipeline para executar testes e fazer upload dos resultados. 
+Há duas opções para publicar os resultados de teste:
 
-**Nota:** se desejar atualizar uma tarefa de teste para fazer upload dos resultados no {{site.data.keyword.DRA_short}}, salve suas configurações em um local conveniente antes de continuar. Em seguida, abra seu menu de configuração de tarefa e vá para a etapa 3. 
+* Chamar uma interface da linha de comandos (CLI) simples no script de uma tarefa.
 
-1. No estágio no qual você deseja incluir a tarefa que faz upload dos resultados, clique no ícone **Configuração de estágio** ![Ícone Configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png). Clique em **Configurar
+* Inclua uma tarefa de teste com o tipo de Testador avançado em seu pipeline.
+
+Ao usar o método Testador avançado, você não publica os resultados de teste usando a CLI. Em vez disso, você especifica o local dos arquivos de resultado na tarefa de pipeline e a tarefa faz upload dos resultados à medida que eles se tornam disponíveis.
+
+Qualquer que seja o método de publicação usado, os resultados de teste devem estar em um dos formatos suportados pelo {{site.data.keyword.DRA_short}}:
+
+<table><thead>
+<tr>
+<th>Tipo de teste</th>
+<th>Formatos suportados</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Teste de verificação funcional</td>
+<td>Mocha, xUnit</td>
+</tr>
+<tr>
+<td>Teste de unidade</td>
+<td>Mocha, xUnit, Karma/Mocha</td>
+</tr>
+<tr>
+<td>Cobertura de código</td>
+<td>Istanbul, Blanket.js</td>
+</tr>
+</tbody></table>
+
+### Publicando dados de teste de qualquer tipo de tarefa
+
+Em um pipeline, é possível usar qualquer tipo de tarefa para executar um teste. Depois de executar esse teste, é possível fazer upload de seus resultados para o {{site.data.keyword.DRA_short}}. Você faz upload dos resultados chamando uma CLI no shell script da tarefa. 
+
+É possível fazer upload desses tipos de resultados de teste por meio da CLI:
+
+* Testes de unidade
+* Cobertura de código
+* Testes de verificação funcional
+* Resultados da varredura de app estático e dinâmico do IBM Application Security on Cloud. 
+
+Este é um script de exemplo que executa testes e, em seguida, faz upload dos resultados para o {{site.data.keyword.DRA_short}}: 
+
+```
+# Run tests and generate a test results file here.
+...
+
+# Then, publish results to DevOps Insights
+export PATH=/opt/IBM/node-v4.2/bin:$PATH
+npm install -g grunt-idra3
+idra --publishtestresult --filelocation=fvttest.json --type=fvt
+```
+
+Para saber mais sobre o comando `idra`, veja [a página do pacote grunt-idra3 no npm](https://www.npmjs.com/package/grunt-idra3). 
+
+### Publicando dados de teste de tarefas do Testador avançado
+
+É possível incluir tarefas de teste com o tipo de Testador avançado em um pipeline. Depois que são executadas, elas fazem upload automaticamente de seus resultados no {{site.data.keyword.DRA_short}}. 
+
+1. No estágio no qual você deseja incluir a tarefa que faz upload dos resultados, clique no ícone **Configuração de estágio** ![Ícone de configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png). Clique em **Configurar
 estágio**.
 2. Crie uma tarefa de teste e digite um nome para ela. 
 3. Para o tipo de tarefa, selecione **Testador avançado**.
@@ -52,33 +168,12 @@ estágio**.
 6. Se desejar fazer upload dos resultados para um segundo tipo de teste na mesma tarefa, preencha os campos prefixados com *Adicional*.
 7. Clique em **Salvar** para retornar para o pipeline.
 
-Os valores para os campos de **Tipo de métrica** e de **Local do arquivo de resultado** devem corresponder ao formato
-correto:
-
-<table><thead>
-<tr>
-<th>Tipo de métrica</th>
-<th>Formatos suportados</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Teste de verificação funcional</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Teste unitário</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Cobertura do Código</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
-
 A Figura 1 mostra uma tarefa de teste que está configurada para executar testes de unidade, fazer upload dos resultados no formato Mocha e fazer upload dos resultados da cobertura de código no formato Istanbul.
 
 ![Tarefa de upload do DevOps Insights](images/insights_upload_job.png)
 *Figura 1. Resultados de upload para o DevOps Insights*
+
+
 
 ## Definindo portas
 {: #configure_pipeline_gates}
@@ -90,8 +185,7 @@ O painel Deployment Risk depende da presença de uma porta após uma tarefa de i
 Geralmente, as portas são colocadas antes da promoção de construção em seu pipeline. Esses locais são ideais para verificar a qualidade da construção com relação a suas políticas, para assegurar que é seguro promover de um ambiente para outro. No entanto, é possível
 colocar portas em qualquer lugar no pipeline nas quais você deseja que um critério específico seja verificado. As portas que forem colocadas antes da implementação em um ambiente temporário continuarão a utilizar políticas, mas não aparecerão no painel Deployment Risk.
 
-1. Em um estágio, clique no ícone **Configuração de estágio** ![Ícone Configuração
-de estágio de pipeline](images/pipeline-stage-configuration-icon.png) e clique em Configurar estágio.
+1. Em um estágio, clique no ícone **Configuração de estágio** ![Ícone de configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png) e clique em **Configurar estágio**.
 2. Clique em **Incluir Tarefa**. Para o tipo de tarefa, selecione **Teste**.
 3. Para tipo de testador, selecione **Porta do {{site.data.keyword.DRA_short}}**.
 4. Especifique o nome do ambiente. Certifique-se de que esse valor corresponda ao que foi definido em suas

@@ -14,7 +14,7 @@ lastupdated: "2017-03-31"
 # 集成 DevOps Insights 与 IBM UrbanCode Deploy - 概述
 {: #uc_insights_overview}
 
-Delivery Insights 是 {{site.data.keyword.DRA_short}} 的一部分，可显示部署统计信息、度量以及有关 IBM UrbanCode Deploy 安装的其他信息。例如，可以显示部署持续时间、成功次数和失败次数的图表，所有数据均按以逻辑方式分组的环境排序。
+Delivery Insights 是 {{site.data.keyword.DRA_short}} 的一部分，可显示部署统计信息、度量值以及有关 IBM UrbanCode Deploy 安装的其他信息。例如，可以显示部署持续时间、成功次数和失败次数的图表，所有数据均按以逻辑方式分组的环境排序。
 {:shortdesc}
 
 如果没有工具链或 {{site.data.keyword.DRA_short}}，那么必须首先设置 {{site.data.keyword.DRA_short}}：
@@ -54,7 +54,7 @@ Delivery Insights 的拓扑包括 IBM UrbanCode Deploy <!-- (and optionally IBM 
 
 ![UrbanCode Insights 的概览拓扑，包括客户内部部署系统和 IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
 
-- 通过安装 **IBM UrbanCode Deploy**，可提供有关度量成功和失败部署的信息。IBM UrbanCode Deploy 需要补丁才可与 IBM Bluemix DevOps Connect 进行通信。
+- 通过安装 **IBM UrbanCode Deploy**，可提供有关度量值的成功和失败部署的信息。IBM UrbanCode Deploy 需要补丁才可与 IBM Bluemix DevOps Connect 进行通信。
 
 <!--
 - **IBM UrbanCode Release** is an optional part of the topology. You can use the environment mappings in IBM UrbanCode Release to set logical environments for reports.
@@ -65,4 +65,4 @@ Delivery Insights 的拓扑包括 IBM UrbanCode Deploy <!-- (and optionally IBM 
 
   DevOps Connect 需要插件才可连接到拓扑中的其他系统。
 
-- **Delivery Insights** 是 {{site.data.keyword.DRA_short}} 的一部分，根据环境组提供有关 IBM UrbanCode Deploy 上部署活动的度量，包括部署时间和失败率。授权通过 {{site.data.keyword.Bluemix}} 帐户进行控制。
+- **Delivery Insights** 是 {{site.data.keyword.DRA_short}} 的一部分，根据环境组提供有关 IBM UrbanCode Deploy 上部署活动的度量值，包括部署时间和失败率。授权通过 {{site.data.keyword.Bluemix}} 帐户进行控制。
