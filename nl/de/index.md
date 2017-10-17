@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-06-30"
 
 ---
 
@@ -24,7 +24,9 @@ lastupdated: "2017-04-07"
 
    * Team Dynamics verwendet soziale Codeanalysen, mit denen Sie feststellen können, wie gut Ihr Team zusammenarbeitet und wie diese Zusammenarbeit noch verbessert werden kann.
 
-   * Deployment Risk ist wie ein Sicherheitsnetz für Continuous Delivery. Die Komponente analysiert die Ergebnisse aus Komponententests, Funktionstests, Anwendungsscans und Codeabdeckungstools an bestimmten Gates in Ihrem Entwicklungsprozess und verhindert, dass riskante Änderungen freigegeben werden.
+   * Deployment Risk ist wie ein Sicherheitsnetz für Continuous Delivery. Die Komponente analysiert die Ergebnisse aus
+Komponententests, Funktionstests, Anwendungsscans und Codeabdeckungstools an bestimmten Gates in Ihrem Entwicklungsprozess und
+verhindert, dass riskante Änderungen freigegeben werden.
 
    * Mit Delivery Insights können Sie Bereitstellungsstatistiken, Metriken und weitere Informationen zu Ihrer IBM UrbanCode Deploy-Installation anzeigen. Beispielsweise können Diagramme über den Bereitstellungszeitraum, über erfolgreiche und fehlgeschlagene Bereitstellungen angezeigt werden, die alle nach logisch gruppierten Umgebungen sortiert sind. Weitere Informationen finden Sie in [Integration von DevOps Insights mit IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html).
 
@@ -35,7 +37,9 @@ Um {{site.data.keyword.DRA_short}} verwenden zu können, müssen Sie die Kompone
 ## DevOps Insights zu einer Toolchain hinzufügen
 {: #catalog}
 
-{{site.data.keyword.DRA_short}} ist eine Komponente von {{site.data.keyword.contdelivery_short}}. Sie können {{site.data.keyword.DRA_short}} zu jeder Toolchain hinzufügen, indem Sie die Komponente aus dem Toolintegrationskatalog auswählen.
+{{site.data.keyword.DRA_short}} steht über eine Integration mit Toolchains von
+{{site.data.keyword.contdelivery_full}} zur
+Verfügung. Sie können {{site.data.keyword.DRA_short}} zu jeder Toolchain hinzufügen, indem Sie die Komponente aus dem Toolintegrationskatalog auswählen.
 
 {{site.data.keyword.DRA_short}} ist zudem in vielen Toolchain-Vorlagen enthalten. Wenn Sie eine Toolchain aus einer Vorlage erstellen, die {{site.data.keyword.DRA_short}} enthält, stellen Sie sicher, dass {{site.data.keyword.DRA_short}} auf **Erweitert** gesetzt ist. Erstellen Sie dann die Toolchain und fahren Sie mit dem Abschnitt [Insights verwenden](/docs/services/DevOpsInsights/index.html#using) fort.
 
@@ -47,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um {{site.data.keyword.DRA_short}} zu ei
 
 3. Klicken Sie auf **Integration erstellen**.
 
-{{site.data.keyword.DRA_short}} ist nun auf der Übersichtsseite Ihrer Toolchain verfügbar. Das Repository und das Problemverfolgungssystem werden automatisch nach Daten durchsucht.  
+{{site.data.keyword.DRA_short}} ist nun auf der Übersichtsseite Ihrer Toolchain verfügbar. Das Repository und das Problemverfolgungssystem werden automatisch nach Daten durchsucht. 
 
 ## DevOps Insights verwenden
 {: #using}
@@ -60,4 +64,6 @@ Wenn Ihre Toolchain GitHub, GitLab oder JIRA enthält, stellt Ihnen {{site.data.
 
 3. Untersuchen Sie die Projektdaten, indem Sie die Dashboards in der Datenkategorie anzeigen. Wenn Sie mehr über ein Diagramm oder darüber wissen möchten, wie Sie die darin enthaltenen Informationen verarbeiten sollen, klicken Sie auf **Informationen** oder **Anweisungen**.
 
-Nachdem Sie Team Dynamics und Developer Insights untersucht haben, [konfigurieren Sie Deployment Risk](/docs/services/DevOpsInsights/insights_risk.html), um Codequalität durchsetzen zu können. Deployment Risk ist sowohl mit der {{site.data.keyword.contdelivery_short}} Pipeline als auch mit Jenkins kompatibel.   
+Konfigurieren Sie nach der Durchsicht von Team Dynamics und Developer Insights
+[Deployment Risk](/docs/services/DevOpsInsights/about_risk.html), um Codequalität durchsetzen zu können. Deployment
+ist sowohl mit Delivery Pipeline for {{site.data.keyword.contdelivery_short}} als auch mit Jenkins kompatibel.

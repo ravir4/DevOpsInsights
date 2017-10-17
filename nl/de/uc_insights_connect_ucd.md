@@ -2,7 +2,8 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-05-15"
+
+lastupdated: "2017-07-21"
 
 ---
 
@@ -28,46 +29,89 @@ Das System, das DevOps Connect hostet, muss die folgenden Voraussetzungen erfül
 - Die Systemvariable `PATH` muss die Position der JRE enthalten.
 - Es muss vom System her möglich sein, dass DevOps Connect abgehenden Verbindungen zu IBM Bluemix erstellen kann.
 
-Darüber hinaus muss der verwendete IBM UrbanCode Deploy-Server die Version 6.2 oder höher aufweisen. 
+Darüber hinaus muss der verwendete IBM UrbanCode Deploy-Server die Version 6.2 oder höher aufweisen.
 
 ## {{site.data.keyword.DRA_short}}-Service konfigurieren
 {: #configure_service}
 
-Wenn Sie über keine Toolchain oder keine {{site.data.keyword.DRA_short}}-Instanz verfügen, müssen Sie zunächst {{site.data.keyword.DRA_short}} einrichten:
-1. Klicken Sie im {{site.data.keyword.Bluemix}}-Katalog auf **{{site.data.keyword.DRA_short}}**, wählen Sie einen Preistarif und klicken Sie auf **Erstellen**.
-1. Klicken Sie auf die Registerkarte **Verwalten** und dann auf **Hier starten** oberhalb von **Einblicke in UrbanCode-Bereitstellungen**. Delivery Insights erstellt im Hintergrund eine Toolchain für Ihre Organisation. Toolchains sind Sammlungen von Toolintegrationen und im vorliegenden Fall sind IBM UrbanCode Deploy und {{site.data.keyword.DRA_short}} Teile der Toolchain. Weitere Informationen zu Toolchains finden Sie in [Arbeiten mit Toolchains](../ContinuousDelivery/toolchains_working.html).
+Falls Sie nicht über den Service {{site.data.keyword.DRA_short}} verfügen, fügen Sie ihn hinzu:
+1. Melden Sie sich bei {{site.data.keyword.Bluemix}} an und klicken Sie auf **Services > Dashboard**.
+1. Klicken Sie auf **Service erstellen**.
+1. Klicken Sie auf den Service {{site.data.keyword.DRA_short}}.
+1. Wählen Sie einen Preistarif aus und klicken Sie dann auf **Erstellen**.
+1. Klicken Sie auf **Verwalten** und klicken Sie anschließend unter der Option für Einblicke in die Bereitstellung
+von UrbanCode auf **Hier starten**.
+1. Klicken Sie im Fenster für die Toolchain-Vorlage auf **Erstellen**.  
+Delivery Insights erstellt eine Toolchain für Ihre Organisation. Toolchains sind Sammlungen von Toolintegrationen und im vorliegenden Fall sind IBM UrbanCode Deploy und {{site.data.keyword.DRA_short}} Teile der Toolchain. Weitere Informationen zu Toolchains finden Sie in [Arbeiten mit Toolchains](../ContinuousDelivery/toolchains_working.html).
+1. Klicken Sie in der Toolchain auf das Tool 'IBM UrbanCode Deploy'.
+1. Klicken Sie auf die Schaltfläche 'Einstellungen' und anschließend auf **Einrichten**.
 
-Wenn Sie bereits über eine Toolchain verfügen, befolgen Sie die folgenden Schritte zum Hinzufügen von Delivery Insights:
-1. Falls Sie das Tool {{site.data.keyword.DRA_short}} noch nicht haben, fügen Sie es zur Toolchain hinzu.
-1. Klicken Sie in der Toolchain auf das Tool {{site.data.keyword.DRA_short}}.
-1. Rufen Sie die Seite **Einstellungen > Delivery Insights-Einrichtung** auf.
+In Zukunft können Sie {{site.data.keyword.DRA_short}} aufrufen, indem Sie auf **Services
+> Dashboard** klicken und anschließend auf Ihre Instanz des Service {{site.data.keyword.DRA_short}} klicken.
 
-Nun können Sie die Anweisungen auf der Seite **Delivery Insights-Einrichtung** ausführen, um DevOps Connect zu installieren und eine Verbindung zu {{site.data.keyword.DRA_short}} herzustellen, wie im folgenden Abschnitt beschrieben.
+Wenn Sie bereits über eine Toolchain verfügen, können Sie IBM UrbanCode Deploy und {{site.data.keyword.DRA_short}}-Tools zu dieser
+Toolchain hinzufügen und über diese Tools auf Delivery Insights zugreifen. Klicken Sie anschließend auf das Tool 'IBM UrbanCode Deploy', klicken
+Sie auf die Schaltfläche 'Einstellungen' und klicken Sie dann auf **Einrichten**.
+
+Nun können Sie die Anweisungen auf der Seite **Einrichten** ausführen, um DevOps Connect zu installieren und eine
+Verbindung zu {{site.data.keyword.DRA_short}} herzustellen, wie im folgenden Abschnitt beschrieben.
 
 ## DevOps Connect installieren und eine Verbindung zu {{site.data.keyword.DRA_short}} herstellen
 {: #install_connect}
 
-1. Führen Sie auf der Seite für die Einrichtung von Delivery Insights die Schritte zum Einrichten von DevOps Connect durch und verbinden Sie die IBM UrbanCode Deploy-Server. Diese Schritte umfassen Folgendes:
+1. Führen Sie auf der Seite **Einrichten** die Schritte zum Einrichten von DevOps Connect aus und verbinden Sie Ihre
+IBM UrbanCode Deploy-Server. Diese Schritte umfassen Folgendes:
 {: #set_up_connect}
   1. Einrichten eines Systems zur Ausführung von DevOps Connect, wie in den [Voraussetzungen](uc_insights_connect_ucd.html#prereqs) beschrieben.
   1. Herunterladen von DevOps Connect, das in einer ausführbaren JAR-Datei bereitgestellt wird.
-  1. Kopieren des Scripts auf der Seite **Delivery Insights-Einrichtung** und Ausführen des Scripts. Mit diesem Befehl wird DevOps Connect mit einem Token gestartet, das die Herstellung einer Verbindung zu Ihrer Organisation in {{site.data.keyword.Bluemix}} ermöglicht.
-  1. Herstellen einer Verbindung von den IBM UrbanCode Deploy-Servern zu DevOps Connect, wie im folgenden Abschnitt beschrieben.
+
+  1. Wenn Sie für die Verbindung zum Internet einen Proxy verwenden, legen Sie für die Umgebungsvariable
+`_JAVA_OPTIONS` folgenden Wert fest:
+    * Wenn der Proxy HTTPS verwendet, legen Sie für `_JAVA_OPTIONS` den Wert
+`-Dhttps.proxyHost=HOSTNAME -Dhttps.proxyPort=PORT` fest; dabei ist `HOSTNAME` der Hostname des Proxy-Servers
+und `PORT` der HTTPS-Port des Proxy-Servers.
+    * Wenn der Proxy HTTP verwendet, legen Sie für `_JAVA_OPTIONS` den Wert
+`-Dhttp.proxyHost=HOSTNAME -Dhttp.proxyPort=PORT` fest; dabei ist `HOSTNAME` der Hostname des Proxy-Servers
+und `PORT` der HTTP-Port des Proxy-Servers.
+
+  1. Kopieren Sie den Befehl von der Seite mit den Anweisungen für **Einrichten**. Mit diesem Befehl wird DevOps Connect mit einem Token gestartet, das die Herstellung einer Verbindung zu Ihrer Organisation in {{site.data.keyword.Bluemix}} ermöglicht.
+  1. DevOps Connect wird standardmäßig an Port 8443 ausgeführt; dies ist derselbe Port, an dem auch der IBM UrbanCode Deploy-Server
+standardmäßig ausgeführt wird. Wenn der IBM UrbanCode Deploy-Server oder ein beliebiger anderer
+Service an Port 8443 ausgeführt wird, ändern Sie daher für DevOps Connect den Port, indem Sie den Parameter `-Dserver.port`
+zum Befehl hinzufügen. Wenn Sie beispielsweise festlegen möchten, dass DevOps Connect Port 8888 verwendet, sieht der Anfang des Befehls ähnlich
+dem Folgenden aus:  
+```bash
+java -Dserver.port=8888 -jar devops-connect-2.0.92clear0618.jar -Dserver.port=8888
+```  
+
+Der vollständige Befehl enthält Informationen zu Ihrem Bluemix-Konto, das automatisch eine Konfiguration von DevOps Connect ausführt, wie
+im folgenden Beispiel gezeigt:
+
+```bash
+java -Dserver.port=8888 -jar devops-connect-2.0.920618.jar --sync.id=a2c12cb9-9a09-9832-479b01bf --sync.token=j0zs325U6qp080pzpcQ  --sync.registrar=jsmith@example.com
+```
+
+  1. Führen Sie den Befehl aus und warten Sie, bis DevOps Connect gestartet wurde.
+
+  1. Stellen Sie zwischen Ihren IBM UrbanCode Deploy-Servern und DevOps Connect eine Verbindung her, wie im folgenden Abschnitt beschrieben.
 
 ## Verbindung für IBM UrbanCode Deploy-Server zu DevOps Connect herstellen
 {: #connect_ucd_to_connect}
 
-1. Installieren Sie das Patch auf Ihrem IBM UrbanCode Deploy-Server. Alle Versionen von IBM UrbanCode Deploy benötigen ein Patch für die Kommunikation mit DevOps Connect. 
-  1. Laden Sie das richtige Patch für Ihre Version von IBM UrbanCode Deploy herunter, indem Sie die folgende Seite aufrufen und das entsprechende Patch herunterladen:
-  [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/).
+1. Wenn Ihr IBM UrbanCode Deploy-Server eine Version vor 6.2.5 aufweist, installieren Sie ein Patch auf dem Server. Für die Versionen
+ab 6.2.5 ist kein Patch erforderlich.
+  1. Laden Sie das für Ihre Version von IBM UrbanCode Deploy erforderliche Patch von der folgenden Seite herunter. Der Name der Patchdatei
+für beispielsweise IBM UrbanCode Deploy 6.2.4.x lautet
+[ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar).  
+  
+    [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
 
-  1. Extrahieren Sie die Datei. Sie enthält eine oder mehrere Patchdateien, die dem Server hinzugefügt werden müssen.
-
-  1. Stoppen Sie den Server. Informationen hierzu finden Sie in der Veröffentlichung zum [Starten und Stoppen des Servers](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.install.doc/topics/run_server.html).
+  1. Stoppen Sie den Server. Informationen hierzu finden Sie in der Veröffentlichung zum [Starten und Stoppen des Servers](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.install.doc/topics/run_server.html).
 
   1. Legen Sie die Dateien im Ordner <code><em>anwendungsdaten</em>/patches</code> ab, wobei <code><em>anwendungsdaten</em></code> der Ordner mit den Serveranwendungsdaten ist. Der Standardanwendungsdatenordner lautet unter Linux `/opt/ibm-ucd/server/appdata` und unter Windows `C:\Programme\ibm-ucd\server\appdata`. Auf Hochverfügbarkeitssystemen befindet sich der Anwendungsdatenorder immer auf einem gemeinsam genutzten Netzlaufwerk, auf das jeder Server Zugriff hat.
 
-  1. Optional: Während der Server gestoppt ist, können Sie den Datenimport von diesem Server verbessern, indem Sie für die Datenbank die folgenden SQL-Befehle ausführen:  
+  1. Optional: Während der Server gestoppt ist, können Sie den Datenimport von diesem Server verbessern, indem Sie für die Datenbank
+die folgenden SQL-Befehle ausführen. Diese Befehle sind für Version 6.2.5 und höhere Versionen nicht erforderlich.  
   `create index rt_cpr_submitted_time on MyUCDDatabase.rt_app_process_request(submitted_time);`  
   `create index rt_cpr_submitted_time on MyUCDDatabase.rt_comp_process_request(component_id, submitted_time);`  
   Verwenden Sie den Namen Ihrer Datenbank für `MyUCDDatabase`.
@@ -87,7 +131,7 @@ Nun können Sie die Anweisungen auf der Seite **Delivery Insights-Einrichtung** 
 1. Erstellen Sie eine Integration zwischen DevOps Connect und dem IBM UrbanCode Deploy-Server:  
 
   **Wichtig:** Bei der ersten Ausführung der Integration ruft DevOps Connect Daten für die letzten 90 Tage ab. Wenn Sie über eine große Menge an Bereitstellungsdaten verfügen, kann dieser Prozess sehr lange dauern. Informationen darüber, wie Sie Daten für weniger als 90 Tage abrufen, finden Sie in [Fehlerbehebung](uc_insights_connect_ucd.html#troubleshooting).
-  1. Erstellen Sie in IBM UrbanCode Deploy ein Authentifizierungstoken. Weitere Informationen finden Sie in der Veröffentlichung [Tokens](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.4/com.ibm.udeploy.admin.doc/topics/security_token.html).
+  1. Erstellen Sie in IBM UrbanCode Deploy ein Authentifizierungstoken. Weitere Informationen finden Sie in der Veröffentlichung [Tokens](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.admin.doc/topics/security_token.html).
   1. Klicken Sie in DevOps Connect auf **Integrationen** und dann auf **Neue hinzufügen**.
   1. Geben Sie einen Namen und eine Beschreibung für die Integration an. Die Standardposition von DevOps Connect ist `https://hostname:8443/`, wobei `hostname` der Hostname des Systems ist, das DevOps Connect hostet.
   1. Wählen Sie aus der Liste mit den Integrationstypen die Option **IBM UrbanCode Deploy for Cloud Reporting** aus.
@@ -118,23 +162,53 @@ Standardmäßig umfassen Ihre Berichte logische Umgebungen, die IBM UrbanCode De
 
 Sie können physische Umgebungen manuell zu logischen Umgebungen zuordnen oder physische Umgebungen mithilfe von Mustern dynamisch mit logischen Umgebungen verknüpfen.
 
-Führen Sie die folgenden Schritte durch, um physische Umgebungen mithilfe eines Musters zu logischen Umgebungen zuzuordnen:
+Führen Sie die folgenden Schritte aus, um physische Umgebungen zu logischen Umgebungen zuzuordnen:
 
-1. Klicken Sie in {{site.data.keyword.DRA_short}} auf **Delivery Insights > Umgebungen zuordnen**.
-1. Klicken Sie auf eine vorhandene logische Umgebung oder auf **Logische Umgebung hinzufügen**.
-1. Klicken Sie in den Einstellungen für die logische Umgebung unter **Muster** auf **Muster hinzufügen**.
-1. Geben Sie ein Muster für Umgebungsnamen an. Sie können dabei den Stern (*) als Platzhalter verwenden. Das Muster `env` entspricht beispielsweise den Umgebungen `env1`, `env2` und `env`.
+1. Öffnen Sie Delivery Insights, klicken Sie auf die Schaltfläche 'Einstellungen' und klicken Sie auf
+die Option für **Umgebungen zuordnen**.
+1. Klicken Sie auf der Seite für die Zuordnung von Umgebungen auf eine vorhandene logische Umgebung oder erstellen Sie eine logische
+Umgebung, indem Sie auf die Option für **Logische Umgebung hinzufügen** klicken.
+1. Bei ausgewählter logischer Umgebung können Sie Muster angeben, wie Umgebungen zur logischen Umgebung hinzugefügt werden sollen. Klicken
+Sie unter der Option für enthaltene Muster auf **Muster hinzufügen** und geben Sie ein zu verwendendes Muster an. Alle
+Umgebungen mit Namen, die mit dem Muster übereinstimmen, einschließlich Umgebungen, die Sie später erstellen, werden der logischen Umgebung
+hinzugefügt. Sie können dabei den Stern (*) als Platzhalter verwenden. Das Muster `env` entspricht beispielsweise den Umgebungen `env1`, `env2` und `env`.
+1. Um Umgebungen manuell zu logischen Umgebungen zuzuordnen, klicken Sie auf **Manuell hinzufügen** und wählen Sie die Umgebungen aus, die hinzugefügt oder entfernt werden sollen.
 1. Prüfen Sie, ob die logische Umgebung die von Ihnen gewünschten Umgebungen enthält.
 
-Um Umgebungen manuell zu logischen Umgebungen zuzuordnen, klicken Sie auf **Manuell hinzufügen** und wählen Sie die Umgebungen aus, die hinzugefügt oder entfernt werden sollen.
-
-![Integration in DevOps Connect einrichten](images/uc_insights_mapping_manually.gif)
+![Zuordnung zur logischen Umgebung einrichten](images/uc_insights_mapping_manually.gif)
 
 Nachdem Sie Umgebungen logischen Umgebungen zugeordnet haben, können Sie nun Berichtsinformationen nach diesen logischen Gruppen zusammenfassen.
 
+## Anwendungen zu Geschäftsbereichen zuordnen
+{: #lines}
+
+Geschäftsbereiche sind Gruppen von Anwendungen, die einem gemeinsamen Geschäftszweck dienen. Sie können Ihre Anwendungen
+Geschäftsbereichen zuordnen, um das Filtern der Anwendungen in Diagrammen zu vereinfachen. Sie können auch Diagramme erstellen, die auf
+Geschäftsbereichen basieren.
+
+Führen Sie folgende Schritte aus, um Geschäftsbereiche (LOBs - Lines of Business) einzurichten:
+
+1. Klicken Sie in {{site.data.keyword.DRA_short}} auf **Delivery Insights**, klicken Sie auf die Schaltfläche
+'Einstellungen' und klicken Sie anschließend auf die Option für **Geschäftsbereiche zuordnen**.
+1. Klicken Sie auf der Seite für die Zuordnung von Geschäftsbereichen auf einen vorhandenen Geschäftsbereich oder erstellen Sie
+einen Geschäftsbereich durch Eingeben eines Namens und Klicken auf **Erstellen**.
+1. Bei ausgewähltem Geschäftsbereich können Sie Muster angeben, mithilfe derer Anwendungen zum Geschäftsbereich zugeordnet werden
+sollen. Klicken
+Sie unter der Option für enthaltene Muster auf **Muster hinzufügen** und geben Sie ein zu verwendendes Muster an. Alle
+Anwendungen mit Namen, die mit dem Muster übereinstimmen, einschließlich Anwendungen, die Sie später erstellen, werden dem Geschäftsbereich
+hinzugefügt.  Sie können dabei den Stern (*) als Platzhalter verwenden. Das Muster `env` entspricht beispielsweise den Umgebungen `env1`, `env2` und `env`.
+1. Sie können Anwendungen auch manuell zum Geschäftsbereich hinzufügen, indem Sie auf die Option für **Einzeln zugeordnete
+Anwendungen** klicken und anschließend auf die Option zum Hinzufügen von Anwendungen klicken.
+
+Nach dem Einrichten Ihrer Geschäftsbereiche können Sie Diagramme filtern, um nur Anwendungen in bestimmten Geschäftsbereichen
+anzuzeigen. Andere Diagramme zeigen Metriken, die auf Geschäftsbereichen basieren.
+
 ## Berichte erstellen
 
-Um einen Bericht zu erstellen, öffnen Sie {{site.data.keyword.DRA_short}}, klicken Sie auf **Delivery Insights > Bericht** und anschließend **Bericht hinzufügen**. 
+Zum Erstellen eines Berichts öffnen Sie {{site.data.keyword.DRA_short}}, klicken Sie auf **Delivery
+Insights** und anschließend auf die Option für **Bericht hinzufügen**. Wenn die Option für **Bericht
+hinzufügen** nicht angezeigt wird, sind Ihre IBM UrbanCode Deploy-Server nicht verbunden. Klicken Sie auf die Schaltfläche
+'Einstellungen' und klicken Sie anschließend auf **Einrichten**, um eine Verbindung für Ihre Server herzustellen.
 
 Aus dem Bericht heraus können Sie Karten zum Abschnitt **Metriken** hinzufügen, die Aktivität unter **Letzte Anwendungsaktivität** filtern und Diagramme zum Abschnitt mit den Berichtsdetails hinzufügen. Jedes Diagramm im Abschnitt mit den Berichtsdetails kann individuell gefiltert und angepasst werden. Um die Rohdaten hinter einem Diagramm zu sehen, klicken Sie oben rechts im Diagramm auf die Schaltfläche für die Einstellungen und dann auf **Berichtsdaten**.
 
@@ -147,7 +221,9 @@ Standardmäßig werden nur die Delivery Insights-Berichte angezeigt. Sie können
 
 ## Prüfberichte erstellen
 
-Prüfberichte zeigen eine vollständige Liste aller Aktivitäten, die den von Ihnen festgelegten Filtern entsprechen, im PDF-Format an. Um einen Prüfbericht zu erstellen, klicken Sie auf **Delivery Insights > Prüfbericht erstellen**. Legen Sie dann die Informationen für den Bericht, einschließlich eines Namens, fest. Geben Sie zudem den Kontext für den Bericht an, beispielsweise für eine Anwendung, eine logische Umgebung oder eine Umgebung auf einem IBM UrbanCode Deploy-Server (eine physische Umgebung). Wählen Sie von hier aus die Daten aus, die im Bericht enthalten sein sollen, und klicken Sie auf **Erstellen**. 
+Prüfberichte zeigen eine vollständige Liste aller Aktivitäten, die den von Ihnen festgelegten Filtern entsprechen, im PDF-Format an. Klicken
+Sie zum Erstellen eines Prüfberichts auf **Delivery Insights**, klicken Sie auf die Schaltfläche 'Einstellungen' und klicken
+Sie anschließend auf die Option für **Prüfbericht erstellen**. Legen Sie dann die Informationen für den Bericht, einschließlich eines Namens, fest. Geben Sie zudem den Kontext für den Bericht an, beispielsweise für eine Anwendung, eine logische Umgebung oder eine Umgebung auf einem IBM UrbanCode Deploy-Server (eine physische Umgebung). Wählen Sie von hier aus die Daten aus, die im Bericht enthalten sein sollen, und klicken Sie auf **Erstellen**. 
 
 ## Fehlerbehebung
 {: #troubleshooting}

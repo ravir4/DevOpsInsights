@@ -54,7 +54,8 @@ Sie können immer eine erfolgreiche Durchführung verlangen, indem Sie Tests als
 
 2. Geben Sie an (in Prozent), wie viele Testfälle bestanden haben müssen, damit sie als erfolgreich deklariert werden können.
 
-3. Definieren Sie beliebige kritische Testfälle.
+3. Definieren Sie beliebige kritische Testfälle. Lesen Sie zum Ermitteln von Testfallnamen
+[Formate und Tools für Testergebnisse](#criteria_formats).
 
 4. Wählen Sie für die Überwachung von Testfallregressionen das entsprechende Kontrollkästchen aus.
 
@@ -68,7 +69,8 @@ Sie können immer eine erfolgreiche Durchführung verlangen, indem Sie Tests als
 
 2. Geben Sie an (in Prozent), wie viele Testfälle bestanden haben müssen, damit sie als erfolgreich deklariert werden können.
 
-3. Definieren Sie beliebige kritische Testfälle.
+3. Definieren Sie beliebige kritische Testfälle. Lesen Sie zum Ermitteln von Testfallnamen
+[Formate und Tools für Testergebnisse](#criteria_formats).
 
 4. Wählen Sie für die Überwachung von Testfallregressionen das entsprechende Kontrollkästchen aus.
 
@@ -107,3 +109,39 @@ Sie können {{site.data.keyword.DRA_short}} mit {{site.data.keyword.appseccloudf
 2. Geben Sie jeweils die maximale Anzahl von Problemen mit hohem, mittlerem und niedrigem Schweregrad an, die gemäß der Regel zulässig sind. 
 
 3. Klicken Sie auf **Speichern**.
+
+## Formate und Tools für Testergebnisse
+{: #criteria_formats}
+
+Für Testfälle unterstützt {{site.data.keyword.DRA_short}} folgende Typen von Metriken und Formaten:
+
+* Funktionsüberprüfungstest (Mocha, xUnit)
+* Komponententest (Mocha, xUnit, Karma/Mocha)
+* Codeabdeckung (Cobertura, lcov, Istanbul als JSON-Format für Übersichtsberichte, Blanket.js)
+
+{{site.data.keyword.DRA_short}} unterstützt auch Selenium- und Jasmine-Tests. Diese Tests müssen in den offiziell unterstützten Tools wie xUnit und Mocha integriert sein. Weitere Informationen zur gemeinsamen Verwendung von {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} und Selenium finden Sie unter [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
+
+Für Elemente mit Testfällen können Sie kritische Testfälle angeben; dabei handelt es sich um Tests, die unabhängig vom zulässigen Prozentsatz bestanden werden müssen. Namen für kritische Testfälle müssen mit dem Attribut `full title` des Testfalls übereinstimmen.    
+* Bei Karma/Mocha-Tests sind die Beschreibungszeichenfolgen `describe()` und `it()` durch Leerzeichen verbunden.
+* Bei xUnit-Tests sind Paketname, Klassenname und Funktionsname durch Leerzeichen verbunden. Dies wird durch das folgende Beispiel veranschaulicht:
+  ```
+  <testsuites package="test">
+    <testsuite package="otc-api" name="PUT Service Instances - Test Setup" tests="2" failures="0" errors="0">
+      <testcase name="#1 Authorization passed for mock user: idsb3t1@us.ibm.com"/>
+      <testcase name="#2 Authorization passed for mock user: idsb3t4@us.ibm.com"/>
+    </testsuite>
+  </testsuite>
+  ```
+  Dieses Beispiel generiert die folgenden Testfallnamen:
+  ```
+  test otc-api PUT Service Instances - Test Setup #1 Authorization passed for mock user: idsb3t1@us.ibm.com
+  test otc-api PUT Service Instances - Test Setup #2 Authorization passed for mock user: idsb3t1@us.ibm.com
+  ```
+
+Sie können Sauce Labs mit {{site.data.keyword.DRA_short}} verwenden; fügen Sie hierfür die Sauce Labs-Toolintegration zu Ihrer Pipeline hinzu. Integrieren Sie anschließend die Umgebungsvariablen `SAUCE_USERNAME` und `SAUCE_ACCESS_KEY` als Berechtigungsnachweise in die Selenium-Tests.
+
+Sie können die vollständigen Titel aller Tests nach einer Ausführung in den Protokollen sehen.  
+
+**Anmerkungen:**
+* {{site.data.keyword.DRA_short}} unterstützt keine kritischen Tests, die einen Bindestrich im vollständigen Titel enthalten.    
+* Wenn Sie Ihren Organisationsnamen ändern, müssen Sie die Richtlinien, die dem vorherigen Namen zugeordnet waren, neu erstellen. Der Zugriff auf Entscheidungsberichte, die vor der Namensänderung generiert wurden, geht sonst verloren.

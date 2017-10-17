@@ -15,13 +15,16 @@ lastupdated: "2017-05-19"
 
 # Integration mit Jenkins Pipeline
 
-Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolchain und dem Definieren der von dieser Komponente überwachten Richtlinien können Sie sie mit einem Jenkins Pipeline-Projekt integrieren. Sie definieren eine Pipeline in der Jenkins-Webschnittstelle oder in einer *Jenkinsfile*, die Sie in Ihrem Repository für die Quellcodeverwaltung speichern. Sie können Jenkins Pipeline-Projekte über die Jenkins-Webschnittstelle anzeigen und verwalten. 
+Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolchain und dem Definieren der von dieser Komponente überwachten Richtlinien können Sie sie mit einem Jenkins Pipeline-Projekt integrieren. Sie definieren eine Pipeline in der Jenkins-Webschnittstelle oder in einer _Jenkinsfile_, die Sie in Ihrem Repository für die Quellcodeverwaltung speichern. Sie können Jenkins Pipeline-Projekte über die Jenkins-Webschnittstelle anzeigen und verwalten. 
 
-Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine *Toolchain* ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine _Toolchain_ ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
-Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie das Jenkins-Projekt so konfigurieren, dass Testergebnisse in {{site.data.keyword.DRA_short}} publiziert werden, die Build-Qualität automatisch an Gates bewertet wird und Ihre Bereitstellungsrisiken überwacht werden. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
+Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie das Jenkins-Projekt so konfigurieren, dass Testergebnisse in
+{{site.data.keyword.DRA_short}} veröffentlicht werden, die Buildqualität automatisch an Gates bewertet wird und Ihre
+Bereitstellungsrisiken überwacht werden. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
 
-Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu bestimmen, ob Ihr Code den vordefinierten Richtlinien an Gates in Ihrem Bereitstellungsprozess entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
+Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen
+Sicherheitsscans, um zu bestimmen, ob Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
 
 Wenn Sie mit Jenkins Pipeline vertraut sind, lesen Sie weiter. Andernfalls lesen Sie die Dokumentation zu [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/), bevor Sie weitere Schritte ausführen.
 
@@ -42,7 +45,7 @@ Bevor Sie {{site.data.keyword.DRA_short}} mit einem Jenkins-Projekt integrieren 
 ## Plug-in installieren
 {: #jenkins_install}
 
-Installieren Sie das Plug-in auf dem Jenkins-Server, indem Sie die Serverschnittstelle öffnen und die folgenden Schritte ausführen: 
+Installieren Sie das Plug-in auf dem Jenkins-Server, indem Sie die Serverschnittstelle öffnen und die folgenden Schritte ausführen:
 
 1. Klicken Sie auf **Jenkins verwalten**.
 2. Klicken Sie auf **Plug-ins verwalten**. 
@@ -51,7 +54,7 @@ Installieren Sie das Plug-in auf dem Jenkins-Server, indem Sie die Serverschnitt
 5. Wählen Sie **IBM Cloud DevOps** aus.
 6. Klicken Sie auf **Jetzt herunterladen und nach dem Neustart installieren**. 
 
-Das Plug-in ist nach dem Neustart des Servers verfügbar.   
+Das Plug-in ist nach dem Neustart des Servers verfügbar.  
 
 ## Eine Pipeline erstellen
 {: #jenkinsfile_create}
@@ -60,25 +63,25 @@ Sie definieren Pipelines entweder im Konfigurationsmenü des Jenkins-Projekts od
 
 ## Erforderliche Umgebungsvariablen bereitstellen
 
-Öffnen Sie die Pipelinedefinition.  
+Öffnen Sie die Pipelinedefinition. 
 
 Fügen Sie in der Definition die folgenden Umgebungsvariablen hinzu. Diese Variablen werden für die Pipeline für die Integration mit {{site.data.keyword.DRA_short}} benötigt.
 
 | Umgebungsvariable        | Definition    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Bluemix-Berechtigungsnachweise, die Sie mithilfe des Befehls `credentials` in Jenkins definieren. Beispiel: `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Durch das Festlegen der Variablen mit diesem Befehl werden automatisch zwei weitere Umgebungsvariablen festgelegt: `IBM_CLOUD_DEVOPS_CREDS_USR` und `IBM_CLOUD_DEVOPS_CREDS_PSW` für den Benutzernamen und das Kennwort.   |
+| `IBM_CLOUD_DEVOPS_CREDS`    | Bluemix-Berechtigungsnachweise, die Sie mithilfe des Befehls `credentials` in Jenkins definieren. Beispiel: `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Durch das Festlegen der Variablen mit diesem Befehl werden automatisch zwei weitere Umgebungsvariablen festgelegt: `IBM_CLOUD_DEVOPS_CREDS_USR` und `IBM_CLOUD_DEVOPS_CREDS_PSW` für den Benutzernamen und das Kennwort.  |
 | `IBM_CLOUD_DEVOPS_ORG`      | Die Bluemix-Organisation, zu der Ihre Toolchain gehört.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Der Name der Anwendung, die Ihre Toolchain bereitstellt.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | Die ID Ihrer Toolchain. Öffnen Sie die Übersicht der Toolchain und sehen Sie sich die URL an, um die ID zu bestimmen. Das URL-Format der Toolchain ist `https://console.ng.bluemix.net/devops/toolchains/[IHRE_TOOLCHAIN-ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Der Webhook, der Ihnen beim Hinzufügen von Jenkins zur Toolchain bereitgestellt wurde.   |
 
-Weitere Informationen zum Befehl `credentials` finden Sie in der Dokumentation zu [Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment).
+Weitere Informationen zum Befehl `credentials` finden Sie in der Dokumentation zu [Jenkins Pipeline](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment). 
 {: tip}
 
 Wenn Sie das scriptbasierte Pipelineformat verwenden, verwenden Sie für das Festlegen der Berechtigungsnachweise `withCredentials` und für das Festlegen der Umgebung `withEnv` anstelle von `credentials` bzw. `environment`, die im folgenden Beispiel verwendet werden. Weitere Informationen zu `withCredentials` finden Sie in [der Jenkins-Dokumentation](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
 {: tip} 
 
-Diese Umgebungsvariablen und Berechtigungsnachweise werden vom IBM Cloud DevOps-Plug-in für die Interaktion mit DevOps Insights verwendet. In diesem Beispiel werden sie im deklarativen Pipelineformat festgelegt.  
+Diese Umgebungsvariablen und Berechtigungsnachweise werden vom IBM Cloud DevOps-Plug-in für die Interaktion mit DevOps Insights verwendet. In diesem Beispiel werden sie im deklarativen Pipelineformat festgelegt. 
 
 ```
 environment {
@@ -94,16 +97,16 @@ environment {
 ## Cloud DevOps-Schritte hinzufügen
 Das Cloud DevOps-Plug-in fügt vier Schritte zu Jenkins-Pipelines hinzu. Sie können diese Schritte in Ihren Pipelines für die Interaktion mit DevOps Insights verwenden. 
 
-* `publishBuildRecord`, mit dem Buildinformationen in DevOps Insights publiziert werden.
-* `publishTestResult`, mit dem Testergebnisse in DevOps Insights publiziert werden.
-* `publishDeployRecord`, mit dem Bereitstellungsdatensätze in DevOps Insights publiziert werden.
+* `publishBuildRecord`, mit dem Buildinformationen in DevOps Insights veröffentlicht werden.
+* `publishTestResult`, mit dem Testergebnisse in DevOps Insights veröffentlicht werden.
+* `publishDeployRecord`, mit dem Bereitstellungsdatensätze in DevOps Insights veröffentlicht werden.
 * `evaluateGate`, mit dem DevOps Insights-Richtlinien durchgesetzt werden. 
 
-Fügen Sie die Schritte zu Ihrer Pipelinedefinition an den Stellen hinzu, an denen sie ausgeführt werden sollen. Beispielsweise können Sie Testergebnisse nach dem Ausführen eines Tests hochladen und dann diese Ergebnisse nach dem Hochladen an einem Gate bewerten.  
+Fügen Sie die Schritte zu Ihrer Pipelinedefinition an den Stellen hinzu, an denen sie ausgeführt werden sollen. Beispielsweise können Sie Testergebnisse nach dem Ausführen eines Tests hochladen und dann diese Ergebnisse nach dem Hochladen an einem Gate bewerten. 
 
-### Builddatensätze publizieren
+### Builddatensätze veröffentlichen
 
-Publizieren Sie Builddatensätze mit dem Schritt `publishBuildRecord`. Für diesen Schritt sind vier Parameter erforderlich.
+Veröffentlichen Sie Builddatensätze mit dem Schritt `publishBuildRecord`. Für diesen Schritt sind vier Parameter erforderlich.
 
 | Parameter        | Definition    |
 | ----------------------------|---------------|
@@ -112,7 +115,7 @@ Publizieren Sie Builddatensätze mit dem Schritt `publishBuildRecord`. Für dies
 | `gitRepo` | Die URL des Git-Repositorys.   |
 | `result` | Das Ergebnis der Buildstufe. Der Wert lautet `SUCCESS` oder `FAIL`.   |
 
-Dieses Beispiel veranschaulicht die Verwendung dieser Parameter in einem Befehl: 
+Dieses Beispiel veranschaulicht die Verwendung dieser Parameter in einem Befehl:
 
 ```
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
@@ -121,32 +124,35 @@ publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRe
 Jenkins Pipeline stellt Git-Informationen nicht in Form von Umgebungsvariablen bereit. Sie können die Git-Commit-ID mithilfe des Befehls `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` abrufen.
 {: tip}
 
-### Testergebnisse publizieren
-Publizieren Sie Builddatensätze mit dem Schritt `publishTestResult`. Für diesen Schritt sind zwei Parameter erforderlich.
+### Testergebnisse veröffentlichen
+Veröffentlichen Sie Builddatensätze mit dem Schritt `publishTestResult`. Für diesen Schritt sind zwei Parameter erforderlich.
 
 | Parameter        | Definition    |
 | ----------------------------|---------------|
-| `type`    | Der Typ des Testergebnisses. Der Wert für diesen Parameter muss `unittest` für Komponententests, `fvt` für Funktionstests oder `code` für Codeabdeckungstests sein.  |
+| `type`    | Der Typ des Testergebnisses. Der Wert für diesen Parameter muss `unittest` für
+Komponententests, `fvt` für Funktionsüberprüfungstests oder `code` für Codeabdeckungstests sein.  |
 | `fileLocation`      | Die Speicherposition der Testergebnisdatei.    |
 
-Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in Befehlen. Mit dem ersten Befehl werden Mocha-Komponententestergebnisse publiziert. Mit dem zweiten Befehl werden Testergebnisse für die Codeabdeckung publiziert.  
+Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in Befehlen. Mit dem ersten Befehl werden
+Mocha-Komponententestergebnisse veröffentlicht. Mit dem zweiten Befehl werden Testergebnisse für die Codeabdeckung veröffentlicht. 
 
 ```
 publishTestResult type:'unittest', fileLocation: './mochatest.json'
 publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-summary.json'
 ```
 
-### Bereitstellungsdatensätze publizieren
+### Bereitstellungsdatensätze veröffentlichen
 
-Publizieren Sie Bereitstellungsdatensätze mit dem Schritt `publishDeployRecord`. Für diesen Schritt sind zwei Parameter erforderlich. Es ist auch ein optionaler Parameter möglich. 
+Veröffentlichen Sie Bereitstellungsdatensätze mit dem Schritt `publishDeployRecord`. Für diesen Schritt sind zwei Parameter erforderlich. Es ist auch ein optionaler Parameter möglich. 
 
 | Parameter        | Definition    |
 | ----------------------------|---------------|
 | `environment`    | Die Umgebung, in der die App bereitgestellt wurde. Damit DevOps Insights ordnungsgemäß funktioniert, müssen Sie eine Umgebung als `STAGING` und eine andere Umgebung als `PRODUCTION` angeben. |
 | `result`      | Das Ergebnis der Buildstufe. Der Wert sollte `SUCCESS` oder `FAIL` lauten.    |
-| `appUrl`      | *Optional*: Die URL für den Zugriff auf Ihre Anwendung.    |
+| `appUrl`      | _Optional_: Die URL für den Zugriff auf Ihre Anwendung.    |
 
-Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in Befehlen. Mit dem ersten Befehl wird der Bereitstellungsdatensatz für eine Staging-Umgebung publiziert. Mit dem zweiten Befehl wird der Bereitstellungsdatensatz für eine Produktionsumgebung publiziert. 
+Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in Befehlen. Mit dem ersten Befehl wird der Bereitstellungsdatensatz
+für eine Staging-Umgebung veröffentlicht. Mit dem zweiten Befehl wird der Bereitstellungsdatensatz für eine Produktionsumgebung veröffentlicht.
 
 ```
 publishDeployRecord environment: "STAGING", appUrl: "http://staging-Weather-App.mybluemix.net", result:"SUCCESS"
@@ -162,7 +168,7 @@ Für diesen Schritt ist ein Parameter erforderlich. Es ist auch ein optionaler P
 | Parameter        | Definition    |
 | ----------------------------|---------------|
 | `policy`    | Der Name der Richtlinie, die das Gate implementiert. Der Name der Richtlinie wird in DevOps Insights definiert. |
-| `forceDecision`      | *Optional*: Gibt an, ob die Pipeline in Abhängigkeit der Gate-Entscheidung gestoppt wird oder nicht. Legen Sie diesen Parameter auf `true` fest, um die Ausführung der Pipeline zu stoppen, falls das Gate fehlschlägt. Legen Sie den Wert `false` fest, wenn die Pipeline nach dem Fehlschlagen des Gates weiter ausgeführt werden soll. Der Standardwert hierfür ist `false`.     |
+| `forceDecision`      | _Optional_: Gibt an, ob die Pipeline in Abhängigkeit der Gate-Entscheidung gestoppt wird oder nicht. Legen Sie diesen Parameter auf `true` fest, um die Ausführung der Pipeline zu stoppen, falls das Gate fehlschlägt. Legen Sie den Wert `false` fest, wenn die Pipeline nach dem Fehlschlagen des Gates weiter ausgeführt werden soll. Der Standardwert hierfür ist `false`.     |
 
 Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in einem Befehl. Mit diesem Befehl wird die Pipeline unabhängig davon, wie die Gate-Entscheidung ist, weiter ausgeführt. 
 
@@ -174,13 +180,13 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 Senden Sie den Pipelinestatus mithilfe des Befehls `notifyOTC` an Bluemix-Toolchains. Weitere Informationen zur Integration von Jenkins mit Toolchains [finden Sie in der Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
 
-Für diesen Schritt sind zwei Parameter erforderlich. Darüber hinaus ist ein optionaler Parameter möglich.  
+Für diesen Schritt sind zwei Parameter erforderlich. Darüber hinaus ist ein optionaler Parameter möglich. 
 
 | Parameter        | Definition    |
 | ----------------------------|---------------|
 | `stageName`    | Der Stufenname der aktuellen Pipeline. |
 | `status`    | Der Stufenstatus der aktuellen Pipeline. Durch die Verwendung von `SUCCESS`, `FAILURE` oder `ABORTED` wird automatisch eine farbige Hervorhebung in Slack angewendet.  |
-| `webhookUrl`      | *Optional*: Die Webhook-URL, die auf der Jenkins-Kachel der Toolchain angezeigt wird. Wenn Sie diesen Parameter einschließen, überschreibt sein Wert den Wert der Umgebungsvariablen `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
+| `webhookUrl`      | _Optional_: Die Webhook-URL, die auf der Jenkins-Kachel der Toolchain angezeigt wird. Wenn Sie diesen Parameter einschließen, überschreibt sein Wert den Wert der Umgebungsvariablen `IBM_CLOUD_DEVOPS_WEBHOOKURL`.   |
 
 Die folgenden Beispiele veranschaulichen die Verwendung des Schritts `notifyOTC` sowohl in deklarativen als auch in scriptbasierten Pipelinedefinitionen.
 
@@ -220,7 +226,7 @@ In beiden Beispielen wird die Toolchain-Webhook-URL nur im Falle eines Fehlers �
 
 ## Verfolgbarkeit bei Toolchainintegrationen sicherstellen
 
-Konfigurieren Sie die Jenkins-Umgebung für die Integration mit der Bluemix-Toolchain, indem Sie die entsprechenden Anweisungen in [der Bluemix-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen. Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten. 
+Konfigurieren Sie die Jenkins-Umgebung für die Integration mit der Bluemix-Toolchain, indem Sie die entsprechenden Anweisungen in [der Bluemix-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen. Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
 
 Durch die Integration mit einer Toolchain stehen Ihnen verschiedene Möglichkeiten für eine durchgängige Verfolgbarkeit und Bereitstellungszuordnung zur Verfügung. Nachdem Sie die Integrationsanweisungen implementiert haben, fügen Sie den Befehl `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` nach Ihren Bereitstellungsschritten hinzu. Mit diesem Befehl wird eine Verbindung der Jenkins-Integration mit einer App hergestellt, die in Bluemix ausgeführt wird. 
 

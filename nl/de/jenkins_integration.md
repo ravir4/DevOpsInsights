@@ -15,6 +15,6 @@ lastupdated: "2017-02-24"
 # {{site.data.keyword.DRA_short}} mit Jenkins integrieren
 {: #toolchain_configure_jenkins}
 
-Diese Seite wurde verschoben. Diese Informationen finden Sie nun an [der neuen Position](/docs/services/DevOpsInsights/insights_risk.html#integrate_jenkins).
+Diese Seite wurde verschoben. Diese Informationen finden Sie nun an [der neuen Position](/docs/services/DevOpsInsights/about_risk.html).
 {:shortdesc}
 

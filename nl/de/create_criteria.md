@@ -45,7 +45,7 @@ Mit Regeln werden die Kriterien festgelegt, anhand derer Richtlinien Erfolg oder
 
 Sie können immer eine erfolgreiche Durchführung verlangen, indem Sie Tests als kritisch markieren. Wählen Sie zum Erstellen einer Regel eine Richtlinie aus und klicken Sie dann auf **Regel zu Richtlinie hinzufügen**. 
 
-### Regeln für Funktionstests erstellen
+### Regeln für Funktionsüberprüfungstests erstellen
 {: #criteria_fvt}
 
 1. Geben Sie eine Beschreibung ein und wählen Sie ein Format aus.
@@ -108,7 +108,7 @@ Sie können immer eine erfolgreiche Durchführung verlangen, indem Sie Tests als
 
 * Funktionsüberprüfungstest (Mocha, xUnit)
 * Komponententest (Mocha, xUnit, Karma/Mocha)
-* Codeabdeckung (Istanbul als JSON-Übersichtsberichtsformat, Blanket.js)
+* Codeabdeckung (Cobertura, lcov, Istanbul als JSON-Format für Übersichtsberichte, Blanket.js)
 
 {{site.data.keyword.DRA_short}} unterstützt auch Selenium- und Jasmine-Tests. Diese Tests müssen in den offiziell unterstützten Tools wie xUnit und Mocha integriert sein. Weitere Informationen zur gemeinsamen Verwendung von {{site.data.keyword.deliverypipeline}}, {{site.data.keyword.DRA_short}} und Selenium finden Sie unter [Running Selenium tests from the command line on a delivery pipeline](https://developer.ibm.com/devops-services/2016/07/21/running-selenium-tests-command-line-delivery-pipeline/).
 

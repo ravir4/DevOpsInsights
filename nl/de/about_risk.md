@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2017-04-07"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Informationen zu  Deployment Risk
+# Informationen zu Deployment Risk
 
 {{site.data.keyword.DRA_short}} stellt eine Fülle von Informationen zu Ihren Bereitstellungen, insbesondere zu Risiken, bereit. Mit dieser Komponente können Sie den Qualitätsschutz in Ihrer Delivery Pipeline mithilfe von Richtlinien und Gates automatisieren. 
 {:shortdesc}
@@ -36,8 +36,8 @@ Wenn Sie {{site.data.keyword.deliverypipeline}} verwenden, führen Sie die folge
 Wenn Sie Jenkins verwenden, führen Sie die folgenden Schritte aus:
 
 1. [Erstellen Sie Richtlinien und Regeln](risk_policies.html) für die {{site.data.keyword.DRA_short}}-Verwaltung.
-2. [Installieren Sie das Jenkins-Plug-in und konfigurieren Sie es](risk_jenkins.html).
-3. [Erstellen Sie Testjobs und Gates gemäß den Anweisungen in der Plug-in-Anleitung](risk_jenkins.html). Die Tests laden Ergebnisse zum Analysieren nach {{site.data.keyword.DRA_short}} hoch und die Gates verwenden diese Ergebnisse für Hochstufungsentscheidungen.
+2. [Installieren Sie das Jenkins-Plug-in und konfigurieren Sie es](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin).
+3. [Erstellen Sie Testjobs und Gates gemäß den Anweisungen in der Plug-in-Anleitung](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin). Die Tests laden Ergebnisse zum Analysieren nach {{site.data.keyword.DRA_short}} hoch und die Gates verwenden diese Ergebnisse für Hochstufungsentscheidungen.
 4. Führen Sie das Projekt aus und [zeigen Sie die Ergebnisse an](results.html). 
 
 Unabhängig davon, wie Sie Ihren Code erstellen und bereitstellen, sind die Ergebnisse gleich: Die Builds, die Standards entsprechen, passieren die Deployment Risk-Gates; Builds, die nicht den angegebenen Standards entsprechen, werden gestoppt. 

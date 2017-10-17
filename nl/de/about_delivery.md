@@ -34,7 +34,8 @@ Die Topologie für Delivery Insights umfasst mindestens eine lokale Installation
 
 Das folgende Diagramm zeigt eine typische Installation dieser Systeme.
 
-![Übersichtstopologie für UrbanCode Insights, einschließlich lokaler Systeme und IBM Cloud-Services](images/uc_insights_overview_topology_multi_ucd.png)
+![Übersicht über die Topologie von UrbanCode Insights, einschließlichlokaler Kundensysteme und IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
+
 
 - Eine Installation von **IBM UrbanCode Deploy** stellt die Informationen zu erfolgreichen und fehlgeschlagenen Bereitstellungen für die Metriken bereit. Für IBM UrbanCode Deploy ist für die Kommunikation mit IBM Bluemix DevOps Connect ein Patch erforderlich.
 

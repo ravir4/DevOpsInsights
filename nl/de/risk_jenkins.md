@@ -16,11 +16,14 @@ lastupdated: "2017-05-11"
 
 Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolchain und dem Definieren der von dieser Komponente überwachten Richtlinien können Sie sie mit Ihrem unformatierten Jenkins-Projekt integrieren. Unformatierte Jenkins-Projekte werden über die Jenkins-Webschnittstelle konfiguriert und verwaltet. 
 
-Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine *Toolchain* ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine _Toolchain_ ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in {{site.data.keyword.DRA_short}} publizieren, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
+Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in {{site.data.keyword.DRA_short}}
+veröffentlichen, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
 
-Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu bestimmen, ob Ihr Code den vordefinierten Richtlinien an Gates in Ihrem Bereitstellungsprozess entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
+Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}}
+aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu
+bestimmen, ob Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
 
 ## Voraussetzungen
 {: #jenkins_prerequisites}
@@ -48,7 +51,7 @@ Installieren Sie zuerst das Plug-in auf dem Jenkins-Server. Öffnen Sie die Serv
 5. Wählen Sie IBM Cloud DevOps aus.
 6. Klicken Sie auf **Jetzt herunterladen und nach dem Neustart installieren**. 
 
-Das Plug-in ist nach dem Neustart des Servers verfügbar.   
+Das Plug-in ist nach dem Neustart des Servers verfügbar.  
 
 ## Jenkins-Jobs für das Deployment Risk-Dashboard konfigurieren
 {: #jenkins_configure}
@@ -79,14 +82,14 @@ Führen Sie die folgenden Schritte aus, um Deployment Risk-Gates und das Deploym
 
    Die nachfolgenden Abbildungen zeigen Beispielkonfigurationen:
    
-   ![Buildinformationen hochladen](images/Upload-Build-Info.png "Buildinformationen in DRA publizieren")
-   *Buildinformationen publizieren*
+   ![Buildinformationen hochladen](images/Upload-Build-Info.png "Buildinformationen in DRA veröffentlichen")
+   _Buildinformationen veröffentlichen_
    
-   ![Testergebnis hochladen](images/Upload-Test-Result.png "Testergebnis in DRA publizieren")
-   *Testergebnis publizieren*
+   ![Testergebnis hochladen](images/Upload-Test-Result.png "Testergebnis in DRA veröffentlichen")
+   _Testergebnis veröffentlichen_
    
-   ![Bereitstellungsinformationen hochladen](images/Upload-Deployment-Info.png "Bereitstellungsinformationen in DRA publizieren")
-   *Bereitstellungsinformationen publizieren*
+   ![Bereitstellungsinformationen hochladen](images/Upload-Deployment-Info.png "Bereitstellungsinformationen in DRA veröffentlichen")
+   _Bereitstellungsinformationen veröffentlichen_
 
 4. Wenn Sie {{site.data.keyword.DRA_short}}-Richtliniengates zum Steuern eines nachfolgenden Bereitstellungsjobs verwenden möchten, fügen Sie eine Buildabschlussaktion des Typs **IBM Cloud DevOps Gate** hinzu. Wählen Sie eine Richtlinie aus und geben Sie den Gültigkeitsbereich der Testergebnisse an. Damit Richtliniengates nachfolgende Bereitstellungen verhindern können, aktivieren Sie das Kontrollkästchen **Fail the build based on the policy rules**. Die folgende Abbildung zeigt eine Beispielkonfiguration:
 

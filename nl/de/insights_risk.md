@@ -179,7 +179,8 @@ Zunächst fügen Sie Jobs des Typs 'Erweiterter Tester' zur Pipeline hinzu, um T
 
 **Hinweis:** Wenn Sie einen Testjob so aktualisieren möchten, dass Ergebnisse nach {{site.data.keyword.DRA_short}} hochgeladen werden, speichern Sie seine Konfigurationen an einer gut zugänglichen Position, bevor Sie fortfahren. Öffnen Sie dann das Konfigurationsmenü des Testjobs und fahren Sie mit Schritt 3 fort. 
 
-1. Klicken Sie für die Stufe, für die Sie den Job zum Hochladen von Ergebnissen hinzufügen möchten, auf das Symbol für die Stufenkonfiguration ![Symbol für Konfiguration der Pipelinestufe](images/pipeline-stage-configuration-icon.png). Klicken Sie auf die Option zum Konfigurieren der Stufe.
+1. Klicken Sie auf der Stufe, auf der Sie den Job zum Hochladen von Ergebnissen hinzufügen möchten, auf das Symbol für
+**Stufenkonfiguration** ![Symbol für Konfiguration von Pipelinestufen](images/pipeline-stage-configuration-icon.png). Klicken Sie auf die Option zum Konfigurieren der Stufe.
 2. Erstellen Sie einen Testjob und geben Sie einen Namen für den Job ein. 
 3. Wählen Sie als Jobtyp **Erweiterter Tester** aus.
 4. Füllen Sie die Felder für den Testbefehl und das Arbeitsverzeichnis so aus, wie Sie es für einen normalen Testjob für eine Pipeline tun würden. 
@@ -227,7 +228,9 @@ Das Deployment Risk-Dashboard ist nach einem Staging-Bereitstellungsjob auf das 
 
 Normalerweise werden Gates vor der Hochstufung von Builds in der Pipeline platziert. Diese Positionen sind für die Überprüfung der Qualität des Builds auf Basis Ihrer Richtlinien ideal, um sicherzustellen, dass die Hochstufung von einer Umgebung zu einer anderen sicher ist. Sie können Gates jedoch an einer beliebigen Stelle in der Pipeline platzieren, für die ein bestimmtes Kriterium überprüft werden soll. Gates, die vor der Bereitstellung in einer Staging-Umgebung liegen, setzen Richtlinien zwar weiter durch, erscheinen jedoch nicht im Deployment Risk-Dashboard.
 
-1. Klicken Sie auf einer Stufe auf das Symbol für die Stufenkonfiguration ![Symbol für Konfiguration der Pipelinestufe](images/pipeline-stage-configuration-icon.png) und klicken Sie auf die Option zum Konfigurieren der Stufe.
+1. Klicken Sie auf einer Stufe auf das Symbol für die **Stufenkonfiguration**
+![Symbol für Konfiguration von Pipelinestufen](images/pipeline-stage-configuration-icon.png) und klicken Sie
+auf die Option zum Konfigurieren der Stufe.
 2. Klicken Sie auf **Job hinzufügen**. Wählen Sie als Jobtyp **Test** aus.
 3. Wählen Sie als Testertyp **{{site.data.keyword.DRA_short}}-Gate** aus.
 4. Geben Sie den Umgebungsnamen an. Stellen Sie sicher, dass dieser Wert mit der Definition in Ihren [Umgebungseigenschaften](#toolchain_pipeline_props) übereinstimmt.
@@ -249,11 +252,14 @@ Beginnen Sie nach der Konfiguration der Pipeline mit der Verwendung von {{site.d
 
 Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolchain und dem Definieren der von dieser Komponente überwachten Richtlinien können Sie sie mit Ihrem Jenkins-Projekt integrieren. 
 
-Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine *Toolchain* ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine _Toolchain_ ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in {{site.data.keyword.DRA_short}} publizieren, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
+Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in
+{{site.data.keyword.DRA_short}} veröffentlichen, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
 
-Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu bestimmen, ob Ihr Code den vordefinierten Richtlinien an Gates in Ihrem Bereitstellungsprozess entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
+Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert
+und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu bestimmen, ob
+Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
 
 ### Voraussetzungen
 {: #jenkins_prerequisites}
@@ -314,14 +320,14 @@ Führen Sie die folgenden Schritte aus, um Deployment Risk-Gates und das Deploym
 
    Die nachfolgenden Abbildungen zeigen Beispielkonfigurationen:
    
-   ![Buildinformationen hochladen](images/Upload-Build-Info.png "Buildinformationen in DRA publizieren")
-   *Buildinformationen publizieren*
+   ![Buildinformationen hochladen](images/Upload-Build-Info.png "Buildinformationen in DRA veröffentlichen")
+   _Buildinformationen veröffentlichen_
    
-   ![Testergebnis hochladen](images/Upload-Test-Result.png "Testergebnis in DRA publizieren")
-   *Testergebnis publizieren*
+   ![Testergebnis hochladen](images/Upload-Test-Result.png "Testergebnis in DRA veröffentlichen")
+   _Testergebnis veröffentlichen_
    
-   ![Bereitstellungsinformationen hochladen](images/Upload-Deployment-Info.png "Bereitstellungsinformationen in DRA publizieren")
-   *Bereitstellungsinformationen publizieren*
+   ![Bereitstellungsinformationen hochladen](images/Upload-Deployment-Info.png "Bereitstellungsinformationen in DRA veröffentlichen")
+   _Bereitstellungsinformationen veröffentlichen_
 
 4. Wenn Sie {{site.data.keyword.DRA_short}}-Richtliniengates zum Steuern eines nachfolgenden Bereitstellungsjobs verwenden möchten, fügen Sie eine Buildabschlussaktion des Typs **IBM Cloud DevOps Gate** hinzu. Wählen Sie eine Richtlinie aus und geben Sie den Gültigkeitsbereich der Testergebnisse an. Damit Richtliniengates nachfolgende Bereitstellungen verhindern können, aktivieren Sie das Kontrollkästchen **Fail the build based on the policy rules**. Die folgende Abbildung zeigt eine Beispielkonfiguration:
 
