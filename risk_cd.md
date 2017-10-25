@@ -14,16 +14,16 @@ lastupdated: "2017-10-25"
 
 # Integrating Deployment Risk analytics with Continuous Delivery
 
-You can instrument pipelines for {{site.data.keyword.contdelivery_full}} to use {{site.data.keyword.DRA_short}}' Deployment Risk analysis capabilities. Then, you can publish data from those jobs and add gates that enforce risk policies.
+{{site.data.keyword.DRA_short}} tracks deployment risk based on the test data that you publish to it. This data might include unit tests, code coverage, functional verification tests, SonarQube data, or scan data from IBM Application Security on Cloud. After you publish this data, you can add gates to your pipelines so that you can stop builds that don't meet risk policies.
 
 To see a high-level explanation of {{site.data.keyword.DRA_short}}' Deployment Risk analysis, see [About Deployment Risk](./about_risk.html).
 
 For more information about Continuous Delivery pipelines, see [the official documentation](../ContinuousDelivery/pipeline_working.html).
 
-## Preparing pipeline stages and jobs
+## Overview
 {: #integrate_pipeline}
 
-To get started, you need to instrument your pipeline to communicate with {{site.data.keyword.DRA_short}}. You do this by defining specific environment variables for all of your pipeline jobs that build, test, or deploy code. You must also add environment variables to test jobs that enforce risk policies by using the DevOps Insights Gate tester type.
+{{site.data.keyword.DRA_short}} requires this information from your pipeline to analyze deployment risk:
 
 * Build records
 * Deployment records
@@ -45,12 +45,18 @@ Environment variables that you define in the pipeline provide context for publis
 Environment variables:
 
 | Environment Variable  | Purpose | Required in |
-|-----------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | The app's name on the dashboard. | All jobs that build, test, deploy, and enforce {{site.data.keyword.DRA_short}} risk policies. |
+|-----------------------|-------- |-------------|
+| `LOGICAL_APP_NAME`    | The app's name on the dashboard. | All jobs that build, test, deploy, and enforce {{site.data.keyword.DRA_short}} risk policies. |
 | `BUILD_PREFIX`  | Text that is added as a prefix to the stage's builds. This text also appears on the dashboard. | All jobs that build, test, deploy, and enforce {{site.data.keyword.DRA_short}} risk policies. |
 | `LOGICAL_ENV_NAME`  | The environment in which the application runs. | Test and deploy jobs. |
 
-### Configuring build jobs
+Be sure to use these variables consistently:
+
+* For a particular application, use the same `LOGICAL_APP_NAME` in all jobs or stages. 
+* The `BUILD_PREFIX` value should be the same for a particular app and build type. For example, for builds from the master branch, `BUILD_PREFIX` could be `"master"`. 
+* Use the same `LOGICAL_ENVIRONMENT_NAME` value in corresponding deploy jobs and test jobs. If you use the `LOGICAL_ENVIRONMENT_NAME` value of `"PRODUCTION"` in a deploy job, use that same value when you publish results from tests that also ran in that environment.
+
+## Build job environment variables
 
 For the last build job in a stage, set environment variables for an application name and build prefix. An example script would include these commands:
 
@@ -61,7 +67,7 @@ export BUILD_PREFIX="master"
 
 When this build job completes, the pipeline would publish a message to {{site.data.keyword.DRA_short}} that a SampleApp build is completed.
 
-### Configuring deployment jobs
+## Deploy job environment variables
 
 For the last deployment job in the stage, set an application name, build prefix, and environment name. An example script would include these commands:
 
@@ -73,7 +79,7 @@ export LOGICAL_ENV_NAME="Production"
 
 When your deployment job ends, the pipeline would publish a message to {{site.data.keyword.DRA_short}} that the specified build and app was deployed to an environment.
 
-### Configuring test jobs
+## Test job environment variables
 
 For all jobs that produce test results, set an application name and build prefix.
 
@@ -89,22 +95,10 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-Make sure that application names and environments match where appropriate. For example, you would want a production test job that runs against a production deployment to have identical `LOGICAL_ENV_NAME` values.
-
-## Publishing test data to DevOps Insights
+## Publishing test results
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} uses the test results from your jobs to generate reports and enforce risk policies. You can publish test data from all job types.
-
-There are two options for publishing test results:
-
-* Invoke a simple command-line interface (CLI) in a job's script.
-
-* Add a test job with the Advanced Tester type to your pipeline.
-
-When you use the Advanced Tester method, you don't publish test results by using the CLI. Instead, you specify the location of the result files in the pipeline job, and the job uploads the results as they become available.
-
-### Publishing test data from any job type
+{{site.data.keyword.DRA_short}} uses the test results from your jobs to generate reports and enforce risk policies.
 
 In a pipeline, you can use any job type to run a test. After you run that test, you can upload its results to {{site.data.keyword.DRA_short}}. You upload the results by invoking a CLI in the job's shell script. 
 
@@ -113,8 +107,8 @@ You can upload these types of test results from the CLI:
 * Unit tests
 * Code coverage
 * Functional verification tests
-* Static and Dynamic app scan results from IBM Application Security on Cloud.
-* SonarQube results 
+* SonarQube results
+* Static and Dynamic app scan results from IBM Application Security on Cloud. 
 
 This is an example script that runs tests and then uploads the results to {{site.data.keyword.DRA_short}}: 
 
@@ -128,30 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+In that example, the `idra` command run with the `--publishtestresult` flag specifies that the script will upload results. The `--filelocation` flag indicates the location of the test results file relative to the root directory of the job. The `--type` flag indicates the type of tests that run.
+
+The `idra` command supports the following `type` values: 
+
+| Type | Description |
+|------|-------------|
+| `unittest` | Unit test results | 
+| `fvt` | Functional verification test results |
+| `code` | Code coverage results | 
+| `sonarqube` | SonarQube scan results | 
+| `staticsecurityscan` | Static security scan results from IBM Application Security on Cloud |
+| `dynamicsecurityscan` | Dynamic security scan results from IBM Application Security on Cloud |
+
 To learn more about the `idra` command, see [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3). 
-
-### Publishing test data from Advanced Tester jobs
-
-You can add test jobs with the Advanced Tester type to a pipeline. After they run, they automatically upload their results to {{site.data.keyword.DRA_short}}. 
-
-1. On the stage where you want to add the job that uploads results, click the **Stage Configuration** icon ![Pipeline stage configuration icon](images/pipeline-stage-configuration-icon.png). Click **Configure Stage**.
-2. Create a test job and type a name for it. 
-3. For the job type, select **Advanced Tester**.
-4. Complete the **Test Command** and **Working Directory** fields as you would for a normal pipeline test job. 
-5. Complete the remaining fields to upload the test results for a particular test type. 
-
- 1. Choose the type of metric that matches what you defined in the {{site.data.keyword.DRA_short}} policy that you want to use.
- 2. Type a result file location. This location is relative to the working directory. 
-
-6. If you want to upload results for a second test type in the same job, complete the fields that are prefixed with *Additional*.
-7. Click **Save** to return to the pipeline.
-
-Figure 1 shows a test job that is configured to run unit tests, upload the results in Mocha format, and upload the code coverage results in Istanbul format.
-
-![DevOps Insights upload job](images/insights_upload_job.png)
-*Figure 1. Upload results to DevOps Insights*
-
-
 
 ## Defining gates
 {: #configure_pipeline_gates}
