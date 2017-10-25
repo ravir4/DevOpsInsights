@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-07-24"
+lastupdated: "2017-10-25"
 
 ---
 
@@ -20,6 +20,16 @@ lastupdated: "2017-07-24"
 After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deployment Risk**. From there, you can get an overview of the applications in your staging and production environments and drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
 
 You can use Deployment Risk to enforce quality standards in your toolchain through policies and gates. Policies comprise sets of rules; gates enforce policies. For example, you might create a "Unit Testing and Test Coverage" policy that requires builds to meet unit testing and test coverage standards. You then add a gate that refers to the policy to your continuous delivery process. Builds that do not satisfy the policy are stopped at that gate. 
+
+## Prerequisites
+{: #prerequisites}
+
+Deployment Risk requires some configuration beyond what is described in [Getting Started with {{site.data.keyword.DRA_short}}](/docs/services/DevOpsInsights/index.html).
+
+To use Deployment Risk, you need two things:
+
+* An instance of {{site.data.keyword.deliverypipeline}} or a Jenkins project
+* Tests that you want to use to evaluate your project
 
 ## Integration information
 
@@ -41,13 +51,3 @@ If you are using Jenkins, follow these steps:
 4. Run the project and [view the results](results.html). 
 
 No matter how you build and deploy your code, the results are the same: the builds that meet standards will move past the Deployment Risk gates, and builds that don't meet standards are stopped. 
-
-## Prerequisites
-{: #prerequisites}
-
-Deployment Risk requires some configuration beyond what is described in [Getting Started with {{site.data.keyword.DRA_short}}](/docs/services/DevOpsInsights/index.html).
-
-To use Deployment Risk, you need two things:
-
-* An instance of {{site.data.keyword.deliverypipeline}} or a Jenkins project
-* Tests that you want to use to evaluate your project
