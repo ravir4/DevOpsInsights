@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-09-18"
+lastupdated: "2017-10-25"
 
 ---
 
@@ -104,28 +104,6 @@ There are two options for publishing test results:
 
 When you use the Advanced Tester method, you don't publish test results by using the CLI. Instead, you specify the location of the result files in the pipeline job, and the job uploads the results as they become available.
 
-Whichever publishing method you use, test results must be in one of the formats that {{site.data.keyword.DRA_short}} supports:
-
-<table><thead>
-<tr>
-<th>Test type</th>
-<th>Supported formats</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Functional verification test</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Unit test</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Code coverage</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
-
 ### Publishing test data from any job type
 
 In a pipeline, you can use any job type to run a test. After you run that test, you can upload its results to {{site.data.keyword.DRA_short}}. You upload the results by invoking a CLI in the job's shell script. 
@@ -135,7 +113,8 @@ You can upload these types of test results from the CLI:
 * Unit tests
 * Code coverage
 * Functional verification tests
-* Static and Dynamic app scan results from IBM Application Security on Cloud. 
+* Static and Dynamic app scan results from IBM Application Security on Cloud.
+* SonarQube results 
 
 This is an example script that runs tests and then uploads the results to {{site.data.keyword.DRA_short}}: 
 
