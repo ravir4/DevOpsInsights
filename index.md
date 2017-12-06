@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-06-30"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -24,7 +24,7 @@ lastupdated: "2017-06-30"
 
    * Team Dynamics uses social coding analysis to help you learn how your team collaborates and understand how it can work better.
 
-   * Deployment Risk is like a continuous delivery safety net. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows trend charts for code coverage, builds and deployments.
+   * Deployment Risk is like a safety net for continuous delivery. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows charts of trends in code coverage, builds and deployments.
 
    * Delivery Insights shows deployment statistics, metrics, and other information about your IBM UrbanCode Deploy installation. For example, it can show charts of deployment duration, successes, and failures, all sorted by logically grouped environments. See [Integrating DevOps Insights with IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html).
 
@@ -32,7 +32,7 @@ lastupdated: "2017-06-30"
 
 To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many toolchain templates already include {{site.data.keyword.DRA_short}}. Be sure to also [add it to your {{site.data.keyword.Bluemix_notm}} org as a service](/docs/services/reqnsi.html) so that you can see information about {{site.data.keyword.DRA_short}} and access some of the toolchain templates that include it from your {{site.data.keyword.Bluemix_notm}} dashboard.  
 
-In addition IBM has run code insights against a large number of the most successful open sources projects on Github.  By going to devopsinsights.io you can see the development and team dynamics attributes of these projects.
+In addition, IBM runs Developer and Team Insights against a large number of the most successful open sources projects on Github. Visit [DevOpsInsights.io](https://devopsinsights.io/) to see their development and team data.
 
 ## Adding DevOps Insights to a toolchain
 {: #catalog}
