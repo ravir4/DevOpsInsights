@@ -32,7 +32,7 @@ lastupdated: "2017-12-06"
 
 To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many toolchain templates already include {{site.data.keyword.DRA_short}}. Be sure to also [add it to your {{site.data.keyword.Bluemix_notm}} org as a service](/docs/services/reqnsi.html) so that you can see information about {{site.data.keyword.DRA_short}} and access some of the toolchain templates that include it from your {{site.data.keyword.Bluemix_notm}} dashboard.  
 
-In addition, IBM runs Developer and Team Insights against a large number of the most successful open sources projects on Github. Visit [DevOpsInsights.io](https://devopsinsights.io/) to see their development and team data.
+In addition, IBM runs Developer and Team Insights against a large number of the most successful open sources projects on Github. Visit [DevOpsInsights.io](devopsinsights.io/) to see their development and team data.
 
 ## Adding DevOps Insights to a toolchain
 {: #catalog}
