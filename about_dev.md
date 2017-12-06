@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2017
-lastupdated: "2017-04-07"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -18,10 +18,10 @@ lastupdated: "2017-04-07"
 {{site.data.keyword.DRA_full}} Developer Insights provides a comprehensive way to explore your project’s development risk. You can identify files with high error proneness and get a compliance view of the project against DevOps practices.
 {:shortdesc}
 
-After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Developer Insights**. From there, you can select an analytic category to dive deeper into your project's codebase. What each set of data indicates can vary from team to team, and you can drill down into each visualization for help and guidance. 
+After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Developer Insights**. From there, you can select an analytic category to dive deeper into your project's codebase. What each set of data indicates can vary from team to team, and you can drill down into each visualization for help and guidance. You can filter the data by date, as well as many other criteria.
 
 ## Data categories
-The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by viewing the Findings and detail around the charts or byclicking **Information** or **Guidance** on best practices charts.
+The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by clicking **Information** or **Guidance** on the Best Practices charts, as well as by looking to the Findings and Details that are part of the other visualizations.
 
 ### Developer Best Practices
 
@@ -29,7 +29,7 @@ Developer Insights provides a number of charts that measure your project against
 
 ### Error Proneness
 
-*Error proneness* is the likelihood that a file, commit or pull request might generate defects according to historical trends, committer experience, change frequency, change weight, and other factors. 
+*Error proneness* is the likelihood that a file, commit, or pull request might generate defects according to historical trends, committer experience, change frequency, change weight, and other factors. 
 
 You might look to this category while you conduct code reviews or improve the code review process. Risky files deserve more scrutiny than relatively safe ones. Conversely, safe files and commits can serve as examples for your team as you improve how you work.
 
@@ -41,7 +41,7 @@ These issue groupings can vary in meaning from team to team. One team might want
 
 ### Commits
 
-The Commits category displays all of your team's commits in one place. The commits are automatically grouped by type, tag, and line changes and can be shown over time. 
+The Commits category displays all of your team's commits in one place. The commits are automatically grouped by type, tag, and line changes. You can see them over a period of time that you choose.
 
 Commits indicate the work that your team members are contributing to your codebase. Examine your commit data to understand where effort is being expended historically and how you can better balance your team members' workloads. 
 
