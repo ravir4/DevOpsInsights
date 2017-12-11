@@ -14,12 +14,41 @@ lastupdated: "2017-10-25"
 
 # About Deployment Risk
 
-{{site.data.keyword.DRA_short}} provides a wealth of information about your deployments, particularly risk. You can use it to automate quality protection in your delivery pipeline by using policies and gates. 
+{{site.data.keyword.DRA_short}} Deployment Risk provides a wealth of information about your deployments, particularly risk. You can use it to automate quality protection in your delivery pipeline by using policies and gates. It provides data about build and deployment frequency, along with code coverage and testing trends.
 {:shortdesc}
 
-After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deployment Risk**. From there, you can get an overview of the applications in your staging and production environments and drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
+After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deployment Risk**. From there, you can select an analytic category to dive deeper into what is happening with your deployments.  
 
 You can use Deployment Risk to enforce quality standards in your toolchain through policies and gates. Policies comprise sets of rules; gates enforce policies. For example, you might create a "Unit Testing and Test Coverage" policy that requires builds to meet unit testing and test coverage standards. You then add a gate that refers to the policy to your continuous delivery process. Builds that do not satisfy the policy are stopped at that gate. 
+
+## Risk analysis
+
+With risk analysis, you get an overview of the risks associated with applications in your staging and production environments. You can   drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
+
+## Deployment frequency
+
+You can view deployment frequency trends for your production, staging, or other environments. This view also shows deployment success and failures. You can click on a particular deployment and see details about it. If you're on an agile team, you should see the deployment frequency trend upward over time. 
+
+## Build frequency
+
+You can view build frequency trends for your long-running branches. This view also also shows build successes and failures. You can click on a point of interest and see build details. If you're on an agile team, you want to see a lot of daily builds on the integration branch. Otherwise, your team is not merging their code frequently.
+
+## Unit test trends
+
+You can view trends for unit tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you may want to take  action. Also, if number of tests are dwindling over time, that may also be a cause for concern.
+
+## Funcition verification test trends
+
+You can view trends for functional verification tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you may want to take some action. Also, if number of tests are dwindling over time, that may also be a cause for concern.
+
+## Code Coverage trends
+
+You can view code coverage trends for the builds that are deployed to a certain environment. For example, you can see code coverage trends for builds that went to production.  Ideally, you should see that code coverage improves over time for builds that go to production. If code coverage is decreasing, you may want to take action.
+
+## Policies
+
+Policies are sets of rules that control the gates in your delivery pipeline. If your code does not meet or exceed a policy that is enacted at a particular gate, the deployment is halted to prevent risky changes from being released.
+
 
 ## Prerequisites
 {: #prerequisites}
