@@ -25,3 +25,7 @@ IBM Cloud DevOps Insights
     risk_policies.md
     results.md
   {: .navgroup-end}
+
+  {: .navgroup id="help"}
+    faq.md
+  {: .navgroup-end}
