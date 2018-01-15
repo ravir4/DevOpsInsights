@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-12-06"
+  years: 2016, 2018
+lastupdated: "2018-1-9"
 
 ---
 
@@ -17,6 +17,8 @@ lastupdated: "2017-12-06"
 
 {{site.data.keyword.DRA_full}} applies developer, team, and deployment analytics to your busiest DevOps projects. Use it to learn how compliant your team is with DevOps and developer practices, to manage risk in your codebase, and to automatically enforce quality standards in continuous delivery projects.
 {:shortdesc}
+
+**Note**: {{site.data.keyword.DRA_short}} is available only in the US South region.
 
 {{site.data.keyword.DRA_short}} comprises several groups of capabilities:
 
