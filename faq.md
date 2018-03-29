@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-12-14"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -29,19 +29,19 @@ If the issue-tracking service isn’t part of your toolchain, add it. {{site.dat
 
 If the issue-tracking service is part of your toolchain, check that {{site.data.keyword.DRA_short}}’ labels are mapped to the labels that your service uses. Click **Settings**, click **Labels**, and then verify the mapping.
 
-As a last resort, remove the issue-tracking service from your toolchain and re-add it. {{site.data.keyword.DRA_short}} will mine the service from scratch. The mining can take a few hours. 
+As a last resort, remove the issue-tracking service from your toolchain. Then, add it back. {{site.data.keyword.DRA_short}} will mine the service from scratch. The mining can take a few hours. 
 
 ## How do I remine a repository?
 
 To remine a repository, delete the {{site.data.keyword.DRA_short}} integration from your toolchain. Then, add it back.
 
-## How can I add a new repository to be mined?
+## How can I add a repository to be mined?
 
-Add it to a toolchain by clicking **Add a tool** on the toolchain’s overview page. Once the repository is part of your toolchain, Insights will remine your data to include that repository.
+Add it to a toolchain by clicking **Add a tool** on the toolchain’s overview page. After the repository is part of your toolchain, Insights will remine your data to include that repository.
 
-Check the **Enable GitHub Issues** box while adding a new repository to enable issue mining. 
+Check the **Enable GitHub Issues** box while adding a repository to enable issue mining. 
 
-## Why don’t I see any builds and/or deployments?
+## Why don’t I see any builds or deployments?
 
 DevOps Insights automatically mines code repositories and issues that are part of a toolchain, but you must configure your pipeline for it to monitor builds and deployments. 
 
