@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-03-31"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2017-03-31"
 {{site.data.keyword.DRA_short}} provides a wealth of information about your deployments, particularly risk. You can use it to automate quality protection in your delivery pipeline by using policies and gates. 
 {:shortdesc}
 
-After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deployment Risk**. From there, you can get an overview of the applications in your staging and production environments and drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
+After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deployment Risk**. From there, you can get an overview of the applications in your staging and production environments and drill-down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
 
 ## About Deployment Risk
 {: #about}
@@ -39,8 +39,8 @@ If you are using {{site.data.keyword.deliverypipeline}}, follow these steps:
 If you are using Jenkins, follow these steps:
 
 1. [Create policies and rules](#policies_and_rules) for {{site.data.keyword.DRA_short}} to manage.
-2. [Install and configure the Jenkins plugin](#integrate_jenkins).
-3. [Create test jobs and gates as described in the plugin instructions](#integrate_jenkins). The tests upload results to {{site.data.keyword.DRA_short}} for analysis and the gates use those results to make promotion decisions.
+2. [Install and configure the Jenkins plug-in](#integrate_jenkins).
+3. [Create test jobs and gates as described in the plug-in instructions](#integrate_jenkins). The tests upload results to {{site.data.keyword.DRA_short}} for analysis and the gates use those results to make promotion decisions.
 4. Run the project and [view the results](#view_results). 
 
 No matter how you build and deploy your code, the results are the same: the builds that meet standards will move past the Deployment Risk gates, and builds that don't meet standards are stopped. 
@@ -86,7 +86,7 @@ To create a policy:
 ### Creating rules
 {: #creating_rules}
 
-Rules define the criteria that your policies use to judge success or failure. You might create a "Unit Testing and Test Coverage" policy that contains a unit test rule that requires 80% unit test success and a test coverage rule that requires 100% code coverage. If you add a gate that refers to this rule in a pipeline, the gate prevents any builds that don't satisfy both of the rules from proceeding. 
+Rules define the criteria that your policies use to judge success or failure. You might create a "Unit Testing and Test Coverage" policy that contains a unit test rule that requires 80 percent unit test success and a test coverage rule that requires 100 percent code coverage. If you add a gate that refers to this rule in a pipeline, the gate prevents any builds that don't satisfy both of the rules from proceeding. 
 
 You can require success no matter what by marking tests as critical. To create a rule, select a policy and then click **Add Rule to Policy**. 
 
@@ -249,11 +249,11 @@ After your pipeline is configured, start to use {{site.data.keyword.DRA_short}}.
 
 After you add {{site.data.keyword.DRA_full}} to an open toolchain and define the policies that it monitors, you can integrate it with your Jenkins project. 
 
-The IBM Cloud DevOps plugin for Jenkins integrates Jenkins projects with toolchains. A _toolchain_ is a set of tool integrations that support development, deployment, and operations tasks. The collective power of a toolchain is greater than the sum of its individual tool integrations. Open toolchains are part of the {{site.data.keyword.contdelivery_full}} service. To learn more about the {{site.data.keyword.contdelivery_short}} service, see [its documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+The IBM Cloud DevOps plug-in for Jenkins integrates Jenkins projects with toolchains. A _toolchain_ is a set of tool integrations that support development, deployment, and operations tasks. The collective power of a toolchain is greater than the sum of its individual tool integrations. Open toolchains are part of the {{site.data.keyword.contdelivery_full}} service. To learn more about the {{site.data.keyword.contdelivery_short}} service, see [its documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-After you install the IBM Cloud DevOps plugin, you can publish test results to {{site.data.keyword.DRA_short}}, add automated quality gates, and track your deployment risk. You can also send job notifications to other tools in your toolchain, such as Slack and PagerDuty. To help you track deployments, the toolchain can add deployment messages to Git commits and their related Git or JIRA issues. You can also view your deployments on the toolchain's Connections page. 
+After you install the IBM Cloud DevOps plug-in, you can publish test results to {{site.data.keyword.DRA_short}}, add automated quality gates, and track your deployment risk. You can also send job notifications to other tools in your toolchain, such as Slack and PagerDuty. To help you track deployments, the toolchain can add deployment messages to Git commits and their related Git or JIRA issues. You can also view your deployments on the toolchain's Connections page. 
 
-The plugin provides post-build actions and CLIs to support the integration. {{site.data.keyword.DRA_short}} aggregates and analyzes the results from unit tests, functional tests, code coverage tools, static security code scans, and dynamic security code scans to determine whether your code meets predefined policies at gates in your deployment process. If your code does not meet or exceed a policy, the deployment is halted, preventing risky changes from being released. You can use {{site.data.keyword.DRA_short}} as a safety net for your continuous delivery environment, a way to implement and improve quality standards over time, and a data visualization tool to help you understand your project's health.
+The plug-in provides post-build actions and CLIs to support the integration. {{site.data.keyword.DRA_short}} aggregates and analyzes the results from unit tests, functional tests, code coverage tools, static security code scans, and dynamic security code scans to determine whether your code meets predefined policies at gates in your deployment process. If your code does not meet or exceed a policy, the deployment is halted, preventing risky changes from being released. You can use {{site.data.keyword.DRA_short}} as a safety net for your continuous delivery environment, a way to implement and improve quality standards over time, and a data visualization tool to help you understand your project's health.
 
 ### Prerequisites
 {: #jenkins_prerequisites}
@@ -272,23 +272,23 @@ Before you can integrate {{site.data.keyword.DRA_short}} with a Jenkins project,
 ### Installing the plugin
 {: #jenkins_install}
 
-First, download the plugin from {{site.data.keyword.DRA_short}}.  
+First, download the plug-in from {{site.data.keyword.DRA_short}}.  
 
 1. From the toolchain's Overview page, click **DevOps Insights**.
 2. Click **Settings**, then **Jenkins Plugin Setup**.
-3. Follow the instructions on the page to download the plugin.
+3. Follow the instructions on the page to download the plug-in.
 
-Then, on your Jenkins server, install the plugin.
+Then, on your Jenkins server, install the plug-in.
 
 1. Click **Manage Jenkins &gt; Manage Plugins** and click the **Advanced** tab.
-2. Click **Choose File** and select the IBM Cloud DevOps plugin installation file. 
+2. Click **Choose File** and select the IBM Cloud DevOps plug-in installation file. 
 3. Click **Upload**.
-4. Restart Jenkins and verify that the plugin was installed.
+4. Restart Jenkins and verify that the plug-in was installed.
 
 ### Configuring Jenkins jobs for the Deployment Risk dashboard
 {: #jenkins_configure}
 
-After the plugin is installed, you can integrate {{site.data.keyword.DRA_short}} into your Jenkins project. 
+After the plug-in is installed, you can integrate {{site.data.keyword.DRA_short}} into your Jenkins project. 
 
 Follow these steps to use Deployment Risk's gates and dashboard with your project.
 
@@ -310,7 +310,7 @@ Follow these steps to use Deployment Risk's gates and dashboard with your projec
    
    * For the environment, if the tests are running in build stage, select only the build environment. If the tests are running in the deployment stage, select the deploy environment and specify the environment name. Two values are supported: `STAGING` and `PRODUCTION`.
    
-   * For the **Result File Location** field, specify the result file's location. If the test doesn't generate a result file, leave this field empty. The plugin uploads a default result file that is based on the status of current test job.
+   * For the **Result File Location** field, specify the result file's location. If the test doesn't generate a result file, leave this field empty. The plug-in uploads a default result file that is based on the status of current test job.
 
    These images show example configurations:
    
@@ -329,14 +329,14 @@ Follow these steps to use Deployment Risk's gates and dashboard with your projec
 
 5. Run your Jenkins Build job.
 
-6. View the Deployment Risk dashboard by going to [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), selecting your toolchain, and clicking **DevOps Insights**.
+6. View the Deployment Risk dashboard by going to [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops), selecting your toolchain, and clicking **DevOps Insights**.
 
 The Deployment Risk dashboard relies on the presence of a gate after a staging deployment job. If you want to use the dashboard, make sure that you have a gate after you deploy to the staging environment, but before you deploy to a production environment.
     
 ### Configuring notifications
 {: #jenkins_notifications}
 
-You can configure your Jenkins jobs to send notifications to tools like Slack or PagerDuty by following the instructions in the [Bluemix Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+You can configure your Jenkins jobs to send notifications to tools like Slack or PagerDuty by following the instructions in the [{{site.data.keyword.Bluemix}} Platform Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
 
 This example shows how to configure `ICD_WEBHOOK_URL` for job configurations: 
 ![Set ICD_WEBHOOK_URL Parameter](images/Set-Parameterized-Webhook.png "Set Parameterized WebHook")
@@ -358,8 +358,3 @@ If you are using a {{site.data.keyword.contdelivery_short}} pipeline, you can vi
 2. From the job that contains the gate, click the gate's name.
 
 3. In the log view, find the `Check {{site.data.keyword.DRA_short}} report here` message and click the link to open the report.
-
-
-
-
-
