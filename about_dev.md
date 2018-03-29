@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-12-06"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2017-12-06"
 After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Developer Insights**. From there, you can select an analytic category to dive deeper into your project's codebase. What each set of data indicates can vary from team to team, and you can drill down into each visualization for help and guidance. You can filter the data by date, as well as many other criteria.
 
 ## Data categories
-The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by clicking **Information** or **Guidance** on the Best Practices charts, as well as by looking to the Findings and Details that are part of the other visualizations.
+The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by clicking **Information** or **Guidance** on the Best Practices charts. You can also look at the Findings and Details that are part of the other visualizations for more information.
 
 ### Developer Best Practices
 
@@ -68,4 +68,3 @@ DevOps Insights ignores files that have these extensions:
 * .text
 * .yaml
 * .yml
-
