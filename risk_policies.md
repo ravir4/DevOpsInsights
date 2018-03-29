@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-04-07"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -43,7 +43,7 @@ To create a policy:
 ## Creating rules
 {: #creating_rules}
 
-Rules define the criteria that your policies use to judge success or failure. You might create a "Unit Testing and Test Coverage" policy that contains a unit test rule that requires 80% unit test success and a test coverage rule that requires 100% code coverage. If you add a gate that refers to this rule in a pipeline, the gate prevents any builds that don't satisfy both of the rules from proceeding. 
+Rules define the criteria that your policies use to judge success or failure. You might create an "Unit Testing and Test Coverage" policy that contains a unit test rule that requires 80 percent unit test success and a test coverage rule that requires 100 percent code coverage. If you add a gate that refers to this rule in a pipeline, the gate prevents any builds that don't satisfy both of the rules from proceeding. 
 
 You can require success no matter what by marking tests as critical. To create a rule, select a policy and then click **Add Rule to Policy**. 
 
