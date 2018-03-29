@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-05-19"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -17,11 +17,11 @@ lastupdated: "2017-05-19"
 
 After you add {{site.data.keyword.DRA_full}} to an open toolchain and define the policies that it monitors, you can integrate it with a Jenkins Pipeline project. You define a pipeline in the Jenkins web interface or in a _Jenkinsfile_ that you store in your source control repository. You can view and administer Jenkins Pipelines projects from the Jenkins web interface. 
 
-The IBM Cloud DevOps plugin for Jenkins integrates Jenkins projects with toolchains. A _toolchain_ is a set of tool integrations that support development, deployment, and operations tasks. The collective power of a toolchain is greater than the sum of its individual tool integrations. Open toolchains are part of the {{site.data.keyword.contdelivery_full}} service. To learn more about the {{site.data.keyword.contdelivery_short}} service, see [its documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+The IBM Cloud DevOps plug-in for Jenkins integrates Jenkins projects with toolchains. A _toolchain_ is a set of tool integrations that support development, deployment, and operations tasks. The collective power of a toolchain is greater than the sum of its individual tool integrations. Open toolchains are part of the {{site.data.keyword.contdelivery_full}} service. To learn more about the {{site.data.keyword.contdelivery_short}} service, see [its documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
-After you install the IBM Cloud DevOps plugin, you can configure your Jenkins project to publish test results to {{site.data.keyword.DRA_short}}, automatically evaluate build quality at gates, and track your deployment risk. You can also send job notifications to other tools in your toolchain, such as Slack and PagerDuty. To help you track deployments, the toolchain can add deployment messages to Git commits and their related Git or JIRA issues. You can also view your deployments on the toolchain's Connections page. 
+After you install the IBM Cloud DevOps plug-in, you can configure your Jenkins project to publish test results to {{site.data.keyword.DRA_short}}, automatically evaluate build quality at gates, and track your deployment risk. You can also send job notifications to other tools in your toolchain, such as Slack and PagerDuty. To help you track deployments, the toolchain can add deployment messages to Git commits and their related Git or JIRA issues. You can also view your deployments on the toolchain's Connections page. 
 
-The plugin provides post-build actions and CLIs to support the integration. {{site.data.keyword.DRA_short}} aggregates and analyzes the results from unit tests, functional tests, code coverage tools, static security code scans, and dynamic security code scans to determine whether your code meets predefined policies at gates in your deployment process. If your code does not meet or exceed a policy, the deployment is halted, preventing risky changes from being released. You can use {{site.data.keyword.DRA_short}} as a safety net for your continuous delivery environment, a way to implement and improve quality standards over time, and a data visualization tool to help you understand your project's health.
+The plug-in provides post-build actions and CLIs to support the integration. {{site.data.keyword.DRA_short}} aggregates and analyzes the results from unit tests, functional tests, code coverage tools, static security code scans, and dynamic security code scans to determine whether your code meets predefined policies at gates in your deployment process. If your code does not meet or exceed a policy, the deployment is halted, preventing risky changes from being released. You can use {{site.data.keyword.DRA_short}} as a safety net for your continuous delivery environment, a way to implement and improve quality standards over time, and a data visualization tool to help you understand your project's health.
 
 If you are familiar with Jenkins Pipeline, read on. Otherwise, [see the Jenkins Pipeline documentation](https://jenkins.io/doc/book/pipeline/) before you continue.
 
@@ -39,10 +39,10 @@ Before you can integrate {{site.data.keyword.DRA_short}} with a Jenkins project,
 
 2. After you create the toolchain, add {{site.data.keyword.DRA_short}} to it. For instructions, see the [{{site.data.keyword.DRA_short}} documentation](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html). 
 
-## Installing the plugin
+## Installing the plug-in
 {: #jenkins_install}
 
-Install the plugin on your Jenkins server by opening the server interface and following these steps:
+Install the plug-in on your Jenkins server by opening the server interface and following these steps:
 
 1. Click **Manage Jenkins**.
 2. Click **Manage Plugins**. 
@@ -51,7 +51,7 @@ Install the plugin on your Jenkins server by opening the server interface and fo
 5. Select **IBM Cloud DevOps**.
 6. Click **Download now and install after restart**. 
 
-The plugin is available after the server restarts.  
+The plug-in is available after the server restarts.  
 
 ## Creating a pipeline
 {: #jenkinsfile_create}
@@ -66,8 +66,8 @@ In the definition, add the following environment variables. These variables are 
 
 | Environment variable        | Definition    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Bluemix credentials that you define in Jenkins by using the `credentials` command. For example, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Setting the variable with this command sets two more environment variables automatically: `IBM_CLOUD_DEVOPS_CREDS_USR` and `IBM_CLOUD_DEVOPS_CREDS_PSW` for the user name and password.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | The Bluemix organization that your toolchain belongs to.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | {{site.data.keyword.Bluemix_notm}} Platform credentials that you define in Jenkins by using the `credentials` command. For example, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Setting the variable with this command sets two more environment variables automatically: `IBM_CLOUD_DEVOPS_CREDS_USR` and `IBM_CLOUD_DEVOPS_CREDS_PSW` for the user name and password.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | The {{site.data.keyword.Bluemix}} Platform organization that your toolchain belongs to.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | The name of the application that your toolchain deploys.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | The ID of your toolchain. Open the toolchain Overview and see the URL to determine the ID. The toolchain URL format is `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | The webhook that you were provided when you added Jenkins to your toolchain.   |
@@ -78,7 +78,7 @@ For more information about the `credentials` command, see the [Jenkins pipeline 
 If you are using the scripted pipeline format, set your credentials with `withCredentials` and your environment with `withEnv` instead of `credentials` and `environment`, which are used in the following example. For more information about `withCredentials`, see [the Jenkins documentation](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
 {: tip} 
 
-These environment variables and credentials are used by the IBM Cloud DevOps plugin to interact with DevOps Insights. In this example, they are set in the declarative pipeline format. 
+These environment variables and credentials are used by the IBM Cloud DevOps plug-in to interact with DevOps Insights. In this example, they are set in the declarative pipeline format. 
 
 ```
 environment {
@@ -92,7 +92,7 @@ environment {
 
 
 ## Adding Cloud DevOps steps
-The Cloud DevOps plugin adds four steps to Jenkins pipelines for you to use. Use these steps in your pipelines to interact with DevOps Insights. 
+The Cloud DevOps plug-in adds four steps to Jenkins pipelines for you to use. Use these steps in your pipelines to interact with DevOps Insights. 
 
 * `publishBuildRecord`, which publishes build information to DevOps Insights
 * `publishTestResult`, which publishes test results to DevOps Insights
@@ -118,7 +118,7 @@ This example shows these parameters in a command:
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins Pipeline does not expose Git information as environment variables. You can get the Git commit ID by using the command `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
+Jenkins Pipeline does not show Git information as environment variables. You can get the Git commit ID by using the command `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
 {: tip}
 
 ### Publishing test results
@@ -162,7 +162,7 @@ This step requires one parameter. It can also accept one optional parameter.
 | Parameter        | Definition    |
 | ----------------------------|---------------|
 | `policy`    | The name of the policy that the gate implements. The policy's name is defined in DevOps Insights. |
-| `forceDecision`      | _Optional_: Whether or not the pipeline stops depending on the gate's decision. Set this parameter to `true` to stop the pipeline from running if the gate fails. Set it to `false` to allow the pipeline to continue after a gate failure. By default, the value is `false`.     |
+| `forceDecision`      | _Optional_: Whether the pipeline stops depending on the gate's decision. Set this parameter to `true` to stop the pipeline from running if the gate fails. Set it to `false` to allow the pipeline to continue after a gate failure. By default, the value is `false`.     |
 
 The following example shows these parameters in a command. In this command, the pipeline continues to run regardless of the gate's decision. 
 
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Communicating with toolchains
 
-Send pipeline status to Bluemix toolchains by using the `notifyOTC` command. To learn more about integrating Jenkins with toolchains, [see the documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). You can disregard steps 6d through 6f, as they only apply to freeform Jenkins projects.
+Send pipeline status to {{site.data.keyword.Bluemix_notm}} toolchains by using the `notifyOTC` command. To learn more about integrating Jenkins with toolchains, [see the documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). You can disregard steps 6d through 6f, as they only apply to freeform Jenkins projects.
 
 This step requires two parameters and can also take an optional one. 
 
@@ -220,9 +220,9 @@ In both of the examples, the toolchain webhook URL is overridden only in case of
 
 ## Ensuring traceability across toolchain integrations
 
-Configure your Jenkins environment to integrate with your Bluemix toolchain by following the instructions in [the Bluemix Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). You can disregard steps 6d through 6f, as they apply only to freeform Jenkins projects.
+Configure your Jenkins environment to integrate with your {{site.data.keyword.Bluemix_notm}} toolchain by following the instructions in [the {{site.data.keyword.Bluemix}} Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). You can disregard steps 6d through 6f, as they apply only to freeform Jenkins projects.
 
-Integrating with a toolchain gives you end to end traceability and deployment mapping. After you follow the integration instructions, add the command `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` after your deployment steps. This command connects your Jenkins integration to an app that is running on Bluemix. 
+Integrating with a toolchain gives you end-to-end traceability and deployment mapping. After you follow the integration instructions, add the command `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` after your deployment steps. This command connects your Jenkins integration to an app that is running on the {{site.data.keyword.Bluemix_notm}} Platform. 
 
 This example shows a deployment step in full. The last command is `cf icd --create-connection`. 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-As described in the Jenkins integration documentation, the CloudFoundry CLI and CloudFoundry ICD plugins must be installed on your Jenkins server. You also need to log in to Bluemix from the server to connect with it.
+As described in the Jenkins integration documentation, the CloudFoundry CLI and CloudFoundry ICD plugins must be installed on your Jenkins server. You also need to log in to the {{site.data.keyword.Bluemix}} Platform from the server to connect with it.
 
 ## Example of a declarative pipeline
 
@@ -305,7 +305,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Push the Weather App to Bluemix, staging space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} Platform, staging space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -359,7 +359,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Push the Weather App to Bluemix, production space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} platform, production space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -393,10 +393,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
