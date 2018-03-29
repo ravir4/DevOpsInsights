@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2017-05-15"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -30,21 +30,21 @@ Some of the information that you can see on Delivery Insights includes:
 ## Systems overview
 {: #systems_overview}
 
-The topology for Delivery Insights includes one or more on-premise installations of IBM UrbanCode Deploy <!-- (and optionally IBM UrbanCode Release) --> and the DevOps Connect utility.
+The topology for Delivery Insights includes one or more on-premises installations of IBM UrbanCode Deploy <!-- (and optionally IBM UrbanCode Release) --> and the DevOps Connect utility.
 
 The following diagram shows a typical installation of these systems.
 
-![Overview topology for UrbanCode Insights, including customer on-premise systems and IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
+![Overview topology for UrbanCode Insights, including customer on-premises systems and IBM Cloud Services](images/uc_insights_overview_topology_multi_ucd.png)
 
-- An installation of **IBM UrbanCode Deploy** provides the information about successful and failed deployments for the metrics. IBM UrbanCode Deploy requires a patch to communicate with IBM Bluemix DevOps Connect.
+- An installation of **IBM UrbanCode Deploy** provides the information about successful and failed deployments for the metrics. IBM UrbanCode Deploy requires a patch to communicate with {{site.data.keyword.Bluemix_short}} DevOps Connect.
 
 <!--
 - **IBM UrbanCode Release** is an optional part of the topology. You can use the environment mappings in IBM UrbanCode Release to set logical environments for reports.
 
 -->
 
-- **IBM Bluemix DevOps Connect**, formerly the IBM UrbanCode Sync Utility, coordinates communication between on-premise installations of IBM UrbanCode Deploy <!-- and IBM UrbanCode Release --> and IBM-hosted services such as UrbanCode Insights. DevOps Connect uses secure HTTPS communication to the on-premise servers and token authentication to provide data to UrbanCode Insights.
+- **{{site.data.keyword.Bluemix}} DevOps Connect**, formerly the IBM UrbanCode Sync Utility, coordinates communication between on-premises installations of IBM UrbanCode Deploy <!-- and IBM UrbanCode Release --> and IBM-hosted services such as UrbanCode Insights. DevOps Connect uses secure HTTPS communication to the on-premises servers and token authentication to provide data to UrbanCode Insights.
 
   DevOps Connect requires plug-ins to connect to the other systems in the topology.
 
-- **Delivery Insights**, part of {{site.data.keyword.DRA_short}}, provides metrics about deployment activity on IBM UrbanCode Deploy, including deployment times and failure rates according to groups of environments. Authorization is controlled by {{site.data.keyword.Bluemix}} accounts.
+- **Delivery Insights**, part of {{site.data.keyword.DRA_short}}, provides metrics about deployment activity on IBM UrbanCode Deploy, including deployment times and failure rates according to groups of environments. Authorization is controlled by {{site.data.keyword.Bluemix_notm}} accounts.
