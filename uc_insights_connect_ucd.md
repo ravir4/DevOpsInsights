@@ -3,7 +3,7 @@
 copyright:
   years: 2017, 2018
 
-lastupdated: "2017-07-21"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -22,12 +22,12 @@ To see data from an IBM UrbanCode Deploy server in Delivery Insights, you must s
 ## Prerequisites
 {: #prereqs}
 
-To see information from your IBM UrbanCode Deploy servers in {{site.data.keyword.DRA_short}}, you must host an instance of DevOps Connect on a system that can connect to your IBM UrbanCode Deploy servers. This system can be a physical computer or a virtual machine. 
+To see information from your IBM UrbanCode Deploy servers in {{site.data.keyword.DRA_short}}, you must host an instance of DevOps Connect on a system that can connect to your IBM UrbanCode Deploy servers. This system can be a physical computer or a virtual machine.
 
 The system that hosts DevOps Connect must have the following prerequisites:
 - The system must have a Java Runtime Environment (JRE) version 8 or later.
 - The system `PATH` variable must include the location of the JRE.
-- The system must allow DevOps Connect to create outgoing connections to IBM Bluemix.
+- The system must allow DevOps Connect to create outgoing connections to the {{site.data.keyword.Bluemix}} Platform.
 
 Also, your IBM UrbanCode Deploy server must be at version 6.2 or later.
 
@@ -64,9 +64,9 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
     * If the proxy uses HTTP, set `_JAVA_OPTIONS` to `-Dhttp.proxyHost=HOSTNAME -Dhttp.proxyPort=PORT`, where `HOSTNAME` is the host name of the proxy server and `PORT` is the HTTP port of the proxy server.
 
   1. Copy the command from the **Setup Instructions** page. This command starts DevOps Connect with a token that allows it to connect to your organization on {{site.data.keyword.Bluemix}}.
-  1. DevOps Connect runs on port 8443 by default, which is the same port that the IBM UrbanCode Deploy server runs on by default. Therefore, if the IBM UrbanCode Deploy server or any other service is running on port 844s, change the port for DevOps Connect by adding the parameter `-Dserver.port` to the command. For example, to set DevOps Connect to use port 8888, the beginning of the command looks like this:  
+  1. DevOps Connect runs on port 8443 by default, which is the same port that the IBM UrbanCode Deploy server runs on by default. Therefore, if the IBM UrbanCode Deploy server or any other service is running on port 8443, change the port for DevOps Connect by adding the parameter `-Dserver.port` to the command. For example, to set DevOps Connect to use port 8888, the beginning of the command looks like this:  
 ```java -Dserver.port=8888 -jar devops-connect-2.0.92clear0618.jar -Dserver.port=8888```  
-  The full command contains information about your Bluemix account, which configures DevOps Connect automatically, as in the following example:  
+  The full command contains information about your {{site.data.keyword.Bluemix_notm}} account, which configures DevOps Connect automatically, as in the following example:  
 ```java -Dserver.port=8888 -jar devops-connect-2.0.920618.jar --sync.id=a2c12cb9-9a09-9832-479b01bf --sync.token=j0zs325U6qp080pzpcQ  --sync.registrar=jsmith@example.com
 ```
   1. Run the command and wait for DevOps connect to start.
@@ -76,10 +76,12 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
 ## Connecting IBM UrbanCode Deploy servers to DevOps Connect
 {: #connect_ucd_to_connect}
 
-1. If your IBM UrbanCode Deploy server is earlier than version 6.2.5, install a patch on the server. Versions 6.2.5 and later do not require a patch.
-  1. Download the correct patch for your version of IBM UrbanCode Deploy from the following page. For example, the patch file for IBM UrbanCode Deploy 6.2.4.x is named  [ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar).  
-  
+1. Install a patch on the IBM UrbanCode Deploy server.
+  1. Download the correct patch for your version of IBM UrbanCode Deploy from the following page. For example, the patch file for IBM UrbanCode Deploy 6.2.4.x is named [ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/6_2_4_X/ucd-6.2.4.0-WI161775-Devops-Insights-Patch.jar).  
+
     [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/)
+
+    **Note:** For IBM UrbanCode Deploy 6.2.5.x, use the patch for IBM UrbanCode Deploy 6.2.4.x.
 
   1. Stop the server. See [Starting and stopping the server](https://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.5/com.ibm.udeploy.install.doc/topics/run_server.html).
 
@@ -91,12 +93,12 @@ Now you can follow the instructions on the **Setup Instructions** page to instal
   Use the name of your database for `MyUCDDatabase`.
   <!-- Ross says that this will not be necessary for versions 6.2.4.1 and later if he gets his code changes in. -->
 
-  1. Start the server. 
+  1. Start the server.
 
     **Note:** You might need to wait longer than you typically do for the IBM UrbanCode Deploy server to start. If the server does not eventually start, or is not working correctly, delete the patch files and then restart the server. The patch files do not permanently affect the server.
 
 1. Some versions of IBM UrbanCode Deploy require an additional patch for the server to connect to DevOps Connect. If you are using IBM UrbanCode Deploy version 6.2 through 6.2.1.2, you must install the following additional patch on the server:
-  1. Download the patch:  [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/ucd-6.2.1.1-WI149200-CLI-Updates-for-UCSync.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/ucd-6.2.1.1-WI149200-CLI-Updates-for-UCSync.jar).
+  1. Download the patch: [http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/ucd-6.2.1.1-WI149200-CLI-Updates-for-UCSync.jar](http://public.dhe.ibm.com/software/products/UrbanCode/plugins/ucsync/patches/ibmucd/ucd-6.2.1.1-WI149200-CLI-Updates-for-UCSync.jar).
   1. Stop the server.
   1. Put the patch file in the <code><em>application_data</em>/patches</code> folder.
   1. Start the server.
@@ -156,27 +158,27 @@ To set up lines of business (LOBs), follow these steps:
 
 1. In {{site.data.keyword.DRA_short}}, click **Delivery Insights**, click the settings button, and then click **Map Lines of Business**.
 1. On the Lines of Business Mapping page, click an existing LOB, or create an LOB by typing a name and clicking **Create**.
-1. With an LOB selected, you can specify patterns to map applications to the LOB. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications  that you create later, are added to the LOB.  You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
-1. You can also map applications to the LOP manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
+1. With an LOB selected, you can specify patterns to map applications to the LOB. Under **Included Patterns**, click **Add Pattern** and specify a pattern to use. All applications with names that match the pattern, including applications that you create later, are added to the LOB. You can use the asterisk (*) as a wildcard. For example, the pattern `env` matches the environments `env1`, `env2`, and `env`.
+1. You can also map applications to the LOB manually by clicking **Individually Mapped Applications** and then clicking **Add Applications**.
 
-After your set up LOBs, you can filter charts to show only the applications in certain LOBs. Other charts show metrics based on LOBs.
+After you set up LOBs, you can filter charts to show only the applications in certain LOBs. Other charts show metrics based on LOBs.
 
 ## Creating reports
 
 To create a report, open {{site.data.keyword.DRA_short}}, click **Delivery Insights**, and then click **Add Report**. If you don't see **Add Report**, your IBM UrbanCode Deploy servers are not connected. Click the settings button and then click **Setup** to connect your servers.
 
-From within the report, you can add cards to the **Metrics** section, filter the activity under **Recent application activity**, and add charts to the **Report Details** section. Each chart in the **Report Details** section is individually filterable and customizable. To see the raw data behind a chart, at the top right of the chart, click the chart Settings button and then click **Report Data**.
+From within the report, you can add cards to the **Metrics** section, filter the activity under **Recent application activity**, and add charts to the **Report Details** section. Each chart in the **Report Details** section is individually filterable and customizable. To see the raw data behind a chart, at the upper right of the chart, click the Settings button and then click **Report Data**.
 
-To change the order of the charts, at the top right of the page, click the Settings button and then click **Edit Chart Layout**. Then you can drag and drop the charts to set the order on the report.
+To change the order of the charts, at the upper right of the page, click the Settings button and then click **Edit Chart Layout**. Then, you can drag the charts to set the order on the report.
 
 ## Sharing reports
-By default, only you can see your Delivery Insights reports. You can share the report with other users in your Bluemix org. To share a report with someone in your Bluemix org, open the report and then at the top right of the report, click the Settings button and then click **Share**.  
+By default, only you can see your Delivery Insights reports. You can share the report with other users in your {{site.data.keyword.Bluemix_notm}} org. To share a report with someone in your {{site.data.keyword.Bluemix_notm}} org, open the report and then at the upper right of the report, click the Settings button and then click **Share**.  
 
 ![Sharing a report](images/uc_insights_sharing.gif).
 
 ## Creating audit reports
 
-Audit reports show a complete list of all activity that meets the filters that you set, as a PDF. To create an audit report, click **Delivery Insights**, click the settings button, and then click **Create Audit Report**. Then, specify the information for the report, including a name. Also, set the context for the report, such as for an application, a logical environment, or an environment on an IBM UrbanCode Deploy server (a physical environment). From there, select the data to show in the report and click **Create**. 
+Audit reports show a complete list of all activity that meets the filters that you set, as a PDF. To create an audit report, click **Delivery Insights**, click the settings button, and then click **Create Audit Report**. Then, specify the information for the report, including a name. Also, set the context for the report, such as for an application, a logical environment, or an environment on an IBM UrbanCode Deploy server (a physical environment). From there, select the data to show in the report and click **Create**.
 
 ## Troubleshooting
 {: #troubleshooting}
