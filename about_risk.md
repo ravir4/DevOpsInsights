@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-10-25"
+lastupdated: "2018-3-28"
 
 ---
 
@@ -23,27 +23,27 @@ You can use Deployment Risk to enforce quality standards in your toolchain throu
 
 ## Risk analysis
 
-With risk analysis, you get an overview of the risks associated with applications in your staging and production environments. You can   drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
+With risk analysis, you get an overview of the risks associated with applications in your staging and production environments. You can drill down to understand code coverage, test performance, and security reports. The dashboards are automatically populated with the most recent information from your pipelines' {{site.data.keyword.DRA_short}} tests.
 
 ## Deployment frequency
 
-You can view deployment frequency trends for your production, staging, or other environments. This view also shows deployment success and failures. You can click on a particular deployment and see details about it. If you're on an agile team, you should see the deployment frequency trend upward over time. 
+You can view deployment frequency trends for your production, staging, or other environments. This view also shows deployment success and failures. You can click a particular deployment to see details about it. If you're on an agile team, you should see the deployment frequency trend upward over time. 
 
 ## Build frequency
 
-You can view build frequency trends for your long-running branches. This view also also shows build successes and failures. You can click on a point of interest and see build details. If you're on an agile team, you want to see a lot of daily builds on the integration branch. Otherwise, your team is not merging their code frequently.
+You can view build frequency trends for your long-running branches. This view also shows build successes and failures. You can click a point of interest and see build details. If you're on an agile team, you want to see a lot of daily builds on the integration branch. Otherwise, your team is not merging their code frequently.
 
 ## Unit test trends
 
-You can view trends for unit tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you may want to take  action. Also, if number of tests are dwindling over time, that may also be a cause for concern.
+You can view trends for unit tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you might want to take some action. Also, if the number of tests are dwindling over time, that might be a cause for concern.
 
-## Funcition verification test trends
+## Function verification test trends
 
-You can view trends for functional verification tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you may want to take some action. Also, if number of tests are dwindling over time, that may also be a cause for concern.
+You can view trends for functional verification tests for the builds that are from a certain branch or are deployed to a certain environment. For example, you can see test trends for builds from the master branch. If some tests fail for builds that went to production, you might want to take some action. Also, if the number of tests are dwindling over time, that might be a cause for concern.
 
 ## Code Coverage trends
 
-You can view code coverage trends for the builds that are deployed to a certain environment. For example, you can see code coverage trends for builds that went to production.  Ideally, you should see that code coverage improves over time for builds that go to production. If code coverage is decreasing, you may want to take action.
+You can view code coverage trends for the builds that are deployed to a certain environment. For example, you can see code coverage trends for builds that went to production. Ideally, you should see that code coverage improves over time for builds that go to production. If code coverage is decreasing, you might want to take action.
 
 ## Policies
 
