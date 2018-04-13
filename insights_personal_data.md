@@ -15,7 +15,7 @@ lastupdated: "2018-4-13"
 You can delete personal data that is collected and stored in {{site.data.keyword.DRA_full}}.
 {: shortdesc}
 
-Data that is stored in {{site.data.keyword.DRA_short}} is indexed by toolchain ID. When you delete a toolchain, all of the data related to repos that was collected as part of the toolchain is deleted.
+Data that is stored in {{site.data.keyword.DRA_short}} is indexed by toolchain ID. When you delete a toolchain, all of the data that is related to repos that was collected as part of the toolchain is deleted.
 
 ## Deleting data from {{site.data.keyword.DRA_short}}
 {: #insights_delete_data}
@@ -24,9 +24,9 @@ The following table lists the scenarios for deleting data from {{site.data.keywo
 
 |  | Developer and Team Insights | Deployment Risk | Security Insights |
 |---------|-------------|-------------|-------------|
-| [Deleting a repo ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	All data related to the repo is deleted.  | N/A | N/A |
-| [Deleting a {{site.data.keyword.DRA_short}} tool integration ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	All data related to the repo is deleted.  | All data associated with the toolchain that the tool integration is part of is deleted. | All data related to the repos associated with the toolchain that the tool integration is part of is deleted.  |
-| [Deleting a toolchain ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} | All data related to repos associated with the toolchain is deleted. | All data associated with the toolchain is deleted.  | All data associated with the toolchain is deleted. |
+| [Deleting a repo ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	All data that is related to the repo is deleted.  | N/A | N/A |
+| [Deleting a {{site.data.keyword.DRA_short}} tool integration ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	All data that is related to the repo is deleted.  | All data that is associated with the toolchain that the tool integration is part of is deleted. | All data that is related to repos that are associated with the toolchain that the tool integration is part of is deleted.  |
+| [Deleting a toolchain ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} | All data that is related to repos that are associated with the toolchain is deleted. | All data that is associated with the toolchain is deleted.  | All data that is associated with the toolchain is deleted. |
 | [Deleting a pipeline ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_pipeline_data){: new_window} | N/A | N/A | N/A |
 {:caption="Table 1. Data deletion scenarios" caption-side="top"}
 
