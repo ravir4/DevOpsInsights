@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-06-07" 
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,7 @@ lastupdated: "2017-06-07"
 
 ## Deployment Risk evaluations
 
-After a pipeline runs, {{site.data.keyword.DRA_short}} starts to collect and analyze the test results from it to establish a baseline. Data from every subsequent run is collected and compared against previous results. Decision gates use this data to determine when to stop a deployment. 
+After a pipeline runs, {{site.data.keyword.DRA_short}} starts to collect and analyze the test results from it to establish a baseline. Data from every subsequent run is collected and compared against previous results. Decision gates use this data to determine when to stop a deployment.
 
 You can see your deployment and gate evaluation data from the Deployment Risk dashboard. To open the dashboard, open {{site.data.keyword.DRA_short}} and from the side menu, click **Deployment Risk**.
 
@@ -27,6 +27,6 @@ If you are using a {{site.data.keyword.contdelivery_short}} pipeline, you can vi
 
 3. In the log view, find the `Check {{site.data.keyword.DRA_short}} report here` message and click the link to open the report.
 
-## Developer Insights and Team Dynamics reports
+## Developer Insights and Team reports
 
-You can view dashboards about your team and code after an initial data mining period. In the service navigation menu, click **Developer Insights** or **Team Dynamics** and then select a data category to view this information.
+You can view dashboards about your team and code after an initial data mining period. In the service navigation menu, click **Developer Insights** or **Team** and then select a data category to view this information.
