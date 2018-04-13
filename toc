@@ -24,6 +24,7 @@ IBM Cloud DevOps Insights
     uc_insights_connect_ucd.md
     risk_policies.md
     results.md
+    insights_personal_data.md
   {: .navgroup-end}
 
   {: .navgroup id="help"}
