@@ -25,17 +25,11 @@ The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is
 
 ### Developer Best Practices
 
-Developer Insights provides a number of charts that measure your project against good DevOps and developer practices. Use this category to get a high-level view of your project's maturity, health, and efficiency. 
-
-### Error Proneness
-
-*Error proneness* is the likelihood that a file, commit, or pull request might generate defects according to historical trends, committer experience, change frequency, change weight, and other factors. 
-
-You might look to this category while you conduct code reviews or improve the code review process. Risky files deserve more scrutiny than relatively safe ones. Conversely, safe files and commits can serve as examples for your team as you improve how you work.
+Developer Insights provides a number of charts that measure your project against good DevOps and developer practices. Use this category to get a high-level view of your project's maturity, health, and efficiency.
 
 ### Issues
 
-The Issues category displays all of your team's work-tracking issues in one place. The issues are automatically grouped by type, priority, and tag, and can be shown over time. 
+The Issues category displays all of your team's work-tracking issues in one place. The issues are automatically grouped by type, priority, and tag, and can be shown over time.
 
 These issue groupings can vary in meaning from team to team. One team might want to know whether most items that are tagged for a particular release are closed, while another team might not tag releases and instead work according to open-issue priority.  
 
@@ -43,13 +37,19 @@ These issue groupings can vary in meaning from team to team. One team might want
 
 The Commits category displays all of your team's commits in one place. The commits are automatically grouped by type, tag, and line changes. You can see them over a period of time that you choose.
 
-Commits indicate the work that your team members are contributing to your codebase. Examine your commit data to understand where effort is being expended historically and how you can better balance your team members' workloads. 
+Commits indicate the work that your team members are contributing to your codebase. Examine your commit data to understand where effort is being expended historically and how you can better balance your team members' workloads.
 
 ### Files
 
-The Files category shows which of your project's files are the busiest. Whether by number of line changes, commits, or defects, this data indicates where your team is most active. 
+The Files category shows which of your project's files are the busiest. Whether by number of line changes, commits, or defects, this data indicates where your team is most active.
 
-Generally, try to reduce both the number of hands that touch a file and that file's change frequency. This goal might be impossible with certain files, such as common configuration files. However, many developers making many changes to the same file at the same time is a recipe for trouble. 
+Generally, try to reduce both the number of hands that touch a file and that file's change frequency. This goal might be impossible with certain files, such as common configuration files. However, many developers making many changes to the same file at the same time is a recipe for trouble.
+
+### Pull Requests
+
+The Pull requests category shows you your team's pull requests in one place.  The pull requests are evaluated for error proneness using machine learning.  You can quickly see what pull requests are adding risk to your codebase.
+
+Pull requests display the work your team members are attempting to merge into your codebase.  Examine your pull request data to understand all the risk associated with it and how you can reduce risk in the future.
 
 ## File extension filtering
 

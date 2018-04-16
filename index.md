@@ -24,11 +24,9 @@ lastupdated: "2018-3-28"
 
    * Developer Insights provides a comprehensive way to explore your project’s development maturity. You can identify files with high error proneness and get a compliance view of the project against developer practices.
 
-   * Team Dynamics uses social coding analysis to help you learn how your team collaborates and understand how it can work better.
+   * Team uses social coding analysis to help you learn how your team collaborates and understand how it can work better.
 
    * Deployment Risk is like a safety net for continuous delivery. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows charts of trends in code coverage, builds and deployments.
-
-   * Delivery Insights shows deployment statistics, metrics, and other information about your IBM UrbanCode Deploy installation. For example, it can show charts of deployment duration, successes, and failures, all sorted by logically grouped environments. See [Integrating DevOps Insights with IBM UrbanCode Deploy](/docs/services/DevOpsInsights/uc_insights_overview.html).
 
 {{site.data.keyword.DRA_short}} is an integration in the Bluemix open toolchain catalog. For more information about toolchains, see [Working with toolchains](/docs/services/ContinuousDelivery/toolchains_working.html).
 
@@ -51,7 +49,7 @@ To add {{site.data.keyword.DRA_short}} to a toolchain:
 
 3. Click **Create Integration**.
 
-{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page. Your repo and issue-tracking system are scanned automatically for data. 
+{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page. Your repo and issue-tracking system are scanned automatically for data.
 
 ## Using DevOps Insights
 {: #using}
@@ -60,8 +58,8 @@ If your toolchain includes GitHub, GitLab, or JIRA, {{site.data.keyword.DRA_shor
 
 1. From your toolchain's Overview page, click **{{site.data.keyword.DRA_short}}**.
 
-2. Click **Team Dynamics** or **Developer Insights** and then choose a data category. 
+2. Click **Team ** or **Developer Insights** and then choose a data category.
 
 3. Explore your project's data by viewing the dashboards in the data category. If you want to know more about a graph or what you might do with its information, click **Information** or **Guidance**.
 
-After you explore Team Dynamics and Developer Insights, configure [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) to help you enforce code quality. Deployment Risk is compatible with both Delivery Pipeline for {{site.data.keyword.contdelivery_short}} and Jenkins.
+After you explore Team and Developer Insights, configure [Deployment Risk](/docs/services/DevOpsInsights/about_risk.html) to help you enforce code quality. Deployment Risk is compatible with both Delivery Pipeline for {{site.data.keyword.contdelivery_short}} and Jenkins.
