@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2017-03-17"
+lastupdated: "2018-4-16"
 
 ---
 
@@ -23,7 +23,7 @@ After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deve
 ## Data categories
 The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by clicking **Information** or **Guidance** on any chart.
 
-### Developer Best Practices
+### Developer best practices
 
 Developer Insights provides a number of charts that measure your project against good DevOps and developer practices. Use this category to get a high-level view of your project's maturity, health, and efficiency.
 
@@ -37,13 +37,13 @@ These issue groupings can vary in meaning from team to team. One team might want
 
 Commits indicate the work that your team members are contributing to your codebase. Examine your commit data to understand where effort is being expended historically and how you can better balance your team members' workloads.
 
-### Pull Requests
+### Pull requests
 
 Pull requests shows the code that your team members are merging into another branch.  Dive into your pull request data to understand the risks associated with adding new code into your pristine code branch.
 
 ### Files
 
-The Files category shows which of your project's files are the busiest. Whether by number of line changes, commits, authors, or defects, this data indicates where your team is most active. In addition, see where the risk lies with your files by reviewing the error proneness tab of files.
+The Files category shows which of your project's files are the busiest. Whether by number of line changes, commits, authors, or defects, this data indicates where your team is most active. In addition, you can see where the risk lies with your files by reviewing the error proneness tab of files.
 
 Generally, try to reduce both the number of hands that touch a file and that file's change frequency. This goal might be impossible with certain files, such as common configuration files. However, many developers making many changes to the same file at the same time is a recipe for trouble.
 
