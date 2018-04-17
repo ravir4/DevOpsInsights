@@ -23,7 +23,7 @@ After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Deve
 ## Data categories
 The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is mined automatically from your team's source-control repository. You can get more information about what the data means and how you can apply it to your project by clicking **Information** or **Guidance** on the Best Practices charts. You can also look at the Findings and Details that are part of the other visualizations for more information.
 
-### Developer Best Practices
+### Developer best practices
 
 Developer Insights provides a number of charts that measure your project against good DevOps and developer practices. Use this category to get a high-level view of your project's maturity, health, and efficiency.
 
@@ -45,7 +45,7 @@ The Files category shows which of your project's files are the busiest. Whether 
 
 Generally, try to reduce both the number of hands that touch a file and that file's change frequency. This goal might be impossible with certain files, such as common configuration files. However, many developers making many changes to the same file at the same time is a recipe for trouble.
 
-### Pull Requests
+### Pull requests
 
 The Pull requests category shows you your team's pull requests in one place.  The pull requests are evaluated for error proneness using machine learning.  You can quickly see what pull requests are adding risk to your codebase.
 
