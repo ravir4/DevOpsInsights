@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -35,14 +35,14 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 必须创建工具链后，才能将 {{site.data.keyword.DRA_short}} 与 Jenkins 项目相集成。 
 
-1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并按照该页面上的指示信息进行操作。 
+1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并遵循该页面上的指示信息进行操作。 
 
 2. 创建工具链后，向其添加 {{site.data.keyword.DRA_short}}。有关指示信息，请参阅 [{{site.data.keyword.DRA_short}} 文档](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html)。 
 
 ## 安装插件
 {: #jenkins_install}
 
-通过打开服务器界面并遵循以下步骤，在 Jenkins 服务器上安装插件：
+通过打开服务器界面并执行以下步骤，在 Jenkins 服务器上安装插件：
 
 1. 单击**管理 Jenkins**。
 2. 单击**管理插件**。 
@@ -66,8 +66,8 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 | 环境变量| 定义|
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | 使用 `credentials` 命令在 Jenkins 中定义的 Bluemix 凭证。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此命令设置该变量将自动设置另外两个环境变量：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，分别表示用户名和密码。|
-| `IBM_CLOUD_DEVOPS_ORG`      | 工具链所属的 Bluemix 组织。|
+| `IBM_CLOUD_DEVOPS_CREDS`    | 使用 `credentials` 命令在 Jenkins 中定义的 {{site.data.keyword.Bluemix_notm}} Platform 凭证。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此命令设置该变量将自动设置另外两个环境变量：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，分别表示用户名和密码。|
+| `IBM_CLOUD_DEVOPS_ORG`      | 工具链所属的 {{site.data.keyword.Bluemix}} Platform 组织。|
 | `IBM_CLOUD_DEVOPS_APP_NAME` | 工具链部署的应用程序的名称。|
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具链的标识。打开工具链“概述”，并查看相关 URL 以确定标识。工具链 URL 格式为 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。|
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 将 Jenkins 添加到工具链时为您提供的 WebHook。|
@@ -118,7 +118,7 @@ Cloud DevOps 插件会向 Jenkins Pipeline 添加四个步骤供您使用。在�
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins Pipeline 不会将 Git 信息作为环境变量公开。可以使用 `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` 命令来获取 Git 落实标识。
+Jenkins Pipeline 不会将 Git 信息显示为环境变量。可以使用 `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` 命令来获取 Git 落实标识。
 {: tip}
 
 ### 发布测试结果
@@ -162,7 +162,7 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 | 参数| 定义|
 | ----------------------------|---------------|
 | `policy`    | 检测点实施的策略的名称。策略的名称在 DevOps Insights 中进行定义。|
-| `forceDecision`      | _可选_：管道是否停止取决于检测点的决策。将此参数设置为 `false` 可在检测点失败时停止运行管道。将此参数设置为 `true` 将允许管道在检测点失败后继续运行。缺省情况下，此值为 `false`。|
+| `forceDecision`      | _可选_：管道是否根据检测点的决策停止。将此参数设置为 `false` 可在检测点失败时停止运行管道。将此参数设置为 `true` 将允许管道在检测点失败后继续运行。缺省情况下，此值为 `false`。|
 
 以下示例显示命令中的这些参数。在此命令中，不管检测点的决策是什么，管道都将继续运行。 
 
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### 与工具链通信
 
-使用 `notifyOTC` 命令将管道状态发送到 Bluemix 工具链。要了解有关将 Jenkins 与工具链相集成的更多信息，[请参阅文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。可以忽略步骤 6d 到 6f，因为这些步骤仅适用于自由格式的 Jenkins 项目。
+使用 `notifyOTC` 命令将管道状态发送到 {{site.data.keyword.Bluemix_notm}} 工具链。要了解有关将 Jenkins 与工具链相集成的更多信息，[请参阅文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。可以忽略步骤 6d 到 6f，因为这些步骤仅适用于自由格式的 Jenkins 项目。
 
 此步骤需要两个参数，还可以采用一个可选参数。 
 
@@ -220,9 +220,9 @@ stage('Deploy') {
 
 ## 确保跨工具链集成的可跟踪性
 
-通过遵循 [Bluemix 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息，将 Jenkins 环境配置为与 Bluemix 工具链相集成。可以忽略步骤 6d 到 6f，因为这些步骤仅适用于自由格式的 Jenkins 项目。
+通过遵循 [{{site.data.keyword.Bluemix}} 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息，将 Jenkins 环境配置为与 {{site.data.keyword.Bluemix_notm}} 工具链相集成。可以忽略步骤 6d 到 6f，因为这些步骤仅适用于自由格式的 Jenkins 项目。
 
-通过与工具链相集成，可以提供端到端可跟踪性和部署映射。遵循集成指示信息进行操作后，在部署步骤后添加 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 命令。此命令将 Jenkins 集成连接到正在在 Bluemix 上运行的应用程序。 
+通过与工具链相集成，可以提供端到端可跟踪性和部署映射。遵循集成指示信息进行操作后，在部署步骤后添加 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 命令。此命令将 Jenkins 集成连接到正在 {{site.data.keyword.Bluemix_notm}} Platform 上运行的应用程序。 
 
 此示例显示完整的部署步骤。最后一个命令是 `cf icd --create-connection`。 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-如 Jenkins 集成文档中所述，必须在 Jenkins 服务器上安装 CloudFoundry CLI 和 CloudFoundry ICD 插件。您还需要从服务器登录到 Bluemix 才能与其建立连接。
+如 Jenkins 集成文档中所述，必须在 Jenkins 服务器上安装 CloudFoundry CLI 和 CloudFoundry ICD 插件。您还需要从服务器登录到 {{site.data.keyword.Bluemix}} Platform 才能与其建立连接。
 
 ## 声明式管道示例
 
@@ -305,7 +305,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Push the Weather App to Bluemix, staging space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} Platform, staging space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -359,7 +359,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Push the Weather App to Bluemix, production space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} platform, production space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -393,13 +393,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -40,7 +40,7 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 
 1. [创建策略和规则](#policies_and_rules)以供 {{site.data.keyword.DRA_short}} 管理。
 2. [安装并配置 Jenkins 插件](#integrate_jenkins)。
-3. [创建测试作业和检测点，如插件指示信息中所述](#integrate_jenkins)。测试会将结果上传到 {{site.data.keyword.DRA_short}} 进行分析，而检测点会使用这些结果来做出升级决策。
+3. 如插件指示信息中所述，[创建测试作业和检测点](#integrate_jenkins)。测试会将结果上传到 {{site.data.keyword.DRA_short}} 进行分析，而检测点会使用这些结果来做出升级决策。
 4. 运行项目并[查看结果](#view_results)。 
 
 不管您如何构建和部署代码，结果都一样：符合标准的构建将通过 Deployment Risk 检测点，而不符合标准的构建则会停止。 
@@ -93,7 +93,7 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 #### 创建功能验证测试规则
 {: #criteria_fvt}
 
-1. 键入描述并选择格式。
+1. 输入描述并选择格式。
 
 2. 指定必须通过并声明成功的测试用例百分比。
 
@@ -107,7 +107,7 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 #### 创建单元测试规则
 {: #criteria_ut}
 
-1. 键入描述并选择格式。
+1. 输入描述并选择格式。
 
 2. 指定必须通过并声明成功的测试用例百分比。
 
@@ -121,7 +121,7 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 #### 创建代码覆盖规则
 {: #criteria_codecoverage}
 
-1. 键入描述并选择格式。
+1. 输入描述并选择格式。
 
 2. 指定需要声明成功的代码覆盖百分比。
 
@@ -228,7 +228,7 @@ Deployment Risk 仪表板依赖于编译打包部署作业后存在检测点。�
 
 通常，检测点在管道中构建升级之前放置。这些位置非常适合根据策略检查构建的质量，以确保构建能够安全地从一个环境升级到另一个环境。但是，您可以将检测点放置在管道中您要检查特定条件的任何位置。在部署到编译打包环境之前放置的检测点仍将强制实施策略，但这些检测点不会在 Deployment Risk 仪表板上显示。
 
-1. 在阶段上，单击**阶段配置**图标 ![管道阶段配置图标](images/pipeline-stage-configuration-icon.png)，并单击**配置阶段**。
+1. 在阶段上，单击**阶段配置**图标 ![“管道阶段配置”图标](images/pipeline-stage-configuration-icon.png)，并单击**配置阶段**。
 2. 单击**添加作业**。对于作业类型，选择**测试**。
 3. 对于测试器类型，选择 **{{site.data.keyword.DRA_short}} 检测点**。
 4. 指定环境名称。确保此值匹配[环境属性](#toolchain_pipeline_props)中所定义的内容。
@@ -267,7 +267,7 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 必须创建工具链后，才能将 {{site.data.keyword.DRA_short}} 与 Jenkins 项目相集成。 
 
-1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并按照该页面上的指示信息进行操作。 
+1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并遵循该页面上的指示信息进行操作。 
 
 2. 创建工具链后，向其添加 {{site.data.keyword.DRA_short}}。有关指示信息，请参阅 [{{site.data.keyword.DRA_short}} 文档](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html)。 
 
@@ -278,14 +278,14 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 1. 在工具链的“概述”页面中，单击 **DevOps Insights**。
 2. 单击**设置**，然后单击 **Jenkins 插件设置**。
-3. 按照页面上的指示信息下载该插件。
+3. 遵循页面上的指示信息下载该插件。
 
 然后，在 Jenkins 服务器上安装插件。
 
 1. 单击**管理 Jenkins &gt; 管理插件**，然后单击**高级**选项卡。
 2. 单击**选择文件**并选择 IBM Cloud DevOps 插件安装文件。 
 3. 单击**上传**。
-4. 重新启动 Jenkins 并验证已安装插件。
+4. 重新启动 Jenkins 并验证插件是否已安装。
 
 ### 为 Deployment Risk 仪表板配置 Jenkins 作业
 {: #jenkins_configure}
@@ -313,7 +313,7 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
    
    * 对于环境，如果测试正在构建阶段中运行，请仅选择构建环境。如果测试正在部署阶段中运行，请选择部署环境并指定环境名称。支持两个值：`STAGING` 和 `PRODUCTION`。
    
-   * 对于**结果文件位置**字段，请指定结果文件的位置。如果测试未生成结果文件，请将此字段保留为空。插件将基于当前测试作业的状态，上传缺省结果文件。
+   * 对于**结果文件位置**字段，请指定结果文件的位置。如果测试未生成结果文件，请将此字段保留为空。插件将上传基于当前测试作业的状态的缺省结果文件。
 
    以下各图显示了示例配置：
    
@@ -332,14 +332,14 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 5. 运行 Jenkins 构建作业。
 
-6. 通过转至 [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops)，选择您的工具链并单击 **DevOps Insights** 来查看 Deployment Risk 仪表板。
+6. 通过转至 [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops)，选择工具链并单击 **DevOps Insights** 来查看 Deployment Risk 仪表板。
 
 Deployment Risk 仪表板依赖于编译打包部署作业后存在检测点。如果要使用该仪表板，请确保您在部署到编译打包环境后，但在部署到生产环境之前拥有检测点。
     
 ### 配置通知
 {: #jenkins_notifications}
 
-可以通过遵循 [Bluemix 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息来配置用于向 Slack 或 PagerDuty 之类的工具发送通知的 Jenkins 作业。
+可以通过遵循 [{{site.data.keyword.Bluemix}} Platform 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息来配置用于向 Slack 或 PagerDuty 之类的工具发送通知的 Jenkins 作业。
 
 此示例显示了如何配置用于作业配置的 `ICD_WEBHOOK_URL`：![设置 ICD_WEBHOOK_URL 参数](images/Set-Parameterized-Webhook.png "设置参数化 WebHook")
 
@@ -359,9 +359,3 @@ Deployment Risk 仪表板依赖于编译打包部署作业后存在检测点。�
 2. 在包含检测点的作业中，单击检测点的名称。
 
 3. 在日志视图中，找到“`在此处查看 {{site.data.keyword.DRA_short}} 报告`”消息并单击链接以打开报告。
-
-
-
-
-
-

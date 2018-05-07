@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-09-18"
+  years: 2016, 2018
+lastupdated: "2017-10-25"
 
 ---
 
@@ -12,18 +12,18 @@ lastupdated: "2017-09-18"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# 将 Deployment Risk 分析与持续交付集成
+# 将 Deployment Risk 分析与 Continuous Delivery 集成
 
-您可以为 {{site.data.keyword.contdelivery_full}} 安装管道，以使用 {{site.data.keyword.DRA_short}} 的 Deployment Risk 分析功能。然后，可发布这些作业的数据，并添加强制实施风险策略的检测点。
+{{site.data.keyword.DRA_short}} 根据您向其发布的测试数据来跟踪部署风险。这些数据可能包括单元测试、代码覆盖、功能验证测试、SonarQube 数据或者来自 IBM Application Security on Cloud 的扫描数据。发布这些数据后，可以向管道添加检查点，使得可以停止不符合风险策略的构建。
 
 要查看 {{site.data.keyword.DRA_short}} 的 Deployment Risk 分析的高级说明，请参阅[关于 Deployment Risk](./about_risk.html)。
 
-有关持续交付管道的更多信息，请参阅[正式文档](../ContinuousDelivery/pipeline_working.html)。
+有关 Continuous Delivery Pipeline 的更多信息，请参阅[正式文档](../ContinuousDelivery/pipeline_working.html)。
 
-## 准备管道阶段和作业
+## 概述
 {: #integrate_pipeline}
 
-首先，您需要安装管道，以与 {{site.data.keyword.DRA_short}} 通信。通过为构建、测试或部署编码的所有管道作业定义特定环境变量，可实现此目标。您还必须使用 DevOps Insights 检测点测试器类型，将环境变量添加到强制实施风险策略的测试作业。
+{{site.data.keyword.DRA_short}} 需要从管道获取以下信息以分析部署风险：
 
 * 构建记录
 * 部署记录
@@ -45,12 +45,18 @@ lastupdated: "2017-09-18"
 环境变量：
 
 | 环境变量      | 用途 | 何时需要 |
-|-----------|-------- |-------------|
+|-----------------------|-------- |-------------|
 | `LOGICAL_APP_NAME`  | 仪表板上应用程序的名称。| 构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
 | `BUILD_PREFIX`  | 作为前缀添加到阶段构建中的文本。此文本还会在仪表板中出现。| 构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
 | `LOGICAL_ENV_NAME`  | 运行应用程序的环境。| 测试和部署作业。|
 
-### 配置构建作业
+使用以下变量时务必保持一致：
+
+* 对于特定应用程序，在所有作业或阶段均使用相同的 `LOGICAL_APP_NAME`。 
+* 对于特定应用程序和构建类型，`BUILD_PREFIX` 值应该相同。例如，对于主分支中的构建，`BUILD_PREFIX` 可为 `"master"`。 
+* 在相应的部署作业和测试作业中，使用相同的 `LOGICAL_ENVIRONMENT_NAME` 值。如果在部署作业中使用的 `LOGICAL_ENVIRONMENT_NAME` 的值为 `"PRODUCTION"`，那么发布同样在该环境中运行的测试的结果时，请使用相同的值。
+
+## 构建作业环境变量
 
 对于阶段中的最后一个构建作业，请为应用程序名称和构建前缀设置环境变量。示例脚本中包含了以下命令：
 
@@ -61,7 +67,7 @@ export BUILD_PREFIX="master"
 
 此构建作业完成之后，管道会向 {{site.data.keyword.DRA_short}} 发布一条消息，指示 SampleApp 构建完成。
 
-### 配置部署作业
+## 部署作业环境变量
 
 对于阶段中的最后一个部署作业，请设置应用程序名称、构建前缀和环境名称。示例脚本中包含了以下命令：
 
@@ -73,7 +79,7 @@ export LOGICAL_ENV_NAME="Production"
 
 部署作业结束之后，管道会向 {{site.data.keyword.DRA_short}} 发布一条消息，指示已将指定的构建和应用程序部署到环境中。
 
-### 配置测试作业
+## 测试作业环境变量
 
 对于生成测试结果的所有作业，请设置应用程序名称和构建前缀。
 
@@ -89,44 +95,10 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-确保应用程序名称和环境适当匹配。例如，您会希望针对生产部署运行的生产测试作业具有相同的 `LOGICAL_ENV_NAME` 值。
-
-## 将测试数据发布到 DevOps Insights
+## 发布测试结果
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} 使用作业的测试结果来生成报告，并强制实施风险策略。您可以发布所有作业类型的测试数据。
-
-发布测试结果时可使用以下两个选项：
-
-* 调用作业脚本中的简单命令行界面 (CLI)。
-
-* 将“高级测试器”类型的测试作业添加到管道中。
-
-使用“高级测试器”方法时，将不会使用 CLI 来发布测试结果。而是指定管道作业中结果文件的位置，然后作业会在结果变为可用时进行上传。
-
-无论使用哪种发布方法，测试结果必须采用 {{site.data.keyword.DRA_short}} 支持的其中一种格式：
-
-<table><thead>
-<tr>
-<th>测试类型</th>
-<th>支持的格式</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>功能验证测试</td>
-<td>Mocha、xUnit</td>
-</tr>
-<tr>
-<td>单元测试</td>
-<td>Mocha、xUnit、Karma/Mocha</td>
-</tr>
-<tr>
-<td>代码覆盖</td>
-<td>Istanbul、Blanket.js</td>
-</tr>
-</tbody></table>
-
-### 发布任何作业类型的测试数据
+{{site.data.keyword.DRA_short}} 使用作业的测试结果来生成报告，并强制实施风险策略。
 
 在管道中，可使用任何作业类型来运行测试。运行该测试之后，可将其结果上传到 {{site.data.keyword.DRA_short}}。通过调用作业 shell 脚本中的 CLI 可上传结果。 
 
@@ -135,6 +107,7 @@ export LOGICAL_ENV_NAME="Production"
 * 单元测试
 * 代码覆盖
 * 功能验证测试
+* SonarQube 结果
 * 来自 IBM Application Security on Cloud 的静态和动态应用程序扫描结果。 
 
 以下提供了用于运行测试并将结果上传到 {{site.data.keyword.DRA_short}} 的示例脚本： 
@@ -149,30 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+在该示例中，使用 `--publishtestresult` 标志运行的 `idra` 命令指定脚本将上传结果。`--filelocation` 标志指示测试结果文件相对于作业根目录的位置。`--type` 标志指示运行的测试类型。
+
+`idra` 命令支持以下 `type` 值： 
+
+| Type| 描述|
+|------|-------------|
+| `unittest`| 单元测试结果| 
+| `fvt`| 功能验证测试结果|
+| `code`| 代码覆盖结果| 
+| `sonarqube`| SonarQube 扫描结果| 
+| `staticsecurityscan`| 来自 IBM Application Security on Cloud 的静态安全扫描结果|
+| `dynamicsecurityscan`| 来自 IBM Application Security on Cloud 的动态安全扫描结果|
+
 要了解 `idra` 命令的更多信息，请参阅 [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3)。 
-
-### 发布高级测试器作业的测试数据
-
-可将“高级测试器”类型的测试作业添加到管道中。这些作业在运行之后会将其结果自动上传到 {{site.data.keyword.DRA_short}}。 
-
-1. 在要添加用于上传结果的作业的阶段中，单击**阶段配置**图标 ![“管道阶段配置”图标](images/pipeline-stage-configuration-icon.png)。单击**配置阶段**。
-2. 创建测试作业，然后输入其名称。 
-3. 对于作业类型，选择**高级测试器**。
-4. 填写**测试命令**和**工作目录**字段，就像对普通管道测试作业那样。 
-5. 填写其余字段，以上传特定测试类型的测试结果。 
-
- 1. 选择与要使用的 {{site.data.keyword.DRA_short}} 策略中所定义类型相匹配的度量类型。
- 2. 输入结果文件位置。此位置是工作目录的相对位置。 
-
-6. 如果要在同一作业中上传另一种测试类型的结果，请填写前缀为*其他*的字段。
-7. 单击**保存**以返回管道。
-
-图 1 显示的测试作业配置为运行单元测试、以 Mocha 格式上传结果，以及以 Istanbul 格式上传代码覆盖结果。
-
-![DevOps Insights 上传作业](images/insights_upload_job.png)
-*图 1. 将结果上传到 DevOps Insights*
-
-
 
 ## 定义检测点
 {: #configure_pipeline_gates}
@@ -183,7 +146,7 @@ Deployment Risk 仪表板依赖于编译打包部署作业后存在检测点。�
 
 通常，检测点在管道中构建升级之前放置。这些位置非常适合根据策略检查构建的质量，以确保构建能够安全地从一个环境升级到另一个环境。但是，您可以将检测点放置在管道中您要检查特定条件的任何位置。在部署到编译打包环境之前放置的检测点仍将强制实施策略，但这些检测点不会在 Deployment Risk 仪表板上显示。
 
-1. 在阶段上，单击**阶段配置**图标 ![管道阶段配置图标](images/pipeline-stage-configuration-icon.png)，并单击**配置阶段**。
+1. 在阶段上，单击**阶段配置**图标 ![“管道阶段配置”图标](images/pipeline-stage-configuration-icon.png)，并单击**配置阶段**。
 2. 单击**添加作业**。对于作业类型，选择**测试**。
 3. 对于测试器类型，选择 **{{site.data.keyword.DRA_short}} 检测点**。
 4. 指定环境名称。确保此值匹配[环境属性](#toolchain_pipeline_props)中所定义的内容。

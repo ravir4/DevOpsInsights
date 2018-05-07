@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -33,7 +33,7 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 必须创建工具链后，才能将 {{site.data.keyword.DRA_short}} 与 Jenkins 项目相集成。 
 
-1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并按照该页面上的指示信息进行操作。 
+1. 要创建工具链，请转至[创建工具链页面](https://console.ng.bluemix.net/devops/create)并遵循该页面上的指示信息进行操作。 
 
 2. 创建工具链后，向其添加 {{site.data.keyword.DRA_short}}。有关指示信息，请参阅 [{{site.data.keyword.DRA_short}} 文档](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html)。 
 
@@ -96,11 +96,11 @@ IBM Cloud DevOps for Jenkins 插件可将 Jenkins 项目与工具链相集成。
 
 5. 运行 Jenkins 构建作业。
 
-6. 通过转至 [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops)，选择您的工具链并单击 **DevOps Insights** 来查看 Deployment Risk 仪表板。
+6. 通过转至 [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops)，选择工具链并单击 **DevOps Insights** 来查看 Deployment Risk 仪表板。
 
 Deployment Risk 仪表板依赖于编译打包部署作业后存在检测点。如果要使用该仪表板，请确保您在部署到编译打包环境后，但在部署到生产环境之前拥有检测点。
     
 ## 配置通知
 {: #jenkins_notifications}
 
-可以通过遵循 [Bluemix 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息来配置用于向 Slack 或 PagerDuty 之类的工具发送通知的 Jenkins 作业。
+可以通过遵循 [{{site.data.keyword.Bluemix_notm}} 文档](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示信息来配置用于向 Slack 或 PagerDuty 之类的工具发送通知的 Jenkins 作业。
