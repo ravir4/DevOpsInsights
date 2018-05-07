@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-06-07" 
+  years: 2016, 2018
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -16,7 +16,7 @@ lastupdated: "2017-06-07"
 ## Avaliações do Deployment Risk
 
 Após um pipeline ser executado, o {{site.data.keyword.DRA_short}} começa a coletar e analisar os resultados de teste a partir dele, para estabelecer uma referência. Dados de cada execução subsequente são coletados e comparados com resultados anteriores. Portas de decisão usam esses dados para determinarem quando
-parar uma implementação. 
+parar uma implementação.
 
 É possível ver seus dados de avaliação de implementação e de porta no painel Deployment Risk. Para abrir o painel, abra o {{site.data.keyword.DRA_short}} e, no menu lateral, clique em **Deployment Risk**.
 
@@ -28,6 +28,6 @@ Se você estiver usando um pipeline do {{site.data.keyword.contdelivery_short}},
 
 3. Na visualização de log, localize a mensagem `Verifique o relatório do {{site.data.keyword.DRA_short}} aqui` e clique no link para abrir o relatório.
 
-## Relatórios do Developer Insights e do Team Dynamics
+## Relatórios do Developer Insights e da equipe
 
-É possível visualizar painéis sobre sua equipe e codificar após um período de mineração de dados inicial. No menu de navegação de serviço, clique em **Developer Insights** ou **Team Dynamics** e, em seguida, selecione uma categoria de dados para visualizar essas informações.
+É possível visualizar painéis sobre sua equipe e codificar após um período de mineração de dados inicial. No menu de navegação de serviço, clique em **Developer Insights** ou **Equipe** e, em seguida, selecione uma categoria de dados para visualizar essas informações.

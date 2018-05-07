@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -17,12 +17,12 @@ lastupdated: "2017-05-19"
 
 Depois de incluir o {{site.data.keyword.DRA_full}} em uma cadeia de ferramentas aberta e definir as políticas que ele monitora, será possível integrá-lo a um projeto Jenkins Pipeline. Defina um pipeline na interface da web do Jenkins ou em um _Jenkinsfile_ que você armazena no repositório de controle de fonte. É possível visualizar e administrar projetos Jenkins Pipelines da interface da web de Jenkins. 
 
-O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
+O plug-in do IBM Cloud DevOps para o Jenkins integra os projetos do Jenkins com cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
 poder coletivo de uma cadeia de ferramentas é maior que a soma de suas integrações de ferramentas individuais. As cadeias de ferramentas abertas são parte do serviço {{site.data.keyword.contdelivery_full}}. Para saber mais sobre o serviço {{site.data.keyword.contdelivery_short}}, veja [sua documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
-Depois de instalar o plug-in IBM Cloud DevOps, é possível configurar seu projeto Jenkins para publicar os resultados de teste no {{site.data.keyword.DRA_short}}, avaliar automaticamente a qualidade de construção nas portas e controlar o risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
+Depois de instalar o plug-in do IBM Cloud DevOps, será possível configurar o seu projeto do Jenkins para publicar resultados de teste no {{site.data.keyword.DRA_short}}, avaliar automaticamente a qualidade da compilação em portas e controlar o seu risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
 
-O plug-in fornece ações pós-construção e CLIs para suportar a integração. O {{site.data.keyword.DRA_short}} agrega e analisa os resultados de testes de unidade, testes funcionais, ferramentas de cobertura de código, varreduras de código de segurança estática e varreduras de código de segurança dinâmica para determinar se seu código atende às políticas predefinidas nas portas em seu processo de implementação. Se o seu código não atender nem exceder uma
+O plug-in fornece ações e CLIs pós-compilação para suportar a integração. O {{site.data.keyword.DRA_short}} agrega e analisa os resultados de testes de unidade, testes funcionais, ferramentas de cobertura de código, varreduras de código de segurança estática e varreduras de código de segurança dinâmica para determinar se seu código atende às políticas predefinidas nas portas em seu processo de implementação. Se o seu código não atender nem exceder uma
 política, a implementação será interrompida, impedindo que as mudanças de risco sejam liberadas. É possível usar o {{site.data.keyword.DRA_short}} como uma
 rede de segurança para o seu ambiente de entrega contínua, uma forma de implementar e melhorar padrões de qualidade ao longo do tempo e uma ferramenta de visualização
 de dados para ajudá-lo a entender o funcionamento do seu projeto.
@@ -55,7 +55,7 @@ Instale o plug-in em seu servidor Jenkins abrindo a interface do servidor e segu
 5. Selecione **IBM Cloud DevOps**.
 6. Clique em **Fazer download agora e instalar após a reinicialização**. 
 
-O plug-in estará disponível após a reinicialização do servidor.  
+O plug-in está disponível após a reinicialização do servidor.  
 
 ## Criando um pipeline
 {: #jenkinsfile_create}
@@ -70,8 +70,8 @@ Na definição, inclua as variáveis de ambiente a seguir. Essas variáveis são
 
 | Variável de Ambiente        | Definição    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Credenciais do Bluemix que você define no Jenkins usando o comando `credentials`. Por exemplo, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Configurar a variável com esse comando configura duas ou mais variáveis de ambiente automaticamente: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` para o nome do usuário e a senha.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | A organização do Bluemix à qual sua cadeia de ferramentas pertence.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | As credenciais do {{site.data.keyword.Bluemix_notm}} Platform que você define no Jenkins usando o comando `credentials`. Por exemplo, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Configurar a variável com esse comando configura duas ou mais variáveis de ambiente automaticamente: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` para o nome do usuário e a senha.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | A organização do {{site.data.keyword.Bluemix}} Platform à qual a cadeia de ferramentas pertence.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | O nome do aplicativo que sua cadeia de ferramentas implementa.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | O ID de sua cadeia de ferramentas. Abra a Visão geral da cadeia de ferramentas e veja a URL para determinar o ID. O formato da URL da cadeia de ferramentas é `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | O webhook que foi fornecido a você quando incluiu Jenkins em sua cadeia de ferramentas.   |
@@ -84,7 +84,7 @@ Se você estiver usando o formato de pipeline com script, configure suas credenc
 [a documentação do Jenkins](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
 {: tip} 
 
-Essas variáveis de ambiente e credenciais são usadas pelo plug-in IBM Cloud DevOps para interagir com o DevOps Insights. Nesse exemplo, eles são configurados no formato de pipeline declarativo. 
+Estas variáveis de ambiente e credenciais são usadas pelo plug-in do IBM Cloud DevOps para interagir com o DevOps Insights. Nesse exemplo, eles são configurados no formato de pipeline declarativo. 
 
 ```
 environment {
@@ -98,7 +98,7 @@ environment {
 
 
 ## Incluindo etapas do Cloud DevOps
-O plug-in Cloud DevOps inclui quatro etapas nos Pipelines do Jenkins para você usar. Use estas etapas nos pipelines para interagir com o DevOps Insights. 
+O plug-in do DevOps Cloud inclui quatro etapas para pipelines do Jenkins para você usar. Use estas etapas nos pipelines para interagir com o DevOps Insights. 
 
 * `publishBuildRecord`, que publica informações de construção no DevOps Insights
 * `publishTestResult`, que publica resultados de teste no DevOps Insights
@@ -124,7 +124,7 @@ Este exemplo mostra esses parâmetros em um comando:
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-O Jenkins Pipeline não expõe informações de Git como variáveis de ambiente. É possível obter o ID de confirmação Git usando o comando `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
+O Jenkins Pipeline não mostra informações do Git como variáveis de ambiente. É possível obter o ID de confirmação Git usando o comando `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
 {: tip}
 
 ### Publicando resultados de teste
@@ -168,7 +168,7 @@ Essa etapa requer um parâmetro. Ela também pode aceitar um parâmetro opcional
 | Parâmetro        | Definição    |
 | ----------------------------|---------------|
 | `policy`    | O nome da política que a porta implementa. O nome da política é definido no DevOps Insights. |
-| `forceDecision`      | _Opcional_: se o pipeline parará ou não, dependendo da decisão da porta. Configure esse parâmetro como `true` para parar a execução do pipeline se a porta falhar. Configure-a como `false` para permitir que o pipeline continue após uma falha da porta. Por padrão, o valor é `false`.     |
+| `forceDecision`      | _Opcional_: se o pipeline parará dependendo da decisão da porta. Configure esse parâmetro como `true` para parar a execução do pipeline se a porta falhar. Configure-a como `false` para permitir que o pipeline continue após uma falha da porta. Por padrão, o valor é `false`.     |
 
 O exemplo a seguir mostra esses parâmetros em um comando. Nesse comando, o pipeline continua executando, independentemente da decisão da porta. 
 
@@ -178,7 +178,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Comunicando-se com cadeias de ferramentas
 
-Envie status de pipeline para as cadeias de ferramentas do Bluemix usando o comando `notifyOTC`. Para saber mais sobre como integrar o Jenkins a cadeias de ferramentas, [veja a documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). É possível desconsiderar as etapas 6d a 6f, pois se aplicam apenas aos projetos Jenkins de formato livre.
+Enviar status do pipeline para cadeias de ferramentas do {{site.data.keyword.Bluemix_notm}} usando o comando `notifyOTC`. Para saber mais sobre como integrar o Jenkins a cadeias de ferramentas, [veja a documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). É possível desconsiderar as etapas 6d a 6f, pois se aplicam apenas aos projetos Jenkins de formato livre.
 
 Essa etapa requer dois parâmetros e também pode usar um opcional. 
 
@@ -226,9 +226,9 @@ Em ambos os exemplos, a URL do webhook da cadeia de ferramentas é substituída 
 
 ## Assegurando a rastreabilidade nas integrações da cadeia de ferramentas
 
-Configure o ambiente do Jenkins para integrar à cadeia de ferramentas do Bluemix seguindo as instruções nos [Bluemix Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). É possível desconsiderar as etapas 6d a 6f, pois elas se aplicam somente aos projetos Jenkins de formato livre.
+Configure o seu ambiente do Jenkins para integrar com a sua cadeia de ferramentas do {{site.data.keyword.Bluemix_notm}} seguindo as instruções em [os {{site.data.keyword.Bluemix}} Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). É possível desconsiderar as etapas 6d a 6f, pois elas se aplicam somente aos projetos Jenkins de formato livre.
 
-A integração com uma cadeia de ferramentas fornece rastreabilidade e mapeamento de implementação de ponta a ponta. Depois de seguir as instruções de integração, inclua o comando `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` após as etapas de implementação. Esse comando conecta a integração do Jenkins a um app que está em execução no Bluemix. 
+Integrar com uma cadeia de ferramentas lhe dá a rastreabilidade de ponta a ponta e o mapeamento de implementação. Depois de seguir as instruções de integração, inclua o comando `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` após as etapas de implementação. Esse comando conecta a sua integração do Jenkins a um app que está em execução no {{site.data.keyword.Bluemix_notm}} Platform. 
 
 Este exemplo mostra uma etapa integral da implementação. O último comando é `cf icd --create-connection`. 
 
@@ -245,7 +245,7 @@ sh '''
 '''
 </pre>
 
-Conforme descrito na documentação de integração do Jenkins, os plug-ins da CLI do CloudFoundry e do ICD do CloudFoundry devem ser instalados em seu servidor Jenkins. Também será necessário efetuar login no Bluemix do servidor para se conectar a ele.
+Conforme descrito na documentação de integração do Jenkins, os plug-ins da CLI do CloudFoundry e do ICD do CloudFoundry devem ser instalados em seu servidor Jenkins. Também é necessário efetuar login no {{site.data.keyword.Bluemix}} Platform por meio do servidor para se conectar com ele.
 
 ## Exemplo de um pipeline declarativo
 
@@ -311,7 +311,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Push the Weather App to Bluemix, staging space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} Platform, staging space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -365,7 +365,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Push the Weather App to Bluemix, production space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} platform, production space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -399,13 +399,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

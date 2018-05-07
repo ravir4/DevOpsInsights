@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-09-18"
+  years: 2016, 2018
+lastupdated: "2017-10-25"
 
 ---
 
@@ -14,16 +14,16 @@ lastupdated: "2017-09-18"
 
 # Integrando o Deployment Risk Analytics à entrega contínua
 
-É possível instrumentar pipelines para o {{site.data.keyword.contdelivery_full}} para usar recursos de análise do Deployment Risk do {{site.data.keyword.DRA_short}}. Em seguida, é possível publicar dados dessas tarefas e incluir portas que impingem políticas de riscos.
+O {{site.data.keyword.DRA_short}} controla o risco de implementação com base nos dados de teste que você publicar nele. Esses dados podem incluir testes de unidade, cobertura de código, testes de verificação funcionais, dados do SonarQube ou varredura de dados por meio do IBM Application Security on Cloud. Depois de publicar esses dados, será possível incluir portas em seus pipelines de modo que seja possível parar as compilações que não atendam às políticas de risco.
 
 Para ver uma explicação de alto nível de análise do Deployment Risk do {{site.data.keyword.DRA_short}}, veja [Sobre o Deployment Risk](./about_risk.html).
 
 Para obter mais informações sobre pipelines de entrega contínua, veja [a documentação oficial](../ContinuousDelivery/pipeline_working.html).
 
-## Preparando estágios e tarefas de pipeline
+## Visão geral
 {: #integrate_pipeline}
 
-Para começar, é necessário instrumentar seu pipeline para se comunicar com o {{site.data.keyword.DRA_short}}. Você faz isso definindo variáveis de ambiente específicas para todas as suas tarefas de pipeline que constroem, testam ou implementam código. Também deve-se incluir variáveis de ambiente em tarefas de teste que impingem políticas de riscos usando o tipo de testador da Porta do DevOps Insights.
+O {{site.data.keyword.DRA_short}} requer essas informações de seu pipeline para analisar o risco de implementação:
 
 * Registros de construção
 * Registros de implementação
@@ -31,26 +31,32 @@ Para começar, é necessário instrumentar seu pipeline para se comunicar com o 
 
 Os resultados de teste devem fornecer dados em um destes formatos suportados:
 
-| Tipo de teste                | Formatos suportados                                               |
+| Tipo de teste                    | Formatos suportados                                               |
 |------------------------------|-----------------------------------------------------------------|
 | Teste de verificação funcional | Mocha, xUnit                                                    |
-| Teste de unidade             | Mocha, xUnit, Karma/Mocha                                       |
-| Cobertura de código          | Istanbul, Blanket.js, Cobertura, lcov                                           |
-| Varredura de app estático    | Varreduras de app estático fornecidas pelo IBM Application Security on Cloud  |
-| Varredura de app dinâmico    | Varreduras de app dinâmico fornecidas pelo IBM Application Security on Cloud |
-| SonarQube                    | Dados de varredura fornecidos pelas varreduras do SonarQube                      |
+| Teste de unidade                    | Mocha, xUnit, Karma/Mocha                                       |
+| Cobertura de código                | Istanbul, Blanket.js, Cobertura, lcov                                           |
+| Varredura de app estático              | Varreduras de app estático fornecidas pelo IBM Application Security on Cloud  |
+| Varredura de app dinâmico             | Varreduras de app dinâmico fornecidas pelo IBM Application Security on Cloud |
+| SonarQube                    | Dados de varredura fornecidos pelas varreduras do SonarQube                           |
 
 As variáveis de ambiente que você define no pipeline fornecem contexto para publicar esses registros. É possível defini-las usando o comando `export` nos scripts de suas tarefas. Também é possível configurá-las no menu Propriedades do ambiente de estágios de cada pipeline.
 
 Variáveis de ambiente:
 
 | Variável de ambiente  | Propósito | Necessária em |
-|-----------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | O nome do app no painel. | Todas as tarefas que constroem, testam, implementam e impingem políticas de riscos do {{site.data.keyword.DRA_short}}. |
+|-----------------------|-------- |-------------|
+| `LOGICAL_APP_NAME`    | O nome do app no painel. | Todas as tarefas que constroem, testam, implementam e impingem políticas de riscos do {{site.data.keyword.DRA_short}}. |
 | `BUILD_PREFIX`  | O texto que é incluído como um prefixo nas construções do estágio. Esse texto também aparece no painel. | Todas as tarefas que constroem, testam, implementam e impingem políticas de riscos do {{site.data.keyword.DRA_short}}. |
 | `LOGICAL_ENV_NAME`  | O ambiente no qual o aplicativo é executado. | Tarefas de teste e implementação. |
 
-### Configurando tarefas de construção
+Certifique-se de usar essas variáveis consistentemente:
+
+* Para um aplicativo específico, use o mesmo `LOGICAL_APP_NAME` em todas as tarefas ou estágios. 
+* O valor `BUILD_PREFIX` deve ser o mesmo para um app específico e tipo de compilação. Por exemplo, para construções da ramificação principal, `BUILD_PREFIX` poderia ser `"master"`. 
+* Use o mesmo valor `LOGICAL_ENVIRONMENT_NAME` em tarefas de implementação correspondentes e tarefas de teste. Se você usar o valor `LOGICAL_ENVIRONMENT_NAME` `"PRODUCTION"` em uma tarefa de implementação, use esse mesmo valor ao publicar os resultados de testes que também foram executados naquele ambiente.
+
+## Variáveis de ambiente de tarefa de compilação
 
 Para a última tarefa de construção em um estágio, configure variáveis de ambiente para um nome do aplicativo e prefixo de construção. Um script de exemplo incluiria estes comandos:
 
@@ -61,7 +67,7 @@ export BUILD_PREFIX="master"
 
 Quando essa tarefa de construção for concluída, o pipeline publicará uma mensagem no {{site.data.keyword.DRA_short}} que uma construção SampleApp está concluída.
 
-### Configurando tarefas de implementação
+## Variáveis de ambiente de tarefa de implementação
 
 Para a última tarefa de implementação no estágio, configure um nome do aplicativo, prefixo de construção e nome do ambiente. Um script de exemplo incluiria estes comandos:
 
@@ -73,7 +79,7 @@ export LOGICAL_ENV_NAME="Production"
 
 Quando essa tarefa de implementação for encerrada, o pipeline publicará uma mensagem no {{site.data.keyword.DRA_short}} que a construção e o app especificados foram implementados em um ambiente.
 
-### Configurando tarefas de teste
+## Variáveis de ambiente de tarefa de teste
 
 Para todas as tarefas que produzem resultados de teste, configure um nome do aplicativo e prefixo de construção.
 
@@ -89,44 +95,10 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-Certifique-se de que os nomes de aplicativos e ambientes correspondam onde apropriado. Por exemplo, você deseja que uma tarefa de teste de produção que é executada com relação a uma implementação de produção tenha valores `LOGICAL_ENV_NAME` idênticos.
-
-## Publicando dados de teste no DevOps Insights
+## Publicando resultados de teste
 {: #configure_pipeline_jobs}
 
-O {{site.data.keyword.DRA_short}} usa os resultados de teste de suas tarefas para gerar relatórios e impingir políticas de riscos. É possível publicar dados de teste de todos os tipos de tarefas.
-
-Há duas opções para publicar os resultados de teste:
-
-* Chamar uma interface da linha de comandos (CLI) simples no script de uma tarefa.
-
-* Inclua uma tarefa de teste com o tipo de Testador avançado em seu pipeline.
-
-Ao usar o método Testador avançado, você não publica os resultados de teste usando a CLI. Em vez disso, você especifica o local dos arquivos de resultado na tarefa de pipeline e a tarefa faz upload dos resultados à medida que eles se tornam disponíveis.
-
-Qualquer que seja o método de publicação usado, os resultados de teste devem estar em um dos formatos suportados pelo {{site.data.keyword.DRA_short}}:
-
-<table><thead>
-<tr>
-<th>Tipo de teste</th>
-<th>Formatos suportados</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Teste de verificação funcional</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Teste de unidade</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Cobertura de código</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
-
-### Publicando dados de teste de qualquer tipo de tarefa
+O {{site.data.keyword.DRA_short}} usa os resultados de teste de suas tarefas para gerar relatórios e impingir políticas de riscos.
 
 Em um pipeline, é possível usar qualquer tipo de tarefa para executar um teste. Depois de executar esse teste, é possível fazer upload de seus resultados para o {{site.data.keyword.DRA_short}}. Você faz upload dos resultados chamando uma CLI no shell script da tarefa. 
 
@@ -135,6 +107,7 @@ Em um pipeline, é possível usar qualquer tipo de tarefa para executar um teste
 * Testes de unidade
 * Cobertura de código
 * Testes de verificação funcional
+* Resultados do SonarQube
 * Resultados da varredura de app estático e dinâmico do IBM Application Security on Cloud. 
 
 Este é um script de exemplo que executa testes e, em seguida, faz upload dos resultados para o {{site.data.keyword.DRA_short}}: 
@@ -149,31 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+Nesse exemplo, o comando `idra` executado com a sinalização `--publishtestresult` especifica que o script fará upload dos resultados. A sinalização `--filelocation` indica o local do arquivo de resultados de teste relativo ao diretório-raiz da tarefa. A sinalização `--type` indica o tipo de testes que são executados.
+
+O comando `idra` suporta os valores `type` a seguir: 
+
+| Tipo | Descrição |
+|------|-------------|
+| `unittest` | Resultados de teste de unidade | 
+| `fvt` | Resultados de teste de verificação funcional |
+| `code` | Resultados de cobertura de código | 
+| `sonarqube` | Resultados de varredura do SonarQube | 
+| `staticsecurityscan` | Resultados de varredura de segurança estática do IBM Application Security on Cloud |
+| `dynamicsecurityscan` | Resultados de varredura de segurança dinâmica do IBM Application Security on Cloud |
+
 Para saber mais sobre o comando `idra`, veja [a página do pacote grunt-idra3 no npm](https://www.npmjs.com/package/grunt-idra3). 
-
-### Publicando dados de teste de tarefas do Testador avançado
-
-É possível incluir tarefas de teste com o tipo de Testador avançado em um pipeline. Depois que são executadas, elas fazem upload automaticamente de seus resultados no {{site.data.keyword.DRA_short}}. 
-
-1. No estágio no qual você deseja incluir a tarefa que faz upload dos resultados, clique no ícone **Configuração de estágio** ![Ícone de configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png). Clique em **Configurar
-estágio**.
-2. Crie uma tarefa de teste e digite um nome para ela. 
-3. Para o tipo de tarefa, selecione **Testador avançado**.
-4. Preencha os campos **Comando de teste** e **Diretório ativo** como você faria para uma tarefa de teste de pipeline normal. 
-5. Preencha os campos restantes para fazer upload dos resultados de teste para um tipo de teste específico. 
-
- 1. Escolha o tipo de métrica que corresponde ao que você definiu na política do {{site.data.keyword.DRA_short}} que deseja usar.
- 2. Digite um local do arquivo de resultado. Esse local é relativo ao diretório ativo. 
-
-6. Se desejar fazer upload dos resultados para um segundo tipo de teste na mesma tarefa, preencha os campos prefixados com *Adicional*.
-7. Clique em **Salvar** para retornar para o pipeline.
-
-A Figura 1 mostra uma tarefa de teste que está configurada para executar testes de unidade, fazer upload dos resultados no formato Mocha e fazer upload dos resultados da cobertura de código no formato Istanbul.
-
-![Tarefa de upload do DevOps Insights](images/insights_upload_job.png)
-*Figura 1. Resultados de upload para o DevOps Insights*
-
-
 
 ## Definindo portas
 {: #configure_pipeline_gates}

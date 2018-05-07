@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-04-07"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -43,7 +43,7 @@ Para criar uma política:
 ## Criando regras
 {: #creating_rules}
 
-As regras definem os critérios que suas políticas usam para julgar o sucesso ou a falha. É possível criar uma política "Teste de unidade e Cobertura de teste" que contenha uma regra de teste de unidade que requeira um sucesso de 80% de teste de unidade e uma regra de cobertura de teste que requeira 100% de cobertura de código. Se você incluir uma porta que se refira a essa regra em um pipeline, a porta evitará que quaisquer construções que não satisfaçam a ambas as regras continuem. 
+As regras definem os critérios que suas políticas usam para julgar o sucesso ou a falha. Você pode criar uma política de "Teste de unidade e cobertura de teste" que contenha uma regra de teste de unidade que requeira 80 por cento de sucesso de teste de unidade e uma regra de cobertura de teste que requeira 100 por cento de cobertura de código. Se você incluir uma porta que se refira a essa regra em um pipeline, a porta evitará que quaisquer construções que não satisfaçam a ambas as regras continuem. 
 
 É possível requerer o sucesso sem importar o quê marcando os testes como críticos. Para criar uma regra, selecione uma política e, em seguida, clique em **Incluir regra na política**. 
 

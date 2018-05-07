@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2017-03-31"
 O {{site.data.keyword.DRA_short}} fornece uma riqueza de informações sobre suas implementações, especificamente de risco. É possível usá-lo para automatizar a proteção de qualidade em seu pipeline de entrega usando políticas e portas. 
 {:shortdesc}
 
-Depois de abrir o {{site.data.keyword.DRA_short}} por meio de sua cadeia de ferramentas, clique em **Deployment Risk**. Daí, é possível obter uma visão geral dos aplicativos nos ambientes de preparação e produção e realizar drill down para entender os relatórios de cobertura de código, de desempenho de teste e de segurança. Os painéis são preenchidos automaticamente com as informações mais recentes dos testes do {{site.data.keyword.DRA_short}} dos pipelines.
+Depois de abrir o {{site.data.keyword.DRA_short}} por meio de sua cadeia de ferramentas, clique em **Deployment Risk**. De lá, é possível obter uma visão geral dos aplicativos em seus ambientes de preparação e produção e efetuar drill down para entender a cobertura de código, desempenho de teste e relatórios de segurança. Os painéis são preenchidos automaticamente com as informações mais recentes dos testes do {{site.data.keyword.DRA_short}} dos pipelines.
 
 ## Sobre o Deployment Risk
 {: #about}
@@ -86,7 +86,7 @@ Para criar uma política:
 ### Criando regras
 {: #creating_rules}
 
-As regras definem os critérios que suas políticas usam para julgar o sucesso ou a falha. É possível criar uma política "Teste de unidade e Cobertura de teste" que contenha uma regra de teste de unidade que requeira um sucesso de 80% de teste de unidade e uma regra de cobertura de teste que requeira 100% de cobertura de código. Se você incluir uma porta que se refira a essa regra em um pipeline, a porta evitará que quaisquer construções que não satisfaçam a ambas as regras continuem. 
+As regras definem os critérios que suas políticas usam para julgar o sucesso ou a falha. Você pode criar uma política de "Teste de unidade e cobertura de teste" que contenha uma regra de teste de unidade que requeira 80 por cento de sucesso de teste de unidade e uma regra de cobertura de teste que requeira 100 por cento de cobertura de código. Se você incluir uma porta que se refira a essa regra em um pipeline, a porta evitará que quaisquer construções que não satisfaçam a ambas as regras continuem. 
 
 É possível requerer o sucesso sem importar o quê marcando os testes como críticos. Para criar uma regra, selecione uma política e, em seguida, clique em **Incluir regra na política**. 
 
@@ -257,12 +257,12 @@ Após o seu pipeline estar configurado, comece a usar o {{site.data.keyword.DRA_
 
 Depois de incluir o {{site.data.keyword.DRA_full}} em uma cadeia de ferramentas aberta e definir as políticas que ele monitora, será possível integrá-lo a seu projeto Jenkins. 
 
-O plug-in IBM Cloud DevOps para Jenkins integra projetos Jenkins a cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
+O plug-in do IBM Cloud DevOps para o Jenkins integra os projetos do Jenkins com cadeias de ferramentas. Uma _cadeia de ferramentas_ é um conjunto de integrações de ferramentas que suporta tarefas de desenvolvimento, de implementação e de operações. O
 poder coletivo de uma cadeia de ferramentas é maior que a soma de suas integrações de ferramentas individuais. As cadeias de ferramentas abertas são parte do serviço {{site.data.keyword.contdelivery_full}}. Para saber mais sobre o serviço {{site.data.keyword.contdelivery_short}}, veja [sua documentação](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Depois de instalar o plug-in IBM Cloud DevOps, será possível publicar os resultados de teste no {{site.data.keyword.DRA_short}}, incluir portas de qualidade automatizadas e controlar o risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
+Depois de instalar o plug-in do IBM Cloud DevOps, será possível publicar resultados de teste no {{site.data.keyword.DRA_short}}, incluir portas de qualidade automatizadas e controlar o seu risco de implementação. Também é possível enviar notificações de tarefa para outras ferramentas em sua cadeia de ferramentas, como Slack e PagerDuty. Para ajudá-lo a controlar as implementações, a cadeia de ferramentas poderá incluir mensagens de implementação nas confirmações do Git e seus problemas Git ou JIRA relacionados. Também será possível visualizar suas implementações na página Conexões da cadeia de ferramentas. 
 
-O plug-in fornece ações pós-construção e CLIs para suportar a integração. O {{site.data.keyword.DRA_short}} agrega e analisa os resultados de testes de unidade, testes funcionais, ferramentas de cobertura de código, varreduras de código de segurança estática e varreduras de código de segurança dinâmica para determinar se seu código atende às políticas predefinidas nas portas em seu processo de implementação. Se o seu código não atender nem exceder uma
+O plug-in fornece ações e CLIs pós-compilação para suportar a integração. O {{site.data.keyword.DRA_short}} agrega e analisa os resultados de testes de unidade, testes funcionais, ferramentas de cobertura de código, varreduras de código de segurança estática e varreduras de código de segurança dinâmica para determinar se seu código atende às políticas predefinidas nas portas em seu processo de implementação. Se o seu código não atender nem exceder uma
 política, a implementação será interrompida, impedindo que as mudanças de risco sejam liberadas. É possível usar o {{site.data.keyword.DRA_short}} como uma rede de segurança para o seu ambiente de entrega contínua, uma forma de implementar e melhorar padrões de qualidade ao longo do tempo e uma ferramenta de visualização de dados para ajudá-lo a entender o funcionamento do seu projeto.
 
 ### Pré-Requisitos
@@ -282,23 +282,23 @@ Antes de ser possível integrar o {{site.data.keyword.DRA_short}} a um projeto J
 ### Instalando o plug-in
 {: #jenkins_install}
 
-Primeiro, faça download do plug-in do {{site.data.keyword.DRA_short}}.  
+Primeiro, faça download do plug-in por meio do {{site.data.keyword.DRA_short}}.  
 
 1. Na página Visão geral da cadeia de ferramentas, clique em **DevOps Insights**.
 2. Clique em **Configurações** e, em seguida, em **Configuração do plug-in do Jenkins**.
 3. Siga as instruções na página para fazer download do plug-in.
 
-Em seguida, no servidor Jenkins, instale o plug-in.
+Então, no seu servidor Jenkins, instale o plug-in.
 
 1. Clique em **Gerenciar Jenkins &gt; Gerenciar plug-ins** e clique na guia **Avançado**.
-2. Clique em **Escolher arquivo** e selecione o arquivo de instalação do plug-in IBM Cloud DevOps. 
+2. Clique em **Escolher arquivo** e selecione o arquivo de instalação de plug-in do IBM Cloud DevOps. 
 3. Clique em **Carregar**.
 4. Reinicie o Jenkins e verifique se o plug-in foi instalado.
 
 ### Configurando tarefas do Jenkins para o painel Deployment Risk
 {: #jenkins_configure}
 
-Após a instalação do plug-in, é possível integrar o {{site.data.keyword.DRA_short}} ao projeto Jenkins. 
+Após o plug-in ser instalado, será possível integrar o {{site.data.keyword.DRA_short}} no seu projeto do Jenkins. 
 
 Siga estas etapas para usar as portas e o painel do Deployment Risk com seu projeto.
 
@@ -320,7 +320,7 @@ Siga estas etapas para usar as portas e o painel do Deployment Risk com seu proj
    
    * Para o ambiente, se os testes estiverem em execução no estágio de construção, selecione apenas o ambiente de construção. Se os testes estiverem em execução no estágio de implementação, selecione o ambiente de implementação e especifique o nome do ambiente. Dois valores são suportados: `STAGING` e `PRODUCTION`.
    
-   * Para o campo **Local do arquivo de resultado**, especifique o local do arquivo de resultado. Se o teste não gerar um arquivo de resultado, deixe esse campo vazio. O plug-in fará upload de um arquivo de resultado padrão com base no status da tarefa de teste atual.
+   * Para o campo **Local do arquivo de resultado**, especifique o local do arquivo de resultado. Se o teste não gerar um arquivo de resultado, deixe esse campo vazio. O plug-in faz upload de um arquivo de resultado padrão que é baseado no status da tarefa de teste atual.
 
    Estas imagens mostram configurações de exemplo:
    
@@ -339,14 +339,14 @@ Siga estas etapas para usar as portas e o painel do Deployment Risk com seu proj
 
 5. Execute a tarefa de construção do Jenkins.
 
-6. Visualize o painel Deployment Risk acessando o [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), selecionando sua cadeia de ferramentas e clicando em **DevOps Insights**.
+6. Visualize o painel Risco de implementação acessando o [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops), selecionando a sua cadeia de ferramentas e clicando em **DevOps Insights**.
 
 O painel Deployment Risk depende da presença de uma porta após uma tarefa de implementação temporária. Se desejar usar o painel, certifique-se de que tenha uma porta depois de implementar no ambiente temporário, mas antes de implementar em um ambiente de produção.
     
 ### Configurando as Notificações
 {: #jenkins_notifications}
 
-É possível configurar as tarefas do Jenkins para enviar notificações para ferramentas, como Slack ou PagerDuty, seguindo as instruções nos [Bluemix Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+É possível configurar as suas tarefas do Jenkins para enviar as suas notificações para ferramentas como Folga ou PagerDuty seguindo as instruções nos Documentos do [{{site.data.keyword.Bluemix}} Platform](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
 
 Este exemplo mostra como configurar o `ICD_WEBHOOK_URL` para configurações de tarefa:
 ![Configurar o parâmetro ICD_WEBHOOK_URL](images/Set-Parameterized-Webhook.png "Configurar WebHook parametrizado")
@@ -369,9 +369,3 @@ Se você estiver usando um pipeline do {{site.data.keyword.contdelivery_short}},
 2. Na tarefa que contém a porta, clique no nome da porta.
 
 3. Na visualização de log, localize a mensagem `Verifique o relatório do {{site.data.keyword.DRA_short}} aqui` e clique no link para abrir o relatório.
-
-
-
-
-
-
