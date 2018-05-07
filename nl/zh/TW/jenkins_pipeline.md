@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -66,8 +66,8 @@ lastupdated: "2017-05-19"
 
 | 環境變數| 定義|
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | 您使用 `credentials` 指令在 Jenkins 中定義的 Bluemix 認證。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此指令來設定變數會自動多設定兩個環境變數：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，代表使用者名稱和密碼。|
-| `IBM_CLOUD_DEVOPS_ORG`      | 工具鏈所屬的 Bluemix 組織。|
+| `IBM_CLOUD_DEVOPS_CREDS`    | 您使用 `credentials` 指令在 Jenkins 中定義的 {{site.data.keyword.Bluemix_notm}} 平台認證。例如，`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。使用此指令來設定變數會自動多設定兩個環境變數：`IBM_CLOUD_DEVOPS_CREDS_USR` 和 `IBM_CLOUD_DEVOPS_CREDS_PSW`，代表使用者名稱和密碼。|
+| `IBM_CLOUD_DEVOPS_ORG`      | 工具鏈所屬的 {{site.data.keyword.Bluemix}} 平台組織。|
 | `IBM_CLOUD_DEVOPS_APP_NAME` | 工具鏈部署之應用程式的名稱。|
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 工具鏈的 ID。請開啟工具鏈的「概觀」，查看 URL 來判斷 ID。工具鏈 URL 的格式為 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`。|
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 當您將 Jenkins 新增至工具鏈時，提供給您的 Webhook。|
@@ -118,7 +118,7 @@ Cloud DevOps 外掛程式在 Jenkins 管線中新增四個步驟，以供您使�
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-「Jenkins 管線」不會將 Git 資訊公開為環境變數。若要取得 Git 確定 ID，您可以使用 `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` 指令。
+「Jenkins 管線」不會將 Git 資訊顯示為環境變數。若要取得 Git 確定 ID，您可以使用 `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` 指令。
 {: tip}
 
 ### 發佈測試結果
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### 與工具鏈通訊
 
-使用 `notifyOTC` 指令，將管線狀態傳送至 Bluemix 工具鏈。若要進一步瞭解如何將 Jenkins 與工具鏈整合，[請參閱文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。您可以不處理步驟 6d 到 6f，因為它們僅適用於開放式 Jenkins 專案。
+使用 `notifyOTC` 指令，將管線狀態傳送至 {{site.data.keyword.Bluemix_notm}} 工具鏈。若要進一步瞭解如何將 Jenkins 與工具鏈整合，[請參閱文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。您可以不處理步驟 6d 到 6f，因為它們僅適用於開放式 Jenkins 專案。
 
 此步驟需要兩個參數，並且也可以接受一個選用參數。 
 
@@ -220,9 +220,9 @@ stage('Deploy') {
 
 ## 確保跨工具鏈整合的可追蹤性
 
-遵循 [Bluemix 文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示，配置 Jenkins 環境來與 Bluemix 工具鏈整合。您可以不處理步驟 6d 到 6f，因為它們僅適用於開放式 Jenkins 專案。
+遵循 [{{site.data.keyword.Bluemix}} 文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示，配置 Jenkins 環境來與 {{site.data.keyword.Bluemix_notm}} 工具鏈整合。您可以不處理步驟 6d 到 6f，因為它們僅適用於開放式 Jenkins 專案。
 
-與工具鏈整合可讓您進行端對端追蹤和部署對映。遵循整合指示之後，將 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 指令新增在部署步驟後面。此指令會將 Jenkins 整合連接至在 Bluemix 上執行的應用程式。 
+與工具鏈整合可讓您進行端對端追蹤和部署對映。遵循整合指示之後，將 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 指令新增在部署步驟後面。此指令會將 Jenkins 整合連接至在 {{site.data.keyword.Bluemix_notm}} 平台上執行的應用程式。 
 
 此範例顯示完整的部署步驟。最後一個指令是 `cf icd --create-connection`。 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-如 Jenkins 整合說明文件所述，您的 Jenkins 伺服器上必須已安裝 CloudFoundry CLI 及 CloudFoundry ICD 外掛程式。您也必須從該伺服器登入 Bluemix，才能與其連線。
+如 Jenkins 整合說明文件所述，您的 Jenkins 伺服器上必須已安裝 CloudFoundry CLI 及 CloudFoundry ICD 外掛程式。您也必須從該伺服器登入 {{site.data.keyword.Bluemix}} 平台，才能與其連線。
 
 ## 宣告式管線範例
 
@@ -305,7 +305,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Push the Weather App to Bluemix, staging space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} Platform, staging space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -359,7 +359,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Push the Weather App to Bluemix, production space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} platform, production space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -393,13 +393,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

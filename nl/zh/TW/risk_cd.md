@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-09-18"
+  years: 2016, 2018
+lastupdated: "2017-10-25"
 
 ---
 
@@ -14,16 +14,16 @@ lastupdated: "2017-09-18"
 
 # 整合 Deployment Risk 分析與 Continuous Delivery
 
-您可以檢測 {{site.data.keyword.contdelivery_full}} 的管線以使用 {{site.data.keyword.DRA_short}} 的 Deployment Risk 分析功能。接著，您可以從那些工作發佈資料，以及新增強制執行風險原則的閘道。
+{{site.data.keyword.DRA_short}} 會根據您發佈給它的測試資料來追蹤部署風險。此資料可能包含單元測試、程式碼涵蓋面、功能驗證測試、SonarQube 資料，或來自 IBM Application Security on Cloud 的掃描資料。發佈此資料之後，您可以為管線新增閘道，以便停止不符合風險原則的建置。
 
 若要查看高階的 {{site.data.keyword.DRA_short}} Deployment Risk 分析說明，請參閱[關於 Deployment Risk](./about_risk.html)。
 
 如需 Continuous Delivery 管線的相關資訊，請參閱[正式文件](../ContinuousDelivery/pipeline_working.html)。
 
-## 準備管線階段及工作
+## 概觀
 {: #integrate_pipeline}
 
-若要開始使用，您需要檢測您的管線以便與 {{site.data.keyword.DRA_short}} 通訊。要這麼做，請為建置、測試或部署程式碼的所有管線工作定義特定的環境變數。您也必須新增環境變數至測試工作，使用 DevOps Insights Gate 測試者類型強制執行風險原則。
+{{site.data.keyword.DRA_short}} 需要來自您的管線的下列資訊才能分析部署風險：
 
 * 建置記錄
 * 部署記錄
@@ -45,12 +45,18 @@ lastupdated: "2017-09-18"
 環境變數：
 
 | 環境變數| 目的| 需要之處|
-|-----------|-------- |-------------|
+|-----------------------|-------- |-------------|
 | `LOGICAL_APP_NAME`  | 儀表板上的應用程式名稱。| 建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
 | `BUILD_PREFIX`  | 新增為階段建置字首的文字。此文字也會顯示在儀表板上。| 建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
 | `LOGICAL_ENV_NAME`  | 應用程式執行所在的環境。| 測試及部署工作。|
 
-### 配置建置工作
+使用這些變數時請務必保持一致：
+
+* 對於特定應用程式，請在所有工作或階段中使用相同的 `LOGICAL_APP_NAME`。 
+* 對於特定應用程式及建置類型，`BUILD_PREFIX` 值應該相同。例如，對於來自主要分支的建置，`BUILD_PREFIX` 可以是 `"master"`。 
+* 在對應的部署工作及測試工作，請使用相同的 `LOGICAL_ENVIRONMENT_NAME` 值。如果您在部署工作中使用 `LOGICAL_ENVIRONMENT_NAME` 值 `"PRODUCTION"`，當您發佈來自也在該環境執行之測試的結果時，也請使用該相同值。
+
+## 建置工作環境變數
 
 針對階段中的最後一個建置工作，請為應用程式名稱和建置字首設定環境變數。範例 Script 會包含下列指令：
 
@@ -61,7 +67,7 @@ export BUILD_PREFIX="master"
 
 當此建置工作完成時，管線會發佈 SampleApp 已完成的訊息給 {{site.data.keyword.DRA_short}}。
 
-### 配置部署工作
+## 部署工作環境變數
 
 針對階段中的最後一個部署工作，請設定應用程式名稱、建置字首及環境名稱。範例 Script 會包含下列指令：
 
@@ -73,7 +79,7 @@ export LOGICAL_ENV_NAME="Production"
 
 當部署工作完成時，管線會發佈指定建置及應用程式已部署至環境的訊息給 {{site.data.keyword.DRA_short}}。
 
-### 配置測試工作
+## 測試工作環境變數
 
 針對產生測試結果的所有工作，請設定應用程式名稱及建置字首。
 
@@ -89,44 +95,10 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-請確定應用程式名稱及環境在適當處相符。例如，您會想要針對正式作業部署執行的正式作業測試工作，有相同的 `LOGICAL_ENV_NAME` 值。
-
-## 將測試資料發佈至 DevOps Insights
+## 發佈測試結果
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} 使用來自您工作的測試結果來產生報告及強制執行風險原則。您可以發佈所有工作類型的測試資料。
-
-發佈測試結果有兩個選項：
-
-* 在工作 Script 中呼叫簡單的指令行介面 (CLI)。
-
-* 將具有「進階測試者」類型的測試工作新增至您的管線。
-
-當您使用「進階測試者」方法時，不會使用 CLI 發佈測試結果。而是在管線工作中指定結果檔案的位置，工作會在結果變成可用時上傳結果。
-
-不論您使用哪種發佈方法，測試結果都必須是 {{site.data.keyword.DRA_short}} 支援的其中一種格式：
-
-<table><thead>
-<tr>
-<th>測試類型</th>
-<th>支援的格式</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>功能驗證測試</td>
-<td>Mocha、xUnit</td>
-</tr>
-<tr>
-<td>單元測試</td>
-<td>Mocha、xUnit、Karma/Mocha</td>
-</tr>
-<tr>
-<td>程式碼涵蓋面</td>
-<td>Istanbul、Blanket.js</td>
-</tr>
-</tbody></table>
-
-### 從任何工作類型發佈測試資料
+{{site.data.keyword.DRA_short}} 使用來自您工作的測試結果來產生報告及強制執行風險原則。
 
 在管線中，您可以使用任何工作類型來執行測試。執行該測試之後，您可以將它的結果上傳至 {{site.data.keyword.DRA_short}}。上傳結果的方法是在工作的 Shell Script 中呼叫 CLI。 
 
@@ -135,6 +107,7 @@ export LOGICAL_ENV_NAME="Production"
 * 單元測試
 * 程式碼涵蓋面
 * 功能驗證測試
+* SonarQube 結果
 * 來自 IBM Application Security on Cloud 的靜態及動態應用程式掃描。 
 
 以下範例 Script 會執行測試，然後將結果上傳至 {{site.data.keyword.DRA_short}}： 
@@ -149,30 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+在該範例中，`idra` 指令在執行時使用 `--publishtestresult` 旗標，這樣會指定 Script 將上傳結果。`--filelocation` 旗標指出測試結果檔案的位置（相對於工作的根目錄）。`--type` 旗標指出執行之測試的類型。
+
+`idra` 指令支援下列 `type` 值： 
+
+| 類型| 說明|
+|------|-------------|
+| `unittest` | 單元測試結果| 
+| `fvt` | 功能驗證測試結果|
+| `code` | 程式碼涵蓋面結果| 
+| `sonarqube` | SonarQube 掃描結果| 
+| `staticsecurityscan` | 來自 IBM Application Security on Cloud 的靜態安全掃描結果|
+| `dynamicsecurityscan` | 來自 IBM Application Security on Cloud 的動態安全掃描結果|
+
 若要進一步瞭解 `idra` 指令，請參閱 [npm 上的 grunt-idra3 套件頁面](https://www.npmjs.com/package/grunt-idra3)。 
-
-### 從進階測試者工作發佈測試資料
-
-您可以將具有「進階測試者」類型的測試工作新增至管線。執行之後，它們會自動將結果上傳至 {{site.data.keyword.DRA_short}}。 
-
-1. 在要新增上傳結果工作的階段，按一下**階段配置**圖示 ![「管線階段配置」圖示](images/pipeline-stage-configuration-icon.png)。按一下**配置階段**。
-2. 建立測試工作，並鍵入其名稱。 
-3. 針對工作類型，選取**進階測試者**。
-4. 完成**測試指令**和**工作目錄**欄位，如同一般管線測試工作一樣。 
-5. 完成其餘欄位，以上傳特定測試類型的測試結果。 
-
- 1. 選擇度量值類型，需符合您要使用的 {{site.data.keyword.DRA_short}} 原則中定義的內容。
- 2. 鍵入結果檔案位置。此位置相對於工作目錄。 
-
-6. 如果您要上傳相同工作中第二個測試類型的結果，請完成前面加上*其他* 字首的欄位。
-7. 按一下**儲存**，以回到管線。
-
-圖 1 顯示一個測試工作，其配置成執行單元測試、上傳 Mocha 格式的結果，以及上傳 Istanbul 格式的程式碼涵蓋面結果。
-
-![DevOps Insights 上傳工作](images/insights_upload_job.png)
-*圖 1. 將結果上傳至 DevOps Insights*
-
-
 
 ## 定義閘道
 {: #configure_pipeline_gates}

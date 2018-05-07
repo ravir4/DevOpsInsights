@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -67,7 +67,7 @@ lastupdated: "2017-05-11"
    
    * 若為部署工作，請使用**將部署資訊發佈至 IBM Cloud DevOps**。
    
-3. 完成必要欄位。必要欄位會因工作類型而有所不同。 
+3. 完成必要欄位。欄位會因工作類型而有所不同。 
 
    * 從**認證**清單中，選取您的 {{site.data.keyword.Bluemix_notm}} ID 和密碼。如果 ID 和密碼未儲存在 Jenkins 中，請按一下**新增**，予以新增並儲存。按一下**測試連線**，以測試您與 {{site.data.keyword.Bluemix_notm}} 的連線。
    
@@ -94,11 +94,11 @@ lastupdated: "2017-05-11"
 
 5. 執行您的 Jenkins 建置工作。
 
-6. 移至 [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops)、選取您的工具鏈，然後按一下 **DevOps Insights**，以檢視 Deployment Risk 儀表板。
+6. 移至 [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops)、選取您的工具鏈，然後按一下 **DevOps Insights**，以檢視 Deployment Risk 儀表板。
 
 在編譯打包部署工作之後，Deployment Risk 儀表板需要有閘道存在。如果您想要使用此儀表板，請確定在部署至編譯打包環境之後，且部署至正式作業環境之前，有閘道存在。
     
 ## 配置通知
 {: #jenkins_notifications}
 
-您可以遵循 [Bluemix 文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示來配置 Jenkins 工作，以將通知傳送至 Slack 或 PagerDuty 之類的工具。
+您可以遵循 [{{site.data.keyword.Bluemix_notm}} 文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示來配置 Jenkins 工作，以將通知傳送至 Slack 或 PagerDuty 之類的工具。

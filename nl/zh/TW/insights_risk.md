@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -86,7 +86,7 @@ Deployment Risk 會與 {{site.data.keyword.deliverypipeline}}（隸屬於 {{site
 ### 建立規則
 {: #creating_rules}
 
-規則可定義原則用來判斷成功或失敗的準則。您可以建立「單元測試和測試涵蓋面」原則，其中包含的單元測試規則需要 80% 單元測試成功，而測試涵蓋面規則需要 100% 程式碼涵蓋面。如果您新增的閘道在管線中參照此規則，該閘道會阻擋未同時滿足這兩項規則的任何建置繼續進行。 
+規則可定義原則用來判斷成功或失敗的準則。您可以建立「單元測試和測試涵蓋面」原則，其中包含的單元測試規則需要百分之 80 的單元測試成功，而測試涵蓋面規則需要百分之 100 的程式碼涵蓋面。如果您新增的閘道在管線中參照此規則，該閘道會阻擋未同時滿足這兩項規則的任何建置繼續進行。 
 
 如果無論如何都必須成功，您可以將測試標示為重要。若要建立規則，請選取原則，然後按一下**新增規則至原則**。 
 
@@ -329,14 +329,14 @@ Deployment Risk 會與 {{site.data.keyword.deliverypipeline}}（隸屬於 {{site
 
 5. 執行您的 Jenkins 建置工作。
 
-6. 移至 [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops)、選取您的工具鏈，然後按一下 **DevOps Insights**，以檢視 Deployment Risk 儀表板。
+6. 移至 [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops)、選取您的工具鏈，然後按一下 **DevOps Insights**，以檢視 Deployment Risk 儀表板。
 
 在編譯打包部署工作之後，Deployment Risk 儀表板需要有閘道存在。如果您想要使用此儀表板，請確定在部署至編譯打包環境之後，且部署至正式作業環境之前，有閘道存在。
     
 ### 配置通知
 {: #jenkins_notifications}
 
-您可以遵循 [Bluemix 文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示來配置 Jenkins 工作，以將通知傳送至 Slack 或 PagerDuty 之類的工具。
+您可以遵循 [{{site.data.keyword.Bluemix}} 平台文件](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)中的指示來配置 Jenkins 工作，以將通知傳送至 Slack 或 PagerDuty 之類的工具。
 
 此範例示範如何配置工作配置的 `ICD_WEBHOOK_URL`：![設定 ICD_WEBHOOK_URL 參數](images/Set-Parameterized-Webhook.png "設定參數化 WebHook")
 
@@ -356,9 +356,3 @@ Deployment Risk 會與 {{site.data.keyword.deliverypipeline}}（隸屬於 {{site
 2. 從包含閘道的工作中，按一下閘道的名稱。
 
 3. 在日誌視圖中，尋找 `Check {{site.data.keyword.DRA_short}} report here` 訊息，然後按一下鏈結來開啟報告。
-
-
-
-
-
-
