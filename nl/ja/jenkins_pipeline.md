@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -15,53 +15,37 @@ lastupdated: "2017-05-19"
 
 # Jenkins パイプラインとの統合
 
-{{site.data.keyword.DRA_full}} をオープン・ツールチェーンに追加し、それがモニターするポリシーを定義した後、それを Jenkins パイプライン・プロジェクトに統合することができます。
-パイプラインは、Jenkins Web インターフェースの中、またはソース制御リポジトリーに保管する _Jenkinsfile_ の中で定義します。
-Jenkins パイプライン・プロジェクトは、Jenkins Web インターフェースから表示および管理することができます。
- 
+{{site.data.keyword.DRA_full}} をオープン・ツールチェーンに追加し、それがモニターするポリシーを定義した後、それを Jenkins パイプライン・プロジェクトに統合することができます。 パイプラインは、Jenkins Web インターフェースの中、またはソース制御リポジトリーに保管する _Jenkinsfile_ の中で定義します。 Jenkins パイプライン・プロジェクトは、Jenkins Web インターフェースから表示および管理することができます。 
 
 Jenkins 用 IBM Cloud DevOps プラグインは、Jenkins プロジェクトをツールチェーンに統合します。
-_ツールチェーン_は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。
-ツールチェーンの集合体としての能力は、それに含まれる個々のツール統合の総和よりも優れています。
-オープン・ツールチェーンは、{{site.data.keyword.contdelivery_full}} サービスの一部です。
-{{site.data.keyword.contdelivery_short}} サービスについて詳しくは、[そのドキュメンテーション](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)を参照してください。
- 
+_ツールチェーン_は、開発、デプロイメント、運用の作業をサポートするツール統合のセットです。 ツールチェーンの集合体としての能力は、それに含まれる個々のツール統合の総和よりも優れています。 オープン・ツールチェーンは、{{site.data.keyword.contdelivery_full}} サービスの一部です。 {{site.data.keyword.contdelivery_short}} サービスについて詳しくは、[そのドキュメンテーション](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)を参照してください。 
 
-IBM Cloud DevOps プラグインをインストールした後は、テスト結果を {{site.data.keyword.DRA_short}} に公開し、ゲートでビルドの品質を自動的に評価して、デプロイメント・リスクを追跡するために Jenkins プロジェクトを構成することができます。
-また、ジョブ通知を、Slack や PagerDuty など、ツールチェーン内の他のツールに送信することもできます。
-デプロイメントの追跡のために、Git コミットやそれに関連した Git または JIRA の問題に対して、ツールチェーンからデプロイメント・メッセージを追加することができます。
-また、デプロイメントを「ツールチェーン接続」ページに表示することもできます。
- 
+IBM Cloud DevOps プラグインをインストールしたら、テスト結果を {{site.data.keyword.DRA_short}} に公開し、ゲートでビルドの品質を自動的に評価して、デプロイメント・リスクを追跡するように、Jenkins プロジェクトを構成できます。
+また、ジョブ通知を、Slack や PagerDuty など、ツールチェーン内の他のツールに送信することもできます。 デプロイメントの追跡のために、Git コミットやそれに関連した Git または JIRA の問題に対して、ツールチェーンからデプロイメント・メッセージを追加することができます。 また、デプロイメントを「ツールチェーン接続」ページに表示することもできます。 
 
 このプラグインは、統合をサポートするためのビルド後アクションや CLI を提供します。
-{{site.data.keyword.DRA_short}} は、単体テスト、機能テスト、コード・カバレッジ・ツール、静的セキュリティー・コード・スキャン、動的セキュリティー・コード・スキャンからの結果を集約し、分析することによって、デプロイメント・プロセス内のゲートにおいて、コードが事前定義されたポリシーを満たしているかどうかを判別します。
-コードがポリシーを満たしていないか、ポリシーを超えていない場合、リスクのある変更版がリリースされないように、デプロイメントが停止されます。{{site.data.keyword.DRA_short}} は、継続的デリバリー環境のセーフティー・ネット、品質規格を実装して時間の経過とともに向上させるための方法、およびプロジェクトの正常性を把握するのに役立つデータ可視化ツールとして使用できます。
+{{site.data.keyword.DRA_short}} は、単体テスト、機能テスト、コード・カバレッジ・ツール、静的セキュリティー・コード・スキャン、動的セキュリティー・コード・スキャンからの結果を集約し、分析することによって、デプロイメント・プロセス内のゲートにおいて、コードが事前定義されたポリシーを満たしているかどうかを判別します。 コードがポリシーを満たしていないか、ポリシーを超えていない場合、リスクのある変更版がリリースされないように、デプロイメントが停止されます。 {{site.data.keyword.DRA_short}} は、継続的デリバリー環境のセーフティー・ネット、品質規格を実装して時間の経過とともに向上させるための方法、およびプロジェクトの正常性を把握するのに役立つデータ可視化ツールとして使用できます。
 
-Jenkins パイプラインに精通している場合は、そのまま読み進めてください。そうでない場合は、先に [Jenkins パイプラインのドキュメンテーション](https://jenkins.io/doc/book/pipeline/)を参照してください。
+Jenkins パイプラインに精通している場合は、そのまま読み進めてください。 そうでない場合は、先に [Jenkins パイプラインのドキュメンテーション](https://jenkins.io/doc/book/pipeline/)を参照してください。
 
 ## 前提条件
 {: #jenkins_prerequisites}
 
-Jenkins パイプライン・プロジェクトを実行しているサーバーに対するアクセス権がなければなりません。
- 
+Jenkins パイプライン・プロジェクトを実行しているサーバーに対するアクセス権がなければなりません。 
 
 ## ツールチェーンの作成
 {: #jenkins_create}
 
-{{site.data.keyword.DRA_short}} と Jenkins プロジェクトを統合するには、その前にツールチェーンを作成する必要があります。
- 
+{{site.data.keyword.DRA_short}} と Jenkins プロジェクトを統合するには、その前にツールチェーンを作成する必要があります。 
 
-1. ツールチェーンを作成するには、[「ツールチェーンの作成 (Create a Toolchain)」ページ](https://console.ng.bluemix.net/devops/create)に移動し、そのページに示されている手順を実行します。
- 
+1. ツールチェーンを作成するには、[「ツールチェーンの作成 (Create a Toolchain)」ページ](https://console.ng.bluemix.net/devops/create)に移動し、そのページに示されている手順を実行します。 
 
-2. ツールチェーンの作成後、それに {{site.data.keyword.DRA_short}} を追加します。
-その手順については、[{{site.data.keyword.DRA_short}} のドキュメンテーション](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html)を参照してください。
- 
+2. ツールチェーンの作成後、それに {{site.data.keyword.DRA_short}} を追加します。 その手順については、[{{site.data.keyword.DRA_short}} のドキュメンテーション](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html)を参照してください。 
 
 ## プラグインのインストール
 {: #jenkins_install}
 
-Jenkins サーバーにプラグインをインストールするには、サーバー・インターフェースを開き、以下の手順に従います。
+サーバー・インターフェースを開き、以下の手順に従って、Jenkins サーバーにプラグインをインストールします。
 
 1. **「Jenkins の管理 (Manage Jenkins)」**をクリックします。
 2. **「プラグインの管理」**をクリックします。 
@@ -75,33 +59,29 @@ Jenkins サーバーにプラグインをインストールするには、サー
 ## パイプラインの作成
 {: #jenkinsfile_create}
 
-Jenkins プロジェクト構成メニューか、リポジトリー内の Jenkinsfile のいずれかで、パイプラインを定義します。
-先に進むには、{{site.data.keyword.DRA_short}} で使用するスクリプトまたは Jenkinsfile を開くか、または作成します。[宣言](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline)形式か、[スクリプト](https://jenkins.io/doc/book/pipeline/syntax/#scripted-pipeline)形式で作成することができます。
-
+Jenkins プロジェクト構成メニューか、リポジトリー内の Jenkinsfile のいずれかで、パイプラインを定義します。 先に進むには、{{site.data.keyword.DRA_short}} で使用するスクリプトまたは Jenkinsfile を開くか、または作成します。 [宣言](https://jenkins.io/doc/book/pipeline/syntax/#declarative-pipeline)形式か、[スクリプト](https://jenkins.io/doc/book/pipeline/syntax/#scripted-pipeline)形式で作成することができます。
 
 ## 必要な環境変数の公開
 
 パイプライン定義を開きます。 
 
-定義の中で、以下の環境変数を追加します。
-これらの変数は、パイプラインを {{site.data.keyword.DRA_short}} に統合するために必要です。
+定義の中で、以下の環境変数を追加します。 これらの変数は、パイプラインを {{site.data.keyword.DRA_short}} に統合するために必要です。
 
-
-| 環境変数            | 定義      |
+| 環境変数        | 定義    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Jenkins 内で `credentials` コマンドを使用して定義する Bluemix 資格情報。例えば、`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。このコマンドで変数を設定すると、ユーザー名とパスワードのそれぞれに対する 2 つの追加の環境変数 `IBM_CLOUD_DEVOPS_CREDS_USR` と `IBM_CLOUD_DEVOPS_CREDS_PSW` が自動的に設定されます。|
-| `IBM_CLOUD_DEVOPS_ORG`      | ツールチェーンの属する Bluemix 組織。|
-| `IBM_CLOUD_DEVOPS_APP_NAME` | ツールチェーンがデプロイするアプリケーションの名前。|
-| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | ツールチェーンの ID。ツールチェーンの概要を開き、URL を見て ID を判別します。ツールチェーン URL の形式は `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]` です。|
-| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Jenkins をツールチェーンに追加した時点で提供された webhook。|
+| `IBM_CLOUD_DEVOPS_CREDS`    | Jenkins 内で `credentials` コマンドを使用して定義する {{site.data.keyword.Bluemix_notm}} Platform 資格情報。例えば、`IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`。 このコマンドで変数を設定すると、ユーザー名とパスワードのそれぞれに対する 2 つの追加の環境変数 `IBM_CLOUD_DEVOPS_CREDS_USR` と `IBM_CLOUD_DEVOPS_CREDS_PSW` が自動的に設定されます。  |
+| `IBM_CLOUD_DEVOPS_ORG`      | ツールチェーンが属している {{site.data.keyword.Bluemix}} Platform 組織。|
+| `IBM_CLOUD_DEVOPS_APP_NAME` | ツールチェーンがデプロイするアプリケーションの名前。   |
+| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | ツールチェーンの ID。 ツールチェーンの概要を開き、URL を見て ID を判別します。 ツールチェーン URL の形式は `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]` です。   |
+| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Jenkins をツールチェーンに追加した時点で提供された webhook。   |
 
-`credentials` コマンドについて詳しくは、[Jenkins パイプラインのドキュメンテーション](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment)を参照してください。
+`credentials` コマンドについて詳しくは、[Jenkins パイプラインのドキュメンテーション](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment)を参照してください。 
 {: tip}
 
-スクリプト・パイプライン形式を使用する場合は、以下のサンプルで使用されている `credentials` と `environment` は使用せず、代わりに `withCredentials` で資格情報を設定し、`withEnv` で環境を設定します。`withCredentials` について詳しくは、[Jenkins のドキュメンテーション](https://jenkins.io/doc/pipeline/steps/credentials-binding/)を参照してください。
+スクリプト・パイプライン形式を使用する場合は、以下のサンプルで使用されている `credentials` と `environment` は使用せず、代わりに `withCredentials` で資格情報を設定し、`withEnv` で環境を設定します。 `withCredentials` について詳しくは、[Jenkins のドキュメンテーション](https://jenkins.io/doc/pipeline/steps/credentials-binding/)を参照してください。
 {: tip} 
 
-これらの環境変数と資格情報は、DevOps Insights との対話のために IBM Cloud DevOps プラグインによって使用されます。
+IBM Cloud DevOps プラグインは、これらの環境変数と資格情報を使用して DevOps Insights と対話します。
 この例では、これらは宣言パイプライン形式で設定されます。 
 
 ```
@@ -116,30 +96,25 @@ environment {
 
 
 ## Cloud DevOps のステップの追加
-Cloud DevOps プラグインにより、使用する Jenkins パイプラインに 4 つのステップが追加されます。
-これらのステップは、DevOps Insights との対話のためにパイプラインの中で使用します。
- 
+Cloud DevOps プラグインによって、4 つのステップがユーザーのために Jenkins パイプラインに追加されます。これらのステップは、DevOps Insights との対話のためにパイプラインの中で使用します。 
 
 * `publishBuildRecord`。ビルド情報を DevOps Insights に公開します
 * `publishTestResult`。テスト結果を DevOps Insights に公開します
 * `publishDeployRecord`。デプロイメント・レコードを DevOps Insights に公開します
 * `evaluateGate`。DevOps Insights ポリシーを適用します 
 
-これらのステップを、パイプライン定義内のこれらのステップを実行する必要のある箇所に追加します。
-例えば、テスト実行の後にテスト結果をアップロードし、アップロード後にゲートでそれらの結果を評価することができます。 
+これらのステップを、パイプライン定義内のこれらのステップを実行する必要のある箇所に追加します。 例えば、テスト実行の後にテスト結果をアップロードし、アップロード後にゲートでそれらの結果を評価することができます。 
 
 ### ビルド・レコードの公開
 
-`publishBuildRecord` ステップでビルド・レコードを公開します。
-このステップでは、4 つのパラメーターが必要です。
+`publishBuildRecord` ステップでビルド・レコードを公開します。 このステップでは、4 つのパラメーターが必要です。
 
-
-| パラメーター| 定義      |
+| パラメーター        | 定義    |
 | ----------------------------|---------------|
-| `gitBranch`    | ビルドで使用する Git ブランチの名前。|
-| `gitCommit`      | ビルドで使用する Git コミット ID。|
-| `gitRepo` | Git リポジトリーの URL。|
-| `result` | ビルド・ステージの結果。値は `SUCCESS` または `FAIL` です。|
+| `gitBranch`    | ビルドで使用する Git ブランチの名前。  |
+| `gitCommit`      | ビルドで使用する Git コミット ID。    |
+| `gitRepo` | Git リポジトリーの URL。   |
+| `result` | ビルド・ステージの結果。 値は `SUCCESS` または `FAIL` です。   |
 
 この例では、これらのパラメーターをコマンドで使用する方法を示します。
 
@@ -147,21 +122,18 @@ Cloud DevOps プラグインにより、使用する Jenkins パイプライン�
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins パイプラインは、Git 情報を環境変数として公開しません。
-コマンド `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` を使用することにより、Git コミット ID を入手できます。
+Jenkins パイプラインは、Git 情報を環境変数として表示しません。コマンド `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` を使用することにより、Git コミット ID を入手できます。
 {: tip}
 
 ### テスト結果の公開
-`publishTestResult` ステップでビルド・レコードを公開します。
-このステップでは、2 つのパラメーターが必要です。
+`publishTestResult` ステップでビルド・レコードを公開します。 このステップでは、2 つのパラメーターが必要です。
 
-
-| パラメーター| 定義      |
+| パラメーター        | 定義    |
 | ----------------------------|---------------|
-| `type`    | テスト結果のタイプ。この値は、単体テストでは `unittest`、機能検証テストでは `fvt`、コード・カバレッジ・テストでは `code` でなければなりません。|
-| `fileLocation`      | テスト結果ファイルの場所。|
+| `type`    | テスト結果のタイプ。 この値は、単体テストでは `unittest`、機能検証テストでは `fvt`、コード・カバレッジ・テストでは `code` でなければなりません。  |
+| `fileLocation`      | テスト結果ファイルの場所。    |
 
-以下の例では、これらのパラメーターをコマンドで使用する方法を示します。最初のコマンドは Mocha 単体テスト結果を公開します。2 番目のコマンドではコード・カバレッジ・テスト結果を公開します。 
+以下の例では、これらのパラメーターをコマンドで使用する方法を示します。 最初のコマンドは Mocha 単体テスト結果を公開します。 2 番目のコマンドではコード・カバレッジ・テスト結果を公開します。 
 
 ```
 publishTestResult type:'unittest', fileLocation: './mochatest.json'
@@ -170,18 +142,15 @@ publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-
 
 ### デプロイメント・レコードの公開
 
-`publishDeployRecord` ステップでデプロイメント・レコードを公開します。
-このステップでは、2 つのパラメーターが必要です。
-これには、1 つのオプション・パラメーターも指定できます。
- 
+`publishDeployRecord` ステップでデプロイメント・レコードを公開します。 このステップでは、2 つのパラメーターが必要です。 これには、1 つのオプション・パラメーターも指定できます。 
 
-| パラメーター| 定義      |
+| パラメーター        | 定義    |
 | ----------------------------|---------------|
-| `environment`    | アプリのデプロイ先となる環境。DevOps Insights が適切に機能するためには、1 つの環境を `STAGING` として、別の環境を `PRODUCTION` として識別する必要があります。|
-| `result`      | ビルド・ステージの結果。値は `SUCCESS` か `FAIL` でなければなりません。|
-| `appUrl`      | _オプション_: アプリケーションにアクセスするために使用する URL。|
+| `environment`    | アプリのデプロイ先となる環境。 DevOps Insights が適切に機能するためには、1 つの環境を `STAGING` として、別の環境を `PRODUCTION` として識別する必要があります。 |
+| `result`      | ビルド・ステージの結果。 値は `SUCCESS` か `FAIL` でなければなりません。    |
+| `appUrl`      | _オプション_: アプリケーションにアクセスするために使用する URL。    |
 
-以下の例では、これらのパラメーターをコマンドで使用する方法を示します。最初のコマンドはステージング環境のデプロイメント・レコードを公開します。2 番目のコマンドでは実稼働環境のデプロイメント・レコードを公開します。
+以下の例では、これらのパラメーターをコマンドで使用する方法を示します。 最初のコマンドはステージング環境のデプロイメント・レコードを公開します。 2 番目のコマンドでは実稼働環境のデプロイメント・レコードを公開します。
 
 ```
 publishDeployRecord environment: "STAGING", appUrl: "http://staging-Weather-App.mybluemix.net", result:"SUCCESS"
@@ -190,20 +159,16 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 
 ### ゲートの追加
 
-`evaluateGate` コマンドを使用することにより、ゲートをパイプラインに追加します。
-ゲートでは、ビルドのプロモーションのためのテストの要件を設定する DevOps Insights ポリシーが適用されます。
- 
+`evaluateGate` コマンドを使用することにより、ゲートをパイプラインに追加します。 ゲートでは、ビルドのプロモーションのためのテストの要件を設定する DevOps Insights ポリシーが適用されます。 
 
-このステップでは、1 つのパラメーターが必要です。これには、1 つのオプション・パラメーターも指定できます。
- 
+このステップでは、1 つのパラメーターが必要です。 これには、1 つのオプション・パラメーターも指定できます。 
 
-| パラメーター| 定義      |
+| パラメーター        | 定義    |
 | ----------------------------|---------------|
-| `policy`    | ゲートが実装するポリシーの名前。ポリシーの名前は、DevOps Insights の中で定義されます。|
-| `forceDecision`      | _オプション_: ゲートの決定に応じてパイプラインが停止するかどうか。ゲートの結果が不合格の場合にパイプラインの実行を停止する場合、このパラメーターを `true` に設定します。
-ゲートの結果が不合格になった後もパイプラインが続行することを可能にするには、`false` に設定します。デフォルト値は `false` です。|
+| `policy`    | ゲートが実装するポリシーの名前。 ポリシーの名前は、DevOps Insights の中で定義されます。 |
+| `forceDecision`      | _オプション_: ゲートの決定に応じてパイプラインが停止するかどうか。ゲートの結果が不合格の場合にパイプラインの実行を停止する場合、このパラメーターを `true` に設定します。 ゲートの結果が不合格になった後もパイプラインが続行することを可能にするには、`false` に設定します。 デフォルト値は `false` です。     |
 
-以下の例では、これらのパラメーターをコマンドで使用する方法を示します。このコマンドでは、ゲートの決定には関係なくパイプラインの実行は続行します。 
+以下の例では、これらのパラメーターをコマンドで使用する方法を示します。 このコマンドでは、ゲートの決定には関係なくパイプラインの実行は続行します。 
 
 ```
 evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
@@ -211,19 +176,16 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### ツールチェーンとの通信
 
-パイプラインの状況を Bluemix ツールチェーンに送信するには、`notifyOTC` コマンドを使用します。
-Jenkins をツールチェーンに統合することについては、[ドキュメンテーションを参照してください](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。
-ステップ 6d から 6f までは、フリー・フォームの Jenkins プロジェクトにのみ当てはまるものであり、無視することができます。
-
+パイプラインの状況を {{site.data.keyword.Bluemix_notm}} ツールチェーンに送信するには、`notifyOTC` コマンドを使用します。
+Jenkins をツールチェーンに統合することについては、[ドキュメンテーションを参照してください](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)。 ステップ 6d から 6f までは、フリー・フォームの Jenkins プロジェクトにのみ当てはまるものであり、無視することができます。
 
 このステップには 2 つのパラメーターが必要であり、オプション・パラメーターも 1 つ指定できます。 
 
-| パラメーター| 定義      |
+| パラメーター        | 定義    |
 | ----------------------------|---------------|
-| `stageName`    | 現在のパイプライン・ステージの名前。|
-| `status`    | 現在のパイプライン・ステージの状況。`SUCCESS`、`FAILURE`、または `ABORTED` を使用すると、Slack で色強調表示が自動的に起動します。|
-| `webhookUrl`      | _オプション_: ツールチェーンの Jenkins タイルに表示される webhook URL。このパラメーターを含める場合、その値により、`IBM_CLOUD_DEVOPS_WEBHOOKURL` 環境変数の値がオーバーライドされます。
-|
+| `stageName`    | 現在のパイプライン・ステージの名前。 |
+| `status`    | 現在のパイプライン・ステージの状況。 `SUCCESS`、`FAILURE`、または `ABORTED` を使用すると、Slack で色強調表示が自動的に起動します。  |
+| `webhookUrl`      | _オプション_: ツールチェーンの Jenkins タイルに表示される webhook URL。 このパラメーターを含める場合、その値により、`IBM_CLOUD_DEVOPS_WEBHOOKURL` 環境変数の値がオーバーライドされます。   |
 
 宣言とスクリプトの両方のパイプライン定義において `notifyOTC` ステップを使用する方法を示す例を以下に示します。
 
@@ -263,14 +225,13 @@ stage('Deploy') {
 
 ## ツールチェーン統合を通じての追跡可能性の確認
 
-Bluemix ツールチェーンと統合するように Jenkins 環境を構成するには、[Bluemix の資料](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)にある以下の手順に従います。
+{{site.data.keyword.Bluemix_notm}} ツールチェーンと統合するように Jenkins 環境を構成するには、[{{site.data.keyword.Bluemix}} の資料](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)にある以下の手順に従います。
 ステップ 6d から 6f までは、フリー・フォームの Jenkins プロジェクトにのみ当てはまるものであり、無視することができます。
 
-ツールチェーンと統合すると、エンドツーエンドの追跡やデプロイメント・マッピングが可能になります。統合の手順を実行した後、デプロイメント・ステップの後にコマンド `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` を追加します。
-このコマンドを実行すると、Jenkins 統合が、Bluemix 上で実行されているアプリに接続されます。
+ツールチェーンと統合すると、エンドツーエンドの追跡やデプロイメント・マッピングが可能になります。統合の手順を実行した後、デプロイメント・ステップの後にコマンド `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` を追加します。 このコマンドを実行すると、Jenkins 統合が、{{site.data.keyword.Bluemix_notm}} Platform 上で実行されているアプリに接続されます。
  
 
-デプロイメント・ステップのサンプル全体を以下に示します。最後のコマンドは `cf icd --create-connection` です。 
+デプロイメント・ステップのサンプル全体を以下に示します。 最後のコマンドは `cf icd --create-connection` です。 
 
 <pre>
 sh '''
@@ -285,7 +246,7 @@ sh '''
 '''
 </pre>
 
-Jenkins 統合のドキュメンテーションで説明されているように、CloudFoundry CLI と CloudFoundry ICD のプラグインが Jenkins サーバー上にインストールされていることが必要です。そのサーバーから Bluemix にログインして接続する必要もあります。
+Jenkins 統合のドキュメンテーションで説明されているように、CloudFoundry CLI と CloudFoundry ICD のプラグインが Jenkins サーバー上にインストールされていることが必要です。 接続するには、そのサーバーから {{site.data.keyword.Bluemix}} Platform にログインする必要もあります。
 
 
 ## 宣言パイプラインの例
@@ -352,7 +313,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Push the Weather App to Bluemix, staging space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} Platform, staging space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -406,7 +367,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Push the Weather App to Bluemix, production space
+                // Push the Weather App to the {{site.data.keyword.Bluemix_notm}} platform, production space
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -440,13 +401,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

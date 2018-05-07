@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-02-24"---
+  years: 2016, 2018
+lastupdated: "2017-02-24"
+
+---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -13,6 +15,6 @@ lastupdated: "2017-02-24"---
 # {{site.data.keyword.DRA_short}} と Jenkins との統合
 {: #toolchain_configure_jenkins}
 
-このページは移動されました。この情報は、[新しい場所](/docs/services/DevOpsInsights/about_risk.html)にあります。
+このページは移動されました。 この情報は、[新しい場所](/docs/services/DevOpsInsights/about_risk.html)にあります。
 {:shortdesc}
 
