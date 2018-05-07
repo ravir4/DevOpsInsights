@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-09-18"
+  years: 2016, 2018
+lastupdated: "2017-10-25"
 
 ---
 
@@ -14,16 +14,16 @@ lastupdated: "2017-09-18"
 
 # Intégration de Deployment Risk Analytics à Continuous Delivery
 
-Vous pouvez instrumenter des pipelines pour {{site.data.keyword.contdelivery_full}} afin d'utiliser les fonctions Deployment Risk Analysis de {{site.data.keyword.DRA_short}}. Ensuite, vous pouvez publier des données à partir de ces travaux et ajouter des jalons destinés à appliquer les politiques d'administration du risque. 
+{{site.data.keyword.DRA_short}} effectue le suivi du risque de déploiement basé sur les données de test que vous y publiez. Ces données peuvent inclure des tests d'unité, une couverture du code, des tests fonctionnels de vérification, des données SonarQube ou des données d'analyse provenant d'IBM Application Security on Cloud. Après avoir publié ces données, vous pouvez ajouter des jalons à vos pipelines de façon à vous permettre d'arrêter les générations qui ne respectent pas les politiques d'administration du risque.
 
 Pour voir une explication détaillée du composant Deployment Risk Analysis de {{site.data.keyword.DRA_short}}, voir [A propos de Deployment Risk](./about_risk.html).
 
 Pour plus d'informations sur les pipelines de distribution continue, voir la [documentation officielle](../ContinuousDelivery/pipeline_working.html).
 
-## Etapes et travaux de préparation du pipeline
+## Présentation
 {: #integrate_pipeline}
 
-Pour commencer, vous devez instrumenter votre pipeline afin de communiquer avec {{site.data.keyword.DRA_short}}. Pour ce faire, définissez des variables d'environnement spécifiques pour tous vos travaux de pipeline permettant de générer, tester ou déployer du code. Vous devez également ajouter des variables d'environnement qui appliquent des politiques d'administration du risque en utilisant le type de testeur DevOps Insights Gate. 
+{{site.data.keyword.DRA_short}} requiert les informations ci-après en provenance de votre pipeline afin d'analyser le risque de déploiement :
 
 * Enregistrements de génération
 * Enregistrements de déploiement
@@ -31,39 +31,45 @@ Pour commencer, vous devez instrumenter votre pipeline afin de communiquer avec 
 
 Les résultats de test doivent fournir des données dans l'un des formats pris en charge suivants :
 
-| Type de test                 | Formats pris en charge                                               |
+| Type de test                    | Formats pris en charge                                               |
 |------------------------------|-----------------------------------------------------------------|
-| Test de vérification fonctionnelle| Mocha, xUnit                                                    |
-| Test d'unité                 | Mocha, xUnit, Karma/Mocha                                       |
-| Couverture de code           | Istanbul, Blanket.js, Cobertura, lcov                                           |
-| Analyse application statique | Analyses d'application statiques fournies par IBM Application Security on Cloud  |
-| Analyse application dynamique| Analyses d'application dynamiques fournies par IBM Application Security on Cloud  |
-| SonarQube                    | Données d'analyse fournies par les analyses SonarQube                             |
+| Test fonctionnel de vérification | Mocha, xUnit                                                    |
+| Test d'unité                    | Mocha, xUnit, Karma/Mocha                                       |
+| Couverture de code                | Istanbul, Blanket.js, Cobertura, lcov                                           |
+| Analyse application statique              | Analyses d'application statiques fournies par IBM Application Security on Cloud  |
+| Analyse application dynamique             | Analyses d'application dynamiques fournies par IBM Application Security on Cloud |
+| SonarQube                    | Données d'analyse fournies par les analyses SonarQube                           |
 
-Les variables d'environnement que vous définissez dans le pipeline fournissent du contexte pour la publication de ces enregistrements. Vous pouvez les définir en utilisant la commande `export` dans les scripts de vos travaux. Vous pouvez également les définir dans le menu Propriétés d'environnement de chaque étape de pipeline. 
+Les variables d'environnement que vous définissez dans le pipeline fournissent du contexte pour la publication de ces enregistrements. Vous pouvez les définir en utilisant la commande `export` dans les scripts de vos travaux. Vous pouvez également les définir dans le menu Propriétés d'environnement de chaque étape de pipeline.
 
 Variables d'environnement :
 
-| Variable d'environnement | Objectif | Obligatoire dans |
-|-----------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | Définit le nom de l'application sur le tableau de bord. | Tous les travaux permettant de générer, tester, déployer et appliquer des politiques d'administration du risque {{site.data.keyword.DRA_short}}. |
-| `BUILD_PREFIX`  | Texte qui est ajouté comme préfixe aux générations d'étape. Ce texte apparaît également sur le tableau de bord.| Tous les travaux permettant de générer, tester, déployer et appliquer des politiques d'administration du risque {{site.data.keyword.DRA_short}}. |
+| Variable d'environnement  | Objectif | Obligatoire dans |
+|-----------------------|-------- |-------------|
+| `LOGICAL_APP_NAME`    | Définit le nom de l'application sur le tableau de bord. | Tous les travaux permettant de générer, tester, déployer et appliquer des politiques d'administration du risque {{site.data.keyword.DRA_short}}. |
+| `BUILD_PREFIX`  | Texte qui est ajouté comme préfixe aux générations d'étape. Ce texte apparaît également sur le tableau de bord. | Tous les travaux permettant de générer, tester, déployer et appliquer des politiques d'administration du risque {{site.data.keyword.DRA_short}}. |
 | `LOGICAL_ENV_NAME`  | Environnement dans lequel l'application s'exécute. | Travaux de test et de déploiement. |
 
-### Configuration de travaux de génération
+Prenez soin d'utiliser ces variables de façon cohérente :
 
-Pour le dernier travail de génération d'une étape, définissez des variables d'environnement pour un nom d'application et un préfixe de génération. Un exemple de script doit inclure les commandes suivantes : 
+* Pour une application particulière, servez-vous de la même variable `LOGICAL_APP_NAME` dans tous les travaux ou étapes. 
+* La valeur `BUILD_PREFIX` doit être la même pour une application et un type de génération particulier. Ainsi, pour les générations provenant de la branche maître, `BUILD_PREFIX` pourrait être `"master"`. 
+* Utilisez la même valeur `LOGICAL_ENVIRONMENT_NAME` dans les travaux de test et de déploiement correspondants. Si vous utilisez la valeur `LOGICAL_ENVIRONMENT_NAME` de `"PRODUCTION"` dans un travail de déploiement, utilisez la même valeur quand vous publiez des résultats à partir de tests qui s'exécutent aussi dans cet environnement.
+
+## Variables d'environnement de travail de génération
+
+Pour le dernier travail de génération d'une étape, définissez des variables d'environnement pour un nom d'application et un préfixe de génération. Un exemple de script doit inclure les commandes suivantes :
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
 ```
 
-Lorsque ce travail de génération est terminé, le pipeline publie un message sur {{site.data.keyword.DRA_short}} indiquant qu'une génération SampleApp est terminée. 
+Lorsque ce travail de génération est terminé, le pipeline publie un message sur {{site.data.keyword.DRA_short}} indiquant qu'une génération SampleApp est terminée.
 
-### Configuration des travaux de déploiement
+## Variables d'environnement de travail de déploiement
 
-Pour le dernier travail de déploiement de l'étape, définissez un nom d'application, un préfixe de génération et un nom d'environnement. Un exemple de script doit inclure les commandes suivantes : 
+Pour le dernier travail de déploiement de l'étape, définissez un nom d'application, un préfixe de génération et un nom d'environnement. Un exemple de script doit inclure les commandes suivantes :
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
@@ -71,69 +77,37 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-Lorsque votre travail de déploiement est terminé, le pipeline publie un message sur {{site.data.keyword.DRA_short}} indiquant que la génération et l'application spécifiées ont été déployées sur un environnement. 
+Lorsque votre travail de déploiement est terminé, le pipeline publie un message sur {{site.data.keyword.DRA_short}} indiquant que la génération et l'application spécifiées ont été déployées sur un environnement.
 
-### Configuration des travaux de test
+## Variables d'environnement de travail de test
 
-Pour tous les travaux qui produisent des résultats de test, définissez un nom d'application et un préfixe de génération. 
+Pour tous les travaux qui produisent des résultats de test, définissez un nom d'application et un préfixe de génération.
 
-Si le travail génère des résultats de test de vérification fonctionnelle, vous devez également indiquer comme nom d'environnement logique l'emplacement sur lequel ces tests se déroulent. 
+Si le travail génère des résultats de test  fonctionnel de vérification vous devez également indiquer comme nom d'environnement logique l'emplacement sur lequel ces tests se déroulent.
 
-Un exemple de script doit inclure les commandes suivantes : 
+Un exemple de script doit inclure les commandes suivantes :
 
 ```
 export LOGICAL_APP_NAME="SampleApp"
 export BUILD_PREFIX="master"
+
 # The LOGICAL_ENV_NAME variable is only needed when publishing FVT results.
 export LOGICAL_ENV_NAME="Production"
 ```
 
-Vérifiez que les noms d'application et les environnements correspondent chaque fois que cela est nécessaire. Par exemple, vous souhaiterez qu'un travail de test de production exécuté sur un déploiement de production comporte des valeurs `LOGICAL_ENV_NAME` identiques. 
-
-## Publication de données de test sur DevOps Insights
+## Publication de résultats de test
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} utilise les résultats de test à partir de vos travaux pour générer des rapports et appliquer des politiques d'administration du risque. Vous pouvez publier des données de test à partir de tous les types de travail. 
+{{site.data.keyword.DRA_short}} utilise les résultats de test à partir de vos travaux pour générer des rapports et appliquer des politiques d'administration du risque.
 
-Vous pouvez publier des résultats de test de deux façons :
-
-* En appelant une interface de ligne de commande simple dans le script d'un travail.
-
-* En ajoutant un travail de test avec le type Advanced Tester à votre pipeline.
-
-Lorsque vous utilisez la méthode Advanced Tester, vous ne publiez pas les résultats à l'aide de l'interface de ligne de commande. A la place, vous spécifiez l'emplacement des fichiers de résultats dans le travail de pipeline, et le travail télécharge les résultats dès qu'ils sont disponibles. 
-
-Quelle que soit la méthode de publication que vous utilisez, les résultats de test doivent être dans l'un des formats pris en charge par {{site.data.keyword.DRA_short}} :
-
-<table><thead>
-<tr>
-<th>Type de test</th>
-<th>Formats pris en charge</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Test de vérification fonctionnelle</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Test d'unité</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Couverture de code</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
-
-### Publication de données de test à partir de n'importe quel type de travail
-
-Dans un pipeline, vous pouvez utiliser n'importe quel type de travail pour exécuter un test. Après avoir exécuté ce test, vous pouvez télécharger ses résultats sur {{site.data.keyword.DRA_short}}. Vous téléchargez les résultats en appelant une interface de ligne de commande dans le script shell du travail.  
+Dans un pipeline, vous pouvez utiliser n'importe quel type de travail pour exécuter un test. Après avoir exécuté ce test, vous pouvez télécharger ses résultats sur {{site.data.keyword.DRA_short}}. Vous téléchargez les résultats en appelant une interface de ligne de commande dans le script shell du travail. 
 
 Vous pouvez télécharger ces types de résultats de test à partir de l'interface de ligne de commande :
 
 * Tests d'unité
 * Couverture de code
-* Tests de vérification fonctionnelle
+* Tests fonctionnels de vérification
+* Résultats SonarQube
 * Résultats d'analyse d'application statique et dynamique à partir d'IBM Application Security on Cloud. 
 
 Il s'agit d'un exemple de script qui exécute des tests, puis télécharge les résultats sur {{site.data.keyword.DRA_short}} : 
@@ -148,30 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+Dans cet exemple, la commande `idra`, qui s'exécute avec l'indicateur `--publishtestresult`, spécifie que le script  télécharge les résultats. L'indicateur `--filelocation` signale l'emplacement du fichier de résultats de test relativement au répertoire racine du travail. L'indicateur `--type` précise le type de test qui s'exécute.
+
+La commande `idra` prend en charge les valeurs de `type` suivantes : 
+
+| Type | Description |
+|------|-------------|
+| `unittest` | Résultats de test d'unité | 
+| `fvt` | Résultats de test fonctionnel de vérification|
+| `code` | Résultats de couverture de code| 
+| `sonarqube` | Résultats d'analyse SonarQube| 
+| `staticsecurityscan` | Résultats d'analyse de sécurité statique à partir d'IBM Application Security on Cloud |
+| `dynamicsecurityscan` | Résultats d'analyse de sécurité dynamique  à partir d'IBM Application Security on Cloud |
+
 Pour en savoir plus sur la commande `idra`, voir la [page sur le package grunt-idra3 sur npm](https://www.npmjs.com/package/grunt-idra3). 
-
-### Publication de données de test à partir de travaux Advanced Tester
-
-Vous pouvez ajouter des travaux de test avec le type Advanced Tester à un pipeline. Une fois exécutés, ils téléchargent automatiquement leurs résultats sur {{site.data.keyword.DRA_short}}. 
-
-1. A l'étape au cours de laquelle vous souhaitez ajouter le travail qui télécharge les résultats, cliquez sur l'icône **Configuration de l'étape** ![Icône de configuration de l'étape de pipeline](images/pipeline-stage-configuration-icon.png). Cliquez sur **Configurer l'étape**.
-2. Créez un travail de test et entrez un nom associé. 
-3. Pour le type de travail, sélectionnez **Advanced Tester**.
-4. Renseignez les zones **Commande de test** et **Répertoire de travail** comme vous le feriez pour un travail de test de pipeline normal. 
-5. Renseignez les autres zones afin de télécharger les résultats de test pour un type de test particulier. 
-
- 1. Choisissez le type de mesure qui correspond à ce que vous avez défini dans la politique {{site.data.keyword.DRA_short}} que vous voulez utiliser.
- 2. Indiquez l'emplacement du fichier de résultats. Cet emplacement est relatif par rapport au répertoire de travail. 
-
-6. Si vous souhaitez télécharger les résultats d'un second type de test du même travail, renseignez les zones qui ont pour préfixe *Additional*.
-7. Cliquez sur **Sauvegarder** pour revenir au pipeline.
-
-La figure 1 représente un travail de test configuré pour exécuter des tests d'unité, télécharger les résultats au format Mocha et télécharger les résultats de couverture de code au format Istanbul.
-
-![Travail de téléchargement DevOps Insights](images/insights_upload_job.png)
-*Figure 1. Téléchargement des résultats dans DevOps Insights*
-
-
 
 ## Définition de jalons
 {: #configure_pipeline_gates}

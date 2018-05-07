@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -66,8 +66,8 @@ Dans la définition, ajoutez les variables d'environnement suivantes. Ces variab
 
 | Variable d'environnement        | Définition    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Données d'identification Bluemix que vous définissez dans Jenkins à l'aide de la commande `credentials`. Par exemple, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Cette commande définit automatiquement deux variables d'environnement supplémentaires : `IBM_CLOUD_DEVOPS_CREDS_USR` et `IBM_CLOUD_DEVOPS_CREDS_PSW` pour le nom d'utilisateur et le mot de passe.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | Organisation Bluemix à laquelle votre chaîne d'outils appartient.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | Données d'identification de la plateforme {{site.data.keyword.Bluemix_notm}} que vous définissez dans Jenkins à l'aide de la commande `credentials`. Par exemple, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Cette commande définit automatiquement deux variables d'environnement supplémentaires : `IBM_CLOUD_DEVOPS_CREDS_USR` et `IBM_CLOUD_DEVOPS_CREDS_PSW` pour le nom d'utilisateur et le mot de passe.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | Organisation de la de la plateforme {{site.data.keyword.Bluemix}} à laquelle votre chaîne d'outils appartient. |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Nom de l'application déployée par votre chaîne d'outils.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | ID de votre chaîne d'outils. Ouvrez la présentation de la chaîne d'outils et examinez son URL pour connaître l'ID. L'URL de la chaîne d'outils est au format suivant : `https://console.ng.bluemix.net/devops/toolchains/[ID_VOTRE_CHAINE_OUTILS]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Webhook que vous avez fourni lorsque vous avez ajouté Jenkins à votre chaîne d'outils.   |
@@ -118,7 +118,7 @@ Voici un exemple de commande employant ces paramètres :
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins Pipeline n'expose pas les informations Git en tant que variables d'environnement. Vous pouvez obtenir l'ID de validation Git à l'aide de la commande `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
+Jenkins Pipeline n'affiche pas les informations Git en tant que variables d'environnement. Vous pouvez obtenir l'ID de validation Git à l'aide de la commande `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
 {: tip}
 
 ### Publication de résultats de test
@@ -126,7 +126,7 @@ Publiez des enregistrements de génération avec l'étape `publishTestResult`. C
 
 | Paramètre        | Définition    |
 | ----------------------------|---------------|
-| `type`    | Type du résultat de test. La valeur doit être `unittest` pour les tests d'unité, `fvt` pour les tests de vérification fonctionnelle, ou `code` pour les tests de couverture de code.  |
+| `type`    | Type du résultat de test. La valeur doit être `unittest` pour les tests d'unité, `fvt` pour les tests fonctionnels de vérification, ou `code` pour les tests de couverture de code.  |
 | `fileLocation`      | Emplacement du fichier de résultats de test.    |
 
 Voici quelques exemples de commande comportant ces paramètres. La première commande publie les résultats d'un test d'unité Mocha, la seconde publie les résultats d'un test de couverture de code. 
@@ -162,7 +162,7 @@ Cette étape requiert un paramètre. Elle peut également accepter un paramètre
 | Paramètre        | Définition    |
 | ----------------------------|---------------|
 | `policy`    | Nom de la politique implémentée par le jalon. Le nom de la politique est défini dans DevOps Insights. |
-| `forceDecision`      | _Facultatif_ : indique si le pipeline s'arrête ou non, en fonction de la décision du jalon. Définissez ce paramètre sur `true` pour arrêter l'exécution du pipeline en cas d'échec au jalon. Définissez-le sur `false` pour autoriser le pipeline à poursuivre après un échec au jalon. Par défaut, la valeur est définie sur `false`.     |
+| `forceDecision`      | _Facultatif_ : indique si le pipeline s'arrête, en fonction de la décision du jalon. Définissez ce paramètre sur `true` pour arrêter l'exécution du pipeline en cas d'échec au jalon. Définissez-le sur `false` pour autoriser le pipeline à poursuivre après un échec au jalon. Par défaut, la valeur est définie sur `false`.     |
 
 Voici un exemple de commande employant ces paramètres. Dans cette commande, le pipeline continue à s'exécuter quelle que soit la décision du jalon. 
 
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Communication avec les chaînes d'outils
 
-Envoyez le statut du pipeline aux chaînes d'outils Bluemix à l'aide de la commande `notifyOTC`. Pour en savoir plus sur l'intégration de Jenkins avec des chaînes d'outils, voir la [documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Vous pouvez ignorer les étapes 6d à 6f, car elles s'appliquent uniquement aux projets Jenkins à structure libre.
+Envoyez le statut du pipeline aux chaînes d'outils {{site.data.keyword.Bluemix_notm}} en utilisant la commande `notifyOTC`. Pour en savoir plus sur l'intégration de Jenkins avec des chaînes d'outils, voir la [documentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Vous pouvez ignorer les étapes 6d à 6f, car elles s'appliquent uniquement aux projets Jenkins à structure libre.
 
 Cette étape requiert deux paramètres et peut également admettre un paramètre facultatif. 
 
@@ -220,9 +220,9 @@ Dans ces deux exemple, l'URL du webhook de la chaîne d'outils est remplacée un
 
 ## Garantie de traçabilité dans les intégrations de chaîne d'outils
 
-Configurez votre environnement Jenkins de manière à l'intégrer à votre chaîne d'outils Bluemix en suivant les instructions figurant dans la [documentation Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Vous pouvez ignorer les étapes 6d à 6f, car elles s'appliquent uniquement aux projets Jenkins à structure libre.
+Configurez votre environnement Jenkins de façon à l'intégrer à votre chaîne d'outils {{site.data.keyword.Bluemix_notm}} en suivant les instructions fournies dans [{{site.data.keyword.Bluemix}} Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Vous pouvez ignorer les étapes 6d à 6f, car elles s'appliquent uniquement aux projets Jenkins à structure libre.
 
-L'intégration à une chaîne d'outils vous garantit une traçabilité de bout en bout et un mappage de déploiement. Après avoir suivi les instructions d'intégration, ajoutez la commande `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` après vos étapes de déploiement. Cette commande connecte votre intégration Jenkins à une application qui s'exécute sur Bluemix. 
+L'intégration à une chaîne d'outils vous garantit une traçabilité de bout en bout et un mappage de déploiement. Après avoir suivi les instructions d'intégration, ajoutez la commande `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` après vos étapes de déploiement. Cette commande connecte votre intégration Jenkins à une application qui s'exécute sur la plateforme {{site.data.keyword.Bluemix_notm}}. 
 
 Voici un exemple d'étape de déploiement complète. La dernière commande est `cf icd --create-connection`. 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-Comme décrit dans la documentation de l'intégration Jenkins, les plug-in de l'interface de ligne de commande CloudFoundry et CloudFoundry ICD doivent être installés sur votre serveur Jenkins. Vous devez également vous connecter à Bluemix à partir du serveur afin de vous y connecter.
+Comme décrit dans la documentation de l'intégration Jenkins, les plug-in de l'interface de ligne de commande CloudFoundry et CloudFoundry ICD doivent être installés sur votre serveur Jenkins. Vous devez également vous identifier auprès de la plateforme {{site.data.keyword.Bluemix}} à partir du serveur afin de vous y connecter.
 
 ## Exemple de pipeline déclaratif
 
@@ -249,7 +249,7 @@ Cet exemple illustre un pipeline complet défini en tant que fichier Jenkinsfile
 #!groovy
 /*
     Voici un exemple de fichier Jenkins pour l'application météo Weather, une application node.js avec un test d'unité, des tests de
-    couverture de code et des tests de vérification fonctionnelle, qui est déployée dans un environnement de préproduction et de
+    couverture de code et des tests fonctionnels de vérification, qui est déployée dans un environnement de préproduction et de
     production et qui utilise le jalon IBM Cloud DevOps.
     Nous l'utilisons comme exemple pour notre plug-in dans le fichier Jenkinsfile.
     Vous devez spécifier 4 variables d'environnement requises pour pouvoir utiliser 4
@@ -306,8 +306,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Envoyez par commande push l'application météo Weather à Bluemix, dans l'espace de transfert
-                sh '''
+                // Envoyez par commande push l'application météo Weather à la plateforme {{site.data.keyword.Bluemix_notm}}, dans l'espace de transfert sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
                         cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s staging
@@ -359,8 +358,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Envoyez par commande push l'application météo Weather à Bluemix, dans l'espace de production
-                sh '''
+                // Envoyez par commande push l'application météo Weather à la plateforme {{site.data.keyword.Bluemix_notm}}, dans l'espace de production sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
                         cf login -u $IBM_CLOUD_DEVOPS_CREDS_USR -p $IBM_CLOUD_DEVOPS_CREDS_PSW -o $IBM_CLOUD_DEVOPS_ORG -s production
@@ -393,13 +391,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

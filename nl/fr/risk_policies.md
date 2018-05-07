@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-04-07"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -43,11 +43,11 @@ Pour créer une politique :
 ## Création de règles
 {: #creating_rules}
 
-Les règles définissent les critères utilisés par vos politiques pour juger du succès ou de l'échec. Vous pouvez créer une politique "Test d'unité et couverture de test" qui contient une règle de test d'unité qui requiert 80 % de réussite au test d'unité et une règle de couverture de test qui requiert 100 % de couverture du code. Si vous ajoutez un jalon qui se réfère à cette règle dans un pipeline, le jalon empêche les générations qui ne satisfont pas les deux règles. 
+Les règles définissent les critères utilisés par vos politiques pour juger du succès ou de l'échec. Vous pouvez créer une politique "Test d'unité et couverture de test" qui contient une règle de test d'unité exigeant une réussite de 80 pour cent pour le test d'unité et une règle de couverture de test requérant une couverture du code de 100 pour cent. Si vous ajoutez un jalon qui se réfère à cette règle dans un pipeline, le jalon empêche les générations qui ne satisfont pas les deux règles. 
 
 Vous pouvez exiger la réussite inconditionnelle en marquant les tests comme critiques. Pour créer une règle, sélectionnez une politique, puis cliquez sur **Ajouter une règle à la politique**. 
 
-### Création de règles de test de vérification fonctionnelle
+### Création de règles de test fonctionnel de vérification
 {: #criteria_fvt}
 
 1. Entrez une description et sélectionnez un format.
@@ -113,7 +113,7 @@ Vous pouvez intégrer {{site.data.keyword.DRA_short}} à {{site.data.keyword.app
 
 Pour les résultats de test, {{site.data.keyword.DRA_short}} prend en charge les types d'indicateur et de format suivants :
 
-* Test de vérification fonctionnelle (Mocha, xUnit)
+* Test fonctionnel de vérification (Mocha, xUnit)
 * Test d'unité (Mocha, xUnit, Karma/Mocha)
 * Couverture de code (Cobertura, lcov, Istanbul comme format de rapport récapitulatif JSON, Blanket.js)
 

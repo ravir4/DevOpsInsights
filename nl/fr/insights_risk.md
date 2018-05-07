@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2017-03-31"
 {{site.data.keyword.DRA_short}} fournit un grand nombre d'informations sur vos déploiements, et en particulier sur les risques. Vous pouvez l'utiliser pour automatiser la protection de la qualité dans votre pipeline de distribution à l'aide de politiques et de jalons. 
 {:shortdesc}
 
-Après avoir ouvert {{site.data.keyword.DRA_short}} à partir de la chaîne d'outils, cliquez sur **Deployment Risk**. A partir de là, vous obtenez une présentation des applications de vos environnements de préproduction et de production, et vous pouvez effectuer une exploration en aval pour comprendre la couverture de code, les performances du test et les rapports de sécurité. Les tableaux de bord sont automatiquement remplis avec les informations les plus récentes provenant des tests {{site.data.keyword.DRA_short}} de vos pipelines.
+Après avoir ouvert {{site.data.keyword.DRA_short}} à partir de la chaîne d'outils, cliquez sur **Deployment Risk**. A partir de là, vous obtenez une présentation des applications de vos environnements de préproduction et de production, et vous pouvez effectuer une exploration en aval pour comprendre la couverture du code, les performances des tests et les rapports de sécurité. Les tableaux de bord sont automatiquement remplis avec les informations les plus récentes provenant des tests {{site.data.keyword.DRA_short}} de vos pipelines.
 
 ## A propos de Deployment Risk
 {: #about}
@@ -86,11 +86,11 @@ Pour créer une politique :
 ### Création de règles
 {: #creating_rules}
 
-Les règles définissent les critères utilisés par vos politiques pour juger du succès ou de l'échec. Vous pouvez créer une politique "Test d'unité et couverture de test" qui contient une règle de test d'unité qui requiert 80 % de réussite au test d'unité et une règle de couverture de test qui requiert 100 % de couverture du code. Si vous ajoutez un jalon qui se réfère à cette règle dans un pipeline, le jalon empêche les générations qui ne satisfont pas les deux règles. 
+Les règles définissent les critères utilisés par vos politiques pour juger du succès ou de l'échec. Vous pouvez créer une politique "Test d'unité et couverture de test" qui contient une règle de test d'unité exigeant une réussite de 80 pour cent pour le test d'unité et une règle de couverture de test requérant une couverture du code de 100 pour cent. Si vous ajoutez un jalon qui se réfère à cette règle dans un pipeline, le jalon empêche les générations qui ne satisfont pas les deux règles. 
 
 Vous pouvez exiger la réussite inconditionnelle en marquant les tests comme critiques. Pour créer une règle, sélectionnez une politique, puis cliquez sur **Ajouter une règle à la politique**. 
 
-#### Création de règles de test de vérification fonctionnelle
+#### Création de règles de test fonctionnel de vérification
 {: #criteria_fvt}
 
 1. Entrez une description et sélectionnez un format.
@@ -200,7 +200,7 @@ Les valeurs des zones contenant le **type d'indicateur** et l'**emplacement du f
 </tr>
 </thead><tbody>
 <tr>
-<td>Test de vérification fonctionnelle</td>
+<td>Test fonctionnel de vérification</td>
 <td>Mocha, xUnit</td>
 </tr>
 <tr>
@@ -310,7 +310,7 @@ Suivez la procédure ci-après pour utiliser les jalons et le tableau de bord de
    
    * Pour l'environnement, si les tests sont exécutés lors de l'étape de génération, ne sélectionnez que l'environnement de génération. Si les tests sont exécutés à l'étape de déploiement, sélectionnez l'environnement de déploiement et indiquez le nom de l'environnement. Deux valeurs sont prises en charge : `STAGING` et `PRODUCTION`.
    
-   * Pour la zone **Result File Location**, indiquez l'emplacement du fichier de résultats. Si le test ne génère aucun fichier de résultats, laissez cette zone vide. Le plug-in télécharge un fichier de résultats par défaut en fonction du statut du travail de test en cours.
+   * Pour la zone **Result File Location**, indiquez l'emplacement du fichier de résultats. Si le test ne génère aucun fichier de résultats, laissez cette zone vide. Le plug-in télécharge un fichier de résultats par défaut basé sur le statut du travail de test actuel.
 
    Les images suivantes représentent des exemples de configuration :
    
@@ -329,14 +329,14 @@ Suivez la procédure ci-après pour utiliser les jalons et le tableau de bord de
 
 5. Exécutez votre travail de génération Jenkins.
 
-6. Affichez le tableau de bord Deployment Risk en accédant à [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), en sélectionnant votre chaîne d'outils et en cliquant sur **DevOps Insights**.
+6. Affichez le tableau de bord Deployment Risk en accédant à [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops), en sélectionnant votre chaîne d'outils et en cliquant sur **DevOps Insights**.
 
 Le tableau de bord Deployment Risk repose sur la présence d'un jalon après un travail de déploiement de préproduction. Si vous voulez utiliser le tableau de bord, vérifiez qu'il existe un jalon après le déploiement vers l'environnement de préproduction, mais avant le déploiement vers un environnement de production.
     
 ### Configuration des notifications
 {: #jenkins_notifications}
 
-Vous pouvez configurer vos travaux Jenkins pour qu'ils envoient les notifications à des outils tels que Slack ou PagerDuty en suivant les instructions de la [documentation Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+Vous pouvez configurer vos travaux Jenkins pour qu'ils envoient les notifications à des outils tels que Slack ou PagerDuty en suivant les instructions fournies dans [{{site.data.keyword.Bluemix}} Platform Docs](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
 
 Cet exemple montre comment configurer `ICD_WEBHOOK_URL` pour les configurations de travail : ![Définition du paramètre ICD_WEBHOOK_URL](images/Set-Parameterized-Webhook.png "Définition d'un webhook paramétré")
 
@@ -356,9 +356,3 @@ Si vous utilisez un pipeline {{site.data.keyword.contdelivery_short}}, vous pouv
 2. Dans le travail qui contient le jalon, cliquez sur le nom du jalon.
 
 3. Dans la vue du journal, recherchez le message `Check {{site.data.keyword.DRA_short}} report here` et cliquez sur le lien pour ouvrir le rapport.
-
-
-
-
-
-

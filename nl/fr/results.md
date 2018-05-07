@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-06-07" 
+  years: 2016, 2018
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,7 @@ lastupdated: "2017-06-07"
 
 ## Evaluation des risques de déploiement
 
-Après l'exécution d'un pipeline, {{site.data.keyword.DRA_short}} commence à collecter et à analyser les résultats de test correspondants pour établir une base de référence. Les données de chaque exécution ultérieure sont collectées et comparées aux résultats précédents. Des jalons de décision utilisent ces données pour déterminer le moment auquel un déploiement doit être arrêté. 
+Après l'exécution d'un pipeline, {{site.data.keyword.DRA_short}} commence à collecter et à analyser les résultats de test correspondants pour établir une base de référence. Les données de chaque exécution ultérieure sont collectées et comparées aux résultats précédents. Des jalons de décision utilisent ces données pour déterminer le moment auquel un déploiement doit être arrêté.
 
 Le tableau de bord Deployment Risk vous permet d'afficher vos données de déploiement et d'évaluation au jalon. Pour ouvrir le tableau de bord, ouvrez {{site.data.keyword.DRA_short}}, puis, dans le menu latéral, cliquez sur **Deployment Risk**.
 
@@ -27,6 +27,6 @@ Si vous utilisez un pipeline {{site.data.keyword.contdelivery_short}}, vous pouv
 
 3. Dans la vue du journal, recherchez le message `Check {{site.data.keyword.DRA_short}} report here` et cliquez sur le lien pour ouvrir le rapport.
 
-## Rapports Developer Insights et Team Dynamics
+## Rapports Developer Insights et Team
 
-Vous pouvez afficher des tableaux de bord sur votre équipe et votre code après une période d'exploration de données initiale. Dans le menu de navigation du service, cliquez sur **Developer Insights** ou sur **Team Dynamics**, puis sélectionnez une catégorie de donnée pour afficher ces informations.
+Vous pouvez afficher des tableaux de bord sur votre équipe et votre code après une période d'exploration de données initiale. Dans le menu de navigation du service, cliquez sur **Developer Insights** ou **Team** puis sélectionnez une catégorie de donnée pour afficher ces informations.
