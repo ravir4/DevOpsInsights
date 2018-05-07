@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-06-07" 
+  years: 2016, 2018
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,7 @@ lastupdated: "2017-06-07"
 
 ## Deployment Risk-Bewertungen
 
-Nach der Pipeline-Ausführung beginnt {{site.data.keyword.DRA_short}} für die Erstellung einer Baseline mit der Erfassung und Analyse der Testergebnisse aus der Pipeline. Es werden Daten aus allen nachfolgenden Ausführungen erfasst und mit den vorherigen Ergebnissen verglichen. In Entscheidungsgates werden diese Daten verwendet, um zu bestimmen, wann eine Bereitstellung gestoppt werden soll. 
+Nach der Pipeline-Ausführung beginnt {{site.data.keyword.DRA_short}} für die Erstellung einer Baseline mit der Erfassung und Analyse der Testergebnisse aus der Pipeline. Es werden Daten aus allen nachfolgenden Ausführungen erfasst und mit den vorherigen Ergebnissen verglichen. In Entscheidungsgates werden diese Daten verwendet, um zu bestimmen, wann eine Bereitstellung gestoppt werden soll.
 
 Sie können sich Ihre Bereitstellung und Gatebewertungsdaten im Deployment Risk-Dashboard ansehen. Öffnen Sie zum Aufrufen des Dashboards {{site.data.keyword.DRA_short}} und klicken Sie im seitlichen Menü auf **Deployment Risk**.
 
@@ -27,6 +27,6 @@ Wenn Sie eine {{site.data.keyword.contdelivery_short}}-Pipeline verwenden, könn
 
 3. Suchen Sie in der Protokollansicht nach der Nachricht `Check {{site.data.keyword.DRA_short}} report here` und klicken Sie auf den Link, um den Bericht zu öffnen.
 
-## Developer Insights- und Team Dynamics-Berichte
+## Developer Insights- und Team-Berichte
 
-Nach einem anfänglichen Zeitraum des Data-Minings können Sie Dashboards über Ihr Team und Ihren Code anzeigen. Klicken Sie im Navigationsmenü des Service auf **Developer Insights** oder **Team Dynamics** und wählen Sie anschließend eine Datenkategorie zum Anzeigen dieser Informationen aus.
+Nach einem anfänglichen Zeitraum des Data-Minings können Sie Dashboards über Ihr Team und Ihren Code anzeigen. Klicken Sie im Navigationsmenü des Service auf **Developer Insights** oder **Team** und wählen Sie anschließend eine Datenkategorie zum Anzeigen dieser Informationen aus.

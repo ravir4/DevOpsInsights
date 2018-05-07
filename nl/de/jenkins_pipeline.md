@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -19,9 +19,7 @@ Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolcha
 
 Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine _Toolchain_ ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
-Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie das Jenkins-Projekt so konfigurieren, dass Testergebnisse in
-{{site.data.keyword.DRA_short}} veröffentlicht werden, die Buildqualität automatisch an Gates bewertet wird und Ihre
-Bereitstellungsrisiken überwacht werden. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
+Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Ihr Jenkins-Projekt so konfigurieren, dass Testergebnisse in {{site.data.keyword.DRA_short}} publiziert werden, die Buildqualität an Gates automatisch ausgewertet wird und Bereitstellungsrisiken verfolgt werden. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
 
 Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen
 Sicherheitsscans, um zu bestimmen, ob Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
@@ -69,8 +67,8 @@ Fügen Sie in der Definition die folgenden Umgebungsvariablen hinzu. Diese Varia
 
 | Umgebungsvariable        | Definition    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Bluemix-Berechtigungsnachweise, die Sie mithilfe des Befehls `credentials` in Jenkins definieren. Beispiel: `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Durch das Festlegen der Variablen mit diesem Befehl werden automatisch zwei weitere Umgebungsvariablen festgelegt: `IBM_CLOUD_DEVOPS_CREDS_USR` und `IBM_CLOUD_DEVOPS_CREDS_PSW` für den Benutzernamen und das Kennwort.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | Die Bluemix-Organisation, zu der Ihre Toolchain gehört.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | {{site.data.keyword.Bluemix_notm}}-Plattformberechtigungsnachweise, die Sie mithilfe des Befehls `credentials` in Jenkins definieren. Beispiel: `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Durch das Festlegen der Variablen mit diesem Befehl werden automatisch zwei weitere Umgebungsvariablen festgelegt: `IBM_CLOUD_DEVOPS_CREDS_USR` und `IBM_CLOUD_DEVOPS_CREDS_PSW` für den Benutzernamen und das Kennwort.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | Die {{site.data.keyword.Bluemix}}-Plattformorganisation, zu der Ihre Toolchain gehört.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Der Name der Anwendung, die Ihre Toolchain bereitstellt.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | Die ID Ihrer Toolchain. Öffnen Sie die Übersicht der Toolchain und sehen Sie sich die URL an, um die ID zu bestimmen. Das URL-Format der Toolchain ist `https://console.ng.bluemix.net/devops/toolchains/[IHRE_TOOLCHAIN-ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Der Webhook, der Ihnen beim Hinzufügen von Jenkins zur Toolchain bereitgestellt wurde.   |
@@ -121,7 +119,7 @@ Dieses Beispiel veranschaulicht die Verwendung dieser Parameter in einem Befehl:
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins Pipeline stellt Git-Informationen nicht in Form von Umgebungsvariablen bereit. Sie können die Git-Commit-ID mithilfe des Befehls `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` abrufen.
+Jenkins Pipeline zeigt Git-Informationen nicht in Form von Umgebungsvariablen an. Sie können die Git-Commit-ID mithilfe des Befehls `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` abrufen.
 {: tip}
 
 ### Testergebnisse veröffentlichen
@@ -168,7 +166,7 @@ Für diesen Schritt ist ein Parameter erforderlich. Es ist auch ein optionaler P
 | Parameter        | Definition    |
 | ----------------------------|---------------|
 | `policy`    | Der Name der Richtlinie, die das Gate implementiert. Der Name der Richtlinie wird in DevOps Insights definiert. |
-| `forceDecision`      | _Optional_: Gibt an, ob die Pipeline in Abhängigkeit der Gate-Entscheidung gestoppt wird oder nicht. Legen Sie diesen Parameter auf `true` fest, um die Ausführung der Pipeline zu stoppen, falls das Gate fehlschlägt. Legen Sie den Wert `false` fest, wenn die Pipeline nach dem Fehlschlagen des Gates weiter ausgeführt werden soll. Der Standardwert hierfür ist `false`.     |
+| `forceDecision`      | _Optional_: Gibt an, ob die Pipeline in Abhängigkeit der Gate-Entscheidung gestoppt wird. Legen Sie diesen Parameter auf `true` fest, um die Ausführung der Pipeline zu stoppen, falls das Gate fehlschlägt. Legen Sie den Wert `false` fest, wenn die Pipeline nach dem Fehlschlagen des Gates weiter ausgeführt werden soll. Der Standardwert hierfür ist `false`.     |
 
 Das folgende Beispiel veranschaulicht die Verwendung dieser Parameter in einem Befehl. Mit diesem Befehl wird die Pipeline unabhängig davon, wie die Gate-Entscheidung ist, weiter ausgeführt. 
 
@@ -178,7 +176,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Kommunikation mit Toolchains
 
-Senden Sie den Pipelinestatus mithilfe des Befehls `notifyOTC` an Bluemix-Toolchains. Weitere Informationen zur Integration von Jenkins mit Toolchains [finden Sie in der Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
+Senden Sie den Pipelinestatus mithilfe des Befehls `notifyOTC` an {{site.data.keyword.Bluemix_notm}}-Toolchains. Weitere Informationen zur Integration von Jenkins mit Toolchains [finden Sie in der Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
 
 Für diesen Schritt sind zwei Parameter erforderlich. Darüber hinaus ist ein optionaler Parameter möglich. 
 
@@ -226,9 +224,9 @@ In beiden Beispielen wird die Toolchain-Webhook-URL nur im Falle eines Fehlers �
 
 ## Verfolgbarkeit bei Toolchainintegrationen sicherstellen
 
-Konfigurieren Sie die Jenkins-Umgebung für die Integration mit der Bluemix-Toolchain, indem Sie die entsprechenden Anweisungen in [der Bluemix-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen. Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
+Konfigurieren Sie die Jenkins-Umgebung für die Integration mit der {{site.data.keyword.Bluemix_notm}}-Toolchain, indem Sie die entsprechenden Anweisungen in [der {{site.data.keyword.Bluemix_notm}}-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen. Sie können die Schritte 6d bis 6f ignorieren, da sie nur für unformatierte Jenkins-Projekte gelten.
 
-Durch die Integration mit einer Toolchain stehen Ihnen verschiedene Möglichkeiten für eine durchgängige Verfolgbarkeit und Bereitstellungszuordnung zur Verfügung. Nachdem Sie die Integrationsanweisungen implementiert haben, fügen Sie den Befehl `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` nach Ihren Bereitstellungsschritten hinzu. Mit diesem Befehl wird eine Verbindung der Jenkins-Integration mit einer App hergestellt, die in Bluemix ausgeführt wird. 
+Durch die Integration mit einer Toolchain stehen Ihnen verschiedene Möglichkeiten für eine durchgängige Verfolgbarkeit und Bereitstellungszuordnung zur Verfügung. Nachdem Sie die Integrationsanweisungen implementiert haben, fügen Sie den Befehl `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` nach Ihren Bereitstellungsschritten hinzu. Mit diesem Befehl wird eine Verbindung der Jenkins-Integration mit einer App hergestellt, die auf der {{site.data.keyword.Bluemix_notm}}-Plattform ausgeführt wird. 
 
 Dieses Beispiel veranschaulicht einen vollständigen Bereitstellungsschritt. Der letzte Befehl lautet `cf icd --create-connection`. 
 
@@ -245,7 +243,7 @@ sh '''
 '''
 </pre>
 
-Wie in der Dokumentation zur Jenkins-Integration beschrieben, müssen die Plug-ins für die Cloud Foundry-CLI und die CloudFoundry-ICD auf dem Jenkins-Server installiert sein. Außerdem müssen Sie sich zum Herstellen einer Verbindung vom Server aus bei Bluemix anmelden.
+Wie in der Dokumentation zur Jenkins-Integration beschrieben, müssen die Plug-ins für die Cloud Foundry-CLI und die CloudFoundry-ICD auf dem Jenkins-Server installiert sein. Außerdem müssen Sie sich zum Herstellen einer Verbindung vom Server aus bei der {{site.data.keyword.Bluemix}}-Plattform anmelden.
 
 ## Beispiel für eine deklarative Pipeline
 
@@ -310,7 +308,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Wetter-App mit Push-Operation an Bluemix übertragen, Staging-Bereich
+                // Wetter-App mit Push-Operation an {{site.data.keyword.Bluemix_notm}} übertragen, Staging-Bereich
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -364,7 +362,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Wetter-App mit Push-Operation an Bluemix übertragen, Produktionsbereich
+                // Wetter-App mit Push-Operation an {{site.data.keyword.Bluemix_notm}} übertragen, Produktionsbereich
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -398,13 +396,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

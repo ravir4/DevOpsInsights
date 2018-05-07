@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,12 +18,9 @@ Nach dem Hinzufügen von {{site.data.keyword.DRA_full}} zu einer offenen Toolcha
 
 Das IBM Cloud DevOps-Plug-in für Jenkins integriert Jenkins-Projekte mit Toolchains. Eine _Toolchain_ ist eine Gruppe von Toolintegrationen, die Entwicklungs-, Bereitstellungs- und Operationsaufgaben unterstützen. Das Gesamtpotenzial einer Toolchain ist größer als die Summe ihrer einzelnen Toolintegrationen. Offene Toolchains sind Teil des {{site.data.keyword.contdelivery_full}}-Service. Weitere Informationen zum {{site.data.keyword.contdelivery_short}}-Service finden Sie in der [entsprechenden Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in {{site.data.keyword.DRA_short}}
-veröffentlichen, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
+Nach der Installation des IBM Cloud DevOps-Plug-ins können Sie Testergebnisse in {{site.data.keyword.DRA_short}} veröffentlichen, automatisierte Qualitätsgates hinzufügen und Ihre Bereitstellungsrisiken verfolgen. Außerdem können Sie Jobbenachrichtigungen an andere Tools, wie Slack und PagerDuty, in Ihrer Toolchain senden. Damit Sie Ihre Bereitstellungen besser überwachen können, können über die Toolchain Bereitstellungsnachrichten zu Git-Commits und deren zugehörige Git- oder JIRA-Probleme hinzugefügt werden. Zudem können Sie Ihre Bereitstellungen auf der Verbindungsseite der Toolchain anzeigen. 
 
-Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}}
-aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu
-bestimmen, ob Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
+Das Plug-in stellt Aktionen für den Buildabschluss sowie Befehlszeilenschnittstellen für die Unterstützung der Integration zur Verfügung. {{site.data.keyword.DRA_short}} aggregiert und analysiert die Ergebnisse aus Komponententests, Funktionstests, Codeabdeckungstools und dynamischen Sicherheitsscans, um zu bestimmen, ob Ihr Code an Gates in Ihrem Bereitstellungsprozess den vordefinierten Richtlinien entspricht. Entspricht Ihr Code keiner Richtlinie oder überschreitet Ihr Code eine Richtlinie, wird die Bereitstellung angehalten; dadurch wird verhindert, dass sicherheitsbedenkliche Änderungen freigegeben werden. Sie können {{site.data.keyword.DRA_short}} als Sicherheitsnetz für Ihre Continuous Delivery-Umgebung, als Möglichkeit der Implementierung und Verbesserung der Qualitätsstandards über einen Zeitraum hinweg sowie als Datenvisualisierungstool für Informationen zum Projektstatus verwenden.
 
 ## Voraussetzungen
 {: #jenkins_prerequisites}
@@ -97,11 +94,11 @@ Führen Sie die folgenden Schritte aus, um Deployment Risk-Gates und das Deploym
 
 5. Führen Sie den Jenkins-Build-Job aus.
 
-6. Zeigen Sie das Deployment Risk-Dashboard, indem Sie [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops) aufrufen, Ihre Toolchain auswählen und auf **DevOps Insights** klicken.
+6. Zeigen Sie das Deployment Risk-Dashboard an, indem Sie [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops) aufrufen, Ihre Toolchain auswählen und auf **DevOps Insights** klicken.
 
 Das Deployment Risk-Dashboard ist nach einem Staging-Bereitstellungsjob auf das Vorhandensein eines Gates angewiesen. Wenn Sie das Dashboard verwenden möchten, stellen Sie sicher, dass nach der Bereitstellung für eine Staging-Umgebung (jedoch vor der Bereitstellung für eine Produktionsumgebung) ein Gate vorhanden ist.
     
 ## Benachrichtigungen konfigurieren
 {: #jenkins_notifications}
 
-Sie können die Jenkins-Jobs so konfigurieren, dass Benachrichtigungen an Tools wie Slack oder PagerDuty gesendet werden, indem Sie die Anweisungen in der entsprechenden [Bluemix-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen.
+Sie können die Jenkins-Jobs so konfigurieren, dass Benachrichtigungen an Tools wie Slack oder PagerDuty gesendet werden, indem Sie die Anweisungen in der entsprechenden [{{site.data.keyword.Bluemix_notm}}-Dokumentation](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins) befolgen.
