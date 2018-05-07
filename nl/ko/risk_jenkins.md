@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,9 +18,9 @@ lastupdated: "2017-05-11"
 
 Jenkins용 IBM Cloud DevOps 플러그인은 Jenkins 프로젝트를 도구 체인과 통합합니다. _도구 체인_은 개발, 배치 및 운영 태스크를 지원하는 도구 통합 세트입니다. 도구 체인의 전체 기능은 개별 도구 통합을 합한 것보다 강력합니다. 개방형 도구 체인은 {{site.data.keyword.contdelivery_full}} 서비스의 일부입니다. {{site.data.keyword.contdelivery_short}} 서비스에 대한 자세한 정보는 [해당 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html)를 참조하십시오.
 
-IBM Cloud DevOps 플러그인을 설치한 후 {{site.data.keyword.DRA_short}}에 테스트 결과를 공개하고 자동화된 품질 게이트를 추가하며 Deployment Risk를 추적할 수 있습니다. 또한 도구 체인에서 Slack 및 PagerDuty와 같은 기타 도구에 작업 알림을 보낼 수 있습니다. 배치를 추적할 수 있도록 도구 체인은 Git 커미트와 관련 Git 또는 JIRA 문제에 배치 메시지를 추가할 수 있습니다. 도구 체인의 연결 페이지에서도 배치를 볼 수 있습니다. 
+IBM Cloud DevOps 플러그인을 설치하고 나면 {{site.data.keyword.DRA_short}}에 테스트 결과를 공개하고 자동화된 품질 게이트를 추가하며 Deployment Risk를 추적할 수 있습니다. 또한 도구 체인에서 Slack 및 PagerDuty와 같은 기타 도구에 작업 알림을 보낼 수 있습니다. 배치를 추적할 수 있도록 도구 체인은 Git 커미트와 관련 Git 또는 JIRA 문제에 배치 메시지를 추가할 수 있습니다. 도구 체인의 연결 페이지에서도 배치를 볼 수 있습니다. 
 
-플러그인은 통합을 지원하는 사후 빌드 조치 및 CLI를 제공합니다. {{site.data.keyword.DRA_short}}에서는 단위 테스트, Functional Test, 코드 적용 범위 도구, 정적 보안 코드 스캔 및 동적 보안 코드 스캔의 결과를 집계하고 분석하여 코드가 배치 프로세스의 게이트에서 사전 정의된 정책을 만족하는지 판별합니다. 코드가 정책을 충분히 준수하지 못하는 경우, 위험한 변경이 릴리스되지 않도록 배치가 정지됩니다. {{site.data.keyword.DRA_short}}를 Continuous Delivery 환경의 안전망으로 사용할 수 있는데 이를 통해 시간 경과에 따라 품질 표준을 구현 및 개선하고 프로젝트 상황을 파악하는 데이터 시각화 도구로 사용할 수 있습니다. 
+플러그인은 통합을 지원하는 사후 빌드 조치 및 CLI를 제공합니다. {{site.data.keyword.DRA_short}}에서는 단위 테스트, Functional Test, 코드 적용 범위 도구, 정적 보안 코드 스캔 및 동적 보안 코드 스캔의 결과를 집계하고 분석하여 코드가 배치 프로세스의 게이트에서 사전 정의된 정책을 만족하는지 판별합니다. 코드가 정책을 충분히 준수하지 못하는 경우, 위험한 변경이 릴리스되지 않도록 배치가 정지됩니다. {{site.data.keyword.DRA_short}}를 Continuous Delivery 환경의 안전망으로 사용할 수 있는데 이를 통해 시간 경과에 따라 품질 표준을 구현 및 개선하고 프로젝트 상황을 파악하는 데이터 시각화 도구로 사용할 수 있습니다.
 
 ## 전제조건
 {: #jenkins_prerequisites}
@@ -39,33 +39,33 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
 ## 플러그인 설치
 {: #jenkins_install}
 
-우선 Jenkins 서버에 플러그인을 설치하십시오. 서버 인터페이스를 열고 다음을 수행하십시오. 
+우선 Jenkins 서버에 플러그인을 설치하십시오. 서버 인터페이스를 열고 다음을 수행하십시오.
 
-1. **Jenkins 관리**를 클릭하십시오. 
-2. **플러그인 관리**를 클릭하십시오.  
-3. **사용 가능** 탭을 클릭하십시오. 
-4. `IBM Cloud DevOps`에 대해 필터링하십시오.  
-5. IBM Cloud DevOps를 선택하십시오. 
-6. **지금 다운로드 및 재시작 이후 설치**를 클릭하십시오.  
+1. **Jenkins 관리**를 클릭하십시오.
+2. **플러그인 관리**를 클릭하십시오. 
+3. **사용 가능** 탭을 클릭하십시오.
+4. `IBM Cloud DevOps`에 대해 필터링하십시오. 
+5. IBM Cloud DevOps를 선택하십시오.
+6. **지금 다운로드 및 재시작 이후 설치**를 클릭하십시오. 
 
 서버가 다시 시작되면 플러그인을 사용할 수 있습니다.   
 
 ## Deployment Risk 대시보드에 맞게 Jenkins 작업 구성
 {: #jenkins_configure}
 
-플러그인이 설치되고 나면 Jenkins 프로젝트에 {{site.data.keyword.DRA_short}}를 통합할 수 있습니다. 
+플러그인이 설치되고 나면 {{site.data.keyword.DRA_short}}를 Jenkins 프로젝트에 통합할 수 있습니다. 
 
-다음 단계를 따라 Deployment Risk의 게이트와 대시보드를 프로젝트와 사용하십시오.
+프로젝트에서 Deployment Risk의 게이트와 대시보드를 사용하려면 다음 단계를 따르십시오.
 
 1. 빌드, 테스트 또는 배치와 같은 작업의 구성을 여십시오.
 
 2. 해당 유형에 맞는 사후 빌드 조치를 추가하십시오.
 
-   * 빌드 작업에 대해 **IBM Cloud DevOps에 빌드 정보 공개**를 사용하십시오.
+   * 빌드 작업의 경우 **IBM Cloud DevOps에 빌드 정보 공개**를 사용하십시오.
    
-   * 테스트 작업에 대해 **IBM Cloud DevOps에 테스트 결과 공개**를 사용하십시오.
+   * 테스트 작업의 경우 **IBM Cloud DevOps에 테스트 결과 공개**를 사용하십시오.
    
-   * 배치 작업에 대해 **IBM Cloud DevOps에 배치 정보 공개**를 사용하십시오.
+   * 배치 작업의 경우 **IBM Cloud DevOps에 배치 정보 공개**를 사용하십시오.
    
 3. 필수 필드를 완료하십시오. 이러한 필드는 작업 유형에 따라 다릅니다. 
 
@@ -94,11 +94,11 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
 
 5. Jenkins 빌드 작업을 실행하십시오.
 
-6. [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops)로 이동하고 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 보십시오.
+6. [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops)로 이동하여 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 확인하십시오. 
 
 Deployment Risk 대시보드는 스테이징 배치 작업 후의 게이트 존재에 따라 달라집니다. 대시보드를 사용하려면 스테이징 환경에 배치한 후, 프로덕션 환경에 배치하기 전에 게이트가 있는지 확인하십시오.
     
 ## 구성 알림
 {: #jenkins_notifications}
 
-[Bluemix 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항을 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다.
+[{{site.data.keyword.Bluemix_notm}} 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항에 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다. 
