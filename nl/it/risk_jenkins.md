@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -16,11 +16,11 @@ lastupdated: "2017-05-11"
 
 Dopo aver aggiunto {{site.data.keyword.DRA_full}} a una toolchain aperta e definito le politiche che monitora, puoi integrarlo con il tuo progetto Jenkins a formato libero. I progetti Jenkins a formato libero sono configurati e gestiti dall'interfaccia web Jenkins. 
 
-Il plugin IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Il plug-in IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Dopo aver installato il plugin IBM Cloud DevOps, puoi pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, aggiungere i gate di qualità automatizzati e tracciare il rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
+Dopo aver installato il plug-in IBM Cloud DevOps, puoi pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, aggiungere i gate di qualità automatizzati e tracciare il rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
 
-Il plugin fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
+Il plug-in fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
 
 ## Prerequisiti
 {: #jenkins_prerequisites}
@@ -36,10 +36,10 @@ Prima di poter integrare {{site.data.keyword.DRA_short}} con un progetto Jenkins
 
 2. Dopo aver creato la toolchain, aggiungi {{site.data.keyword.DRA_short}} ad essa. Per istruzioni, consulta la [documentazione {{site.data.keyword.DRA_short}}](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html). 
 
-## Installazione del plugin
+## Installazione del plug-in
 {: #jenkins_install}
 
-Per prima cosa, installa il plugin sul tuo server Jenkins. Apri l'interfaccia server e quindi:
+Per prima cosa, installa il plug-in sul tuo server Jenkins. Apri l'interfaccia server e quindi:
 
 1. Fai clic su **Manage Jenkins**.
 2. Fai clic su **Manage Plugins**. 
@@ -48,12 +48,12 @@ Per prima cosa, installa il plugin sul tuo server Jenkins. Apri l'interfaccia se
 5. Seleziona IBM Cloud DevOps.
 6. Fai clic su **Download now and install after restart**. 
 
-Il plugin è disponibile dopo i riavvii del server.  
+Il plug-in è disponibile dopo i riavvii del server.  
 
 ## Configurazione dei lavori Jenkins per il dashboard Deployment Risk
 {: #jenkins_configure}
 
-Dopo aver installato il plugin, puoi integrare {{site.data.keyword.DRA_short}} nel tuo progetto Jenkins. 
+Dopo aver installato il plug-in, puoi integrare {{site.data.keyword.DRA_short}} nel tuo progetto Jenkins. 
 
 Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk con il tuo progetto.
 
@@ -67,7 +67,7 @@ Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk c
    
    * Per i lavori di distribuzione, utilizza **Publish deployment information to IBM Cloud DevOps**.
    
-3. Completa i campi richiesti. Questi possono variare in base al tipo di lavoro. 
+3. Completa i campi richiesti. I campi varieranno a seconda del tipo di lavoro. 
 
    * Dall'elenco **Credentials**, seleziona i tuoi ID e password {{site.data.keyword.Bluemix_notm}}. Se non sono salvati in Jenkins, fai clic su **Add** per aggiungerli e salvarli. Verifica la tua connessione con {{site.data.keyword.Bluemix_notm}} facendo clic su **Test Connection**.
    
@@ -94,11 +94,11 @@ Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk c
 
 5. Esegui il tuo lavoro di creazione Jenkins.
 
-6. Visualizza il dashboard Deployment Risk passando a [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), selezionando la tua toolchain e facendo clic su **DevOps Insights**.
+6. Visualizza il dashboard Deployment Risk passando a [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops), selezionando la tua toolchain e facendo clic su **DevOps Insights**.
 
 Il dashboard Deployment Risk si basa sulla presenza di un gate dopo un lavoro di distribuzione di preparazione. Se desideri utilizzare il dashboard, assicurati di avere un gate dopo aver distribuito l'ambiente in fase di preparazione, ma prima di distribuire un ambiente di produzione.
     
 ## Configurazione delle notifiche
 {: #jenkins_notifications}
 
-Puoi configurare i tuoi lavori Jenkins in modo da inviare notifiche agli strumenti come Slack o PagerDuty seguendo le istruzioni nei [Documenti Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+Puoi configurare i tuoi lavori Jenkins in modo da inviare notifiche agli strumenti come Slack o PagerDuty seguendo le istruzioni nei [documenti di {{site.data.keyword.Bluemix_notm}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).

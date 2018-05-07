@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2017-03-31"
 {{site.data.keyword.DRA_short}} fornisce un gran numero di informazioni sulle tue distribuzioni, particolarmente a rischio. Puoi utilizzarlo per automatizzare la protezione della qualità nella tua delivery pipeline utilizzando politiche e gate. 
 {:shortdesc}
 
-Dopo aver aperto {{site.data.keyword.DRA_short}} dalla tua toolchain, fai clic su **Deployment Risk**. Da lì, puoi ottenere una panoramica delle applicazioni nei tuoi ambienti di produzione e di preparazione ed eseguire il drill down per comprendere la copertura del codice, le prestazioni del test e i report di sicurezza. I dashboard sono automaticamente popolati con le informazioni più recenti dai test {{site.data.keyword.DRA_short}} della tua pipeline.
+Dopo aver aperto {{site.data.keyword.DRA_short}} dalla tua toolchain, fai clic su **Deployment Risk**. Da lì, puoi ottenere una panoramica delle applicazioni nei tuoi ambienti di produzione e di preparazione ed eseguire il drill-down per comprendere la copertura del codice, le prestazioni del test e i report di sicurezza. I dashboard sono automaticamente popolati con le informazioni più recenti dai test {{site.data.keyword.DRA_short}} della tua pipeline.
 
 ## Informazioni su Deployment Risk
 {: #about}
@@ -39,8 +39,8 @@ Se si sta utilizzando {{site.data.keyword.deliverypipeline}}, procedi come segue
 Se stai utilizzando Jenkins, segui questa procedura:
 
 1. [Crea le politiche e le regole](#policies_and_rules) per {{site.data.keyword.DRA_short}} da gestire.
-2. [Installa e configura il plugin Jenkins](#integrate_jenkins).
-3. [Crea i gate e i lavori di verifica come descritto nelle istruzioni del plugin](#integrate_jenkins). I test caricano i risultati in {{site.data.keyword.DRA_short}} per le analisi e i gate utilizzano questi risultati per effettuare decisioni di promozione.
+2. [Installa e configura il plug-in Jenkins](#integrate_jenkins).
+3. [Crea i gate e i lavori di verifica come descritto nelle istruzioni del plug-in](#integrate_jenkins). I test caricano i risultati in {{site.data.keyword.DRA_short}} per le analisi e i gate utilizzano questi risultati per effettuare decisioni di promozione.
 4. Esegui il progetto e [visualizza i risultati](#view_results). 
 
 Non importa come crei e distribuisci il tuo codice, i risultati sono gli stessi: le build che soddisfano gli standard saranno spostate oltre i gate Deployment Risk, mentre quelle che non li soddisfano saranno arrestate. 
@@ -86,7 +86,7 @@ Per creare una politica:
 ### Creazione di regole
 {: #creating_rules}
 
-Le regole definiscono i criteri che le tue politiche utilizzano per valutare un esito positivo o negativo. Potresti creare una politica "Unit Testing and Test Coverage" che contiene una regola di verifica dell'unità che richiede l'80% di esito positivo della verifica dell'unità e una regola di copertura del test che richiede il 100% di copertura di codice. Se aggiungi un gate che fa riferimento a questa regola in una pipeline, il gate previene a tutte le build che non soddisfano entrambe le regole di procedere. 
+Le regole definiscono i criteri che le tue politiche utilizzano per valutare un esito positivo o negativo. Potresti creare una politica "Unit Testing and Test Coverage" che contiene una regola di verifica dell'unità che richiede l'80 per 100 di esito positivo della verifica dell'unità e una regola di copertura del test che richiede il 100 per 100 di copertura di codice. Se aggiungi un gate che fa riferimento a questa regola in una pipeline, il gate previene a tutte le build che non soddisfano entrambe le regole di procedere. 
 
 Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test come critici. Per creare una regola, seleziona una politica e fai clic su **Add Rule to Policy**. 
 
@@ -104,7 +104,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 5. Fai clic su **Save**.
 
 
-#### Creazione delle regole per i test di unità
+#### Creazione delle regole per la verifica di unità
 {: #criteria_ut}
 
 1. Immetti un descrizione e seleziona un formato.
@@ -129,7 +129,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 
 4. Fai clic su **Save**.
 
-#### Creazione di regole di scansione sicura statica
+#### Creazione di regole di scansione della sicurezza statica
 {: #criteria_static}
 
 Puoi integrare {{site.data.keyword.DRA_short}} con IBM Application Security on Cloud per eseguire le scansioni dell'applicazione dinamica e del codice statico. Per ulteriori informazioni su Application Security on Cloud, consulta [la documentazione ufficiale](/docs/services/ApplicationSecurityonCloud/index.html).
@@ -140,7 +140,7 @@ Puoi integrare {{site.data.keyword.DRA_short}} con IBM Application Security on C
 
 3. Fai clic su **Save**.
 
-#### Creazione di regole di scansione sicura dinamica
+#### Creazione di regole di scansione della sicurezza dinamica
 {: #criteria_dynamic}
 
 Puoi integrare {{site.data.keyword.DRA_short}} con {{site.data.keyword.appseccloudfull}} per eseguire le scansioni dell'applicazione dinamica. Per ulteriori informazioni su Application Security on Cloud, consulta [la documentazione ufficiale](/docs/services/ApplicationSecurityonCloud/index.html).
@@ -179,7 +179,7 @@ Per prima cosa, aggiungi i lavori di tester avanzato alla tua pipeline per esegu
 
 **Nota:** se desideri aggiornare un lavoro di verifica per caricare i risultati in {{site.data.keyword.DRA_short}}, salvane la configurazione in un luogo apposito prima di procedere. Quindi, apri il menu di configurazione del lavoro e passa ala passo 3. 
 
-1. Nella fase in cui vuoi aggiungere il lavoro che carica i risultati, fai clic sull'icona **Configurazione fase** ![Icona configurazione fase pipeline](images/pipeline-stage-configuration-icon.png). Fai clic su **Configura fase**.
+1. Nella fase in cui vuoi aggiungere il lavoro che carica i risultati, fai clic sull'icona **Configurazione fase** ![Icona configurazione fase pipeline](images/pipeline-stage-configuration-icon.png). Fai clic su **Configure Stage**.
 2. Crea un lavoro di verifica ed immetti un nome per esso. 
 3. Per il tipo di lavoro, seleziona **Advanced Tester**.
 4. Riempi i campi **Test Command** e **Working Directory** come preferisci per una lavoro di verifica di una pipeline normale. 
@@ -204,7 +204,7 @@ I valori per i campi **Tipo di metrica** e **Ubicazione del File di risultato** 
 <td>Mocha, xUnit</td>
 </tr>
 <tr>
-<td>Test di unità</td>
+<td>Verifica di unità</td>
 <td>Mocha, xUnit, Karma/Mocha</td>
 </tr>
 <tr>
@@ -227,7 +227,7 @@ Il dashboard Deployment Risk si basa sulla presenza di un gate dopo un lavoro di
 
 Di solito, i gate sono posizionati prima della promozione della build nella tua pipeline. Queste ubicazioni sono ideali per controllare la qualità della build nelle tue politiche per assicurati che siano sicure da promuovere da un ambiente a un altro. Tuttavia, puoi posizionare i gate ovunque nella pipeline in cui desideri che venga controllato un criterio specifico. I gate che sono posizionati prima di distribuire un ambiente in fase di preparazione ancora utilizzeranno le politiche, ma non compariranno nel dashboard Deployment Risk.
 
-1. In una fase, fai clic sull'icona **Configurazione fase** ![Icona configurazione fase pipeline](images/pipeline-stage-configuration-icon.png) e fai clic su **Configura fase**.
+1. In una fase, fai clic sull'icona **Configurazione fase** ![Icona configurazione fase pipeline](images/pipeline-stage-configuration-icon.png) e fai clic su **Configure Stage**.
 2. Fai clic su **Aggiungi lavoro**. Per il tipo di lavoro, seleziona **Test**.
 3. Per il tipo di tester, seleziona **Gate {{site.data.keyword.DRA_short}}**.
 4. Specifica il nome dell'ambiente. Assicurati che questo valore corrisponda al valore che è stato definito nelle tue [proprietà di ambiente](#toolchain_pipeline_props).
@@ -249,11 +249,11 @@ Dopo aver configurato la tua pipeline, inizia ad utilizzare {{site.data.keyword.
 
 Dopo aver aggiunto {{site.data.keyword.DRA_full}} a una toolchain aperta e definito le politiche che monitora, puoi integrarlo con il tuo progetto Jenkins. 
 
-Il plugin IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
+Il plug-in IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html).
 
-Dopo aver installato il plugin IBM Cloud DevOps, puoi pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, aggiungere i gate di qualità automatizzati e tracciare il rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
+Dopo aver installato il plug-in IBM Cloud DevOps, puoi pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, aggiungere i gate di qualità automatizzati e tracciare il rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
 
-Il plugin fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
+Il plug-in fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
 
 ### Prerequisiti
 {: #jenkins_prerequisites}
@@ -272,23 +272,23 @@ Prima di poter integrare {{site.data.keyword.DRA_short}} con un progetto Jenkins
 ### Installazione del plugin
 {: #jenkins_install}
 
-Per prima cosa, scarica il plugin da {{site.data.keyword.DRA_short}}.  
+Per prima cosa, scarica il plug-in da {{site.data.keyword.DRA_short}}.  
 
 1. Dalla pagina della panoramica della toolchain, fai clic su **DevOps Insights**.
 2. Fai clic su **Settings**, quindi su **Jenkins Plugin Setup**.
-3. Segui le istruzioni nella pagina per scaricare il plugin.
+3. Segui le istruzioni nella pagina per scaricare il plug-in.
 
-Quindi, nel tuo server Jenkins, installa il plugin.
+Quindi, nel tuo server Jenkins, installa il plug-in.
 
 1. Fai clic su **Manage Jenkins &gt; Manage Plugins** e sulla scheda **Advanced**.
-2. Fai clic su **Choose File** e seleziona il file di installazione del plugin IBM Cloud DevOps. 
+2. Fai clic su **Choose File** e seleziona il file di installazione del plug-in IBM Cloud DevOps. 
 3. Fai clic su **Upload**.
-4. Riavvia Jenkins e verifica che il plugin sia stato installato.
+4. Riavvia Jenkins e verifica che il plug-in sia stato installato.
 
 ### Configurazione dei lavori Jenkins per il dashboard Deployment Risk
 {: #jenkins_configure}
 
-Dopo aver installato il plugin, puoi integrare {{site.data.keyword.DRA_short}} nel tuo progetto Jenkins. 
+Dopo aver installato il plug-in, puoi integrare {{site.data.keyword.DRA_short}} nel tuo progetto Jenkins. 
 
 Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk con il tuo progetto.
 
@@ -310,7 +310,7 @@ Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk c
    
    * Per l'ambiente, se le verifiche sono in esecuzione nella fase di build, seleziona solo l'ambiente di build. Se le verifiche sono in esecuzione nella fase di distribuzione, seleziona l'ambiente di distribuzione e specifica il nome dell'ambiente. Sono supportati due valori: `STAGING` e `PRODUCTION`.
    
-   * Per il campo **Result File Location**, specifica l'ubicazione del file del risultato. Se il test non genera un file del risultato, lascia questo campo vuoto. Il plugin carica un file del risultato predefinito basato sullo stato del lavoro di verifica corrente.
+   * Per il campo **Result File Location**, specifica l'ubicazione del file del risultato. Se il test non genera un file del risultato, lascia questo campo vuoto. Il plug-in carica un file del risultato predefinito basato sullo stato del lavoro di verifica corrente.
 
    Queste immagini illustrano le configurazioni di esempio:
    
@@ -329,14 +329,14 @@ Segui questa procedura per utilizzare il dashboard e i gate di Deployment Risk c
 
 5. Esegui il tuo lavoro di creazione Jenkins.
 
-6. Visualizza il dashboard Deployment Risk passando a [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), selezionando la tua toolchain e facendo clic su **DevOps Insights**.
+6. Visualizza il dashboard Deployment Risk passando a [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops), selezionando la tua toolchain e facendo clic su **DevOps Insights**.
 
 Il dashboard Deployment Risk si basa sulla presenza di un gate dopo un lavoro di distribuzione di preparazione. Se desideri utilizzare il dashboard, assicurati di avere un gate dopo aver distribuito l'ambiente in fase di preparazione, ma prima di distribuire un ambiente di produzione.
     
 ### Configurazione delle notifiche
 {: #jenkins_notifications}
 
-Puoi configurare i tuoi lavori Jenkins in modo da inviare notifiche agli strumenti come Slack o PagerDuty seguendo le istruzioni nei [Documenti Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+Puoi configurare i tuoi lavori Jenkins in modo da inviare notifiche agli strumenti come Slack o PagerDuty seguendo le istruzioni nei [documenti della piattaforma {{site.data.keyword.Bluemix}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
 
 Questo esempio mostra come configurare `ICD_WEBHOOK_URL` per le configurazioni del lavoro:
 ![Imposta il parametro ICD_WEBHOOK_URL](images/Set-Parameterized-Webhook.png "Imposta il webhook con parametri")
@@ -358,9 +358,3 @@ Se stai utilizzando una {{site.data.keyword.contdelivery_short}} pipeline, puoi 
 2. Dal lavoro che contiene il gate, fai clic sul nome del gate.
 
 3. Nella vista del log, individua il messaggio `Check {{site.data.keyword.DRA_short}} report here` e fai clic sul link per aprire il report.
-
-
-
-
-
-

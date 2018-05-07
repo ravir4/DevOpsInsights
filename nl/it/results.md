@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-06-07" 
+  years: 2016, 2018
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,7 @@ lastupdated: "2017-06-07"
 
 ## Valutazioni Deployment Risk
 
-Dopo aver eseguito una pipeline, {{site.data.keyword.DRA_short}} inizia a raccogliere e analizzare i risultati del test da essa per stabilire una linea di base. I dati di ogni successiva esecuzione sono raccolti e confrontati con i risultati precedenti. I gate di decisione utilizzano questi dati per determinare quando arrestare una distribuzione. 
+Dopo aver eseguito una pipeline, {{site.data.keyword.DRA_short}} inizia a raccogliere e analizzare i risultati del test da essa per stabilire una linea di base. I dati di ogni successiva esecuzione sono raccolti e confrontati con i risultati precedenti. I gate di decisione utilizzano questi dati per determinare quando arrestare una distribuzione.
 
 Puoi visualizzare i dati della valutazione del gate e la tua distribuzione dal dashboard Deployment Risk. Per aprire il dashboard, apri {{site.data.keyword.DRA_short}} e dal manu laterale, fai clic su **Deployment Risk**.
 
@@ -27,6 +27,6 @@ Se stai utilizzando una {{site.data.keyword.contdelivery_short}} pipeline, puoi 
 
 3. Nella vista del log, individua il messaggio `Check {{site.data.keyword.DRA_short}} report here` e fai clic sul link per aprire il report.
 
-## Report Developer Insights e Team Dynamics
+## Report Developer Insights e Team
 
-Puoi visualizzare i dashboard sul tuo team e codice dopo un periodo di estrazione dei dati iniziale. Nel menu di navigazione del servizio, fai clic su **Developer Insights** o **Team Dynamics** e seleziona quindi una categoria di dati per visualizzare queste informazioni.
+Puoi visualizzare i dashboard sul tuo team e codice dopo un periodo di estrazione dei dati iniziale. Nel menu di navigazione del servizio, fai clic su **Developer Insights** o **Team** e seleziona quindi una categoria di dati per visualizzare queste informazioni.

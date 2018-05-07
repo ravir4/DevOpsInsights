@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -17,11 +17,11 @@ lastupdated: "2017-05-19"
 
 Dopo aver aggiunto {{site.data.keyword.DRA_full}} a una toolchain aperta e definito le politiche che monitora, puoi integrarlo con un progetto della pipeline Jenkins. Definisci una pipeline nell'interfaccia web Jenkins o in un _Jenkinsfile_ che archivi nel tuo repository di controllo dell'origine. Puoi visualizzare e gestire i progetti della pipeline Jenkins dall'interfaccia web Jenkins. 
 
-Il plugin IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
+Il plug-in IBM Cloud DevOps per Jenkins integra i progetti Jenkins con le toolchain. Una _toolchain_ è una serie di integrazioni dello strumento che supporta le attività di operazioni, sviluppo e distribuzione. La potenza collettiva di una toolchain è superiore alla somma delle relative integrazioni dello strumento. Le toolchain aperte fanno parte del servizio {{site.data.keyword.contdelivery_full}}. Per ulteriori informazioni sul servizio {{site.data.keyword.contdelivery_short}}, consulta [la sua documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/cd_about.html). 
 
-Dopo aver installato il plugin IBM Cloud DevOps, puoi configurare il tuo progetto Jenkins per pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, la qualità di build viene valutata automaticamente ai gate e tracciato il tuo rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
+Dopo aver installato il plug-in IBM Cloud DevOps, puoi configurare il tuo progetto Jenkins per pubblicare i risultati del test in {{site.data.keyword.DRA_short}}, valutare automaticamente la qualità delle build ai gate e tracciare il tuo rischio di distribuzione. Puoi anche inviare notifiche del lavoro ad altri strumenti nella tua toolchain, come Slack e PagerDuty. Per aiutarti a tracciare le distribuzioni, la toolchain può aggiungere i messaggi di distribuzione ai commit Git e ai relativi problemi Git e JIRA. Puoi anche visualizzare le distribuzioni nella pagina delle connessioni della toolchain. 
 
-Il plugin fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
+Il plug-in fornisce le azioni di post creazione e le CLI per supportare l'integrazione. {{site.data.keyword.DRA_short}} aggrega e analizza i risultati dagli strumenti di test di unità, di test funzionali, di copertura del codice, delle scansioni del codice di sicurezza statico per determinare se il tuo codice soddisfa le politiche predefinite nei gate nel tuo processo di distribuzione. Se il tuo codice non soddisfa o supera una politica, la distribuzione viene arrestata, per prevenire che vengano rilasciati dei rischi. Puoi utilizzare {{site.data.keyword.DRA_short}} come una rete di sicurezza per il tuo ambiente di fornitura continua, come un modo per implementare e migliorare gli standard nel tempo e come uno strumento di visualizzazione dei dati per aiutarti nella comprensione dello stato del tuo progetto.
 
 Se hai dimestichezza con la pipeline Jenkins, continua a leggere. Altrimenti, [consulta la documentazione della pipeline Jenkins](https://jenkins.io/doc/book/pipeline/) prima di continuare.
 
@@ -39,10 +39,10 @@ Prima di poter integrare {{site.data.keyword.DRA_short}} con un progetto Jenkins
 
 2. Dopo aver creato la toolchain, aggiungi {{site.data.keyword.DRA_short}} ad essa. Per istruzioni, consulta la [documentazione {{site.data.keyword.DRA_short}}](https://console.ng.bluemix.net/docs/services/DevOpsInsights/index.html). 
 
-## Installazione del plugin
+## Installazione del plug-in
 {: #jenkins_install}
 
-Installa il plugin sul tuo server Jenkins aprendo l'interfaccia server e attenendoti alla seguente procedura:
+Installa il plug-in sul tuo server Jenkins aprendo l'interfaccia server e attenendoti alla seguente procedura:
 
 1. Fai clic su **Manage Jenkins**.
 2. Fai clic su **Manage Plugins**. 
@@ -51,7 +51,7 @@ Installa il plugin sul tuo server Jenkins aprendo l'interfaccia server e attenen
 5. Seleziona **IBM Cloud DevOps**.
 6. Fai clic su **Download now and install after restart**. 
 
-Il plugin è disponibile dopo i riavvii del server.  
+Il plug-in è disponibile dopo i riavvii del server.  
 
 ## Creazione di una pipeline
 {: #jenkinsfile_create}
@@ -66,8 +66,8 @@ Nella definizione, aggiungi le seguenti variabili di ambiente. Queste variabili 
 
 | Variabile di ambiente        | Definizione    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Le credenziali Bluemix che definisci in Jenkins utilizzando il comando `credentials`. Ad esempio, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. La configurazione della variabile con questo comando imposta due variabili di ambiente automaticamente: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` per il nome utente e la password.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | L'organizzazione Bluemix a cui appartiene la tua toolchain.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | Le credenziali della piattaforma {{site.data.keyword.Bluemix_notm}} che definisci in Jenkins utilizzando il comando `credentials`. Ad esempio, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. La configurazione della variabile con questo comando imposta due variabili di ambiente automaticamente: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` per il nome utente e la password.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | L'organizzazione della piattaforma {{site.data.keyword.Bluemix}} a cui appartiene la tua toolchain. |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Il nome dell'applicazione distribuita dalla tua toolchain.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | L'ID della tua toolchain. Apri la panoramica della toolchain e visualizza l'URL per determinare l'ID. Il formato dell'URL della toolchain è: `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Il webhook che ti è stato fornito quando hai aggiunto Jenkins alla tua toolchain.   |
@@ -78,7 +78,7 @@ Per ulteriori informazioni sul comando `credentials`, consulta la [documentazion
 Se stai utilizzando un formato della pipeline con script, imposta le tue credenziali con `withCredentials` e il tuo ambiente con `withEnv` invece di `credentials` e `environment`, che sono stati utilizzati nel seguente esempio. Per ulteriori informazioni su `withCredentials`, consulta [la documentazione di Jenkins](https://jenkins.io/doc/pipeline/steps/credentials-binding/).
 {: tip} 
 
-Queste variabili di ambiente e credenziali sono utilizzate dal plugin IBM Cloud DevOps per interagire con DevOps Insights. In questo esempio, sono impostate nel formato della pipeline dichiarativa. 
+Queste variabili di ambiente e credenziali sono utilizzate dal plug-in IBM Cloud DevOps per interagire con DevOps Insights. In questo esempio, sono impostate nel formato della pipeline dichiarativa. 
 
 ```
 environment {
@@ -92,7 +92,7 @@ environment {
 
 
 ## Aggiunta delle fasi Cloud DevOps
-Il plugin Cloud DevOps aggiunge quattro fasi alle pipeline Jenkins per il tuo utilizzo. Utilizza queste fasi nelle tue pipeline per interagire con DevOps Insights. 
+Il plug-in Cloud DevOps aggiunge quattro fasi alle pipeline Jenkins per il tuo utilizzo. Utilizza queste fasi nelle tue pipeline per interagire con DevOps Insights. 
 
 * `publishBuildRecord`, che pubblica le informazioni di build in DevOps Insights
 * `publishTestResult`, che pubblica i risultati del test in DevOps Insights
@@ -118,7 +118,7 @@ Questo esempio mostra questi parametri in un comando:
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-La pipeline Jenkins non espone le informazioni Git come le variabili di ambiente. Puoi ottenere l'ID del commit Git utilizzando il comando `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
+La pipeline Jenkins non mostra le informazioni Git sotto forma di variabili di ambiente. Puoi ottenere l'ID del commit Git utilizzando il comando `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()`.
 {: tip}
 
 ### Pubblicazione dei risultati del test
@@ -162,7 +162,7 @@ Questa fase richiede un parametro. Accetta anche un parametro facoltativo.
 | Parametro        | Definizione    |
 | ----------------------------|---------------|
 | `policy`    | Il nome della politica che implementa il gate. Il nome della politica viene definito in DevOps Insights. |
-| `forceDecision`      | _Facoltativo_: se la pipeline viene arrestata o meno a seconda della decisione del gate. Imposta questo parametro su `true` per arrestare la pipeline dall'esecuzione se il gate ha esito negativo. Impostalo su `false` per consentire alla pipeline di continuare dopo un esito negativo del gate. Per impostazione predefinita, il valore è `false`.     |
+| `forceDecision`      | _Facoltativo_: l'eventuale arresto della pipeline dipende dalla decisione del gate. Imposta questo parametro su `true` per arrestare la pipeline dall'esecuzione se il gate ha esito negativo. Impostalo su `false` per consentire alla pipeline di continuare dopo un esito negativo del gate. Per impostazione predefinita, il valore è `false`.     |
 
 Il seguente esempio mostra questi parametri in un comando. In questo comando, la pipeline continua l'esecuzione indipendentemente dalla decisione del gate. 
 
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Comunicazione con le toolchain
 
-Invia lo stato della pipeline alle toolchain Bluemix utilizzando il comando `notifyOTC`. Per ulteriori informazioni sull'integrazione di Jenkins con le toolchain, [consulta la documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puoi ignorare i passi da 6d a 6f, dato che si applicano solo ai progetti Jenkins a formato libero.
+Invia lo stato della pipeline alle toolchain {{site.data.keyword.Bluemix_notm}} utilizzando il comando `notifyOTC`. Per ulteriori informazioni sull'integrazione di Jenkins con le toolchain, [consulta la documentazione](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puoi ignorare i passi da 6d a 6f, dato che si applicano solo ai progetti Jenkins a formato libero.
 
 Questa fase richiede due parametri e può anche utilizzarne uno facoltativo. 
 
@@ -220,9 +220,9 @@ In entrambi gli esempi, l'URL del webhook della toolchain viene sovrascritto sol
 
 ## Garantire la tracciabilità tra le integrazioni toolchain
 
-Configura il tuo ambiente Jenkins per l'integrazione con la tua toolchain Bluemix seguendo le istruzioni nei [Documenti Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puoi ignorare i passi da 6d a 6f, dato che si applicano solo ai progetti Jenkins a formato libero.
+Configura il tuo ambiente Jenkins per l'integrazione con la tua toolchain {{site.data.keyword.Bluemix_notm}} seguendo le istruzioni nei [documenti di {{site.data.keyword.Bluemix}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puoi ignorare i passi da 6d a 6f, dato che si applicano solo ai progetti Jenkins a formato libero.
 
-L'integrazione con una toolchain ti fornisce la tracciabilità end-to-end e l'associazione della distribuzione. Dopo aver eseguito le istruzioni di integrazione, aggiungi il comando `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` dopo le fasi di distribuzione. Questo comando collega la tua integrazione Jenkins a un'applicazione in esecuzione su Bluemix. 
+L'integrazione con una toolchain ti fornisce la tracciabilità end-to-end e l'associazione della distribuzione. Dopo aver eseguito le istruzioni di integrazione, aggiungi il comando `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` dopo le fasi di distribuzione. Questo comando connette la tua integrazione Jenkins a un'applicazione in esecuzione sulla piattaforma {{site.data.keyword.Bluemix_notm}}. 
 
 Questo esempio mostra una fase di distribuzione completa. L'ultimo comando è `cf icd --create-connection`. 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-Come descritto nella documentazione di integrazione di Jenkins, sul tuo server Jenkins devono essere installati i plugin CLI CloudFoundry e ICD CloudFoundry. Hai anche bisogno di accedere a Bluemix dal server da collegare.
+Come descritto nella documentazione di integrazione di Jenkins, sul tuo server Jenkins devono essere installati i plugin CLI CloudFoundry e ICD CloudFoundry. Hai anche bisogno di eseguire l'accesso alla piattaforma {{site.data.keyword.Bluemix}} dal server per stabilire una connessione con essa.
 
 ## Esempio di una pipeline dichiarativa
 
@@ -305,7 +305,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Trasmetti la Weather App a Bluemix, spazio di preparazione
+                // Trasmetti la Weather App alla piattaforma {{site.data.keyword.Bluemix_notm}}, spazio di preparazione
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -359,7 +359,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Trasmetti la Weather App a Bluemix, spazio di produzione
+                // Trasmetti la Weather App alla piattaforma {{site.data.keyword.Bluemix_notm}}, spazio di produzione
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -393,13 +393,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

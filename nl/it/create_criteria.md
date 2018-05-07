@@ -1,7 +1,7 @@
 ---
 
 copyright:
-  years: 2016, 2017
+  years: 2016, 2018
 lastupdated: "2017-02-24"
 
 ---
@@ -102,7 +102,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 
 3. Fai clic su **Save**.
 
-## Formati e strumenti per i risultati di test
+## Verifica strumenti e formati del risultato
 
 {{site.data.keyword.DRA_short}} supporta questi tipi di metriche e formati:
 

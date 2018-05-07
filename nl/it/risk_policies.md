@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-04-07"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -43,7 +43,7 @@ Per creare una politica:
 ## Creazione di regole
 {: #creating_rules}
 
-Le regole definiscono i criteri che le tue politiche utilizzano per valutare un esito positivo o negativo. Potresti creare una politica "Unit Testing and Test Coverage" che contiene una regola di verifica dell'unità che richiede l'80% di esito positivo della verifica dell'unità e una regola di copertura del test che richiede il 100% di copertura di codice. Se aggiungi un gate che fa riferimento a questa regola in una pipeline, il gate previene a tutte le build che non soddisfano entrambe le regole di procedere. 
+Le regole definiscono i criteri che le tue politiche utilizzano per valutare un esito positivo o negativo. Potresti creare una politica "Unit Testing and Test Coverage" che contiene una regola di verifica dell'unità che richiede l'80 per 100 di esito positivo della verifica dell'unità e una regola di copertura del test che richiede il 100 per 100 di copertura di codice. Se aggiungi un gate che fa riferimento a questa regola in una pipeline, il gate previene a tutte le build che non soddisfano entrambe le regole di procedere. 
 
 Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test come critici. Per creare una regola, seleziona una politica e fai clic su **Add Rule to Policy**. 
 
@@ -86,7 +86,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 
 4. Fai clic su **Save**.
 
-### Creazione di regole di scansione sicura statica
+### Creazione di regole di scansione della sicurezza statica
 {: #criteria_static}
 
 Puoi integrare {{site.data.keyword.DRA_short}} con IBM Application Security on Cloud per eseguire le scansioni dell'applicazione dinamica e del codice statico. Per ulteriori informazioni su Application Security on Cloud, consulta [la documentazione ufficiale](/docs/services/ApplicationSecurityonCloud/index.html).
@@ -97,7 +97,7 @@ Puoi integrare {{site.data.keyword.DRA_short}} con IBM Application Security on C
 
 3. Fai clic su **Save**.
 
-### Creazione di regole di scansione sicura dinamica
+### Creazione di regole di scansione della sicurezza dinamica
 {: #criteria_dynamic}
 
 Puoi integrare {{site.data.keyword.DRA_short}} con {{site.data.keyword.appseccloudfull}} per eseguire le scansioni dell'applicazione dinamica. Per ulteriori informazioni su Application Security on Cloud, consulta [la documentazione ufficiale](/docs/services/ApplicationSecurityonCloud/index.html).
