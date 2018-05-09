@@ -9,7 +9,6 @@ IBM Cloud DevOps Insights
     about_risk.md
     about_team.md
     about_dev.md
-    about_delivery.md
 
   {: .topicgroup}
     Enlaces relacionados
@@ -21,7 +20,11 @@ IBM Cloud DevOps Insights
   {: .navgroup id="howto"}
     risk_cd.md
     [Integración con Jenkins](https://wiki.jenkins.io/display/JENKINS/IBM+Cloud+DevOps+Plugin)
-    uc_insights_connect_ucd.md
     risk_policies.md
     results.md
+    insights_personal_data.md
+  {: .navgroup-end}
+
+  {: .navgroup id="help"}
+    faq.md
   {: .navgroup-end}

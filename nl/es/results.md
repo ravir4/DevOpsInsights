@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-06-07" 
+  years: 2016, 2018
+lastupdated: "2017-06-07"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,7 @@ lastupdated: "2017-06-07"
 
 ## Evaluaciones de Deployment Risk
 
-Tras ejecutarse un conducto, {{site.data.keyword.DRA_short}} empieza a recopilar y analizar los resultados de las pruebas para establecer una línea base. Los datos de cada ejecución posterior se recopila y se compara con los resultados anteriores. Las puertas de decisión utilizan estos datos para determinar cuándo se debe detener un despliegue. 
+Tras ejecutarse un conducto, {{site.data.keyword.DRA_short}} empieza a recopilar y analizar los resultados de las pruebas para establecer una línea base. Los datos de cada ejecución posterior se recopila y se compara con los resultados anteriores. Las puertas de decisión utilizan estos datos para determinar cuándo se debe detener un despliegue.
 
 Puede ver los datos de evaluación de despliegue y de puertas desde el panel de control de Deployment Risk. Para abrir el panel de control, abra {{site.data.keyword.DRA_short}} y en el menú lateral, pulse **Deployment Risk**.
 
@@ -27,6 +27,6 @@ Si está utilizando un conducto de {{site.data.keyword.contdelivery_short}}, pue
 
 3. En la ventana de registros, busque el mensaje `Comprobar aquí informe de {{site.data.keyword.DRA_short}}` y pulse el enlace para abrir el informe.
 
-## Informes de Developer Insights y Team Dynamics
+## Informes de Developer Insights y Team
 
-Puede ver paneles de control sobre su código y equipo después de un periodo inicial de minería de datos. En el menú de navegación del servicio, pulse **Developer Insights** o **Team Dynamics** y, a continuación, seleccione una categoría de datos para ver esta información.
+Puede ver paneles de control sobre su código y equipo después de un periodo inicial de minería de datos. En el menú de navegación del servicio, pulse **Developer Insights** o **Team** y, a continuación, seleccione una categoría de datos para ver esta información.

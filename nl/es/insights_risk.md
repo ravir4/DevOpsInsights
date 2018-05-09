@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-03-31"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -86,7 +86,7 @@ Para crear una política:
 ### Creación de reglas
 {: #creating_rules}
 
-Las reglas definen los criterios que utilizarán las políticas para juzgar el cumplimiento o incumplimiento de la misma. Podría crear una política "Unit Testing and Test Coverage" que contenga una regla de prueba de unidad que requiera al menos un éxito del 80% de la misma y una regla de cobertura que precise el 100% de la cobertura de código. Si añade una puerta que haga referencia a esta regla en un conducto, la puerta impide que las compilaciones que no satisfacen ambas reglas continúen. 
+Las reglas definen los criterios que utilizarán las políticas para juzgar el cumplimiento o incumplimiento de la misma. Podría crear una política "Unit Testing and Test Coverage" que contenga una regla de prueba de unidad que requiera al menos un éxito del 80 por ciento de la misma y una regla de cobertura que precise el 100 por ciento de la cobertura de código. Si añade una puerta que haga referencia a esta regla en un conducto, la puerta impide que las compilaciones que no satisfacen ambas reglas continúen. 
 
 Puede exigir una prueba satisfactoria sea como sea marcándola como crítica. Para crear una regla, seleccione una política y, a continuación, pulse **Añadir regla a política**. 
 
@@ -329,14 +329,14 @@ Siga estos pasos para utilizar los paneles de control y las puertas de Deploymen
 
 5. Ejecute su trabajo de compilación de Jenkins.
 
-6. Visualice el panel de control de Deployment Risk. Vaya a [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), seleccione su cadena de herramientas y pulse **DevOps Insights**.
+6. Visualice el panel de control de Deployment Risk. Vaya a [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops), seleccione su cadena de herramientas y pulse **DevOps Insights**.
 
 El panel de control de Deployment Risk se basa en la presencia de una puerta después un trabajo de despliegue en el entorno de transferencia. Si desea utilizar el panel de control, asegúrese de que tiene una puerta después de realizar el despliegue en el entorno de transferencia y antes de realizar el despliegue en un entorno de producción.
     
 ### Configuración de notificaciones
 {: #jenkins_notifications}
 
-Tiene la posibilidad de configurar los trabajos de Jenkins para que envíen notificaciones a herramientas como, por ejemplo, Slack o PagerDuty siguiendo las instrucciones en la [documentación de Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+Tiene la posibilidad de configurar los trabajos de Jenkins para que envíen notificaciones a herramientas como, por ejemplo, Slack o PagerDuty siguiendo las instrucciones en la [documentación de la plataforma {{site.data.keyword.Bluemix}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
 
 Este ejemplo muestra cómo configurar `ICD_WEBHOOK_URL` para configuraciones de trabajos: ![Establecer el parámetro ICD_WEBHOOK_URL](images/Set-Parameterized-Webhook.png "Establecer un webhook parametrizado")
 
@@ -356,9 +356,3 @@ Si está utilizando un conducto de {{site.data.keyword.contdelivery_short}}, pue
 2. Desde el trabajo que contiene la puerta, pulse el nombre de la puerta.
 
 3. En la ventana de registros, busque el mensaje `Comprobar aquí informe de {{site.data.keyword.DRA_short}}` y pulse el enlace para abrir el informe.
-
-
-
-
-
-

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-11"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -67,7 +67,7 @@ Siga estos pasos para utilizar los paneles de control y las puertas de Deploymen
    
    * Para trabajos de despliegue, utilice **Publicar información de despliegue para IBM Cloud DevOps**.
    
-3. Complete los campos necesarios. Estos variarán según el tipo de trabajo. 
+3. Complete los campos necesarios. Los campos variarán según el tipo de trabajo. 
 
    * Desde la lista de **Credenciales**, seleccione su ID de {{site.data.keyword.Bluemix_notm}} y su contraseña. Si no están guardados en Jenkins, pulse **Añadir** para añadirlos y guardarlos. Pruebe su conexión con {{site.data.keyword.Bluemix_notm}} pulsando **Probar conexión**.
    
@@ -94,11 +94,11 @@ Siga estos pasos para utilizar los paneles de control y las puertas de Deploymen
 
 5. Ejecute su trabajo de compilación de Jenkins.
 
-6. Visualice el panel de control de Deployment Risk. Vaya a [IBM Bluemix DevOps](https://console.ng.bluemix.net/devops), seleccione su cadena de herramientas y pulse **DevOps Insights**.
+6. Visualice el panel de control de Deployment Risk. Vaya a [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops), seleccione su cadena de herramientas y pulse **DevOps Insights**.
 
 El panel de control de Deployment Risk se basa en la presencia de una puerta después un trabajo de despliegue en el entorno de transferencia. Si desea utilizar el panel de control, asegúrese de que tiene una puerta después de realizar el despliegue en el entorno de transferencia y antes de realizar el despliegue en un entorno de producción.
     
 ## Configuración de notificaciones
 {: #jenkins_notifications}
 
-Tiene la posibilidad de configurar los trabajos de Jenkins para que envíen notificaciones a herramientas como, por ejemplo, Slack o PagerDuty siguiendo las instrucciones en la [documentación de Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).
+Tiene la posibilidad de configurar los trabajos de Jenkins para que envíen notificaciones a herramientas como, por ejemplo, Slack o PagerDuty siguiendo las instrucciones en la [documentación de {{site.data.keyword.Bluemix_notm}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins).

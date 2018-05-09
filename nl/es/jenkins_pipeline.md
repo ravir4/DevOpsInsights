@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-05-19"
+  years: 2016, 2018
+lastupdated: "2018-3-28"
 
 ---
 
@@ -66,8 +66,8 @@ En la definición, añada las siguientes variables de entorno. Estas variables s
 
 | Variable de entorno        | Definición    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | Credenciales de Bluemix que se definen en Jenkins con el mandato `credentials`. Por ejemplo, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Al establecer la variable con este mandato, establece dos variables de entorno más de forma automática: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` para el nombre de usuario y la contraseña.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | Organización de Bluemix a la que pertenece su cadena de herramientas.     |
+| `IBM_CLOUD_DEVOPS_CREDS`    | Credenciales de la plataforma {{site.data.keyword.Bluemix_notm}} que se definen en Jenkins con el mandato `credentials`. Por ejemplo, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. Al establecer la variable con este mandato, establece dos variables de entorno más de forma automática: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` para el nombre de usuario y la contraseña.  |
+| `IBM_CLOUD_DEVOPS_ORG`      | Organización de {{site.data.keyword.Bluemix}} a la que pertenece su cadena de herramientas.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Nombre de la aplicación que despliega su cadena de herramientas.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | Identificador de su cadena de herramientas. Abra la Visión general de la cadena de herramientas y consulte el URL para determinar el ID. El formato del URL de la cadena de herramientas es `https://console.ng.bluemix.net/devops/toolchains/[SU_ID_CADENA_HERRAMIENTAS]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Webhook que proporcionó al añadir Jenkins a su cadena de herramientas.   |
@@ -118,7 +118,7 @@ Este ejemplo muestra estos parámetros en un mandato:
 publishBuildRecord gitBranch: "${GIT_MASTER}", gitCommit: "${GIT_COMMIT}", gitRepo: "https://github.com/username/reponame", result:"SUCCESS"
 ```
 
-Jenkins Pipeline no expone la información de Git como variables de entorno. Utilice el mandato `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` para obtener el ID de confirmación Git.
+Jenkins Pipeline no muestra la información de Git como variables de entorno. Utilice el mandato `sh(returnStdout: true, script: 'git rev-parse HEAD').trim()` para obtener el ID de confirmación Git.
 {: tip}
 
 ### Publicación de resultados de prueba
@@ -162,7 +162,7 @@ Este paso requiere un parámetro. También puede aceptar un parámetro opcional.
 | Parámetro        | Definición    |
 | ----------------------------|---------------|
 | `policy`    | Nombre de la política que la puerta implementa. El nombre de la política se define en DevOps Insights. |
-| `forceDecision`      | _Opcional_: Indica si debe detenerse el conducto según la decisión que tome la puerta. Establezca este parámetro en `true` para detener la ejecución del conducto si la puerta falla. Establézcalo en `false` para permitir que el conducto continúe después de que se produzca una anomalía en la puerta. De forma predeterminada, el valor es `false`.     |
+| `forceDecision`      | _Opcional_: Indica si debe detenerse o no el conducto según la decisión que tome la puerta. Establezca este parámetro en `true` para detener la ejecución del conducto si la puerta falla. Establézcalo en `false` para permitir que el conducto continúe después de que se produzca una anomalía en la puerta. De forma predeterminada, el valor es `false`.     |
 
 El siguiente ejemplo muestra estos parámetros en un mandato. En este mandato, el conducto continúa ejecutándose independientemente de la decisión de la puerta. 
 
@@ -172,7 +172,7 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 ### Comunicación con cadenas de herramientas
 
-Envíe el estado del conducto a las cadenas de herramientas de Bluemix utilizando el mandato `notifyOTC`. Para obtener más información sobre la integración de Jenkins con cadenas de herramientas, [consulte la documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puede omitir los pasos 6d a 6f, puesto que sólo se aplican a proyectos Jenkins de formato libre.
+Envíe el estado del conducto a las cadenas de herramientas de {{site.data.keyword.Bluemix_notm}} utilizando el mandato `notifyOTC`. Para obtener más información sobre la integración de Jenkins con cadenas de herramientas, [consulte la documentación](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puede omitir los pasos 6d a 6f, puesto que sólo se aplican a proyectos Jenkins de formato libre.
 
 Este paso requiere dos parámetros y también puede utilizarse otro opcional. 
 
@@ -220,9 +220,9 @@ En ambos ejemplos, el URL de webhook de la cadena de herramientas únicamente se
 
 ## Cómo asegurar la trazabilidad a lo largo de las integraciones de la cadena
 
-Configure su entorno de Jenkins para integrar con su cadena de herramientas de Bluemix siguiendo las instrucciones en [la documentación de Bluemix](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puede omitir los pasos 6d a 6f, puesto que sólo se aplican a proyectos Jenkins de formato libre.
+Configure su entorno de Jenkins para integrar con su cadena de herramientas de {{site.data.keyword.Bluemix_notm}} siguiendo las instrucciones en [la documentación de {{site.data.keyword.Bluemix}}](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins). Puede omitir los pasos 6d a 6f, puesto que sólo se aplican a proyectos Jenkins de formato libre.
 
-La integración con una cadena de herramientas le ofrece trazabilidad de principio a fin y correlación de despliegues. Después de seguir las instrucciones de integración, añada el mandato `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` después de los pasos de despliegue. Este mandato conecta a su integración de Jenkins para una app que se está ejecutando en Bluemix. 
+La integración con una cadena de herramientas le ofrece trazabilidad de principio a fin y correlación de despliegues. Después de seguir las instrucciones de integración, añada el mandato `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` después de los pasos de despliegue. Este mandato conecta a su integración de Jenkins para una app que se está ejecutando en la plataforma {{site.data.keyword.Bluemix_notm}}. 
 
 Este ejemplo muestra un paso de despliegue en su totalidad. El último mandato es `cf icd --create-connection`. 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-Tal como se describe en la documentación de integración de Jenkins, los plugins CloudFoundry CLI y CloudFoundry ICD deben estar instalados en su servidor Jenkins. También puede necesitar iniciar una sesión en Bluemix desde el servidor para conectarse.
+Tal como se describe en la documentación de integración de Jenkins, los plugins CloudFoundry CLI y CloudFoundry ICD deben estar instalados en su servidor Jenkins. También puede necesitar iniciar una sesión en la plataforma {{site.data.keyword.Bluemix}} desde el servidor para conectarse.
 
 ## Ejemplo de un conducto declarativo
 
@@ -309,7 +309,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                // Hacer push a Weather App para Bluemix, almacenamiento intermedio
+                // Hacer push a Weather App para la plataforma {{site.data.keyword.Bluemix_notm}}, almacenamiento intermedio
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -366,7 +366,7 @@ pipeline {
         }
         stage('Deploy to Prod') {
             steps {
-                // Hacer push a Weather App para Bluemix, almacenamiento de producción
+                // Hacer push a Weather App para la plataforma {{site.data.keyword.Bluemix_notm}}, almacenamiento de producción
                 sh '''
                         echo "CF Login..."
                         cf api https://api.ng.bluemix.net
@@ -402,13 +402,3 @@ pipeline {
     }
 }
 ``` 
-
-
-
-
-
-
-
-
-
-

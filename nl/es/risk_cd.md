@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2016, 2017
-lastupdated: "2017-09-18"
+  years: 2016, 2018
+lastupdated: "2017-10-25"
 
 ---
 
@@ -14,16 +14,16 @@ lastupdated: "2017-09-18"
 
 # Integración de análisis de Deployment Risk con entrega continua
 
-Puede instrumentar conductos para {{site.data.keyword.contdelivery_full}} para utilizar las prestaciones de análisis de Deployment Risk de {{site.data.keyword.DRA_short}}. A continuación, puede publicar datos de estos trabajos y añadir puertas que apliquen políticas de riesgo.
+{{site.data.keyword.DRA_short}} realiza un seguimiento de los riesgos de desarrollo en función de los datos que publica en él. Estos datos pueden incluir pruebas de unidad, cobertura de código, pruebas de verificación funcional, datos de SonarQube o datos de exploración de IBM Application Security on Cloud. Una vez publicados estos datos, puede añadir puertas a los conductos para poder detener compilaciones que no cumplan las políticas de riesgos.
 
 Para ver una explicación de alto nivel del análisis de Deployment Risk de {{site.data.keyword.DRA_short}}, consulte [Acerca de Deployment Risk](./about_risk.html).
 
 Para obtener más información sobre los conductos de entrega continua, consulte la [documentación oficial](../ContinuousDelivery/pipeline_working.html).
 
-## Preparación de trabajos y etapas de conducto
+## Visión general
 {: #integrate_pipeline}
 
-Para empezar, debe instrumentar el conducto para comunicarse con {{site.data.keyword.DRA_short}}. Para ello, defina variables de entorno específicas para todos los trabajos de conducto que compilen, prueben o desplieguen código. También debe añadir variables de entorno para probar trabajos que apliquen políticas de riesgo utilizando el tipo de probador Puerta de DevOps Insights.
+{{site.data.keyword.DRA_short}} necesita esta información del conducto para analizar el riesgo de despliegue:
 
 * Registros de compilación
 * Registros de despliegue
@@ -45,12 +45,18 @@ Las variables de entorno que define en el conducto proporcionan contexto para la
 Variables de entorno:
 
 | Variable de entorno  | Finalidad | Necesaria en |
-|-----------|-------- |-------------|
+|-----------------------|-------- |-------------|
 | `LOGICAL_APP_NAME`  | El nombre de la app en el panel de control. | Todos los trabajos que compilan, prueban, despliegan y aplican políticas de riesgo de {{site.data.keyword.DRA_short}}. |
 | `BUILD_PREFIX`  | Texto que se añade como prefijo a las compilaciones de etapa. Este texto también aparece en el panel de control. | Todos los trabajos que compilan, prueban, despliegan y aplican políticas de riesgo de {{site.data.keyword.DRA_short}}. |
 | `LOGICAL_ENV_NAME`  | El entorno en el que se ejecuta la aplicación. | Trabajos de prueba y despliegue. |
 
-### Configuración de trabajos de compilación
+Utilice estas variables de forma coherente:
+
+* Para una aplicación determinada, utilice la misma variable `LOGICAL_APP_NAME` en todos los trabajos o etapas. 
+* El valor `BUILD_PREFIX` debe ser el mismo para un tipo de compilación y una app determinada. Por ejemplo, para compilaciones de la rama maestra, el valor de `BUILD_PREFIX` podría ser `"master"`. 
+* Utilice el mismo valor de `LOGICAL_ENVIRONMENT_NAME` en los trabajos de prueba y los trabajos de despliegue correspondientes. Si en `LOGICAL_ENVIRONMENT_NAME` utiliza el valor `"PRODUCTION"` en un trabajo de despliegue, utilice el mismo valor cuando publique los resultados de las pruebas que también se han ejecutado en dicho entorno.
+
+## Variables de entorno de trabajos de compilación
 
 Para el último trabajo de compilación de una etapa, defina las variables de entorno para un nombre de aplicación y un prefijo de compilación. Estos son los mandatos que se incluirían en un script de ejemplo:
 
@@ -61,7 +67,7 @@ export BUILD_PREFIX="master"
 
 Cuando se complete este trabajo de compilación, el conducto publicará un mensaje en {{site.data.keyword.DRA_short}} que indicará que ha finalizado una compilación SampleApp.
 
-### Configuración de trabajos de despliegue
+## Variables de entorno de trabajos de despliegue
 
 Para el último trabajo de despliegue de la etapa, defina un nombre de aplicación, un prefijo de compilación y un nombre de entorno. Estos son los mandatos que se incluirían en un script de ejemplo:
 
@@ -73,7 +79,7 @@ export LOGICAL_ENV_NAME="Production"
 
 Cuando finalice el trabajo de despliegue, el conducto publicará un mensaje en {{site.data.keyword.DRA_short}} que indicará que se han desplegado en un entorno la app y la compilación especificadas.
 
-### Configuración de trabajos de prueba
+## Variables de entorno de trabajos de prueba
 
 Para todos los trabajos que producen resultados, defina un nombre de aplicación y un prefijo de compilación.
 
@@ -89,44 +95,10 @@ export BUILD_PREFIX="master"
 export LOGICAL_ENV_NAME="Production"
 ```
 
-Asegúrese de que los nombres de aplicación y los entornos coinciden donde corresponda. Por ejemplo, si desea que un trabajo de prueba de producción que se ejecuta en un despliegue de producción tenga valores `LOGICAL_ENV_NAME` idénticos.
-
-## Publicación de datos de prueba en DevOps Insights
+## Publicación de resultados de prueba
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} utiliza los resultados de prueba de los trabajos para generar informes y aplicar políticas de riesgo. Puede publicar datos de prueba de todos los tipos de trabajo.
-
-Hay dos opciones para publicar los resultados de prueba:
-
-* Invocar una CLI (interfaz de línea de mandatos) simple en el script de un trabajo.
-
-* Añadir un trabajo de prueba con el tipo Advanced Tester al conducto.
-
-Cuando utiliza el método Advanced Tester, no publica resultados de prueba mediante la CLI. En su lugar, especifica la ubicación de los archivos resultantes en el trabajo del conducto, y el trabajo sube los resultados a medida que estén disponibles.
-
-Sea cual sea el método de publicación que utilice, los resultados de prueba deben estar en uno de los formatos que soporta {{site.data.keyword.DRA_short}}:
-
-<table><thead>
-<tr>
-<th>Tipo de prueba</th>
-<th>Formatos soportados</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Prueba de verificación funcional</td>
-<td>Mocha, xUnit</td>
-</tr>
-<tr>
-<td>Prueba de unidad</td>
-<td>Mocha, xUnit, Karma/Mocha</td>
-</tr>
-<tr>
-<td>Cobertura de código</td>
-<td>Istanbul, Blanket.js</td>
-</tr>
-</tbody></table>
-
-### Publicación de datos de prueba de cualquier tipo de trabajo
+{{site.data.keyword.DRA_short}} utiliza los resultados de prueba de los trabajos para generar informes y aplicar políticas de riesgo. 
 
 En un conducto, puede utilizar cualquier tipo de trabajo para ejecutar una prueba. Una vez que ejecuta dicha prueba, puede subir sus resultados a {{site.data.keyword.DRA_short}}. Para subir los resultados, invoque una CLI en el script de shell del trabajo. 
 
@@ -135,6 +107,7 @@ Puede subir estos tipos de resultados de prueba desde la CLI:
 * Pruebas de unidad
 * Cobertura de código
 * Pruebas de verificación funcional
+* Resultados de SonarQube
 * Resultados de exploración de app estática y dinámica de IBM Application Security on Cloud. 
 
 Este es un script de ejemplo que ejecuta pruebas y a continuación sube los resultados a {{site.data.keyword.DRA_short}}: 
@@ -149,30 +122,20 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
+En este ejemplo, el mandato `idra` que se ejecuta con el distintivo `--publishtestresult` especifica que el script cargará los resultados. El distintivo `--filelocation` indica la ubicación del archivo de resultados de la prueba en relación con el directorio raíz del trabajo. El distintivo `--type` indica el tipo de pruebas que se ejecutan.
+
+El mandato `idra` admite los valores siguientes de `type`: 
+
+| Tipo | Descripción|
+|------|-------------|
+| `unittest` | Resultados de prueba de unidad | 
+| `fvt` | Resultados de prueba de verificación funcional |
+| `code` | Resultados de cobertura de código | 
+| `sonarqube` | Resultados de exploración de SonarQube | 
+| `staticsecurityscan` | Resultados de exploración de seguridad estática de IBM Application Security on Cloud |
+| `dynamicsecurityscan` | Resultados de exploración de seguridad dinámica de IBM Application Security on Cloud |
+
 Para obtener más información acerca del mandato `idra`, consulte [la página del paquete grunt-idra3 en npm](https://www.npmjs.com/package/grunt-idra3). 
-
-### Publicación de datos de prueba de trabajos Advanced Tester
-
-Puede añadir trabajos de prueba con el tipo Advanced Tester a un conducto. Una vez que se ejecutan, suben sus resultados automáticamente a {{site.data.keyword.DRA_short}}. 
-
-1. En la etapa en la que desea añadir el trabajo que sube los resultados, pulse el icono **Configuración de etapa** ![Icono de configuración de etapa de conducto](images/pipeline-stage-configuration-icon.png). Pulse **Configurar etapa**.
-2. Cree un trabajo de prueba y escriba un nombre para el mismo. 
-3. Seleccione **Advanced Tester** como tipo de trabajo.
-4. Complete los campos **Mandato de prueba** y **Directorio de trabajo** tal como lo haría con un trabajo de prueba de conducto normal. 
-5. Complete los campos restantes para subir los resultados de la prueba para un tipo de prueba concreto. 
-
- 1. Elija el tipo de métrica que coincida con lo que definió en la política de {{site.data.keyword.DRA_short}} que desea utilizar.
- 2. Escriba una ubicación para el archivo de resultados. Esta ubicación es relativa al directorio de trabajo. 
-
-6. Si desea cargar resultados de un segundo tipo de prueba en el mismo trabajo, complete los campos que tienen el prefijo *Adicional*.
-7. Pulse **Guardar** para volver al conducto.
-
-La Figura 1 muestra un trabajo de prueba que está configurado para ejecutar pruebas de unidad, cargar los resultados en formato de Mocha y cargar los resultados de la cobertura de código en formato de Istanbul.
-
-![Trabajo subido de DevOps Insights](images/insights_upload_job.png)
-*Figura 1. Subir resultados para DevOps Insights*
-
-
 
 ## Definición de puertas
 {: #configure_pipeline_gates}
