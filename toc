@@ -13,7 +13,7 @@ IBM Cloud DevOps Insights
   {: .topicgroup}
     Related links
         [About toolchains](../ContinuousDelivery/toolchains_about.html)
-        [Getting started with Delivery Pipeline](../DeliveryPipeline/index.html)
+        [Performing analytics with toolchains](../ContinuousDelivery/di_use_toolchains.html)
         [IBM Cloud DevOps Insights on the IBM Cloud Garage Method](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
   {: .navgroup-end}
 
