@@ -23,6 +23,10 @@ IBM Cloud DevOps Insights
     risk_policies.md
     results.md
     insights_personal_data.md
+  
+    {: .topicgroup}
+    Security
+        insights_data_security.md
   {: .navgroup-end}
 
   {: .navgroup id="help"}
