@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-4-16"
+lastupdated: "2018-6-21"
 
 ---
 
@@ -28,7 +28,7 @@ lastupdated: "2018-4-16"
 
    * Deployment Risk is like a safety net for continuous delivery. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows charts of trends in code coverage, builds and deployments.
 
-{{site.data.keyword.DRA_short}} is an integration in the Bluemix open toolchain catalog. For more information about toolchains, see [Working with toolchains](/docs/services/ContinuousDelivery/toolchains_working.html).
+{{site.data.keyword.DRA_short}} is an integration in the {{site.data.keyword.Bluemix_notm}} open toolchain catalog. For more information about toolchains, see [Working with toolchains](/docs/services/ContinuousDelivery/toolchains_working.html).
 
 To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many toolchain templates already include {{site.data.keyword.DRA_short}}. Be sure to also [add it to your {{site.data.keyword.Bluemix_notm}} org as a service](/docs/services/reqnsi.html) so that you can see information about {{site.data.keyword.DRA_short}} and access some of the toolchain templates that include it from your {{site.data.keyword.Bluemix_notm}} dashboard.  
 
