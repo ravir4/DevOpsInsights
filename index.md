@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-6-21"
+lastupdated: "2018-7-19"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2018-6-21"
 # Getting started with DevOps Insights (Beta)
 {: #gettingstarted}
 
-{{site.data.keyword.DRA_full}} applies developer, team, and deployment analytics to your busiest DevOps projects. Use it to learn how compliant your team is with DevOps and developer practices, to manage risk in your codebase, and to automatically enforce quality standards in continuous delivery projects.
+{{site.data.keyword.DRA_full}} applies developer, team, and deployment analytics to your busiest DevOps projects. Use it to learn how compliant your team is with DevOps and developer practices, to manage risk in your codebase, and to automatically enforce quality standards in continuous delivery projects. 
 {:shortdesc}
 
 **Note**: {{site.data.keyword.DRA_short}} is available only in the US South region.
@@ -26,11 +26,11 @@ lastupdated: "2018-6-21"
 
    * Team uses social coding analysis to help you learn how your team collaborates and understand how it can work better.
 
-   * Deployment Risk is like a safety net for continuous delivery. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows charts of trends in code coverage, builds and deployments.
+   * Deployment Risk is like a safety net for continuous delivery. It analyzes the results from unit tests, functional tests, security scans, application scans, and code coverage tools at specified gates in your deployment process and prevents risky changes from being released. It shows charts of trends in code coverage, builds and deployments.  
 
 {{site.data.keyword.DRA_short}} is an integration in the {{site.data.keyword.Bluemix_notm}} open toolchain catalog. For more information about toolchains, see [Working with toolchains](/docs/services/ContinuousDelivery/toolchains_working.html).
 
-To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many toolchain templates already include {{site.data.keyword.DRA_short}}. Be sure to also [add it to your {{site.data.keyword.Bluemix_notm}} org as a service](/docs/services/reqnsi.html) so that you can see information about {{site.data.keyword.DRA_short}} and access some of the toolchain templates that include it from your {{site.data.keyword.Bluemix_notm}} dashboard.  
+To use {{site.data.keyword.DRA_short}}, you must add it to a toolchain. Many toolchain templates already include {{site.data.keyword.DRA_short}}. Be sure to also [add it to your {{site.data.keyword.Bluemix_notm}} resource group or org as a service](/docs/services/reqnsi.html) so that you can see information about {{site.data.keyword.DRA_short}} and access some of the toolchain templates that include it from your {{site.data.keyword.Bluemix_notm}} dashboard.  
 
 In addition, IBM runs Developer Insights and Team against many of the most successful open sources projects on GitHub. Go to [DevOpsInsights.io](http://devopsinsights.io/) to see their development and team data.
 
@@ -49,7 +49,7 @@ To add {{site.data.keyword.DRA_short}} to a toolchain:
 
 3. Click **Create Integration**.
 
-{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page. Your repo and issue-tracking system are scanned automatically for data.
+{{site.data.keyword.DRA_short}} is now available on your toolchain's Overview page. Your repo and issue-tracking system are scanned automatically for data. 
 
 ## Using DevOps Insights
 {: #using}
@@ -58,7 +58,7 @@ If your toolchain includes GitHub, GitLab, or JIRA, {{site.data.keyword.DRA_shor
 
 1. From your toolchain's Overview page, click **{{site.data.keyword.DRA_short}}**.
 
-2. Click **Team ** or **Developer Insights** and then choose a data category.
+2. Click **Team** or **Developer Insights** and then choose a data category. 
 
 3. Explore your project's data by viewing the dashboards in the data category. If you want to know more about a graph or what you might do with its information, click **Information** or **Guidance**.
 
