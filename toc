@@ -26,6 +26,7 @@ IBM Cloud DevOps Insights
   
     {: .topicgroup}
     Security
+        insights_iam_security.md
         insights_data_security.md
   {: .navgroup-end}
 
