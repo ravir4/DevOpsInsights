@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="DevOpsInsights" audience="service" href="/docs/services/DevOpsInsights/index.html"}
+{: .toc subcollection="DevOpsInsights" audience="service" arm="3429242" href="/docs/services/DevOpsInsights/index.html"}
 IBM Cloud DevOps Insights
 
   {: .navgroup id="learn"}
