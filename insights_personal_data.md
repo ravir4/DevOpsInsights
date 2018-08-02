@@ -2,12 +2,17 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-8-1"
+lastupdated: "2018-8-2"
 
 ---
 
 {:shortdesc: .shortdesc}
 {:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Managing personal data in DevOps Insights
 {: insights_personal_data}
@@ -17,7 +22,8 @@ You can delete personal data that is collected and stored in {{site.data.keyword
 
 Data that is stored in {{site.data.keyword.DRA_short}} is indexed by toolchain ID. When you delete a toolchain, all of the data that is related to repos that was collected as part of the toolchain is deleted.
 
-**Important**: IBM does not manage personal data in the {{site.data.keyword.DRA_short}} service. Before you leave the {{site.data.keyword.DRA_short}} service, you must delete your own data. To delete your data, delete the {{site.data.keyword.DRA_short}} tool integration from your toolchain. If the {{site.data.keyword.DRA_short}} tool integration is not added again to the toolchain within seven days, the data is deleted.
+IBM does not manage data in the {{site.data.keyword.DRA_short}} service. Before you leave the {{site.data.keyword.DRA_short}} service, you must delete your own data. To delete your data, delete the {{site.data.keyword.DRA_short}} tool integration from your toolchain. If the {{site.data.keyword.DRA_short}} tool integration is not added again to the toolchain within seven days, the data is deleted.
+{: tip}
 
 ## Deleting data from {{site.data.keyword.DRA_short}}
 {: #insights_delete_data}
