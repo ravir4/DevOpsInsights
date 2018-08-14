@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-7-19"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Getting started with DevOps Insights (Beta)
 {: #gettingstarted}
@@ -18,7 +20,8 @@ lastupdated: "2018-7-19"
 {{site.data.keyword.DRA_full}} applies developer, team, and deployment analytics to your busiest DevOps projects. Use it to learn how compliant your team is with DevOps and developer practices, to manage risk in your codebase, and to automatically enforce quality standards in continuous delivery projects. 
 {:shortdesc}
 
-**Note**: {{site.data.keyword.DRA_short}} is available only in the US South region.
+{{site.data.keyword.DRA_short}} is available only in the US South region.
+{: tip}
 
 {{site.data.keyword.DRA_short}} comprises several groups of capabilities:
 
