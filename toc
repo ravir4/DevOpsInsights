@@ -31,6 +31,10 @@ IBM Cloud DevOps Insights
         insights_data_security.md
   {: .navgroup-end}
 
+    {: .navgroup id="reference"}
+    at-events.md
+    {: .navgroup-end}
+
   {: .navgroup id="help"}
     faq.md
   {: .navgroup-end}
