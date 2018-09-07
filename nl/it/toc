@@ -1,11 +1,12 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="DevOpsInsights" audience="service" href="/docs/services/DevOpsInsights/index.html"}
+{: .toc subcollection="DevOpsInsights" audience="service" arm="3429242" href="/docs/services/DevOpsInsights/index.html"}
 IBM Cloud DevOps Insights
 
   {: .navgroup id="learn"}
     index.md
+    insights_about.md
     about_risk.md
     about_team.md
     about_dev.md
@@ -13,8 +14,8 @@ IBM Cloud DevOps Insights
   {: .topicgroup}
     Link correlati
         [Informazioni sulle toolchain](../ContinuousDelivery/toolchains_about.html)
-        [Introduzione a Delivery Pipeline](../DeliveryPipeline/index.html)
-        [IBM Cloud DevOps Insights nel metodo Garage cloud IBM](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
+        [Esecuzione di analisi con le toolchain](../ContinuousDelivery/di_use_toolchains.html)
+        [IBM Cloud DevOps Insights su IBM Cloud Garage Method](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
   {: .navgroup-end}
 
   {: .navgroup id="howto"}
@@ -23,6 +24,11 @@ IBM Cloud DevOps Insights
     risk_policies.md
     results.md
     insights_personal_data.md
+  
+    {: .topicgroup}
+    Sicurezza
+        insights_iam_security.md
+        insights_data_security.md
   {: .navgroup-end}
 
   {: .navgroup id="help"}

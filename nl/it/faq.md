@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-15"
 
 ---
 
@@ -12,10 +12,10 @@ lastupdated: "2018-3-28"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Domande frequenti (FAQ)
+# Domande frequenti
 {: #faqs}
 
-Questa pagina è un elenco aggiornato regolarmente delle domande frequenti su {{site.data.keyword.DRA_full}}.
+Ottieni le risposte alle domande più frequenti sull'utilizzo di {{site.data.keyword.DRA_full}}.
 
 ## Come rimuovo i dati di cui {{site.data.keyword.DRA_short}} ha eseguito il mining da un repository?
 

@@ -67,7 +67,7 @@ Nella definizione, aggiungi le seguenti variabili di ambiente. Queste variabili 
 | Variabile di ambiente        | Definizione    |
 | ----------------------------|---------------|
 | `IBM_CLOUD_DEVOPS_CREDS`    | Le credenziali della piattaforma {{site.data.keyword.Bluemix_notm}} che definisci in Jenkins utilizzando il comando `credentials`. Ad esempio, `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`. La configurazione della variabile con questo comando imposta due variabili di ambiente automaticamente: `IBM_CLOUD_DEVOPS_CREDS_USR` e `IBM_CLOUD_DEVOPS_CREDS_PSW` per il nome utente e la password.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | L'organizzazione della piattaforma {{site.data.keyword.Bluemix}} a cui appartiene la tua toolchain. |
+| `IBM_CLOUD_DEVOPS_ORG`      | L'organizzazione della piattaforma {{site.data.keyword.Bluemix}} a cui appartiene la tua toolchain.     |
 | `IBM_CLOUD_DEVOPS_APP_NAME` | Il nome dell'applicazione distribuita dalla tua toolchain.   |
 | `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | L'ID della tua toolchain. Apri la panoramica della toolchain e visualizza l'URL per determinare l'ID. Il formato dell'URL della toolchain è: `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`.   |
 | `IBM_CLOUD_DEVOPS_WEBHOOKURL` | Il webhook che ti è stato fornito quando hai aggiunto Jenkins alla tua toolchain.   |

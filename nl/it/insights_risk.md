@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Rischio per le distribuzioni
 {: #gettingstarted}
@@ -104,7 +106,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 5. Fai clic su **Save**.
 
 
-#### Creazione delle regole per la verifica di unità
+#### Creazione delle regole per i test di unità
 {: #criteria_ut}
 
 1. Immetti un descrizione e seleziona un formato.
@@ -177,7 +179,8 @@ Integra {{site.data.keyword.DRA_short}} nella tua pipeline utilizzando due tipi 
 
 Per prima cosa, aggiungi i lavori di tester avanzato alla tua pipeline per eseguire i test e caricare i risultati. 
 
-**Nota:** se desideri aggiornare un lavoro di verifica per caricare i risultati in {{site.data.keyword.DRA_short}}, salvane la configurazione in un luogo apposito prima di procedere. Quindi, apri il menu di configurazione del lavoro e passa ala passo 3. 
+Se desideri aggiornare un lavoro di verifica per caricare i risultati in {{site.data.keyword.DRA_short}}, salvane la configurazione in un luogo apposito prima di procedere. Quindi, apri il menu di configurazione del lavoro e vai al passo 3.
+{: tip}
 
 1. Nella fase in cui vuoi aggiungere il lavoro che carica i risultati, fai clic sull'icona **Configurazione fase** ![Icona configurazione fase pipeline](images/pipeline-stage-configuration-icon.png). Fai clic su **Configure Stage**.
 2. Crea un lavoro di verifica ed immetti un nome per esso. 

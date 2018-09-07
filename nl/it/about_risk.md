@@ -19,7 +19,7 @@ lastupdated: "2018-3-28"
 
 Dopo aver aperto {{site.data.keyword.DRA_short}} dalla tua toolchain, fai clic su **Deployment Risk**. Da lì, puoi selezionare una categoria analitica per un approfondimento di quanto sta accadendo con le tue distribuzioni.  
 
-Puoi utilizzare Deployment Risk per applicare gli standard di qualità nella tua toolchain tramite politiche e gate. Le politiche comprendono le serie di regole; i gate applicano e politiche. Ad esempio, potresti creare una politica "Unit Testing and Test Coverage" che richiede che le le build rispettino gli standard di verifica dell'unità e di copertura del test. Successivamente aggiungi un gate che fa riferimento alla politica al tuo processo di fornitura continua. Le build che non soddisfano la politica vengono arrestate da questo gate. 
+Puoi utilizzare Deployment Risk per applicare gli standard di qualità nella tua toolchain tramite politiche e gate. Le politiche comprendono le serie di regole; i gate applicano le politiche. Ad esempio, potresti creare una politica "Unit Testing and Test Coverage" che richiede che le le build rispettino gli standard di verifica dell'unità e di copertura del test. Successivamente aggiungi un gate che fa riferimento alla politica al tuo processo di fornitura continua. Le build che non soddisfano la politica vengono arrestate da questo gate. 
 
 ## Analisi dei rischi
 
@@ -27,7 +27,7 @@ Con l'analisi dei rischi, ottieni una panoramica dei rischi associati alle appli
 
 ## Frequenza distribuzione
 
-Puoi visualizzare le tendenze delle frequenze di distribuzione per i tuoi ambienti di produzione, preparazione o di altro tipo. Questa vista mostra anche, per le distribuzioni, se sono riuscite e se non sono riuscite. Puoi fare clic su una specifica distribuzione per visualizzarne i dettagli. Se fai parte di un team dinamico, dovresti vedere una tendenza della frequenza di distribuzione in crescita nel tempo.  
+Puoi visualizzare le tendenze delle frequenze di distribuzione per i tuoi ambienti di produzione, preparazione o di altro tipo. Questa vista mostra anche, per le distribuzioni, se sono riuscite e se non sono riuscite. Puoi fare clic su una specifica distribuzione per visualizzarne i dettagli. Se fai parte di un team dinamico, dovresti vedere una tendenza della frequenza di distribuzione in crescita nel tempo. 
 
 ## Frequenza di build
 

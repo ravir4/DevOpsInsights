@@ -47,9 +47,9 @@ In generale, tenta di ridurre sia il numero di mani che toccano un file che la f
 
 ### Richieste di pull
 
-La categoria Richieste di pull mostra le richieste di pull del tuo team in un solo posto. Viene eseguita una valutazione della tendenza all'errore delle richieste di pull utilizzando il machine learning.Puoi visualizzare rapidamente quali richieste di pull stanno aggiungendo del rischio alla tua base di codice.
+La categoria Richieste di pull mostra le richieste di pull del tuo team in un solo posto.  Viene eseguita una valutazione della tendenza all'errore delle richieste di pull utilizzando il machine learning.  Puoi visualizzare rapidamente quali richieste di pull stanno aggiungendo del rischio alla tua base di codice.
 
-Le richieste di pull visualizzano il lavoro che i membri del tuo team stanno tentando di unire nella tua base di codice. Esamina i tuoi dati di richiesta di pull per comprendere tutti i rischi ad essi associati e come puoi ridurre tali rischi in futuro.
+Le richieste di pull visualizzano il lavoro che i membri del tuo team stanno tentando di unire nella tua base di codice.  Esamina i tuoi dati di richiesta di pull per comprendere tutti i rischi ad essi associati e come puoi ridurre tali rischi in futuro.
 
 ## Filtro dell'estensione file
 

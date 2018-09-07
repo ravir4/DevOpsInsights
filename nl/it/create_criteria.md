@@ -102,7 +102,7 @@ Puoi richiedere l'esito positivo indipendentemente se hai contrassegnato i test 
 
 3. Fai clic su **Save**.
 
-## Verifica strumenti e formati del risultato
+## Formati e strumenti per i risultati di test
 
 {{site.data.keyword.DRA_short}} supporta questi tipi di metriche e formati:
 
