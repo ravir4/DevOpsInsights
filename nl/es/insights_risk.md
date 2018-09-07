@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Deployment Risk
 {: #gettingstarted}
@@ -177,7 +179,8 @@ También puede añadir las siguientes propiedades a etapas que compilan o despli
 
 En primer lugar, añade trabajos de Advanced Tester a su conducto para ejecutar pruebas y subir resultados. 
 
-**Nota:** Si desea actualizar un trabajo de prueba para subir los resultados en {{site.data.keyword.DRA_short}}, guarde sus configuraciones en un lugar adecuado antes de continuar. A continuación, abra su menú de configuración del trabajo y vaya al paso 3. 
+Si desea actualizar un trabajo de prueba para subir los resultados en {{site.data.keyword.DRA_short}}, guarde sus configuraciones en un lugar adecuado antes de continuar. A continuación, abra su menú de configuración del trabajo y vaya al paso 3. 
+{: tip}
 
 1. En la etapa en la que desea añadir el trabajo que sube los resultados, pulse el icono **Configuración de etapa** ![Icono de configuración de etapa de conducto](images/pipeline-stage-configuration-icon.png). Pulse **Configurar etapa**.
 2. Cree un trabajo de prueba y escriba un nombre para el mismo. 

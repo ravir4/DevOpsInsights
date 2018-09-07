@@ -47,7 +47,7 @@ Habitualmente, se debe intentar reducir el número de personas que trabajan en u
 
 ### Solicitudes de extracción
 
-La categoría Solicitudes de extracción muestra las solicitudes de extracción del equipo en un mismo lugar. Se evalúa la propensión a errores de las solicitudes de extracción mediante el aprendizaje de máquina. Puede comprobar rápidamente qué solicitudes de extracción suponen un riesgo para el codebase.
+La categoría Solicitudes de extracción muestra las solicitudes de extracción del equipo en un mismo lugar.  Se evalúa la propensión a errores de las solicitudes de extracción mediante el aprendizaje de máquina.  Puede comprobar rápidamente qué solicitudes de extracción suponen un riesgo para el codebase.
 
 Las solicitudes de extracción muestran el trabajo que los miembros del equipo intentan incorporar al codebase.  Examine los datos de las solicitudes de extracción para conocer todos los riesgos asociados con ellas y saber cómo mitigarlos en el futuro.
 

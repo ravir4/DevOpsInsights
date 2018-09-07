@@ -31,14 +31,14 @@ Para obtener más información sobre los conductos de entrega continua, consulte
 
 En los resultados de pruebas se deben proporcionar en uno de estos formatos soportados:
 
-| Tipo de prueba               | Formatos soportados                                               |
+| Tipo de prueba                    | Formatos soportados                                               |
 |------------------------------|-----------------------------------------------------------------|
 | Prueba de verificación funcional | Mocha, xUnit                                                    |
-| Prueba de unidad                 | Mocha, xUnit, Karma/Mocha                                       |
-| Cobertura de código              | Istanbul, Blanket.js, Cobertura, lcov                                           |
-| Exploración de app estática      | Exploraciones de app estáticas proporcionadas por IBM Application Security on Cloud  |
-| Exploración de app dinámica      | Exploraciones de app dinámicas proporcionadas por IBM Application Security on Cloud |
-| SonarQube                        | Datos de exploración proporcionados por exploraciones SonarQube                           |
+| Prueba de unidad                    | Mocha, xUnit, Karma/Mocha                                       |
+| Cobertura de código                | Istanbul, Blanket.js, Cobertura, lcov                                           |
+| Exploración de app estática              | Exploraciones de app estáticas proporcionadas por IBM Application Security on Cloud  |
+| Exploración de app dinámica             | Exploraciones de app dinámicas proporcionadas por IBM Application Security on Cloud |
+| SonarQube                    | Datos de exploración proporcionados por exploraciones SonarQube                           |
 
 Las variables de entorno que define en el conducto proporcionan contexto para la publicación de estos registros. Puede definirlas mediante el mandato `export` en los scripts de los trabajos. También puede definirlas en las etapas del conducto en el menú Propiedades de entorno.
 
@@ -46,7 +46,7 @@ Variables de entorno:
 
 | Variable de entorno  | Finalidad | Necesaria en |
 |-----------------------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | El nombre de la app en el panel de control. | Todos los trabajos que compilan, prueban, despliegan y aplican políticas de riesgo de {{site.data.keyword.DRA_short}}. |
+| `LOGICAL_APP_NAME`    | El nombre de la app en el panel de control. | Todos los trabajos que compilan, prueban, despliegan y aplican políticas de riesgo de {{site.data.keyword.DRA_short}}. |
 | `BUILD_PREFIX`  | Texto que se añade como prefijo a las compilaciones de etapa. Este texto también aparece en el panel de control. | Todos los trabajos que compilan, prueban, despliegan y aplican políticas de riesgo de {{site.data.keyword.DRA_short}}. |
 | `LOGICAL_ENV_NAME`  | El entorno en el que se ejecuta la aplicación. | Trabajos de prueba y despliegue. |
 
@@ -98,7 +98,7 @@ export LOGICAL_ENV_NAME="Production"
 ## Publicación de resultados de prueba
 {: #configure_pipeline_jobs}
 
-{{site.data.keyword.DRA_short}} utiliza los resultados de prueba de los trabajos para generar informes y aplicar políticas de riesgo. 
+{{site.data.keyword.DRA_short}} utiliza los resultados de prueba de los trabajos para generar informes y aplicar políticas de riesgo.
 
 En un conducto, puede utilizar cualquier tipo de trabajo para ejecutar una prueba. Una vez que ejecuta dicha prueba, puede subir sus resultados a {{site.data.keyword.DRA_short}}. Para subir los resultados, invoque una CLI en el script de shell del trabajo. 
 
@@ -126,7 +126,7 @@ En este ejemplo, el mandato `idra` que se ejecuta con el distintivo `--publishte
 
 El mandato `idra` admite los valores siguientes de `type`: 
 
-| Tipo | Descripción|
+| Tipo | Descripción |
 |------|-------------|
 | `unittest` | Resultados de prueba de unidad | 
 | `fvt` | Resultados de prueba de verificación funcional |

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-15"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2018-3-28"
 # Preguntas más frecuentes
 {: #faqs}
 
-Esta página es una lista de preguntas más frecuentes sobre {{site.data.keyword.DRA_full}} que se actualiza con frecuencia.
+Aquí encontrará respuestas a las preguntas más frecuentes sobre el uso de {{site.data.keyword.DRA_full}}.
 
 ## ¿Cómo puedo eliminar datos que {{site.data.keyword.DRA_short}} ha extraído de un repositorio?
 

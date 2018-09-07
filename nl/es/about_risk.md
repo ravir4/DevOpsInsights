@@ -14,8 +14,7 @@ lastupdated: "2018-3-28"
 
 # Acerca de Deployment Risk
 
-{{site.data.keyword.DRA_short}} Deployment Risk proporciona información diversa sobre los despliegues, especialmente su riesgo. Puede utilizarlo para automatizar la protección de la calidad en su conducto de entrega mediante el uso de políticas y puertas. 
-Proporciona datos sobre la frecuencia de las compilaciones y los despliegues, además de cobertura de código y tendencias de prueba.
+{{site.data.keyword.DRA_short}} Deployment Risk proporciona información diversa sobre los despliegues, especialmente su riesgo. Puede utilizarlo para automatizar la protección de la calidad en su conducto de entrega mediante el uso de políticas y puertas. Proporciona datos sobre la frecuencia de las compilaciones y los despliegues, además de cobertura de código y tendencias de prueba.
 {:shortdesc}
 
 Después de abrir {{site.data.keyword.DRA_short}} desde la cadena de herramientas, pulse **Deployment Risk**. Desde allí, puede seleccionar una categoría analítica para profundizar en lo que ocurre en los despliegues.  
