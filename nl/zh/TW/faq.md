@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-15"
 
 ---
 
@@ -12,10 +12,10 @@ lastupdated: "2018-3-28"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# 常見問題集
+# 常見問題
 {: #faqs}
 
-此頁面是 {{site.data.keyword.DRA_full}} 常見問題集的清單，且經常更新。
+取得關於使用 {{site.data.keyword.DRA_full}} 的常見問題解答。
 
 ## 如何移除 {{site.data.keyword.DRA_short}} 從儲存庫發掘的資料？
 

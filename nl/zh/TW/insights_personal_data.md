@@ -2,12 +2,17 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-4-13"
+lastupdated: "2018-8-2"
 
 ---
 
 {:shortdesc: .shortdesc}
 {:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # 在 DevOps Insights 中管理個人資料
 {: insights_personal_data}
@@ -17,17 +22,20 @@ lastupdated: "2018-4-13"
 
 儲存在 {{site.data.keyword.DRA_short}} 中的資料是依工具鏈 ID 進行檢索。當您刪除工具鏈時，與工具鏈當中收集之儲存庫相關的所有資料都會刪除。
 
+IBM 不會管理 {{site.data.keyword.DRA_short}} 服務中的資料。在您離開 {{site.data.keyword.DRA_short}} 服務之前，必須刪除自己的資料。若要刪除資料，請從工具鏈刪除 {{site.data.keyword.DRA_short}} 工具整合。如果 {{site.data.keyword.DRA_short}} 工具整合未在七天內再度新增至工具鏈，便會刪除資料。
+{: tip}
+
 ## 從 {{site.data.keyword.DRA_short}} 刪除資料
 {: #insights_delete_data}
 
 下表列出從 {{site.data.keyword.DRA_short}} 刪除資料的情境，並說明它們對每個 {{site.data.keyword.DRA_short}} 種類有何影響。
 
-|  | Developer 及 Team Insights | Deployment Risk| Security Insights |
+|  |Developer 及 Team Insights |Deployment Risk|Security Insights |
 |---------|-------------|-------------|-------------|
-| [刪除儲存庫 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	與儲存庫相關的所有資料都會刪除。| N/A | N/A |
-| [刪除 {{site.data.keyword.DRA_short}} 工具整合 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	與儲存庫相關的所有資料都會刪除。| 與工具整合所屬工具鏈相關聯的所有資料都會刪除。| 與工具整合所屬工具鏈相關聯之儲存庫相關的所有資料都會刪除。|
-| [刪除工具鏈 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} | 與工具鏈相關聯之儲存庫相關的所有資料都會刪除。| 與工具鏈相關聯的所有資料都會刪除。| 與工具鏈相關聯的所有資料都會刪除。|
-| [刪除管線 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_pipeline_data){: new_window} | N/A | N/A | N/A |
+|[刪除儲存庫 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	與儲存庫相關的所有資料都會刪除。|N/A |N/A |
+|[刪除 {{site.data.keyword.DRA_short}} 工具整合 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	與儲存庫相關的所有資料都會刪除。|與工具整合所屬工具鏈相關聯的所有資料都會刪除。|與工具整合所屬工具鏈相關聯之儲存庫相關的所有資料都會刪除。|
+|[刪除工具鏈 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |與工具鏈相關聯之儲存庫相關的所有資料都會刪除。|與工具鏈相關聯的所有資料都會刪除。|與工具鏈相關聯的所有資料都會刪除。|
+|[刪除管線 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_pipeline_data){: new_window} |N/A |N/A |N/A |
 {:caption="表 1. 資料刪除情境" caption-side="top"}
 
 ## 刪除 {{site.data.keyword.DRA_short}} 工具整合

@@ -31,24 +31,24 @@ lastupdated: "2017-10-25"
 
 測試結果必須以下列其中一種支援的格式提供資料：
 
-| 測試類型| 支援的格式|
+|測試類型|支援的格式|
 |------------------------------|-----------------------------------------------------------------|
-| 功能驗證測試| Mocha、xUnit|
-| 單元測試| Mocha、xUnit、Karma/Mocha|
-| 程式碼涵蓋面| Istanbul、Blanket.js、Cobertura、lcov                                           |
-| 靜態應用程式掃描| IBM Application Security on Cloud 提供的靜態應用程式掃描|
-| 動態應用程式掃描| IBM Application Security on Cloud 提供的動態應用程式掃描|
-| SonarQube                    | SonarQube 掃描提供的掃描資料|
+|功能驗證測試|Mocha、xUnit|
+|單元測試|Mocha、xUnit、Karma/Mocha|
+|程式碼涵蓋面|Istanbul、Blanket.js、Cobertura、lcov                                           |
+|靜態應用程式掃描|IBM Application Security on Cloud 提供的靜態應用程式掃描|
+|動態應用程式掃描|IBM Application Security on Cloud 提供的動態應用程式掃描|
+|SonarQube                    |SonarQube 掃描提供的掃描資料|
 
 您在管線中定義的環境變數，會提供發佈這些記錄用的環境定義。您可以在工作 Script 中使用 `export` 指令來定義它們。也可以在每個管線階段的「環境內容」功能表中設定。
 
 環境變數：
 
-| 環境變數| 目的| 需要之處|
+|環境變數|目的|需要之處|
 |-----------------------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | 儀表板上的應用程式名稱。| 建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
-| `BUILD_PREFIX`  | 新增為階段建置字首的文字。此文字也會顯示在儀表板上。| 建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
-| `LOGICAL_ENV_NAME`  | 應用程式執行所在的環境。| 測試及部署工作。|
+|`LOGICAL_APP_NAME`  |儀表板上的應用程式名稱。|建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
+|`BUILD_PREFIX`  |新增為階段建置字首的文字。此文字也會顯示在儀表板上。|建置、測試、部署及強制執行 {{site.data.keyword.DRA_short}} 風險原則的所有工作。|
+|`LOGICAL_ENV_NAME`  |應用程式執行所在的環境。|測試及部署工作。|
 
 使用這些變數時請務必保持一致：
 
@@ -126,14 +126,14 @@ idra --publishtestresult --filelocation=fvttest.json --type=fvt
 
 `idra` 指令支援下列 `type` 值： 
 
-| 類型| 說明|
+|類型|說明|
 |------|-------------|
-| `unittest` | 單元測試結果| 
-| `fvt` | 功能驗證測試結果|
-| `code` | 程式碼涵蓋面結果| 
-| `sonarqube` | SonarQube 掃描結果| 
-| `staticsecurityscan` | 來自 IBM Application Security on Cloud 的靜態安全掃描結果|
-| `dynamicsecurityscan` | 來自 IBM Application Security on Cloud 的動態安全掃描結果|
+|`unittest` |單元測試結果| 
+|`fvt` |功能驗證測試結果|
+|`code` |程式碼涵蓋面結果| 
+|`sonarqube` |SonarQube 掃描結果| 
+|`staticsecurityscan` |來自 IBM Application Security on Cloud 的靜態安全掃描結果|
+|`dynamicsecurityscan` |來自 IBM Application Security on Cloud 的動態安全掃描結果|
 
 若要進一步瞭解 `idra` 指令，請參閱 [npm 上的 grunt-idra3 套件頁面](https://www.npmjs.com/package/grunt-idra3)。 
 

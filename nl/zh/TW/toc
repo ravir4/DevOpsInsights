@@ -1,11 +1,12 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="DevOpsInsights" audience="service" href="/docs/services/DevOpsInsights/index.html"}
+{: .toc subcollection="DevOpsInsights" audience="service" arm="3429242" href="/docs/services/DevOpsInsights/index.html"}
 IBM Cloud DevOps Insights
 
   {: .navgroup id="learn"}
     index.md
+    insights_about.md
     about_risk.md
     about_team.md
     about_dev.md
@@ -13,7 +14,7 @@ IBM Cloud DevOps Insights
   {: .topicgroup}
     相關鏈結
         [關於工具鏈](../ContinuousDelivery/toolchains_about.html)
-        [開始使用 Delivery Pipeline](../DeliveryPipeline/index.html)
+        [使用工具鏈執行分析](../ContinuousDelivery/di_use_toolchains.html)
         [IBM Cloud Garage Method 上的 IBM Cloud DevOps Insights](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
   {: .navgroup-end}
 
@@ -23,6 +24,11 @@ IBM Cloud DevOps Insights
     risk_policies.md
     results.md
     insights_personal_data.md
+  
+    {: .topicgroup}
+    安全
+        insights_iam_security.md
+        insights_data_security.md
   {: .navgroup-end}
 
   {: .navgroup id="help"}

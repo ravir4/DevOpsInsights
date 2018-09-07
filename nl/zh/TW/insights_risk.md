@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Deployment Risk
 {: #gettingstarted}
@@ -177,7 +179,8 @@ Deployment Risk 會與 {{site.data.keyword.deliverypipeline}}（隸屬於 {{site
 
 首先，將「進階測試者」工作新增至管線，以執行測試並上傳結果。 
 
-**附註：**如果您要更新測試工作，以將結果上傳至 {{site.data.keyword.DRA_short}}，請先將其配置儲存在方便取得的地方，再繼續進行。然後，開啟其工作配置功能表，並跳到步驟 3。 
+如果您要更新測試工作，以將結果上傳至 {{site.data.keyword.DRA_short}}，請先將其配置儲存在方便取得的地方，再繼續進行。然後，開啟其工作配置功能表，並跳到步驟 3。
+{: tip}
 
 1. 在要新增上傳結果工作的階段，按一下**階段配置**圖示 ![「管線階段配置」圖示](images/pipeline-stage-configuration-icon.png)。按一下**配置階段**。
 2. 建立測試工作，並鍵入其名稱。 
