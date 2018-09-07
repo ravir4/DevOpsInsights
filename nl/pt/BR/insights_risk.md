@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Perigo De disposição
 {: #gettingstarted}
@@ -177,7 +179,8 @@ Você integra o {{site.data.keyword.DRA_short}} a seu pipeline usando dois tipos
 
 Primeiramente, você inclui tarefas do Testador avançado em seu pipeline para executar testes e fazer upload dos resultados. 
 
-**Nota:** se desejar atualizar uma tarefa de teste para fazer upload dos resultados no {{site.data.keyword.DRA_short}}, salve suas configurações em um local conveniente antes de continuar. Em seguida, abra seu menu de configuração de tarefa e vá para a etapa 3. 
+Se desejar atualizar uma tarefa de teste para fazer upload dos resultados para o {{site.data.keyword.DRA_short}}, salve suas configurações em um lugar conveniente antes de continuar. Em seguida, abra seu menu de configuração de tarefa e vá para a etapa 3. 
+{: tip}
 
 1. No estágio no qual você deseja incluir a tarefa que faz upload dos resultados, clique no ícone **Configuração de estágio** ![Ícone de configuração de estágio de pipeline](images/pipeline-stage-configuration-icon.png). Clique em **Configurar
 estágio**.

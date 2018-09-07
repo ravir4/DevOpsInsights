@@ -47,9 +47,9 @@ Geralmente, tente reduzir o número de mãos que tocam um arquivo e a frequênci
 
 ### Solicitações pull
 
-A categoria de Solicitações pull mostra a você as solicitações pull da sua equipe em um lugar. As solicitações pull são avaliadas para tendência de erro usando o aprendizado de máquina.  É possível ver rapidamente quais as solicitações pull estão incluindo risco em seu código base.
+A categoria de Solicitações pull mostra a você as solicitações pull da sua equipe em um lugar.  As solicitações pull são avaliadas para tendência de erro usando o aprendizado de máquina.  É possível ver rapidamente quais as solicitações pull estão incluindo risco em seu código base.
 
-As solicitações pull exibem o trabalho que os membros de sua equipe estão tentando mesclar em seu código base. Examine os seus dados de solicitação pull para entender todos os riscos associados a eles e como é possível reduzir o risco no futuro.
+As solicitações pull exibem o trabalho que os membros de sua equipe estão tentando mesclar em seu código base.  Examine os seus dados de solicitação pull para entender todos os riscos associados a eles e como é possível reduzir o risco no futuro.
 
 ## Filtragem de extensão de arquivo
 
