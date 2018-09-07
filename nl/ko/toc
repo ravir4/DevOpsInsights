@@ -1,11 +1,12 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="DevOpsInsights" audience="service" href="/docs/services/DevOpsInsights/index.html"}
+{: .toc subcollection="DevOpsInsights" audience="service" arm="3429242" href="/docs/services/DevOpsInsights/index.html"}
 IBM Cloud DevOps Insights
 
   {: .navgroup id="learn"}
     index.md
+    insights_about.md
     about_risk.md
     about_team.md
     about_dev.md
@@ -13,8 +14,8 @@ IBM Cloud DevOps Insights
   {: .topicgroup}
     관련 링크
         [도구 체인 정보](../ContinuousDelivery/toolchains_about.html)
-        [Delivery Pipeline 시작하기](../DeliveryPipeline/index.html)
-        [IBM Cloud DevOps Insights on the IBM Cloud Garage Method](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
+        [도구 체인을 사용한 분석 수행](../ContinuousDelivery/di_use_toolchains.html)
+        [IBM Cloud Garage Method의 IBM Cloud DevOps Insights](https://www.ibm.com/devops/method/content/learn/tool_devops_insights/)
   {: .navgroup-end}
 
   {: .navgroup id="howto"}
@@ -23,6 +24,11 @@ IBM Cloud DevOps Insights
     risk_policies.md
     results.md
     insights_personal_data.md
+  
+    {: .topicgroup}
+    보안
+        insights_iam_security.md
+        insights_data_security.md
   {: .navgroup-end}
 
   {: .navgroup id="help"}

@@ -48,7 +48,7 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
 5. IBM Cloud DevOps를 선택하십시오.
 6. **지금 다운로드 및 재시작 이후 설치**를 클릭하십시오. 
 
-서버가 다시 시작되면 플러그인을 사용할 수 있습니다.   
+서버가 다시 시작되면 플러그인을 사용할 수 있습니다.  
 
 ## Deployment Risk 대시보드에 맞게 Jenkins 작업 구성
 {: #jenkins_configure}
@@ -94,11 +94,11 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
 
 5. Jenkins 빌드 작업을 실행하십시오.
 
-6. [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops)로 이동하여 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 확인하십시오. 
+6. [{{site.data.keyword.Bluemix_notm}} DevOps](https://console.ng.bluemix.net/devops)로 이동하여 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 확인하십시오.
 
 Deployment Risk 대시보드는 스테이징 배치 작업 후의 게이트 존재에 따라 달라집니다. 대시보드를 사용하려면 스테이징 환경에 배치한 후, 프로덕션 환경에 배치하기 전에 게이트가 있는지 확인하십시오.
     
 ## 구성 알림
 {: #jenkins_notifications}
 
-[{{site.data.keyword.Bluemix_notm}} 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항에 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다. 
+[{{site.data.keyword.Bluemix_notm}} 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항에 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다.

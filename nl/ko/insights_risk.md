@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # 배치 위험성
 {: #gettingstarted}
@@ -177,7 +179,8 @@ Deployment Risk가 프로젝트를 분석하려면 파이프라인에서 스테�
 
 먼저 테스트를 실행하고 결과를 업로드하기 위해 파이프라인에 고급 테스터 작업을 추가합니다. 
 
-**참고:** {{site.data.keyword.DRA_short}}에 결과를 업로드하기 위해 테스트 작업을 업데이트하려면 계속하기 전에 편리한 위치에 구성을 저장하십시오. 그런 다음 작업 구성 메뉴를 열고 3단계로 건너뛰십시오. 
+{{site.data.keyword.DRA_short}}에 결과를 업로드하기 위해 테스트 작업을 업데이트하려는 경우에는 계속하기 전에 편리한 위치에 해당 구성을 저장하십시오. 그런 다음 작업 구성 메뉴를 열고 3단계로 건너뛰십시오. 
+{: tip}
 
 1. 결과를 업로드하는 작업을 추가하려는 단계에서 **단계 구성** 아이콘 ![파이프라인 단계 구성 아이콘](images/pipeline-stage-configuration-icon.png)을 클릭하십시오. **단계 구성**을 클릭하십시오.
 2. 테스트 작업을 작성하고 이름을 입력하십시오. 
@@ -329,14 +332,14 @@ Jenkins 프로젝트를 실행하는 서버에 액세스할 수 있어야 합니
 
 5. Jenkins 빌드 작업을 실행하십시오.
 
-6. [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops)로 이동하여 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 확인하십시오. 
+6. [{{site.data.keyword.Bluemix_short}} DevOps](https://console.ng.bluemix.net/devops)로 이동하여 도구 체인을 선택한 다음 **DevOps Insights**를 클릭하여 Deployment Risk 대시보드를 확인하십시오.
 
 Deployment Risk 대시보드는 스테이징 배치 작업 후의 게이트 존재에 따라 달라집니다. 대시보드를 사용하려면 스테이징 환경에 배치한 후, 프로덕션 환경에 배치하기 전에 게이트가 있는지 확인하십시오.
     
 ### 구성 알림
 {: #jenkins_notifications}
 
-[{{site.data.keyword.Bluemix}} Platform 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항에 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다. 
+[{{site.data.keyword.Bluemix}} Platform 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항에 따라 Slack 또는 PagerDuty와 같은 도구에 알림을 보내도록 Jenkins 작업을 구성할 수 있습니다.
 
 이 예에서는 작업 구성에 맞게 `ICD_WEBHOOK_URL`을 구성하는 방법을 보여줍니다.
 ![ICD_WEBHOOK_URL 매개변수 설정](images/Set-Parameterized-Webhook.png "매개변수화된 WebHook 설정")

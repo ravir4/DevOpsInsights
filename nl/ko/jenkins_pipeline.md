@@ -42,7 +42,7 @@ Jenkins Pipeline 프로젝트를 실행하는 서버에 액세스할 수 있어�
 ## 플러그인 설치
 {: #jenkins_install}
 
-서버 인터페이스를 열고 다음 단계를 수행하여 Jenkins 서버에 플러그인을 설치하십시오. 
+서버 인터페이스를 열고 다음 단계를 수행하여 Jenkins 서버에 플러그인을 설치하십시오.
 
 1. **Jenkins 관리**를 클릭하십시오.
 2. **플러그인 관리**를 클릭하십시오. 
@@ -51,7 +51,7 @@ Jenkins Pipeline 프로젝트를 실행하는 서버에 액세스할 수 있어�
 5. **IBM Cloud DevOps**를 선택하십시오.
 6. **지금 다운로드 및 재시작 이후 설치**를 클릭하십시오. 
 
-서버가 다시 시작되면 플러그인을 사용할 수 있습니다.   
+서버가 다시 시작되면 플러그인을 사용할 수 있습니다.  
 
 ## 파이프라인 생성
 {: #jenkinsfile_create}
@@ -64,13 +64,13 @@ Jenkins 프로젝트 구성 메뉴 또는 저장소의 Jenkinsfile에 파이프�
 
 정의에서 다음 환경 변수를 추가하십시오. 이러한 변수는 파이프라인을 {{site.data.keyword.DRA_short}}와 통합하기 위해 필요합니다.
 
-| 환경 변수        | 정의    |
+|환경 변수        |정의    |
 | ----------------------------|---------------|
-| `IBM_CLOUD_DEVOPS_CREDS`    | `credentials` 명령을 사용하여 Jenkins에 정의하는 {{site.data.keyword.Bluemix_notm}} Platform 신임 정보입니다. 예를 들어 `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`입니다. 이 명령에서 변수를 설정하면 사용자 이름과 비밀번호에 대해 두 개의 추가 환경 변수 `IBM_CLOUD_DEVOPS_CREDS_USR` 및 `IBM_CLOUD_DEVOPS_CREDS_PSW`가 자동으로 설정됩니다.  |
-| `IBM_CLOUD_DEVOPS_ORG`      | 도구 체인이 속하는 {{site.data.keyword.Bluemix}} Platform 조직입니다. |
-| `IBM_CLOUD_DEVOPS_APP_NAME` | 도구 체인이 배치하는 애플리케이션의 이름입니다.   |
-| `IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` | 도구 체인의 ID입니다. 도구 체인 개요를 열고 URL을 참조하여 ID를 판별하십시오. 도구 체인 URL 형식은 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`입니다.   |
-| `IBM_CLOUD_DEVOPS_WEBHOOKURL` | 도구 체인에 Jenkins를 추가할 때 제공된 Webhook입니다.   |
+|`IBM_CLOUD_DEVOPS_CREDS`    |`credentials` 명령을 사용하여 Jenkins에 정의하는 {{site.data.keyword.Bluemix_notm}} Platform 신임 정보입니다. 예를 들어 `IBM_CLOUD_DEVOPS_CREDS = credentials('BM_CRED')`입니다. 이 명령에서 변수를 설정하면 사용자 이름과 비밀번호에 대해 두 개의 추가 환경 변수 `IBM_CLOUD_DEVOPS_CREDS_USR` 및 `IBM_CLOUD_DEVOPS_CREDS_PSW`가 자동으로 설정됩니다.  |
+|`IBM_CLOUD_DEVOPS_ORG`      |도구 체인이 속하는 {{site.data.keyword.Bluemix}} Platform 조직입니다.     |
+|`IBM_CLOUD_DEVOPS_APP_NAME` |도구 체인이 배치하는 애플리케이션의 이름입니다.   |
+|`IBM_CLOUD_DEVOPS_TOOCLHAIN_ID` |도구 체인의 ID입니다. 도구 체인 개요를 열고 URL을 참조하여 ID를 판별하십시오. 도구 체인 URL 형식은 `https://console.ng.bluemix.net/devops/toolchains/[YOUR_TOOLCHAIN_ID]`입니다.   |
+|`IBM_CLOUD_DEVOPS_WEBHOOKURL` |도구 체인에 Jenkins를 추가할 때 제공된 Webhook입니다.   |
 
 `credentials` 명령에 대한 자세한 정보는 [Jenkins Pipeline 문서](https://jenkins.io/doc/pipeline/tour/environment/#credentials-in-the-environment)를 참조하십시오. 
 {: tip}
@@ -105,12 +105,12 @@ Cloud DevOps 플러그인은 사용자용으로 Jenkins 파이프라인에 4개 
 
 `publishBuildRecord` 단계로 빌드 레코드를 공개하십시오. 이 단계에는 4개의 매개변수가 필요합니다.
 
-| 매개변수        | 정의    |
+|매개변수        |정의    |
 | ----------------------------|---------------|
-| `gitBranch`    | 빌드에서 사용하는 Git Branch의 이름입니다.  |
-| `gitCommit`      | 빌드에서 사용하는 Git 커미트 ID입니다.    |
-| `gitRepo` | Git 저장소의 URL입니다.   |
-| `result` | 빌드 단계의 결과입니다. 값은 `SUCCESS` 또는 `FAIL`입니다.   |
+|`gitBranch`    |빌드에서 사용하는 Git Branch의 이름입니다.  |
+|`gitCommit`      |빌드에서 사용하는 Git 커미트 ID입니다.    |
+|`gitRepo` |Git 저장소의 URL입니다.   |
+|`result` |빌드 단계의 결과입니다. 값은 `SUCCESS` 또는 `FAIL`입니다.   |
 
 다음 예제는 명령에서 이러한 매개변수를 표시합니다.
 
@@ -124,10 +124,10 @@ Jenkins Pipeline은 환경 변수로 Git 정보를 표시하지 않습니다. `s
 ### 테스트 결과 공개
 `publishTestResult` 단계로 빌드 레코드를 공개하십시오. 이 단계에는 2개의 매개변수가 필요합니다.
 
-| 매개변수        | 정의    |
+|매개변수        |정의    |
 | ----------------------------|---------------|
-| `type`    | 테스트 결과의 유형입니다. 이 값은 단위 테스트의 경우 `unittest`이고, 기능 검증 테스트의 경우 `fvt`이며, 코드 적용 범위 테스트의 경우 `code`여야 합니다.  |
-| `fileLocation`      | 테스트 결과 파일의 위치입니다.    |
+|`type`    |테스트 결과의 유형입니다. 이 값은 단위 테스트의 경우 `unittest`이고, 기능 검증 테스트의 경우 `fvt`이며, 코드 적용 범위 테스트의 경우 `code`여야 합니다.  |
+|`fileLocation`      |테스트 결과 파일의 위치입니다.    |
 
 다음 예제는 명령에서 이러한 매개변수를 표시합니다. 첫 번째 명령은 Mocha 단위 테스트 결과를 공개합니다. 두 번째 명령은 코드 적용 범위 테스트 결과를 공개합니다. 
 
@@ -140,11 +140,11 @@ publishTestResult type:'code', fileLocation: './tests/coverage/reports/coverage-
 
 `publishDeployRecord` 단계로 배치 레코드를 공개하십시오. 이 단계에는 2개의 매개변수가 필요합니다. 하나의 선택적 매개변수도 사용할 수 있습니다. 
 
-| 매개변수        | 정의    |
+|매개변수        |정의    |
 | ----------------------------|---------------|
-| `environment`    | 앱을 배치할 환경입니다. DevOps Insights가 제대로 작동하려면 한 환경을 `STAGING`으로 식별하고 다른 환경은 `PRODUCTION`으로 식별해야 합니다. |
-| `result`      | 빌드 단계의 결과입니다. 값은 `SUCCESS` 또는 `FAIL`이어야 합니다.    |
-| `appUrl`      | _선택사항_: 애플리케이션에 액세스하는 데 사용한 URL입니다.    |
+|`environment`    |앱을 배치할 환경입니다. DevOps Insights가 제대로 작동하려면 한 환경을 `STAGING`으로 식별하고 다른 환경은 `PRODUCTION`으로 식별해야 합니다. |
+|`result`      |빌드 단계의 결과입니다. 값은 `SUCCESS` 또는 `FAIL`이어야 합니다.    |
+|`appUrl`      |_선택사항_: 애플리케이션에 액세스하는 데 사용한 URL입니다.    |
 
 다음 예제는 명령에서 이러한 매개변수를 표시합니다. 첫 번째 명령은 스테이징 환경에 대한 배치 레코드를 공개합니다. 두 번째 명령은 프로덕션 환경에 대한 배치 레코드를 공개합니다.
 
@@ -159,10 +159,10 @@ publishDeployRecord environment: "PRODUCTION", appUrl: "http://Weather-App.myblu
 
 이 단계에는 하나의 매개변수가 필요합니다. 하나의 선택적 매개변수도 사용할 수 있습니다. 
 
-| 매개변수        | 정의    |
+|매개변수        |정의    |
 | ----------------------------|---------------|
-| `policy`    | 게이트에서 구현하는 정책의 이름입니다. 정책의 이름은 DevOps Insights에 정의됩니다. |
-| `forceDecision`      | _선택사항_: 게이트의 결정에 따라 파이프라인을 중지하는지 여부입니다. 게이트가 실패하는 경우 이 매개변수를 `true`로 설정하여 파이프라인이 실행되지 못하게 하십시오. 게이트 실패 후에 파이프라인이 계속될 수 있도록 `false`로 설정하십시오. 기본값은 `false`입니다.     |
+|`policy`    |게이트에서 구현하는 정책의 이름입니다. 정책의 이름은 DevOps Insights에 정의됩니다. |
+|`forceDecision`      |_선택사항_: 게이트의 결정에 따라 파이프라인을 중지하는지 여부입니다. 게이트가 실패하는 경우 이 매개변수를 `true`로 설정하여 파이프라인이 실행되지 못하게 하십시오. 게이트 실패 후에 파이프라인이 계속될 수 있도록 `false`로 설정하십시오. 기본값은 `false`입니다.     |
 
 다음 예제는 명령에서 이러한 매개변수를 표시합니다. 이 명령에서 파이프라인은 게이트의 의사결정과 무관하게 계속 실행됩니다. 
 
@@ -176,11 +176,11 @@ evaluateGate policy: 'Weather App Policy', forceDecision: 'true'
 
 이 단계에는 2개의 매개변수가 필요하며, 하나의 선택적 매개변수도 사용할 수 있습니다. 
 
-| 매개변수        | 정의    |
+|매개변수        |정의    |
 | ----------------------------|---------------|
-| `stageName`    | 현재 파이프라인 단계의 이름입니다. |
-| `status`    | 현재 파이프라인 단계의 상태입니다. `SUCCESS`, `FAILURE` 또는 `ABORTED`를 사용하면 Slack에서 색상 강조표시가 자동으로 트리거됩니다.  |
-| `webhookUrl`      | _선택사항_: 도구 체인의 Jenkins 타일에 표시되는 Webhook URL입니다. 이 매개변수를 포함하면 해당 값이 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 환경 변수의 값을 대체합니다.   |
+|`stageName`    |현재 파이프라인 단계의 이름입니다. |
+|`status`    |현재 파이프라인 단계의 상태입니다. `SUCCESS`, `FAILURE` 또는 `ABORTED`를 사용하면 Slack에서 색상 강조표시가 자동으로 트리거됩니다.  |
+|`webhookUrl`      |_선택사항_: 도구 체인의 Jenkins 타일에 표시되는 Webhook URL입니다. 이 매개변수를 포함하면 해당 값이 `IBM_CLOUD_DEVOPS_WEBHOOKURL` 환경 변수의 값을 대체합니다.   |
 
 다음 예제는 선언적 및 스크립트된 파이프라인 정의 둘 모두에서 `notifyOTC` 단계를 사용하는 방법을 보여줍니다.
 
@@ -222,7 +222,7 @@ stage('Deploy') {
 
 [{{site.data.keyword.Bluemix}} 문서](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/toolchains_integrations.html#jenkins)의 지시사항을 따라 {{site.data.keyword.Bluemix_notm}} 도구 체인과 통합하도록 Jenkins 환경을 구성하십시오. 자유 양식 Jenkins 프로젝트에만 적용되므로 6d - 6f 단계는 무시할 수 있습니다.
 
-도구 체인과 통합하면 엔드-투-엔드 추적성 및 배치 맵핑이 제공됩니다. 통합 지시사항을 따른 다음  배치 단계 후에 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 명령을 추가하십시오. 이 명령은 {{site.data.keyword.Bluemix_notm}} Platform에서 실행 중인 앱에 Jenkins 통합을 연결합니다.  
+도구 체인과 통합하면 엔드-투-엔드 추적성 및 배치 맵핑이 제공됩니다. 통합 지시사항을 따른 다음  배치 단계 후에 `cf icd --create-connection $IBM_CLOUD_DEVOPS_WEBHOOK_URL $CF_APP_NAME` 명령을 추가하십시오. 이 명령은 {{site.data.keyword.Bluemix_notm}} Platform에서 실행 중인 앱에 Jenkins 통합을 연결합니다. 
 
 다음 예제는 전체 배치 단계를 표시합니다. 마지막 명령은 `cf icd --create-connection`입니다. 
 
@@ -239,7 +239,7 @@ sh '''
 '''
 </pre>
 
-Jenkins 통합 문서에서 설명된 대로 CloudFoundry CLI 및 CloudFoundry ICD 플러그인이 Jenkins 서버에 설치되어야 합니다. 또한 연결하려면 서버에서 {{site.data.keyword.Bluemix}} Platform에 로그인해야 합니다. 
+Jenkins 통합 문서에서 설명된 대로 CloudFoundry CLI 및 CloudFoundry ICD 플러그인이 Jenkins 서버에 설치되어야 합니다. 또한 연결하려면 서버에서 {{site.data.keyword.Bluemix}} Platform에 로그인해야 합니다.
 
 ## 선언적 파이프라인의 예제
 

@@ -14,7 +14,7 @@ lastupdated: "2017-10-25"
 
 # Deployment Risk 분석을 Continuous Delivery와 통합
 
-{{site.data.keyword.DRA_short}}는 공개하는 테스트 데이터를 기반으로 배치 위험성을 추적합니다. 이 데이터는 단위 테스트, 코드 적용 범위, 기능 검증 테스트, SonarQube 데이터 또는 IBM Application Security on Cloud의 스캔 데이터를 포함할 수 있습니다. 이 데이터를 공개하고 나면 위험성 정책을 만족하지 않는 빌드를 중지할 수 있도록 파이프라인에 게이트를 추가할 수 있습니다. 
+{{site.data.keyword.DRA_short}}는 공개하는 테스트 데이터를 기반으로 배치 위험성을 추적합니다. 이 데이터는 단위 테스트, 코드 적용 범위, 기능 검증 테스트, SonarQube 데이터 또는 IBM Application Security on Cloud의 스캔 데이터를 포함할 수 있습니다. 이 데이터를 공개하고 나면 위험성 정책을 만족하지 않는 빌드를 중지할 수 있도록 파이프라인에 게이트를 추가할 수 있습니다.
 
 {{site.data.keyword.DRA_short}}의 Deployment Risk 분석에 대한 상위 레벨 설명을 보려면 [Deployment Risk 정보](./about_risk.html)를 참조하십시오.
 
@@ -23,7 +23,7 @@ Continuous Delivery 파이프라인에 대한 자세한 정보는 [공식 문서
 ## 개요
 {: #integrate_pipeline}
 
-{{site.data.keyword.DRA_short}}는 배치 위험성을 분석하기 위해 파이프라인의 다음 정보가 필요합니다. 
+{{site.data.keyword.DRA_short}}는 배치 위험성을 분석하기 위해 파이프라인의 다음 정보가 필요합니다.
 
 * 빌드 레코드
 * 배치 레코드
@@ -31,30 +31,30 @@ Continuous Delivery 파이프라인에 대한 자세한 정보는 [공식 문서
 
 테스트 결과는 다음과 같은 지원되는 형식으로 데이터를 제공해야 합니다.
 
-| 테스트 유형                    | 지원되는 형식                                               |
+|테스트 유형                    |지원되는 형식                                               |
 |------------------------------|-----------------------------------------------------------------|
-| 기능 검증 테스트 | Mocha, xUnit                                                    |
-| 단위 테스트                    | Mocha, xUnit, Karma/Mocha                                       |
-| 코드 적용 범위                | Istanbul, Blanket.js, Cobertura, lcov                                           |
-| 정적 앱 스캔              | IBM Application Security on Cloud에서 제공하는 정적 앱 스캔  |
-| 동적 앱 스캔             | IBM Application Security on Cloud에서 제공하는 동적 앱 스캔 |
-| SonarQube                    | SonarQube 스캔에서 제공하는 스캔 데이터                           |
+|기능 검증 테스트 |Mocha, xUnit                                                    |
+|단위 테스트                    |Mocha, xUnit, Karma/Mocha                                       |
+|코드 적용 범위                |Istanbul, Blanket.js, Cobertura, lcov                                           |
+|정적 앱 스캔              |IBM Application Security on Cloud에서 제공하는 정적 앱 스캔  |
+|동적 앱 스캔             |IBM Application Security on Cloud에서 제공하는 동적 앱 스캔 |
+|SonarQube                    |SonarQube 스캔에서 제공하는 스캔 데이터                           |
 
 파이프라인에 정의하는 환경 변수는 이러한 레코드를 공개하기 위해 컨텍스트를 제공합니다. 작업의 스크립트에서 `export` 명령을 사용하여 환경 변수를 정의할 수 있습니다. 또한 각 파이프라인 단계의 환경 특성 메뉴에서 환경 변수를 설정할 수 있습니다.
 
 환경 변수:
 
-| 환경 변수  | 목적 | 필수인 경우 |
+|환경 변수  |목적 |필수인 경우 |
 |-----------------------|-------- |-------------|
-| `LOGICAL_APP_NAME`    | 대시 보드의 앱 이름입니다. | {{site.data.keyword.DRA_short}} 위험성 정책을 빌드하고, 테스트하고, 배치하고, 적용하는 모든 작업. |
-| `BUILD_PREFIX`  | 단계의 빌드에 접두부로 추가되는 텍스트입니다. 이 텍스트도 대시보드에 표시됩니다. | {{site.data.keyword.DRA_short}} 위험성 정책을 빌드하고, 테스트하고, 배치하고, 적용하는 모든 작업. |
-| `LOGICAL_ENV_NAME`  | 애플리케이션을 실행하는 환경입니다. | 테스트 및 배치 작업. |
+|`LOGICAL_APP_NAME`    |대시 보드의 앱 이름입니다. |{{site.data.keyword.DRA_short}} 위험성 정책을 빌드하고, 테스트하고, 배치하고, 적용하는 모든 작업. |
+|`BUILD_PREFIX`  |단계의 빌드에 접두부로 추가되는 텍스트입니다. 이 텍스트도 대시보드에 표시됩니다. |{{site.data.keyword.DRA_short}} 위험성 정책을 빌드하고, 테스트하고, 배치하고, 적용하는 모든 작업. |
+|`LOGICAL_ENV_NAME`  |애플리케이션을 실행하는 환경입니다. |테스트 및 배치 작업. |
 
-이러한 변수를 다음과 같이 일관되게 사용해야 합니다. 
+이러한 변수를 다음과 같이 일관되게 사용해야 합니다.
 
-* 특정 애플리케이션에 대한 모든 작업 또는 단계에서 동일한 `LOGICAL_APP_NAME`을 사용하십시오.  
+* 특정 애플리케이션에 대한 모든 작업 또는 단계에서 동일한 `LOGICAL_APP_NAME`을 사용하십시오. 
 * 특정 앱 및 빌드 유형에 대해 `BUILD_PREFIX` 값이 동일해야 합니다. 예를 들어, 마스터 분기의 빌드인 경우 `BUILD_PREFIX`가 `"master"`일 수 있습니다. 
-* 해당 배치 작업 및 테스트 작업에서 동일한 `LOGICAL_ENVIRONMENT_NAME` 값을 사용하십시오. 배치 작업에서 `"PRODUCTION"`의 `LOGICAL_ENVIRONMENT_NAME` 값을 사용하는 경우 해당 환경에서 실행한 다른 테스트의 결과를 공개할 때 동일한 값을 사용하십시오. 
+* 해당 배치 작업 및 테스트 작업에서 동일한 `LOGICAL_ENVIRONMENT_NAME` 값을 사용하십시오. 배치 작업에서 `"PRODUCTION"`의 `LOGICAL_ENVIRONMENT_NAME` 값을 사용하는 경우 해당 환경에서 실행한 다른 테스트의 결과를 공개할 때 동일한 값을 사용하십시오.
 
 ## 빌드 작업 환경 변수
 
@@ -122,18 +122,18 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
-해당 예제에서 `idra` 명령을 `--publishtestresult` 플래그와 함께 실행하면 스크립트가 결과를 업로드합니다. `--filelocation` 플래그는 작업의 루트 디렉토리에 상대적인 위치로 테스트 결과 파일의 위치를 표시합니다. `--type` 플래그는 실행하는 테스트의 유형을 표시합니다. 
+해당 예제에서 `idra` 명령을 `--publishtestresult` 플래그와 함께 실행하면 스크립트가 결과를 업로드합니다. `--filelocation` 플래그는 작업의 루트 디렉토리에 상대적인 위치로 테스트 결과 파일의 위치를 표시합니다. `--type` 플래그는 실행하는 테스트의 유형을 표시합니다.
 
-`idra` 명령은 다음 `type` 값을 지원합니다.  
+`idra` 명령은 다음 `type` 값을 지원합니다. 
 
-| 유형 | 설명 |
+|유형 |설명 |
 |------|-------------|
-| `unittest` | 단위 테스트 결과 | 
-| `fvt` | 기능 검증 테스트 결과 |
-| `code` | 코드 적용 범위 결과 | 
-| `sonarqube` | SonarQube 스캔 결과 | 
-| `staticsecurityscan` | IBM Application Security on Cloud의 정적 보안 스캔 결과 |
-| `dynamicsecurityscan` | IBM Application Security on Cloud의 동적 보안 스캔 결과 |
+|`unittest` |단위 테스트 결과 | 
+|`fvt` |기능 검증 테스트 결과 |
+|`code` |코드 적용 범위 결과 | 
+|`sonarqube` |SonarQube 스캔 결과 | 
+|`staticsecurityscan` |IBM Application Security on Cloud의 정적 보안 스캔 결과 |
+|`dynamicsecurityscan` |IBM Application Security on Cloud의 동적 보안 스캔 결과 |
 
 `idra` 명령에 대해 자세히 알아보려면 [grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3)을 참조하십시오. 
 
