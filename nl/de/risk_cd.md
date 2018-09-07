@@ -135,14 +135,14 @@ In diesem Beispiel wir durch die Ausführung des Befehls `idra` mit dem Flag `--
 
 Der Befehl `idra` unterstützt die folgenden Werte für `type`: 
 
-| Typ  | Beschreibung |
+| Typ | Beschreibung |
 |------|-------------|
 | `unittest` | Ergebnisse von Komponententests | 
 | `fvt` | Ergebnisse von Funktionsüberprüfungstests |
 | `code` | Ergebnisse der Codeabdeckung | 
 | `sonarqube` | Ergebnisse der SonarQube-Überprüfung | 
-| `staticsecurityscan` | Ergebnisse von statischen Sicherheitsüberprüfungen aus IBM Application Security on Cloud|
-| `dynamicsecurityscan` | Ergebnisse von dynamischen Sicherheitsüberprüfungen aus IBM Application Security on Cloud|
+| `staticsecurityscan` | Ergebnisse von statischen Sicherheitsüberprüfungen aus IBM Application Security on Cloud |
+| `dynamicsecurityscan` | Ergebnisse von dynamischen Sicherheitsüberprüfungen aus IBM Application Security on Cloud |
 
 Weitere Informationen zum Befehl `idra` finden Sie bei
 [NPM auf der Seite mit dem Paket des Typs 'grunt-idra3'](https://www.npmjs.com/package/grunt-idra3). 

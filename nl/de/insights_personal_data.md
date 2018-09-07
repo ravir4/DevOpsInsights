@@ -2,12 +2,17 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-4-13"
+lastupdated: "2018-8-2"
 
 ---
 
 {:shortdesc: .shortdesc}
 {:new_window: target="_blank"}
+{:codeblock: .codeblock}
+{:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Persönliche Daten in DevOps Insights verwalten
 {: insights_personal_data}
@@ -15,7 +20,10 @@ lastupdated: "2018-4-13"
 Sie können persönliche Daten, die in {{site.data.keyword.DRA_full}} erfasst und gespeichert werden, löschen.
 {: shortdesc}
 
-Daten, die in {{site.data.keyword.DRA_short}} gespeichert werden, werden anhand der Toolchain-ID indexiert. Wenn Sie eine Toolchain löschen, werden alle Daten im Zusammenhang mit Repositorys, die als Teil der Toolchain erfasst wurden, gelöscht. 
+Daten, die in {{site.data.keyword.DRA_short}} gespeichert werden, werden anhand der Toolchain-ID indexiert. Wenn Sie eine Toolchain löschen, werden alle Daten im Zusammenhang mit Repositorys, die als Teil der Toolchain erfasst wurden, gelöscht.
+
+IBM verwaltet keine Daten im {{site.data.keyword.DRA_short}}-Service. Bevor Sie den {{site.data.keyword.DRA_short}}-Service beenden, müssen Sie Ihre eigenen Daten löschen. Zum Löschen der Daten löschen Sie die {{site.data.keyword.DRA_short}}-Toolintegration aus der Toolchain. Wenn die {{site.data.keyword.DRA_short}}-Toolintegration nicht innerhalb von sieben Tagen erneut zur Toolchain hinzugefügt wird, werden die Daten gelöscht.
+{: tip}
 
 ## Daten aus {{site.data.keyword.DRA_short}} löschen
 {: #insights_delete_data}
@@ -24,10 +32,10 @@ In der folgenden Tabelle sind Szenarios für das Löschen von Daten aus {{site.d
 
 |  | Developer und Team Insights | Deployment Risk | Security Insights |
 |---------|-------------|-------------|-------------|
-| [Repository löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	Alle zum betreffenden Repository gehörenden Daten werden gelöscht.  | Nicht zutreffend| Nicht zutreffend|
-| [{{site.data.keyword.DRA_short}}-Toolintegration löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	Alle zum betreffenen Repository gehörenden Daten werden gelöscht.  | Alle Daten, die der Toolchain zugeordnet sind, von der die Toolintegration ein Teil ist, werden gelöscht. | Alle Daten, die zu Repositorys gehören, die der Toolchain zugeordnet sind, von der die Toolintegration ein Teil ist, werden gelöscht. |
-| [Toolchain löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} | Alle Daten, die zu Repositorys gehören, die der Toolchain zugeordnet sind, werden gelöscht. | Alle Daten, die der Toolchain zugeordnet sind, werden gelöscht. | Alle Daten, die der Toolchain zugeordnet sind, werden gelöscht. |
-| [Pipeline löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_pipeline_data){: new_window} | Nicht zutreffend| Nicht zutreffend| Nicht zutreffend|
+| [Repository löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_grit_data){: new_window} |	Alle zum betreffenden Repository gehörenden Daten werden gelöscht.  | Nicht zutreffend | Nicht zutreffend |
+| [{{site.data.keyword.DRA_short}}-Toolintegration löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} |	Alle zum betreffenden Repository gehörenden Daten werden gelöscht.  | Alle Daten, die der Toolchain zugeordnet sind, von der die Toolintegration ein Teil ist, werden gelöscht. | Alle Daten, die zu Repositorys gehören, die der Toolchain zugeordnet sind, von der die Toolintegration ein Teil ist, werden gelöscht.  |
+| [Toolchain löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_toolchains){: new_window} | Alle Daten, die zu Repositorys gehören, die der Toolchain zugeordnet sind, werden gelöscht. | Alle Daten, die der Toolchain zugeordnet sind, werden gelöscht.  | Alle Daten, die der Toolchain zugeordnet sind, werden gelöscht. |
+| [Pipeline löschen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](/docs/services/ContinuousDelivery/cd_personal_data.html#managing_pipeline_data){: new_window} | Nicht zutreffend | Nicht zutreffend | Nicht zutreffend |
 {:caption="Tabelle 1. Szenarios für das Löschen von Daten" caption-side="top"}
 
 ## {{site.data.keyword.DRA_short}}-Toolintegration löschen

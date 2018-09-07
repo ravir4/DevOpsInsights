@@ -47,9 +47,9 @@ Versuchen Sie allgemein sowohl die Anzahl der Mitglieder zu verringern, die eine
 
 ### Pull-Anforderungen
 
-In der Kategorie 'Pull-Anforderungen' werden die Pull-Anforderungen Ihres Teams zentral angezeigt. Die Pull-Anforderungen werden mithilfe von maschinellem Lernen auf ihre Fehleranfälligkeit hin analysiert. Auf diese Weise können Sie schnell erkennen, welche Pull-Anforderungen ein zusätzliches Risiko für die Codebasis bedeuten.
+In der Kategorie 'Pull-Anforderungen' werden die Pull-Anforderungen Ihres Teams zentral angezeigt.  Die Pull-Anforderungen werden mithilfe von maschinellem Lernen auf ihre Fehleranfälligkeit hin analysiert.  Auf diese Weise können Sie schnell erkennen, welche Pull-Anforderungen ein zusätzliches Risiko für die Codebasis bedeuten.
 
-Mit Pull-Anforderungen wird die Arbeit angezeigt, die die Teammitglieder in die Codebasis mergen möchten. Untersuchen Sie die Pull-Anforderungsdaten, um alle damit verbundenen Risiken zu analysieren und zu ermitteln, wie Risiken in Zukunft vermieden werden können.
+Mit Pull-Anforderungen wird die Arbeit angezeigt, die die Teammitglieder in die Codebasis mergen möchten.  Untersuchen Sie die Pull-Anforderungsdaten, um alle damit verbundenen Risiken zu analysieren und zu ermitteln, wie Risiken in Zukunft vermieden werden können.
 
 ## Filtern nach Dateierweiterung
 

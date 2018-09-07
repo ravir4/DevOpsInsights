@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-15"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2018-3-28"
 # Häufig gestellte Fragen
 {: #faqs}
 
-Diese Seite enthält eine in kurzen Abständen aktualisierte Liste häufig gestellter Fragen zu {{site.data.keyword.DRA_full}}.
+Hier finden Sie Antworten auf häufig gestellte Fragen zur Verwendung von {{site.data.keyword.DRA_full}}.
 
 ## Wie entferne ich Daten, die {{site.data.keyword.DRA_short}} mithilfe einer Mining-Operation aus einem Repository gefiltert hat?
 

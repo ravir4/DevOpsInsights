@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Deployment Risk
 {: #gettingstarted}
@@ -177,7 +179,8 @@ Sie integrieren {{site.data.keyword.DRA_short}} mithilfe von zwei Arten von Test
 
 Zunächst fügen Sie Jobs des Typs 'Erweiterter Tester' zur Pipeline hinzu, um Tests durchzuführen und die Ergebnisse hochzuladen. 
 
-**Hinweis:** Wenn Sie einen Testjob so aktualisieren möchten, dass Ergebnisse nach {{site.data.keyword.DRA_short}} hochgeladen werden, speichern Sie seine Konfigurationen an einer gut zugänglichen Position, bevor Sie fortfahren. Öffnen Sie dann das Konfigurationsmenü des Testjobs und fahren Sie mit Schritt 3 fort. 
+Wenn Sie einen Testjob so aktualisieren möchten, dass Ergebnisse nach {{site.data.keyword.DRA_short}} hochgeladen werden, speichern Sie seine Konfigurationen an einer gut zugänglichen Position, bevor Sie fortfahren. Öffnen Sie dann das Konfigurationsmenü des Testjobs und fahren Sie mit Schritt 3 fort. 
+{: tip}
 
 1. Klicken Sie auf der Stufe, auf der Sie den Job zum Hochladen von Ergebnissen hinzufügen möchten, auf das Symbol für
 **Stufenkonfiguration** ![Symbol für Konfiguration von Pipelinestufen](images/pipeline-stage-configuration-icon.png). Klicken Sie auf die Option zum Konfigurieren der Stufe.
