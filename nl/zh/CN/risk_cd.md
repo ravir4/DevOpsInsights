@@ -31,24 +31,24 @@ lastupdated: "2017-10-25"
 
 测试结果必须采用以下某个支持的格式提供数据：
 
-| 测试类型                     | 支持的格式|
+|测试类型                     |支持的格式|
 |------------------------------|-----------------------------------------------------------------|
-| 功能验证测试                 | Mocha、xUnit|
-| 单元测试                     | Mocha、xUnit、Karma/Mocha|
-| 代码覆盖                     | Istanbul、Blanket.js、Cobertura 和 lcov                                           |
-| 静态应用程序扫描             | IBM Application Security on Cloud 提供的静态应用程序扫描   |
-| 动态应用程序扫描             | IBM Application Security on Cloud 提供的动态应用程序扫描   |
-| SonarQube                    | SonarQube 扫描提供的扫描数据                            |
+|功能验证测试                 |Mocha、xUnit|
+|单元测试                     |Mocha、xUnit、Karma/Mocha|
+|代码覆盖                     |Istanbul、Blanket.js、Cobertura 和 lcov                                           |
+|静态应用程序扫描             |IBM Application Security on Cloud 提供的静态应用程序扫描   |
+|动态应用程序扫描             |IBM Application Security on Cloud 提供的动态应用程序扫描   |
+|SonarQube                    |SonarQube 扫描提供的扫描数据                            |
 
 您在管道中定义的环境变量会提供用于发布这些记录的上下文。您可以在作业脚本中使用 `export` 命令进行定义。还可以在每个管道阶段的“环境属性”菜单中进行设置。
 
 环境变量：
 
-| 环境变量      | 用途 | 何时需要 |
+|环境变量      |用途 |何时需要 |
 |-----------------------|-------- |-------------|
-| `LOGICAL_APP_NAME`  | 仪表板上应用程序的名称。| 构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
-| `BUILD_PREFIX`  | 作为前缀添加到阶段构建中的文本。此文本还会在仪表板中出现。| 构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
-| `LOGICAL_ENV_NAME`  | 运行应用程序的环境。| 测试和部署作业。|
+|`LOGICAL_APP_NAME`  |仪表板上应用程序的名称。|构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
+|`BUILD_PREFIX`  |作为前缀添加到阶段构建中的文本。此文本还会在仪表板中出现。|构建、测试、部署和强制实施 {{site.data.keyword.DRA_short}} 风险策略的所有作业。|
+|`LOGICAL_ENV_NAME`  |运行应用程序的环境。|测试和部署作业。|
 
 使用以下变量时务必保持一致：
 
@@ -126,14 +126,14 @@ idra --publishtestresult --filelocation=fvttest.json --type=fvt
 
 `idra` 命令支持以下 `type` 值： 
 
-| Type| 描述|
+|Type|描述|
 |------|-------------|
-| `unittest`| 单元测试结果| 
-| `fvt`| 功能验证测试结果|
-| `code`| 代码覆盖结果| 
-| `sonarqube`| SonarQube 扫描结果| 
-| `staticsecurityscan`| 来自 IBM Application Security on Cloud 的静态安全扫描结果|
-| `dynamicsecurityscan`| 来自 IBM Application Security on Cloud 的动态安全扫描结果|
+|`unittest`|单元测试结果| 
+|`fvt`|功能验证测试结果|
+|`code`|代码覆盖结果| 
+|`sonarqube`|SonarQube 扫描结果| 
+|`staticsecurityscan`|来自 IBM Application Security on Cloud 的静态安全扫描结果|
+|`dynamicsecurityscan`|来自 IBM Application Security on Cloud 的动态安全扫描结果|
 
 要了解 `idra` 命令的更多信息，请参阅 [the grunt-idra3 package's page on npm](https://www.npmjs.com/package/grunt-idra3)。 
 

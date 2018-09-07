@@ -2,7 +2,7 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-15"
 
 ---
 
@@ -15,7 +15,7 @@ lastupdated: "2018-3-28"
 # 常见问题
 {: #faqs}
 
-此页面显示经常更新的 {{site.data.keyword.DRA_full}} 常见问题列表。
+获取有关使用 {{site.data.keyword.DRA_full}} 的常见问题的答案。
 
 ## 如何除去 {{site.data.keyword.DRA_short}} 从存储库中挖掘的数据？
 

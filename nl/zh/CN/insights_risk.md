@@ -2,15 +2,17 @@
 
 copyright:
   years: 2016, 2018
-lastupdated: "2018-3-28"
+lastupdated: "2018-8-2"
 
 ---
 
-{:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
-{:screen: .screen}
+{:new_window: target="_blank"}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:screen: .screen}
+{:tip: .tip}
+{:download: .download}
 
 # Deployment Risk
 {: #gettingstarted}
@@ -178,7 +180,8 @@ Deployment Risk 与 {{site.data.keyword.deliverypipeline}}（{{site.data.keyword
 
 首先，将“高级测试器”作业添加到管道以运行测试并上传结果。 
 
-**注：**如果要更新测试作业以将结果上传到 {{site.data.keyword.DRA_short}}，请在继续之前，先将其配置保存在方便的位置。然后，打开其作业配置菜单，并跳至第 3 步。 
+如果要更新测试作业以将结果上传到 {{site.data.keyword.DRA_short}}，请在继续之前，先将其配置保存在方便的位置。然后，打开其作业配置菜单，并跳至第 3 步。
+{: tip}
 
 1. 在要添加用于上传结果的作业的阶段中，单击**阶段配置**图标 ![“管道阶段配置”图标](images/pipeline-stage-configuration-icon.png)。单击**配置阶段**。
 2. 创建测试作业，然后输入其名称。 
