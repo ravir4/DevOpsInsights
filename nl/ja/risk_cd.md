@@ -14,7 +14,7 @@ lastupdated: "2017-10-25"
 
 # Deployment Risk 分析と継続的デリバリーの統合
 
-{{site.data.keyword.DRA_short}} は、ユーザーから公開されたテスト・データに基づいてデプロイメントのリスクを追跡します。このデータには、単体テスト、コード・カバレッジ、機能検証テスト、SonarQube データ、または IBM Application Security on Cloud のスキャン・データを含めることができます。このようなデータを公開した後、リスク・ポリシーを満たさないビルドを停止するためのゲートをパイプラインに追加できます。
+{{site.data.keyword.DRA_short}} は、ユーザーから公開されたテスト・データに基づいてデプロイメントのリスクを追跡します。 このデータには、単体テスト、コード・カバレッジ、機能検証テスト、SonarQube データ、または IBM Application Security on Cloud のスキャン・データを含めることができます。 このようなデータを公開した後、リスク・ポリシーを満たさないビルドを停止するためのゲートをパイプラインに追加できます。
 
 {{site.data.keyword.DRA_short}} の Deployment Risk 分析の概説については、[Deployment Risk について](./about_risk.html)を参照してください。
 
@@ -31,30 +31,30 @@ lastupdated: "2017-10-25"
 
 テスト結果では、サポート対象となる以下のいずれかの形式でデータを提供する必要があります。
 
-| テスト・タイプ                    | サポートされる形式                                               |
+| テスト・タイプ               | サポートされる形式                                              |
 |------------------------------|-----------------------------------------------------------------|
-| 機能検証テスト | Mocha、xUnit                                                    |
-| 単体テスト                    | Mocha、xUnit、Karma/Mocha                                       |
-| コード・カバレッジ                | Istanbul、Blanket.js、Cobertura、lcov                                           |
-| 静的アプリ・スキャン              | IBM Application Security on Cloud で提供される静的アプリ・スキャン  |
-| 動的アプリ・スキャン             | IBM Application Security on Cloud で提供される動的アプリ・スキャン |
-| SonarQube                    | SonarQube スキャンで提供されるスキャン・データ                           |
+| 機能検証テスト               | Mocha、xUnit                                                    |
+| 単体テスト                   | Mocha、xUnit、Karma/Mocha                                       |
+| コード・カバレッジ           | Istanbul、Blanket.js、Cobertura、lcov                           |
+| 静的アプリ・スキャン         | IBM Application Security on Cloud で提供される静的アプリ・スキャン|
+| 動的アプリ・スキャン         | IBM Application Security on Cloud で提供される動的アプリ・スキャン|
+| SonarQube                    | SonarQube スキャンで提供されるスキャン・データ                    |
 
 パイプラインで定義する環境変数は、これらのレコードを公開するためのコンテキストを提供します。 これらの環境変数は、ご使用のジョブのスクリプト内の `export` コマンドを使用して定義できます。 また、各パイプライン・ステージの「環境プロパティー」メニューでも設定できます。
 
 環境変数:
 
-| 環境変数  | 目的 | 必要なジョブ |
+| 環境変数              | 目的    | 必要なジョブ|
 |-----------------------|-------- |-------------|
-| `LOGICAL_APP_NAME`    | ダッシュボード上のアプリの名前。 | {{site.data.keyword.DRA_short}} のリスク・ポリシーのビルド、テスト、デプロイ、実施を行うすべてのジョブ。 |
-| `BUILD_PREFIX`  | ステージのビルドに接頭部として追加されるテキスト。 このテキストは、ダッシュボードにも表示されます。 | {{site.data.keyword.DRA_short}} のリスク・ポリシーのビルド、テスト、デプロイ、実施を行うすべてのジョブ。 |
-| `LOGICAL_ENV_NAME`  | アプリケーションが実行される環境。 | テスト・ジョブとデプロイ・ジョブ。 |
+| `LOGICAL_APP_NAME` | ダッシュボード上のアプリの名前。| {{site.data.keyword.DRA_short}} のリスク・ポリシーのビルド、テスト、デプロイ、実施を行うすべてのジョブ。|
+| `BUILD_PREFIX` | ステージのビルドに接頭部として追加されるテキスト。このテキストは、ダッシュボードにも表示されます。 | {{site.data.keyword.DRA_short}} のリスク・ポリシーのビルド、テスト、デプロイ、実施を行うすべてのジョブ。|
+| `LOGICAL_ENV_NAME` | アプリケーションが実行される環境。|テスト・ジョブとデプロイ・ジョブ。|
 
 以下のように、これらの変数を矛盾のないように使用してください。
 
 * 特定のアプリケーションについては、すべてのジョブまたはステージで同じ `LOGICAL_APP_NAME` を使用してください。 
-* 特定のアプリおよびビルド・タイプについては、同じ `BUILD_PREFIX` 値を使用してください。例えば、マスター・ブランチのビルドの場合は、`BUILD_PREFIX` を `"master"` にします。 
-* 対応するデプロイ・ジョブとテスト・ジョブには同じ `LOGICAL_ENVIRONMENT_NAME` 値を使用します。デプロイ・ジョブで `"PRODUCTION"` という `LOGICAL_ENVIRONMENT_NAME` 値を使用する場合は、同じ環境で実行されたテストの結果を公開するときにもその同じ値を使用します。
+* 特定のアプリおよびビルド・タイプについては、同じ `BUILD_PREFIX` 値を使用してください。 例えば、マスター・ブランチのビルドの場合は、`BUILD_PREFIX` を `"master"` にします。 
+* 対応するデプロイ・ジョブとテスト・ジョブには同じ `LOGICAL_ENVIRONMENT_NAME` 値を使用します。 デプロイ・ジョブで `"PRODUCTION"` という `LOGICAL_ENVIRONMENT_NAME` 値を使用する場合は、同じ環境で実行されたテストの結果を公開するときにもその同じ値を使用します。
 
 ## ビルド・ジョブの環境変数
 
@@ -122,18 +122,18 @@ npm install -g grunt-idra3
 idra --publishtestresult --filelocation=fvttest.json --type=fvt
 ```
 
-この例で、`--publishtestresult` フラグを指定して実行される `idra` コマンドは、スクリプトが結果をアップロードすることを示しています。`--filelocation` フラグは、ジョブのルート・ディレクトリーを基準とするテスト結果ファイルの相対位置を示しています。`--type` フラグは、実行するテストのタイプを示しています。
+この例で、`--publishtestresult` フラグを指定して実行される `idra` コマンドは、スクリプトが結果をアップロードすることを示しています。 `--filelocation` フラグは、ジョブのルート・ディレクトリーを基準とするテスト結果ファイルの相対位置を示しています。 `--type` フラグは、実行するテストのタイプを示しています。
 
 `idra` コマンドでは以下の `type` 値がサポートされます。 
 
-| タイプ| 説明|
+|タイプ|  説明       |
 |------|-------------|
-| `unittest` | 単体テストの結果 | 
+| `unittest` |単体テストの結果 | 
 | `fvt` | 機能検証テストの結果 |
-| `code` | コード・カバレッジの結果 | 
-| `sonarqube` | SonarQube スキャンの結果 | 
-| `staticsecurityscan` | IBM Application Security on Cloud の静的セキュリティー・スキャンの結果 |
-| `dynamicsecurityscan` | IBM Application Security on Cloud の動的セキュリティー・スキャンの結果 |
+| `code` |コード・カバレッジの結果 | 
+| `sonarqube`|SonarQube スキャンの結果 | 
+| `staticsecurityscan`|IBM Application Security on Cloud の静的セキュリティー・スキャンの結果 |
+| `dynamicsecurityscan`|IBM Application Security on Cloud の動的セキュリティー・スキャンの結果 |
 
 `idra` コマンドについて詳しくは、[npm の grunt-idra3 パッケージのページ](https://www.npmjs.com/package/grunt-idra3)を参照してください。 
 
