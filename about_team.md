@@ -12,12 +12,12 @@ lastupdated: "2017-04-07"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# About Team
+# About Team Dynamics
 
 {{site.data.keyword.DRA_full}} Team employs social coding analysis to identify the level of interaction between team members so that the team can fix unproductive practices.
 {:shortdesc}
 
-After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Team**. From there, you can select an analytic category to dive deeper into your team's collaboration habits and practices. What each set of data indicates can vary from team to team, and you can drill down into each visualization for help and guidance.  
+After you open {{site.data.keyword.DRA_short}} from your toolchain, click **Team Dyanamics**. From there, you can select an analytic category to dive deeper into your team's collaboration habits and practices. What each set of data indicates can vary from team to team, and you can drill down into each visualization for help and guidance.  
 
 ## Data categories
 
@@ -25,9 +25,9 @@ The data that {{site.data.keyword.DRA_short}} uses to populate its dashboards is
 
 ### Interaction
 
-The Interaction graph shows the connections between your project contributors in a visual, highly interactive way. Each node in the graph represents a developer. The size of a node scales logarithmically to a developer's contributions to a project. The lines between nodes indicate collaboration; the thicker a line is, the more two developers collaborated over the selected period.
+The Interaction graph shows the connections between your project contributors in a visual, highly interactive way, during the timeframe selected on the top right. Each node in the graph represents a developer. The size of a node scales logarithmically to a developer's contributions to a project in the social coding context. The lines between nodes indicate collaboration; the thicker a line is, the more two developers collaborated over the selected period.
 
-Each node is colored blue and red to varying degrees. Blue indicates how many lines of code a contributor added as a portion of the total number of lines that the contributor touched. Red indicates how many lines of code a contributor removed. A contributor who only added code would be entirely blue, while a contributor who added and removed an equal number of lines would be half-blue and half-red.
+Each node is colored blue and red to varying degrees. Blue shows the amount of lines a person changed on other people's code and red show the lines  deleted from one's code by his peers. A contributor who only added code would be entirely blue, while a contributor whose lines have been only deleted by others will be entirely red.
 
 ### Authors
 
